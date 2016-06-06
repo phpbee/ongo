@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name frontApp
+ * @name wwwApp
  * @description
- * # frontApp
+ * # wwwApp
  *
  * Main module of the application.
  */
 angular
-  .module('frontApp', [
+  .module('wwwApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
