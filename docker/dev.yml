@@ -1,0 +1,16 @@
+ongo-www:
+  container_name: ongo_www_dev
+  build: www
+  ports:
+    - "8083:80"
+  links:
+    - ongo-api:api
+  volumes:
+    - ../www/dist:/var/www/html
+ongo-api:
+  container_name: ongo_api_dev
+  build: api
+  ports:
+    - "8084:80"
+  volumes:
+    - ../api/web:/var/www/html
