@@ -42,7 +42,19 @@
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
+    "async": "^2.0.0-rc.5",
     "bower": "^1.7.9",
-    "browserslist": "^1.3.2"
+    "browserslist": "^1.3.2",
+    "caniuse-db": "^1.0.30000475",
+    "cdnjs-cdn-data": "^0.1.2",
+    "compass": "^0.1.1",
+    "debug": "^2.2.0",
+    "google-cdn-data": "^0.1.23",
+    "grunt-contrib-compass": "^1.1.1",
+    "num2fraction": "^1.2.2",
+    "postcss": "^5.0.21",
+    "regexp-quote": "0.0.0",
+    "semver": "^5.1.0",
+    "wordwrap": "^1.0.0"
   }
 }
