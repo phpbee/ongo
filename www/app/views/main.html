@@ -1,23 +1,169 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="main">
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="finder">
+                <h1>Find your fotos</h1>
+                <span>Enter Photographer Name, date of event or both</span>
+
+                <form>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <div class="row collapse">
+                                <div class="large-6 small-6 columns">
+                                    <input class="photografer typeahead" type="text" placeholder="Photografer name">
+                                </div>
+                                <div class="large-3 small-3 columns">
+                                    <input class="date fdatepicker" type="text" placeholder="event date">
+                                </div>
+                                <div class="large-3 small-3 columns">
+                                    <a href="#" class="button postfix">Search</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-center">
+                    <span>We are looking for photografers</span>
+                    <a class="button gradient radius reg" href="">Regestration for photografers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lighter">
+        <ul id="lightSlider">
+            <li style="background-image:url('/img/main.jpg');">
+                <a href="">Browse to Gallery</a>
+            </li>
+            <li style="background-image:url('/img/main1.jpg');">
+                <a href="">Browse to Gallery</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3 city_block">
+    <li>
+        <a href="#" class="cityblock" style="background: url('img/city1.jpg') 50% 50% no-repeat; background-size: cover;">
+                      <span>
+                        France
+                        <em>Browse to Country</em>
+                      </span>
+            <strong>Search by country</strong>
+        </a>
+        <div class="blockpadding">
+            <form>
+                <input class="typeahead state" type="text" placeholder="select from the list">
+                <input class="hidden-submit" type="submit">
+                <i class="fi-magnifying-glass"></i>
+            </form>
+        </div>
+    </li>
+    <li>
+        <a href="#" class="cityblock" style="background: url('img/city2.jpg') 50% 50% no-repeat; background-size: cover;">
+                      <span>
+                        Moscow
+                        <em>Browse to Country</em>
+                      </span>
+            <strong>Search by country</strong>
+        </a>
+        <div class="blockpadding">
+            <form>
+                <input class="typeahead state" type="text" placeholder="select from the list">
+                <input class="hidden-submit" type="submit">
+                <i class="fi-magnifying-glass"></i>
+            </form>
+        </div>
+    </li>
+    <li>
+        <a href="#" class="cityblock" style="background: url('img/city3.jpg') 50% 50% no-repeat; background-size: cover;">
+                      <span>
+                        Angkor
+                        <em>Browse to Country</em>
+                      </span>
+            <strong>Search by country</strong>
+        </a>
+        <div class="blockpadding">
+            <form>
+                <input class="typeahead state" type="text" placeholder="select from the list">
+                <input class="hidden-submit" type="submit">
+                <i class="fi-magnifying-glass"></i>
+            </form>
+        </div>
+    </li>
+</ul>
+
+<div class="double_line"></div>
+
+<div class="meetings">
+    <div class="row">
+        <div class="large-4 medium-4 columns">
+            <h3>Last photos <a href="">full list</a></h3>
+            <ul class="photos">
+                <li>
+                    Thursday Mar 05, 2015<br/>
+                <span>(<a href="">Uniun Nightclub</a>, <a href="">Toronto</a>,
+                  <a class="country" href="">USA</a>)</span> <a class="name" href="">Nick</a>
+                </li>
+                <li>
+                    Wednesday Mar 04, 2015<br/>
+                 <span>(<a href="">NightClub</a>, <a href="">Miami</a>,
+                    <a class="country" href="">USA</a>)</span> <a class="name" href="">Dilan</a>
+                </li>
+                <li>
+                    Sunday Mar 01, 2015<br/>
+                 <span>(<a href="">Beach</a>, <a href="">Santiago de Cuba</a>,
+                    <a class="country" href="">Cuba</a>)</span> <a class="name" href="">Jim</a>
+                </li>
+                <li>
+                    Saturday Feb 28, 2015<br/>
+                 <span>(<a href="">America Restaurant and Nightclub</a>, <a href="">Saona</a>,
+                   <a class="country" href="">Italy</a>)</span> <a class="name" href="">Nick</a>
+                </li>
+                <li>
+                    Saturday Feb 28, 2015<br/>
+                 <span>(<a href="">Saona</a>, <a href="">Saona</a>,
+                   <a class="country" href="">Italy</a>)</span> <a class="name" href="">Nick</a>
+                </li>
+            </ul>
+        </div>
+        <div class="large-4 medium-4 columns centered">
+            <h3>top Photographer</h3>
+            <ul class="tophotos small-block-grid-2 medium-block-grid-1 large-block-grid-1">
+                <li><a href="">greater flamingos</a></li>
+                <li><a href="">phoenicopterus</a></li>
+                <li><a href="">bird</a></li>
+                <li><a href="">exterior</a></li>
+                <li><a href="">fenicottero</a></li>
+                <li><a href="">italy</a></li>
+                <li><a href="">nobody</a></li>
+                <li><a href="">outside pink</a></li>
+                <li><a href="">roberto melotti</a></li>
+            </ul>
+        </div>
+        <div class="large-4 medium-4 columns">
+            <h3>Top places and countries</h3>
+            <ul class="toplaces">
+                <li>
+                    <a class="grey" href="">Angkor Wat</a>, <a class="grey" href="">Siem Reap</a><br/>
+                    <a href="">Cambodia</a>
+                </li>
+                <li>
+                    <a class="grey" href="">Bayon temple complex</a>, <a class="grey" href="">Siem Reap</a><br/>
+                    <a href="">Cambodia</a>
+                </li>
+                <li>
+                    <a class="grey" href="">Cathedral of the Resurrection</a>, <a class="grey" href="">Petersburg</a><br/>
+                    <a href="">Russian Federation</a>
+                </li>
+                <li>
+                    <a class="grey" href="">Lincoln Memorial</a>, <a class="grey" href="">Washington</a><br/>
+                    <a href="">USA</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
