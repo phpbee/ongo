@@ -1,18 +1,47 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>OnGoPhotos</title>
     <link rel="stylesheet" href="css/normalize.css" media="none" onload="if(media!='all')media='all'"/>
     <link rel="stylesheet" href="css/foundation-icons.css" media="none" onload="if(media!='all')media='all'"/>
     <link rel="stylesheet" href="css/lightSlider.css" media="none" onload="if(media!='all')media='all'"/>
-    <link rel="stylesheet" href="css/foundation.min.css " />
+    <link rel="stylesheet" href="css/foundation.min.css "/>
     <link rel="stylesheet" href="css/font.css" media="none" onload="if(media!='all')media='all'"/>
     <link rel="stylesheet" href="css/foundation-datepicker.css" media="none" onload="if(media!='all')media='all'"/>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css"/>
     <script>
-      !function(){"use strict";function e(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function t(e){return window.localStorage&&localStorage.font_css_cache&&localStorage.font_css_cache_file===e}function n(){if(window.localStorage&&window.XMLHttpRequest)if(t(o))c(localStorage.font_css_cache);else{var n=new XMLHttpRequest;n.open("GET",o,!0),e(n,"load",function(){4===n.readyState&&(c(n.responseText),localStorage.font_css_cache=n.responseText,localStorage.font_css_cache_file=o)}),n.send()}else{var a=document.createElement("link");a.href=o,a.rel="stylesheet",a.type="text/css",document.getElementsByTagName("head")[0].appendChild(a),document.cookie="font_css_cache"}}function c(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)}var o="/css/font.css";window.localStorage&&localStorage.font_css_cache||document.cookie.indexOf("font_css_cache")>-1?n():e(window,"load",n)}();
+        !function () {
+            "use strict";
+            function e(e, t, n) {
+                e.addEventListener ? e.addEventListener(t, n, !1) : e.attachEvent && e.attachEvent("on" + t, n)
+            }
+
+            function t(e) {
+                return window.localStorage && localStorage.font_css_cache && localStorage.font_css_cache_file === e
+            }
+
+            function n() {
+                if (window.localStorage && window.XMLHttpRequest)if (t(o))c(localStorage.font_css_cache); else {
+                    var n = new XMLHttpRequest;
+                    n.open("GET", o, !0), e(n, "load", function () {
+                        4 === n.readyState && (c(n.responseText), localStorage.font_css_cache = n.responseText, localStorage.font_css_cache_file = o)
+                    }), n.send()
+                } else {
+                    var a = document.createElement("link");
+                    a.href = o, a.rel = "stylesheet", a.type = "text/css", document.getElementsByTagName("head")[0].appendChild(a), document.cookie = "font_css_cache"
+                }
+            }
+
+            function c(e) {
+                var t = document.createElement("style");
+                t.innerHTML = e, document.getElementsByTagName("head")[0].appendChild(t)
+            }
+
+            var o = "/css/font.css";
+            window.localStorage && localStorage.font_css_cache || document.cookie.indexOf("font_css_cache") > -1 ? n() : e(window, "load", n)
+        }();
     </script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -21,115 +50,115 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <!-- endbuild -->
-  </head>
-  <body ng-app="wwwApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <div class="overflow">
-      <div class="header">
+</head>
+<body ng-app="wwwApp">
+<div class="overflow">
+    <div class="header">
         <div class="row">
-          <div class="large-12 columns nopadding">
-            <nav class="top-bar" data-topbar="" role="navigation" data-options="is_hover: false">
+            <div class="large-12 columns nopadding">
+                <nav class="top-bar" data-topbar="" role="navigation" data-options="is_hover: false">
 
-              <ul class="title-area">
-                <li class="name">
-                  <span><a href="/"><em>OnGoPhotos</em></a></span>
-                </li>
-                <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-              </ul>
+                    <ul class="title-area">
+                        <li class="name">
+                            <span><a href="/"><em>OnGoPhotos</em></a></span>
+                        </li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                    </ul>
 
-              <section class="top-bar-section">
-                <ul class="right">
-                  <li><a class="menu_ico1" href="#">Sign in</a></li>
-                  <li><a class="menu_ico2" href="#"><span>Checkout</span></a></li>
-                  <li><a class="menu_ico3" href="#"><span>Language</span></a></li>
-                  <li><a class="menu_ico4" href="#">About</a></li>
-                </ul>
-              </section>
-            </nav>
-          </div>
+                    <section class="top-bar-section">
+                        <ul class="right">
+                            <li><a class="menu_ico1" href="#">Sign in</a></li>
+                            <li><a class="menu_ico2" href="#"><span>Checkout</span></a></li>
+                            <li><a class="menu_ico3" href="#"><span>Language</span></a></li>
+                            <li><a class="menu_ico4" href="#">About</a></li>
+                        </ul>
+                    </section>
+                </nav>
+            </div>
         </div>
-      </div>
+    </div>
 
 
     <div ng-view=""></div>
 
-        <div class="footer">
-            <div class="row">
-                <div class="large-2 medium-2 small-6 columns">
-                    <div class="footer-nav-head"><strong>Find Foto</strong></div>
-                    <ul class="footer-nav">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
+    <div class="footer">
+        <div class="row">
+            <div class="large-2 medium-2 small-6 columns">
+                <div class="footer-nav-head"><strong>Find Foto</strong></div>
+                <ul class="footer-nav">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="large-2 medium-2 small-6 columns">
+                <div class="footer-nav-head"><strong>Category</strong></div>
+                <ul class="footer-nav">
+                    <li><a href="#">Country</a></li>
+                    <li><a href="#">Сity</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#" class="footer-nav-green">Photographer</a></li>
+                </ul>
+            </div>
+            <div class="large-2 medium-2 small-12 columns">
+                <div class="footer-nav-head"><strong>Follow Us</strong></div>
+                <ul class="footer-nav small-block-grid-2 medium-block-grid-1 large-block-grid-1">
+                    <li><a href="#" class="footer-nav-social facebook">Facebook</a></li>
+                    <li><a href="#" class="footer-nav-social twitter">Twitter</a></li>
+                    <li><a href="#" class="footer-nav-social pinterest">Pinterest</a></li>
+                    <li><a href="#" class="footer-nav-social vimeo">Vimeo</a></li>
+                    <li><a href="#" class="footer-nav-social google">Google+</a></li>
+                </ul>
+            </div>
+            <div class="large-6 medium-6 small-12 columns footer-left">
+                <div class="oplata">
+                    <a class="oplata-type mastercard"></a>
+                    <a class="oplata-type visa"></a>
+                    <a class="oplata-type paypal"></a>
                 </div>
-                <div class="large-2 medium-2 small-6 columns">
-                    <div class="footer-nav-head"><strong>Category</strong></div>
-                    <ul class="footer-nav">
-                        <li><a href="#">Country</a></li>
-                        <li><a href="#">Сity</a></li>
-                        <li><a href="#">Location</a></li>
-                        <li><a href="#" class="footer-nav-green">Photographer</a></li>
-                    </ul>
-                </div>
-                <div class="large-2 medium-2 small-12 columns">
-                    <div class="footer-nav-head"><strong>Follow Us</strong></div>
-                    <ul class="footer-nav small-block-grid-2 medium-block-grid-1 large-block-grid-1">
-                        <li><a href="#" class="footer-nav-social facebook">Facebook</a></li>
-                        <li><a href="#" class="footer-nav-social twitter">Twitter</a></li>
-                        <li><a href="#" class="footer-nav-social pinterest">Pinterest</a></li>
-                        <li><a href="#" class="footer-nav-social vimeo">Vimeo</a></li>
-                        <li><a href="#" class="footer-nav-social google">Google+</a></li>
-                    </ul>
-                </div>
-                <div class="large-6 medium-6 small-12 columns footer-left">
-                    <div class="oplata">
-                        <a class="oplata-type mastercard"></a>
-                        <a class="oplata-type visa"></a>
-                        <a class="oplata-type paypal"></a>
-                    </div>
-                    Launched in November 2011, our site features a daily photographing people in public place Europe, Asia and soon beyond. We have about 15,000 photographer working with us.<br><br>
-                    © 2012 - 2015 All rights reserved - Find-Foto.com
-                </div>
+                Launched in November 2011, our site features a daily photographing people in public place Europe, Asia
+                and soon
+                beyond. We have about 15,000 photographer working with us.<br><br>
+                © 2012 - 2015 All rights reserved - Find-Foto.com
             </div>
         </div>
-
-
-
     </div>
 
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/modernizr.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script src="js/foundation-datepicker.js"></script>
-    <script src="js/vendor/typeahead.bundle.js"></script>
-    <script src="js/vendor/masonry.pkgd.min.js"></script>
-    <script src="js/vendor/jquery.lightSlider.min.js"></script>
-    <script src="js/vendor/social-likes.min.js"></script>
-    <script src="js/vendor/script.js"></script>
+</div>
 
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<!-- endbuild -->
+
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/modernizr.js"></script>
+<script src="js/foundation.min.js"></script>
+<script src="js/foundation-datepicker.js"></script>
+<script src="js/vendor/typeahead.bundle.js"></script>
+<script src="js/vendor/masonry.pkgd.min.js"></script>
+<script src="js/vendor/jquery.lightSlider.min.js"></script>
+<script src="js/vendor/social-likes.min.js"></script>
+<script src="js/vendor/script.js"></script>
+
+
 </body>
 </html>

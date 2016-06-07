@@ -1,274 +1,304 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>OnGoPhotos</title>
     <link rel="stylesheet" href="../css/normalize.css" media="none" onload="if(media!='all')media='all'"/>
     <link rel="stylesheet" href="../css/foundation-icons.css" media="none" onload="if(media!='all')media='all'"/>
     <link rel="stylesheet" href="../css/lightSlider.css" media="none" onload="if(media!='all')media='all'"/>
-    <link rel="stylesheet" href="../css/foundation.min.css " />
+    <link rel="stylesheet" href="../css/foundation.min.css "/>
     <link rel="stylesheet" href="../css/font.css" media="none" onload="if(media!='all')media='all'"/>
     <link rel="stylesheet" href="../css/foundation-datepicker.css" media="none" onload="if(media!='all')media='all'"/>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style.css"/>
     <script>
-      !function(){"use strict";function e(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function t(e){return window.localStorage&&localStorage.font_css_cache&&localStorage.font_css_cache_file===e}function n(){if(window.localStorage&&window.XMLHttpRequest)if(t(o))c(localStorage.font_css_cache);else{var n=new XMLHttpRequest;n.open("GET",o,!0),e(n,"load",function(){4===n.readyState&&(c(n.responseText),localStorage.font_css_cache=n.responseText,localStorage.font_css_cache_file=o)}),n.send()}else{var a=document.createElement("link");a.href=o,a.rel="stylesheet",a.type="text/css",document.getElementsByTagName("head")[0].appendChild(a),document.cookie="font_css_cache"}}function c(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)}var o="/css/font.css";window.localStorage&&localStorage.font_css_cache||document.cookie.indexOf("font_css_cache")>-1?n():e(window,"load",n)}();
+        !function () {
+            "use strict";
+            function e(e, t, n) {
+                e.addEventListener ? e.addEventListener(t, n, !1) : e.attachEvent && e.attachEvent("on" + t, n)
+            }
+
+            function t(e) {
+                return window.localStorage && localStorage.font_css_cache && localStorage.font_css_cache_file === e
+            }
+
+            function n() {
+                if (window.localStorage && window.XMLHttpRequest)if (t(o))c(localStorage.font_css_cache); else {
+                    var n = new XMLHttpRequest;
+                    n.open("GET", o, !0), e(n, "load", function () {
+                        4 === n.readyState && (c(n.responseText), localStorage.font_css_cache = n.responseText, localStorage.font_css_cache_file = o)
+                    }), n.send()
+                } else {
+                    var a = document.createElement("link");
+                    a.href = o, a.rel = "stylesheet", a.type = "text/css", document.getElementsByTagName("head")[0].appendChild(a), document.cookie = "font_css_cache"
+                }
+            }
+
+            function c(e) {
+                var t = document.createElement("style");
+                t.innerHTML = e, document.getElementsByTagName("head")[0].appendChild(t)
+            }
+
+            var o = "/css/font.css";
+            window.localStorage && localStorage.font_css_cache || document.cookie.indexOf("font_css_cache") > -1 ? n() : e(window, "load", n)
+        }();
     </script>
-  </head>
-  <body>
-   <div class="overflow gallery_el">
+</head>
+<body>
+<div class="overflow gallery_el">
     <div class="header">
-      <div class="row">
-        <div class="large-12 columns nopadding">
+        <div class="row">
+            <div class="large-12 columns nopadding">
 
-            <div class="search_gallery">
-              <form>
-                <div class="row">
-                 <div class="large-12 columns">
-                   <div class="row collapse">
-                     <div class="large-6 medium-6 small-5 columns">
-                       <input class="photografer typeahead" type="text" placeholder="Photografer name">
-                     </div>
-                     <div class="large-3 medium-3 small-4 columns">
-                       <input class="date fdatepicker" type="text" placeholder="event date">
-                     </div>
-                     <div class="large-3 medium-3 small-3 columns">
-                       <a href="#" class="button postfix">Search</a>
-                     </div>
-                   </div>
-                  </div>
+                <div class="search_gallery">
+                    <form>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row collapse">
+                                    <div class="large-6 medium-6 small-5 columns">
+                                        <input class="photografer typeahead" type="text" placeholder="Photografer name">
+                                    </div>
+                                    <div class="large-3 medium-3 small-4 columns">
+                                        <input class="date fdatepicker" type="text" placeholder="event date">
+                                    </div>
+                                    <div class="large-3 medium-3 small-3 columns">
+                                        <a href="#" class="button postfix">Search</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </form>
+
+                <nav class="top-bar" data-topbar="" role="navigation" data-options="is_hover: false">
+
+                    <ul class="title-area">
+                        <li class="name">
+                            <span><a href="/"><em>OnGoPhotos</em></a></span>
+                        </li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                    </ul>
+
+
+                    <section class="top-bar-section">
+                        <ul class="right">
+                            <li><a class="menu_ico1" href="#">Sign in</a></li>
+                            <li><a class="menu_ico2" href="#"><span>Checkout</span></a></li>
+                            <li><a class="menu_ico3" href="#"><span>Language</span></a></li>
+                            <li><a class="menu_ico4" href="#">About</a></li>
+                        </ul>
+                    </section>
+                </nav>
             </div>
-
-            <nav class="top-bar" data-topbar="" role="navigation" data-options="is_hover: false">
-
-            <ul class="title-area">
-              <li class="name">
-                <span><a href="/"><em>OnGoPhotos</em></a></span>
-              </li>
-              <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-            </ul>
-
-
-             <section class="top-bar-section">
-                <ul class="right">
-                  <li><a class="menu_ico1" href="#">Sign in</a></li>
-                  <li><a class="menu_ico2" href="#"><span>Checkout</span></a></li>
-                  <li><a class="menu_ico3" href="#"><span>Language</span></a></li>
-                  <li><a class="menu_ico4" href="#">About</a></li>
-                </ul>
-              </section>
-            </nav>
         </div>
-      </div>
     </div>
 
     <div class="row baseblock">
-      <div class="small-12 medium-7 large-7 columns">
-        <div class="section_photo">
-          <div class="photo">
-            <img src="../img/gallery_el.jpg">
-            <div class="controls">
-              <a class="prev-search-photo" href="#"></a>
-              <a class="next-search-photo" href="#"></a>
-            </div>
-          </div>
-          <div class="photo_descr">
-            <div class="icons">
-              <a href="" class="add_favorite">Add to Favorites</a>
-              <a href="" class="add_cart">Add to cart</a>
-            </div>
+        <div class="small-12 medium-7 large-7 columns">
+            <div class="section_photo">
+                <div class="photo">
+                    <img src="../img/gallery_el.jpg">
+                    <div class="controls">
+                        <a class="prev-search-photo" href="#"></a>
+                        <a class="next-search-photo" href="#"></a>
+                    </div>
+                </div>
+                <div class="photo_descr">
+                    <div class="icons">
+                        <a href="" class="add_favorite">Add to Favorites</a>
+                        <a href="" class="add_cart">Add to cart</a>
+                    </div>
             <span class="info">
               boulder bouldering bouldern calvi climbing corse corsica exterior
                felsen france frankreichhuman klettern korsika lumio outdoor
             </span>
-          </div>
-       </div>
-      </div>
-      <div class="small-12 medium-5 large-5 columns">
-        <div class="section_down">
-          <a href="" class="button expand down">Download Your Photo</a>
-          <div class="into">
+                </div>
+            </div>
+        </div>
+        <div class="small-12 medium-5 large-5 columns">
+            <div class="section_down">
+                <a href="" class="button expand down">Download Your Photo</a>
+                <div class="into">
 
-            <table>
-              <tr class="radio-list checked">
-                <td class="radiobox">
-                  <input type="radio" name="resolution">
-                  <span></span>
-                </td>
-                <td class="inf">
+                    <table>
+                        <tr class="radio-list checked">
+                            <td class="radiobox">
+                                <input type="radio" name="resolution">
+                                <span></span>
+                            </td>
+                            <td class="inf">
                   <span class="subject">
                     Best Quolity
                     <i>
-                      <div class="toolt">
-                        <span class="toolsubj">Products for Resale</span>
-                        Enhanced license grant which includes the ability to
-                        incorporate the image into print or electronic products
-                        for resale or distribution (including templates and
-                        on-demand products). For more details see the
-                        <a href="" target='_blank'>Commercial Licensing Agreement</a>.
-                      </div>
+                        <div class="toolt">
+                            <span class="toolsubj">Products for Resale</span>
+                            Enhanced license grant which includes the ability to
+                            incorporate the image into print or electronic products
+                            for resale or distribution (including templates and
+                            on-demand products). For more details see the
+                            <a href="" target='_blank'>Commercial Licensing Agreement</a>.
+                        </div>
                     </i>
                   </span>
-                  <span class="res">2848 x 4288px @300dpi</span>
-                </td>
-                <td class="cost">60$</td>
-              </tr>
-              <tr class="radio-list">
-                <td class="radiobox">
-                  <input type="radio" name="resolution">
-                  <span></span>
-                </td>
-                <td class="inf">
+                                <span class="res">2848 x 4288px @300dpi</span>
+                            </td>
+                            <td class="cost">60$</td>
+                        </tr>
+                        <tr class="radio-list">
+                            <td class="radiobox">
+                                <input type="radio" name="resolution">
+                                <span></span>
+                            </td>
+                            <td class="inf">
                   <span class="subject">Web/Social
                     <i>
-                      <div class="toolt">
-                        <span class="toolsubj">Products for Resale</span>
-                        Enhanced license grant which includes the ability to
-                        incorporate the image into print or electronic products
-                        for resale or distribution (including templates and
-                        on-demand products). For more details see the
-                        <a href="" target='_blank'>Commercial Licensing Agreement</a>.
-                      </div>
+                        <div class="toolt">
+                            <span class="toolsubj">Products for Resale</span>
+                            Enhanced license grant which includes the ability to
+                            incorporate the image into print or electronic products
+                            for resale or distribution (including templates and
+                            on-demand products). For more details see the
+                            <a href="" target='_blank'>Commercial Licensing Agreement</a>.
+                        </div>
                     </i>
                   </span>
-                  <span class="res">800 x 1200px @72dpi </span>
-                </td>
-                <td class="cost">25$</td>
-              </tr>
-            </table>
+                                <span class="res">800 x 1200px @72dpi </span>
+                            </td>
+                            <td class="cost">25$</td>
+                        </tr>
+                    </table>
 
-            <a href="" class="button blue expand radius">
-              <span>Add to cart</span>
-            </a>
+                    <a href="" class="button blue expand radius">
+                        <span>Add to cart</span>
+                    </a>
 
-            <div class="social justify">
-              <a href="" class="addfav">Add to Favorites</a>
-              <div class="social-likes justify" data-counters="no">
-                <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
-                <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
-                <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>
-                <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media=""></div>
-              </div>
+                    <div class="social justify">
+                        <a href="" class="addfav">Add to Favorites</a>
+                        <div class="social-likes justify" data-counters="no">
+                            <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
+                            <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
+                            <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>
+                            <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media=""></div>
+                        </div>
+                    </div>
+
+                    <h5>IMAGE DETAILS</h5>
+
+                    <table class="photo_info">
+                        <tr>
+                            <td>Photographer:</td>
+                            <td><a href="">Dany Morgan</a></td>
+                        </tr>
+                        <tr>
+                            <td>Photo ID:</td>
+                            <td><a href="">138513</a></td>
+                        </tr>
+                        <tr>
+                            <td>Gallry ID:</td>
+                            <td><a href="">95325</a></td>
+                        </tr>
+                        <tr>
+                            <td>Place:</td>
+                            <td><a href="">Uniun Nightclub</a></td>
+                        </tr>
+                        <tr>
+                            <td>City:</td>
+                            <td><a href="">Moscow</a></td>
+                        </tr>
+                        <tr>
+                            <td>Country:</td>
+                            <td><a href="">Russian</a></td>
+                        </tr>
+                    </table>
+
+                </div>
             </div>
-
-            <h5>IMAGE DETAILS</h5>
-
-            <table class="photo_info">
-              <tr>
-                <td>Photographer:</td>
-                <td><a href="">Dany Morgan</a></td>
-              </tr>
-              <tr>
-                <td>Photo ID:</td>
-                <td><a href="">138513</a></td>
-              </tr>
-              <tr>
-                <td>Gallry ID:</td>
-                <td><a href="">95325</a></td>
-              </tr>
-              <tr>
-                <td>Place:</td>
-                <td><a href="">Uniun Nightclub</a></td>
-              </tr>
-              <tr>
-                <td>City:</td>
-                <td><a href="">Moscow</a></td>
-              </tr>
-              <tr>
-                <td>Country:</td>
-                <td><a href="">Russian</a></td>
-              </tr>
-            </table>
-
-          </div>
+            <div class="section_water">
+                <h5>watermarks</h5>
+                <span>Watermarks do not appear on the final product!</span>
+            </div>
         </div>
-        <div class="section_water">
-          <h5>watermarks</h5>
-          <span>Watermarks do not appear on the final product!</span>
-        </div>
-      </div>
     </div>
 
     <div class="row thumbsgal">
-      <div class="small-12 medium-12 large-12 columns">
-        <span class="subject">More images from <a href="">Uniun Nightclub</a> gallery</span>
-        <div class="thumbwrap">
-          <ul class="minslider">
-            <li><a href=""><img src="../img/gallery_min/1.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/2.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/3.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/4.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/5.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/6.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/7.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/8.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/9.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/10.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/1.jpg"></a></li>
-            <li><a href=""><img src="../img/gallery_min/2.jpg"></a></li>
-          </ul>
-          <div class="controls">
-            <a class="prev"></a>
-            <a class="next"></a>
-          </div>
-       </div>
-      </div>
+        <div class="small-12 medium-12 large-12 columns">
+            <span class="subject">More images from <a href="">Uniun Nightclub</a> gallery</span>
+            <div class="thumbwrap">
+                <ul class="minslider">
+                    <li><a href=""><img src="../img/gallery_min/1.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/2.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/3.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/4.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/5.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/6.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/7.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/8.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/9.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/10.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/1.jpg"></a></li>
+                    <li><a href=""><img src="../img/gallery_min/2.jpg"></a></li>
+                </ul>
+                <div class="controls">
+                    <a class="prev"></a>
+                    <a class="next"></a>
+                </div>
+            </div>
+        </div>
     </div>
 
-      <div class="footer">
+    <div class="footer">
         <div class="row">
-          <div class="large-2 medium-2 small-6 columns">
-              <div class="footer-nav-head"><strong>Find Foto</strong></div>
-              <ul class="footer-nav">
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contacts</a></li>
-                <li><a href="#">FAQ</a></li>
-              </ul>
-          </div>
-          <div class="large-2 medium-2 small-6 columns">
-              <div class="footer-nav-head"><strong>Category</strong></div>
-              <ul class="footer-nav">
-                <li><a href="#">Country</a></li>
-                <li><a href="#">Сity</a></li>
-                <li><a href="#">Location</a></li>
-                <li><a href="#" class="footer-nav-green">Photographer</a></li>
-              </ul>
-          </div>
-          <div class="large-2 medium-2 small-12 columns">
-              <div class="footer-nav-head"><strong>Follow Us</strong></div>
-              <ul class="footer-nav small-block-grid-2 medium-block-grid-1 large-block-grid-1">
-                <li><a href="#" class="footer-nav-social facebook">Facebook</a></li>
-                <li><a href="#" class="footer-nav-social twitter">Twitter</a></li>
-                <li><a href="#" class="footer-nav-social pinterest">Pinterest</a></li>
-                <li><a href="#" class="footer-nav-social vimeo">Vimeo</a></li>
-                <li><a href="#" class="footer-nav-social google">Google+</a></li>
-              </ul>
-          </div>
-          <div class="large-6 medium-6 small-12 columns footer-left">
-              <div class="oplata">
-                  <a class="oplata-type mastercard"></a>
-                  <a class="oplata-type visa"></a>
-                  <a class="oplata-type paypal"></a>
-              </div>
-              Launched in November 2011, our site features a daily photographing people in public place Europe, Asia and soon beyond. We have about 15,000 photographer working with us.<br><br>
-              © 2012 - 2015 All rights reserved - Find-Foto.com
-          </div>
+            <div class="large-2 medium-2 small-6 columns">
+                <div class="footer-nav-head"><strong>Find Foto</strong></div>
+                <ul class="footer-nav">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="large-2 medium-2 small-6 columns">
+                <div class="footer-nav-head"><strong>Category</strong></div>
+                <ul class="footer-nav">
+                    <li><a href="#">Country</a></li>
+                    <li><a href="#">Сity</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#" class="footer-nav-green">Photographer</a></li>
+                </ul>
+            </div>
+            <div class="large-2 medium-2 small-12 columns">
+                <div class="footer-nav-head"><strong>Follow Us</strong></div>
+                <ul class="footer-nav small-block-grid-2 medium-block-grid-1 large-block-grid-1">
+                    <li><a href="#" class="footer-nav-social facebook">Facebook</a></li>
+                    <li><a href="#" class="footer-nav-social twitter">Twitter</a></li>
+                    <li><a href="#" class="footer-nav-social pinterest">Pinterest</a></li>
+                    <li><a href="#" class="footer-nav-social vimeo">Vimeo</a></li>
+                    <li><a href="#" class="footer-nav-social google">Google+</a></li>
+                </ul>
+            </div>
+            <div class="large-6 medium-6 small-12 columns footer-left">
+                <div class="oplata">
+                    <a class="oplata-type mastercard"></a>
+                    <a class="oplata-type visa"></a>
+                    <a class="oplata-type paypal"></a>
+                </div>
+                Launched in November 2011, our site features a daily photographing people in public place Europe, Asia
+                and soon beyond. We have about 15,000 photographer working with us.<br><br>
+                © 2012 - 2015 All rights reserved - Find-Foto.com
+            </div>
         </div>
-      </div>
+    </div>
 
-     </div>
+</div>
 
-    <script src="../js/vendor/jquery.js"></script>
-    <script src="../js/vendor/modernizr.js"></script>
-    <script src="../js/foundation.min.js"></script>
-    <script src="../js/foundation-datepicker.js"></script>
-    <script src="../js/vendor/typeahead.bundle.js"></script>
-    <script src="../js/vendor/masonry.pkgd.min.js"></script>
-    <script src="../js/vendor/jquery.lightSlider.min.js"></script>
-    <script src="../js/vendor/social-likes.min.js"></script>
-    <script src="../js/vendor/script.js"></script>
-  </body>
+<script src="../js/vendor/jquery.js"></script>
+<script src="../js/vendor/modernizr.js"></script>
+<script src="../js/foundation.min.js"></script>
+<script src="../js/foundation-datepicker.js"></script>
+<script src="../js/vendor/typeahead.bundle.js"></script>
+<script src="../js/vendor/masonry.pkgd.min.js"></script>
+<script src="../js/vendor/jquery.lightSlider.min.js"></script>
+<script src="../js/vendor/social-likes.min.js"></script>
+<script src="../js/vendor/script.js"></script>
+</body>
 </html>
