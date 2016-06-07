@@ -29,6 +29,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/gallery', {
+        templateUrl: 'views/gallery.html',
+        controller: 'GalleryCtrl',
+        controllerAs: 'gallery'
+      })
       .otherwise({
         redirectTo: '/'
       });
