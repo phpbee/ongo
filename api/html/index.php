@@ -1,5 +1,4 @@
 <?php
-
 // set the environment before everything else. Values are: development,production
 define('ENVIRONMENT', 'development');
 define('BASEPATH', dirname(__DIR__));

@@ -3,6 +3,7 @@ ongo-dev-www:
   build: www
   ports:
     - "8083:80"
+    - "80:80"
   links:
     - ongo-dev-api:api
   volumes:
@@ -11,6 +12,6 @@ ongo-dev-api:
   container_name: ongo_api_dev
   build: api
   ports:
-    - "8084:80"
+    - "9000:9000"
   volumes:
-    - ../api/web:/var/www/html
+    - ../api:/var/www
