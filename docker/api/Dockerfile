@@ -14,6 +14,10 @@ RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd && \
       docker-php-ext-install mysqli && \
       docker-php-ext-install mysql
 
+RUN apt-get install -y libz-dev libmemcached-dev gcc \
+    && pecl install memcached \
+    && docker-php-ext-enable memcached
+
 COPY php.ini /usr/local/etc/php/conf.d/php.ini
 
 RUN mkdir -p -m 0777 /var/log/silex

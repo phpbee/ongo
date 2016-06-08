@@ -15,3 +15,17 @@ ongo-dev-api:
     - "9000:9000"
   volumes:
     - ../api:/var/www
+  links:
+    - ongo-dev-memcached:memcached
+  environment:
+    - MYSQL_HOST=10.0.2.2
+    - MYSQL_DB=ongo_test
+    - MYSQL_USER=root
+    - MYSQL_PASSWORD
+    - CACHE_TYPE=memcached
+    - CACHE_ENDPOINT=memcached
+ongo-dev-memcached:
+  container_name: ongo_api_memcached
+  image: memcached
+  ports:
+    - "11211:11211"
