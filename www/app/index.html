@@ -51,7 +51,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <!-- endbuild -->
 </head>
-<body ng-app="wwwApp">
+<body ng-app="wwwApp" ng-controller='ApplicationCtrl'>
 <div class="overflow">
     <div class="header">
         <div class="row">
@@ -60,9 +60,9 @@
 
                     <ul class="title-area">
                         <li class="name">
-                            <span><a href="/"><em>OnGoPhotos</em></a></span>
+                            <span><a ui-sref="main"><em>OnGoPhotos</em></a></span>
                         </li>
-                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                        <li class="toggle-topbar menu-icon"><a ui-sref="main"><span></span></a></li>
                     </ul>
 
                     <section class="top-bar-section">
@@ -78,8 +78,8 @@
         </div>
     </div>
 
+    <div ui-view></div>
 
-    <div ng-view=""></div>
 
     <div class="footer">
         <div class="row">
@@ -138,6 +138,7 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -147,6 +148,7 @@
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/about.js"></script>
 <script src="scripts/controllers/gallery.js"></script>
+<script src="scripts/controllers/application.js"></script>
 <!-- endbuild -->
 
 
@@ -159,6 +161,7 @@
 <script src="js/vendor/jquery.lightSlider.min.js"></script>
 <script src="js/vendor/social-likes.min.js"></script>
 <script src="js/vendor/script.js"></script>
+
 
 
 </body>
