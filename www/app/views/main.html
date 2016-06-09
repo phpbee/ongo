@@ -135,15 +135,9 @@
         <div class="large-4 medium-4 columns centered">
             <h3>top Photographer</h3>
             <ul class="tophotos small-block-grid-2 medium-block-grid-1 large-block-grid-1">
-                <li><a href="">greater flamingos</a></li>
-                <li><a href="">phoenicopterus</a></li>
-                <li><a href="">bird</a></li>
-                <li><a href="">exterior</a></li>
-                <li><a href="">fenicottero</a></li>
-                <li><a href="">italy</a></li>
-                <li><a href="">nobody</a></li>
-                <li><a href="">outside pink</a></li>
-                <li><a href="">roberto melotti</a></li>
+                <div ng-repeat="p in photographers">
+                    <li><a href="">{{ p.name }}</a></li>
+                </div>
             </ul>
         </div>
         <div class="large-4 medium-4 columns">

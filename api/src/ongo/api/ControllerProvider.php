@@ -91,9 +91,9 @@ final class ControllerProvider implements ControllerProviderInterface
 //        });
 
 
-        $controllers->get("/photographers", function (Application $app) {
+        $controllers->get("/photographers", function (Application $app, Request $request) {
             $controller = new PhotographerController($app["db"]);
-            return $controller->top();
+            return $controller->top(intval($request->get("limit")));
         });
 
         $app->error(function (NotUniqueValueException $e) {
