@@ -27,5 +27,3 @@ ongo-dev-api:
 ongo-dev-memcached:
   container_name: ongo_api_memcached
   image: memcached
-  ports:
-    - "11211:11211"

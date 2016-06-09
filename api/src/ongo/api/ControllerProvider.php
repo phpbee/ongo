@@ -10,6 +10,7 @@ use ongo\api\controller\PartnerController;
 use ongo\api\controller\PartnerDeepLinkController;
 use ongo\api\controller\PartnerPaymentInfoController;
 use ongo\api\controller\PartnerPaymentsController;
+use ongo\api\controller\PhotographerController;
 use ongo\api\controller\SessionController;
 use ongo\api\controller\PartnerConversionController;
 use ongo\api\controller\PartnerSummaryController;
@@ -50,45 +51,50 @@ final class ControllerProvider implements ControllerProviderInterface
         $controllers->get("/", function (Application $app, Request $request) {
             return new Response("OK", 200);
         });
-        $controllers->get("/versions", function (Application $app) {
-            $controller = new VersionController($app["db"]);
-            return $controller->query();
-        });
-        $controllers->get("/versions/{id}", function (Application $app, $id) {
-            /** @var PartnerEntity $partner */
-            $partner = $app["auth"]->getPartner();
+//        $controllers->get("/versions", function (Application $app) {
+//            $controller = new VersionController($app["db"]);
+//            return $controller->query();
+//        });
+//        $controllers->get("/versions/{id}", function (Application $app, $id) {
+//            /** @var PartnerEntity $partner */
+//            $partner = $app["auth"]->getPartner();
+//
+//            if ($partner->getI18nVersionId() != $id) {
+//                throw new AccessDelegationNotSupportedException();
+//            }
+//            $controller = new VersionController($app["db"]);
+//            return $controller->get($id);
+//        });
+//        $controllers->post("/sessions", function (Application $app, Request $request) {
+//            $controller = new SessionController($app["cache"], $app["db"]);
+//            return $controller->post($request->get("apikey"), $request->get("username"), $request->get("password"));
+//        });
+//        $controllers->get("/sessions/{token}", function (Application $app, Request $request, $token) {
+//            $session = $app["auth"]->getSession();
+//            if ($session->getToken() != $token)
+//                throw new AccessDelegationNotSupportedException();
+//            return new JsonResponse($session->serialize($app["db"]));
+//        });
+//        $controllers->put("/sessions/{token}", function (Application $app, Request $request, $token) {
+//            $session = $app["auth"]->getSession();
+//            if ($session->getToken() != $token)
+//                throw new AccessDelegationNotSupportedException();
+//            $controller = new SessionController($app["cache"], $app["db"]);
+//            return $controller->put($token);
+//        });
+//        $controllers->delete("/sessions/{token}", function (Application $app, Request $request, $token) {
+//            $session = $app["auth"]->getSession();
+//            if ($session->getToken() != $token)
+//                throw new AccessDelegationNotSupportedException();
+//            $controller = new SessionController($app["cache"], $app["db"]);
+//            return $controller->delete($token);
+//        });
 
-            if ($partner->getI18nVersionId() != $id) {
-                throw new AccessDelegationNotSupportedException();
-            }
-            $controller = new VersionController($app["db"]);
-            return $controller->get($id);
-        });
-        $controllers->post("/sessions", function (Application $app, Request $request) {
-            $controller = new SessionController($app["cache"], $app["db"]);
-            return $controller->post($request->get("apikey"), $request->get("username"), $request->get("password"));
-        });
-        $controllers->get("/sessions/{token}", function (Application $app, Request $request, $token) {
-            $session = $app["auth"]->getSession();
-            if ($session->getToken() != $token)
-                throw new AccessDelegationNotSupportedException();
-            return new JsonResponse($session->serialize($app["db"]));
-        });
-        $controllers->put("/sessions/{token}", function (Application $app, Request $request, $token) {
-            $session = $app["auth"]->getSession();
-            if ($session->getToken() != $token)
-                throw new AccessDelegationNotSupportedException();
-            $controller = new SessionController($app["cache"], $app["db"]);
-            return $controller->put($token);
-        });
-        $controllers->delete("/sessions/{token}", function (Application $app, Request $request, $token) {
-            $session = $app["auth"]->getSession();
-            if ($session->getToken() != $token)
-                throw new AccessDelegationNotSupportedException();
-            $controller = new SessionController($app["cache"], $app["db"]);
-            return $controller->delete($token);
-        });
 
+        $controllers->get("/photographers", function (Application $app) {
+            $controller = new PhotographerController($app["db"]);
+            return $controller->top();
+        });
 
         $app->error(function (NotUniqueValueException $e) {
             return new Response("Not unique value", 409);

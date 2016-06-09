@@ -10,13 +10,11 @@ $db_options = array(
     "dbname" => $_ENV['MYSQL_DB'],
     "host" => $_ENV['MYSQL_HOST'],
     "user" => $_ENV['MYSQL_USER'],
-    "password" => $_ENV['MYSQL_PASSWORD'],
     "charset" => "utf8",
 );
 if (isset($_ENV['MYSQL_PASSWORD'])) {
     $db_options["password"] = $_ENV['MYSQL_PASSWORD'];
 }
-
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     "db.options" => $db_options
