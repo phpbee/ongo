@@ -10,7 +10,7 @@
 angular.module('wwwApp')
   .service('config', function () {
     this.api = {
-      baseURL: 'http://192.168.99.100/api',
+      baseURL: '/api',
       version: '1.0'
     };
   });
