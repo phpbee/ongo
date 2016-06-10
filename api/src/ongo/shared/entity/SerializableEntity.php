@@ -28,11 +28,8 @@ abstract class SerializableEntity {
 		return true;
 	}
 
-	public static function unserialize(array $array, Connection $dbConn)
-	{
-		static::validate($array, array("id"));
-		$model = new static($dbConn);
-		return $model->findById($array["id"]);
+	public static function unserialize(array $array, Connection $dbConn) {
+		throw new \Exception("Late static binding required");
 	}
 	/**
 	 * @param Connection $dbConn

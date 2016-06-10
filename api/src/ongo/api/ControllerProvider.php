@@ -11,6 +11,7 @@ use ongo\api\controller\PartnerDeepLinkController;
 use ongo\api\controller\PartnerPaymentInfoController;
 use ongo\api\controller\PartnerPaymentsController;
 use ongo\api\controller\PhotographerController;
+use ongo\api\controller\PlaceController;
 use ongo\api\controller\SessionController;
 use ongo\api\controller\PartnerConversionController;
 use ongo\api\controller\PartnerSummaryController;
@@ -93,6 +94,10 @@ final class ControllerProvider implements ControllerProviderInterface
 
         $controllers->get("/photographers", function (Application $app, Request $request) {
             $controller = new PhotographerController($app["db"]);
+            return $controller->top(intval($request->get("limit")));
+        });
+        $controllers->get("/places", function (Application $app, Request $request) {
+            $controller = new PlaceController($app["db"]);
             return $controller->top(intval($request->get("limit")));
         });
 

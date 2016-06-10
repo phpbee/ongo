@@ -3,7 +3,6 @@
 namespace ongo\api\controller;
 
 use ongo\shared\entity\SerializableEntity;
-use ongo\shared\model\I18nVersionModel;
 use ongo\shared\model\PhotographerModel;
 use ongo\shared\model\TextModel;
 use Doctrine\DBAL\Connection;

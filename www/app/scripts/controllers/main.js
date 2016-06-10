@@ -8,8 +8,9 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-  .controller('MainCtrl', function ($scope, Photograph) {
+  .controller('MainCtrl', function ($scope, Photograph, Place) {
 
     $scope.photographers=Photograph.query({limit: 10});
+    $scope.places=Place.query({limit: 10});
 
   });
