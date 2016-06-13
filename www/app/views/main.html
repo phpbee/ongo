@@ -47,9 +47,9 @@
 <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3 city_block">
     <li>
         <a href="#" class="cityblock"
-           style="background: url('img/city1.jpg') 50% 50% no-repeat; background-size: cover;">
+           style="background: url('{{ topCountry.logo }}') 50% 50% no-repeat; background-size: cover;">
                       <span>
-                        France
+                        {{ topCountry.name }}
                         <em>Browse to Country</em>
                       </span>
             <strong>Search by country</strong>
@@ -64,12 +64,12 @@
     </li>
     <li>
         <a href="#" class="cityblock"
-           style="background: url('img/city2.jpg') 50% 50% no-repeat; background-size: cover;">
+           style="background: url('{{ topCity.logo }}') 50% 50% no-repeat; background-size: cover;">
                       <span>
-                        Moscow
-                        <em>Browse to Country</em>
+                        {{ topCity.name }}
+                        <em>Browse to City</em>
                       </span>
-            <strong>Search by country</strong>
+            <strong>Search by city</strong>
         </a>
         <div class="blockpadding">
             <form>
@@ -81,12 +81,12 @@
     </li>
     <li>
         <a href="#" class="cityblock"
-           style="background: url('img/city3.jpg') 50% 50% no-repeat; background-size: cover;">
+           style="background: url('{{ topPlace.logo }}') 50% 50% no-repeat; background-size: cover;">
                       <span>
-                        Angkor
-                        <em>Browse to Country</em>
+                        {{ topPlace.name }}
+                        <em>Browse to Place</em>
                       </span>
-            <strong>Search by country</strong>
+            <strong>Search by place</strong>
         </a>
         <div class="blockpadding">
             <form>

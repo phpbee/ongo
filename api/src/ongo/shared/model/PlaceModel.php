@@ -63,7 +63,7 @@ final class PlaceModel
     {
         $versions = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, name, city_id from place order by id LIMIT ?",
+            "select id, name, city_id, logo from place order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
@@ -83,7 +83,8 @@ final class PlaceModel
         return new PlaceEntity(
             $row['id'],
             $row['name'],
-            $row['city_id']
+            $row['city_id'],
+            isset($row['logo']) ? $row['logo'] : null
         );
     }
 }

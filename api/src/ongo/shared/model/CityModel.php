@@ -54,6 +54,26 @@ final class CityModel
     }
 
     /**
+     * @param int $limit
+     * @return CityEntity[]
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function top($limit = 3)
+    {
+        $cities = array();
+        $rs = $this->dbConn->executeQuery(
+            "select id, name, country_id, logo from city order by id LIMIT ?",
+            [$limit], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $cities[] = self::entityFromRecord($row);
+        }
+
+        return $cities;
+    }
+
+    /**
      * @param $row array
      * @return CityEntity
      */
@@ -62,7 +82,8 @@ final class CityModel
         return new CityEntity(
             $row['id'],
             $row['name'],
-            $row['country_id']
+            $row['country_id'],
+            isset($row['logo']) ? $row['logo'] : null
         );
     }
 }

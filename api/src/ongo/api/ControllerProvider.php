@@ -4,6 +4,8 @@ namespace ongo\api;
 
 
 use ongo\api\controller\BannerController;
+use ongo\api\controller\CityController;
+use ongo\api\controller\CountryController;
 use ongo\api\controller\DeeplinkController;
 use ongo\api\controller\EmailController;
 use ongo\api\controller\GalleryController;
@@ -105,7 +107,18 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new GalleryController($app["db"]);
             return $controller->top(intval($request->get("limit")));
         });
-
+        $controllers->get("/top/country", function (Application $app) {
+            $controller = new CountryController($app["db"]);
+            return $controller->topItem();
+        });
+        $controllers->get("/top/city", function (Application $app) {
+            $controller = new CityController($app["db"]);
+            return $controller->topItem();
+        });
+        $controllers->get("/top/place", function (Application $app) {
+            $controller = new PlaceController($app["db"]);
+            return $controller->topItem();
+        });
         $app->error(function (NotUniqueValueException $e) {
             return new Response("Not unique value", 409);
         });

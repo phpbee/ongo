@@ -3,7 +3,6 @@
 namespace ongo\shared\entity;
 
 use ongo\shared\model\CityModel;
-use ongo\shared\model\I18nVersionModel;
 use Doctrine\DBAL\Connection;
 
 final class CityEntity extends SerializableEntity
@@ -14,18 +13,22 @@ final class CityEntity extends SerializableEntity
     private $name;
     /** @var  int */
     private $country_id;
+    /** @var  string */
+    private $logo;
 
     /**
      * CityEntity constructor.
-     * @param int $id
-     * @param string $name
-     * @param int $country_id
+     * @param $id
+     * @param $name
+     * @param $country_id
+     * @param $logo
      */
-    public function __construct($id, $name, $country_id)
+    public function __construct($id, $name, $country_id, $logo)
     {
         $this->id = $id;
         $this->name = $name;
         $this->country_id = $country_id;
+        $this->logo = $logo;
     }
 
     /**
@@ -60,6 +63,7 @@ final class CityEntity extends SerializableEntity
             'id' => $this->id,
             'name' => $this->name,
             'country_id' => $this->country_id,
+            'logo' => $this->logo,
         ];
     }
 }

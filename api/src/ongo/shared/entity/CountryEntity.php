@@ -3,7 +3,6 @@
 namespace ongo\shared\entity;
 
 use ongo\shared\model\CountryModel;
-use ongo\shared\model\I18nVersionModel;
 use Doctrine\DBAL\Connection;
 
 final class CountryEntity extends SerializableEntity
@@ -12,16 +11,20 @@ final class CountryEntity extends SerializableEntity
     private $id;
     /** @var  string */
     private $name;
+    /** @var  string */
+    private $logo;
 
     /**
-     * PhotographerEntity constructor.
+     * CountryEntity constructor.
      * @param int $id
      * @param string $name
+     * @param string $logo
      */
-    public function __construct($id, $name)
+    public function __construct($id, $name, $logo)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->logo = $logo;
     }
 
     /**
@@ -47,6 +50,7 @@ final class CountryEntity extends SerializableEntity
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'logo' => $this->logo,
         ];
     }
 }

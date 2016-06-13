@@ -8,6 +8,12 @@
  * Service in the wwwApp.
  */
 angular.module('wwwApp')
-  .service('Country', function () {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+  .service('Country', function (config, $resource) {
+    return $resource(
+        config.api.baseURL + '/countries',
+        {},
+        {
+          'top': {method: 'GET', url: config.api.baseURL + '/top/country'}
+        }
+    );
   });

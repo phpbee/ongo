@@ -49,6 +49,26 @@ final class CountryModel
     }
 
     /**
+     * @param int $limit
+     * @return CountryEntity[]
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function top($limit = 3)
+    {
+        $countries = array();
+        $rs = $this->dbConn->executeQuery(
+            "select id, name, logo from country order by id LIMIT ?",
+            [$limit], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $countries[] = self::entityFromRecord($row);
+        }
+
+        return $countries;
+    }
+
+    /**
      * @param $row
      * @return CountryEntity
      */
@@ -56,7 +76,8 @@ final class CountryModel
     {
         return new CountryEntity(
             $row['id'],
-            $row['name']
+            $row['name'],
+            isset($row['logo']) ? $row['logo'] : null
         );
     }
 }

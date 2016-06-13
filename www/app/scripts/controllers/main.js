@@ -8,7 +8,11 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-    .controller('MainCtrl', function ($scope, Photograph, Place, Gallery) {
+    .controller('MainCtrl', function ($scope, Photograph, Place, City, Country, Gallery) {
+
+        $scope.topCountry = Country.top();
+        $scope.topCity = City.top();
+        $scope.topPlace = Place.top();
 
         $scope.photographers = Photograph.query({limit: 10});
         $scope.places = Place.query({limit: 10});

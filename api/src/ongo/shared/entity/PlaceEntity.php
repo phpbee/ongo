@@ -13,18 +13,22 @@ final class PlaceEntity extends SerializableEntity
     private $name;
     /** @var  int */
     private $city_id;
+    /** @var  string */
+    private $logo;
 
     /**
      * PlaceEntity constructor.
      * @param int $id
      * @param string $name
      * @param int $city_id
+     * @param string $logo
      */
-    public function __construct($id, $name, $city_id)
+    public function __construct($id, $name, $city_id, $logo)
     {
         $this->id = $id;
         $this->name = $name;
         $this->city_id = $city_id;
+        $this->logo = $logo;
     }
 
     /**
@@ -46,6 +50,7 @@ final class PlaceEntity extends SerializableEntity
             'id' => $this->id,
             'name' => $this->name,
             'city_id' => $this->city_id,
+            'logo' => $this->logo,
         ];
     }
 }

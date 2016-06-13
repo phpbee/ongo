@@ -54,5 +54,20 @@ final class PlaceController
         return new JsonResponse($ret);
 
     }
+
+    /**
+     * @return JsonResponse
+     */
+    public function topItem()
+    {
+        $model = new PlaceModel($this->dbConn);
+
+        $places = $model->top(1);
+        /** @var PlaceEntity $place */
+        $place = reset($places);
+
+        return new JsonResponse($place->serialize($this->dbConn));
+
+    }
 }
 

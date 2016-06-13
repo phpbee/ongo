@@ -10,6 +10,10 @@
 angular.module('wwwApp')
   .service('Place', function (config, $resource) {
     return $resource(
-        config.api.baseURL + '/places'
+        config.api.baseURL + '/places',
+        {},
+        {
+          'top': {method: 'GET', url: config.api.baseURL + '/top/place'}
+        }
     );
   });
