@@ -13,6 +13,7 @@ use ongo\shared\model\CityModel;
 use ongo\shared\model\CountryModel;
 use ongo\shared\model\GalleryModel;
 use ongo\shared\model\PhotographerModel;
+use ongo\shared\model\PhotoModel;
 use ongo\shared\model\PlaceModel;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -70,6 +71,18 @@ final class GalleryController
 
         return new JsonResponse($ret);
 
+    }
+
+    /**
+     * @param int $gallery_id
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function photos($gallery_id)
+    {
+        $model = new PhotoModel($this->dbConn);
+        $photos = $model->fromGalleryID($gallery_id);
+        return new JsonResponse(SerializableEntity::serializeArray($photos, $this->dbConn));
     }
 }
 
