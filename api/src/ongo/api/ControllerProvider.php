@@ -123,6 +123,10 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new PlaceController($app["db"]);
             return $controller->topItem();
         });
+        $controllers->get("/top/gallery", function (Application $app, Request $request) {
+            $controller = new GalleryController($app["db"]);
+            return $controller->topItem(intval($request->get("limit")));
+        });
         $app->error(function (NotUniqueValueException $e) {
             return new Response("Not unique value", 409);
         });

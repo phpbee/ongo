@@ -84,5 +84,23 @@ final class GalleryController
         $photos = $model->fromGalleryID($gallery_id);
         return new JsonResponse(SerializableEntity::serializeArray($photos, $this->dbConn));
     }
+
+    public function topItem($limit = 5)
+    {
+        $model = new GalleryModel($this->dbConn);
+        $photoModel = new PhotoModel($this->dbConn);
+
+        $galleries = $model->top(1);
+        /** @var GalleryEntity $gallery */
+        $gallery = reset($galleries);
+        $ret = $gallery->serialize($this->dbConn);
+        $ret['photos'] = SerializableEntity::serializeArray(
+            $photoModel->fromGalleryID($gallery->getId(), $limit),
+            $this->dbConn
+        );
+
+        return new JsonResponse($ret);
+
+    }
 }
 

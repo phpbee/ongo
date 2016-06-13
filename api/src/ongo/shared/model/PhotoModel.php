@@ -35,17 +35,14 @@ final class PhotoModel
     }
 
 
-    /**
-     * @param $id
-     * @return PhotoEntity[]
-     * @throws \Doctrine\DBAL\DBALException
-     */
-    public function fromGalleryID($id)
+
+    public function fromGalleryID($id, $limit = 100)
     {
         $photos = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, gallery_id, src from photo where gallery_id = :id order by id",
-            ['id' => $id]
+            "select id, gallery_id, src from photo where gallery_id = :id order by id LIMIT :limit",
+            ['id' => $id, 'limit' => $limit],
+            ['limit'=>\PDO::PARAM_INT]
         );
 
         while ($row = $rs->fetch()) {

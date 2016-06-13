@@ -14,7 +14,8 @@ angular.module('wwwApp')
             {'id': '@id'},
             {
                 'query': {isArray: true, url: config.api.baseURL + '/galleries'},
-                'photos': {isArray: true, url: config.api.baseURL + '/gallery/:id/photos'}
+                'photos': {isArray: true, url: config.api.baseURL + '/gallery/:id/photos'},
+                'top': {method: 'GET', url: config.api.baseURL + '/top/gallery'}
             }
         );
     });

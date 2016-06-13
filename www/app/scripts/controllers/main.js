@@ -13,6 +13,7 @@ angular.module('wwwApp')
         $scope.topCountry = Country.top();
         $scope.topCity = City.top();
         $scope.topPlace = Place.top();
+        $scope.topGallery = Gallery.top({limit: 3});
 
         $scope.photographers = Photograph.query({limit: 10});
         $scope.places = Place.query({limit: 10});

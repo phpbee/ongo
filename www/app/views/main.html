@@ -33,11 +33,8 @@
 
     <div class="lighter">
         <ul id="lightSlider">
-            <li style="background-image:url('img/main.jpg');">
-                <a ui-sref="gallery">Browse to Gallery</a>
-            </li>
-            <li style="background-image:url('img/main1.jpg');">
-                <a ui-sref="gallery">Browse to Gallery</a>
+            <li ng-repeat="p in topGallery.photos" style="background-image:url('{{p.src}}');">
+                <a ui-sref="gallery({id:topGallery.id})">Browse to Gallery</a>
             </li>
         </ul>
     </div>

@@ -45,8 +45,15 @@ final class GalleryEntity extends SerializableEntity
     {
         return $this->photograph_id;
     }
-    
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
     /**
      * @param Connection $dbConn
      * @param bool $deep
