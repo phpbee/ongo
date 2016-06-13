@@ -3,6 +3,7 @@
 namespace ongo\shared\model;
 
 use Doctrine\DBAL\Connection;
+use ongo\shared\entity\GalleryEntity;
 use ongo\shared\entity\PhotographerEntity;
 use ongo\shared\exception\InvalidIdException;
 
@@ -25,7 +26,7 @@ final class PhotographerModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, name from photograp where id = ?",
+            "select id, name from photograph where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -52,6 +53,24 @@ final class PhotographerModel
         }
 
         return $versions;
+    }
+
+    /**
+     * @param $galleries
+     * @return PhotographerEntity[]
+     */
+    public function fromGalleries($galleries)
+    {
+        $ids = array_unique(array_map(function (GalleryEntity $g) {
+            return $g->getPhotographId();
+        }, $galleries));
+
+        $photographers = array();
+        foreach ($ids as $id) {
+            $photographers[$id] = PhotographerEntity::unserialize(['id' => $id], $this->dbConn);
+        }
+
+        return $photographers;
     }
 
     /**

@@ -47,7 +47,7 @@ final class PlaceController
             $country = $countries[$city->getCountryId()];
             $placeData = $place->serialize($this->dbConn);
             $placeData['city'] = $city->serialize($this->dbConn);
-            $placeData['city']['country'] = $country->serialize($this->dbConn);
+            $placeData['country'] = $country->serialize($this->dbConn);
             return $placeData;
         }, $places);
 

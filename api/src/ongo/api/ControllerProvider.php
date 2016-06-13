@@ -6,6 +6,7 @@ namespace ongo\api;
 use ongo\api\controller\BannerController;
 use ongo\api\controller\DeeplinkController;
 use ongo\api\controller\EmailController;
+use ongo\api\controller\GalleryController;
 use ongo\api\controller\PartnerController;
 use ongo\api\controller\PartnerDeepLinkController;
 use ongo\api\controller\PartnerPaymentInfoController;
@@ -98,6 +99,10 @@ final class ControllerProvider implements ControllerProviderInterface
         });
         $controllers->get("/places", function (Application $app, Request $request) {
             $controller = new PlaceController($app["db"]);
+            return $controller->top(intval($request->get("limit")));
+        });
+        $controllers->get("/galleries", function (Application $app, Request $request) {
+            $controller = new GalleryController($app["db"]);
             return $controller->top(intval($request->get("limit")));
         });
 

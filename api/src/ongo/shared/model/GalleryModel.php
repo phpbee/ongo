@@ -4,10 +4,11 @@ namespace ongo\shared\model;
 
 use Doctrine\DBAL\Connection;
 use ongo\shared\entity\GalleryEntity;
+use ongo\shared\entity\PhotographerEntity;
 use ongo\shared\entity\PlaceEntity;
 use ongo\shared\exception\InvalidIdException;
 
-final class PlaceModel
+final class GalleryModel
 {
     private $dbConn;
 
@@ -16,17 +17,16 @@ final class PlaceModel
         $this->dbConn = $dbConn;
     }
 
-
     /**
      * @param $id
-     * @return PlaceEntity
+     * @return GalleryEntity
      * @throws InvalidIdException
      * @throws \Doctrine\DBAL\DBALException
      */
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, name, city_id from place where id = ?",
+            "select id, created, place_id, photograph_id from gallery where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -35,35 +35,12 @@ final class PlaceModel
         return self::entityFromRecord($row);
     }
 
-    /**
-     * @param $galleries
-     * @return PlaceEntity[]
-     * @throws \Exception
-     */
-    public function fromGalleries($galleries)
-    {
-        $ids = array_unique(array_map(function (GalleryEntity $g) {
-            return $g->getPlaceId();
-        }, $galleries));
 
-        $places = array();
-        foreach ($ids as $id) {
-            $places[$id] = $this->findById($id);
-        }
-
-        return $places;
-    }
-
-    /**
-     * @param int $limit
-     * @return PlaceEntity[]
-     * @throws \Doctrine\DBAL\DBALException
-     */
     public function top($limit = 3)
     {
         $versions = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, name, city_id from place order by id LIMIT ?",
+            "select id, created, place_id, photograph_id from gallery order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
@@ -76,14 +53,15 @@ final class PlaceModel
 
     /**
      * @param $row
-     * @return PlaceEntity
+     * @return GalleryEntity
      */
     private static function entityFromRecord($row)
     {
-        return new PlaceEntity(
+        return new GalleryEntity(
             $row['id'],
-            $row['name'],
-            $row['city_id']
+            $row['created'],
+            $row['place_id'],
+            $row['photograph_id']
         );
     }
 }
