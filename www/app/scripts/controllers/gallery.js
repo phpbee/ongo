@@ -8,10 +8,6 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-  .controller('GalleryCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('GalleryCtrl', function ($scope, $stateParams, Gallery) {
+        $scope.photos = Gallery.photos({id: $stateParams.id});
+    });

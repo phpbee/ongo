@@ -104,9 +104,9 @@
     <div class="row">
         <div class="large-4 medium-4 columns">
             <h3>Last photos <a href="">full list</a></h3>
-            <ul class="photos">
+            <ul class="photos" >
                 <li ng-repeat="g in galleries">
-                    {{ g.date | date:'dd MMM yyyy' }}<br/>
+                    <a ui-sref="gallery({id:g.id})">{{ g.date | date:'dd MMM yyyy' }}</a><br/>
                     <span>(<a href="">{{ g.place.name }}</a>, <a href="">{{ g.city.name }}</a>,
                   <a class="country" href="">{{ g.country.name }}</a>)</span> <a class="name" href="">{{ g.photographer.name }}</a>
                 </li>

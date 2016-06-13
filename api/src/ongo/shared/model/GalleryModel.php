@@ -40,7 +40,7 @@ final class GalleryModel
     {
         $versions = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, created, place_id, photograph_id from gallery order by id LIMIT ?",
+            "select id, created, place_id, photograph_id from gallery order by id desc LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
