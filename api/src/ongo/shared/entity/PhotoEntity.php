@@ -13,20 +13,31 @@ final class PhotoEntity extends SerializableEntity
     private $gallery_id;
     /** @var  string */
     private $src;
+    /** @var  string */
+    private $thumb;
 
     /**
      * PhotoEntity constructor.
      * @param int $id
      * @param int $gallery_id
      * @param string $src
+     * @param string $thumb
      */
-    public function __construct($id, $gallery_id, $src)
+    public function __construct($id, $gallery_id, $src, $thumb)
     {
         $this->id = $id;
         $this->gallery_id = $gallery_id;
         $this->src = $src;
+        $this->thumb = $thumb;
     }
 
+    /**
+     * @return int
+     */
+    public function getGalleryId()
+    {
+        return $this->gallery_id;
+    }
 
     /**
      * @param Connection $dbConn
@@ -39,6 +50,7 @@ final class PhotoEntity extends SerializableEntity
             'id' => $this->id,
             'gallery_id' => $this->gallery_id,
             'src' => $this->src,
+            'thumb' => $this->thumb,
         ];
     }
 
@@ -48,4 +60,6 @@ final class PhotoEntity extends SerializableEntity
         $model = new PhotoModel($dbConn);
         return $model->findById($array["id"]);
     }
+
+
 }

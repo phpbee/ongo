@@ -9,6 +9,7 @@ use ongo\shared\entity\PhotographerEntity;
 use ongo\shared\entity\PlaceEntity;
 use ongo\shared\entity\SerializableEntity;
 use Doctrine\DBAL\Connection;
+use ongo\shared\exception\InvalidIdException;
 use ongo\shared\model\CityModel;
 use ongo\shared\model\CountryModel;
 use ongo\shared\model\GalleryModel;
@@ -73,6 +74,16 @@ final class GalleryController
 
     }
 
+    public function photo($id, $gallery_id)
+    {
+        $model = new PhotoModel($this->dbConn);
+        $photo = $model->findById($id);
+        if ($photo->getGalleryId() !== $gallery_id) {
+            throw new InvalidIdException($id);
+        }
+        return new JsonResponse($photo->serialize($this->dbConn));
+    }
+
     /**
      * @param int $gallery_id
      * @return JsonResponse
@@ -85,6 +96,11 @@ final class GalleryController
         return new JsonResponse(SerializableEntity::serializeArray($photos, $this->dbConn));
     }
 
+    /**
+     * @param int $limit
+     * @return JsonResponse
+     * @throws \Exception
+     */
     public function topItem($limit = 5)
     {
         $model = new GalleryModel($this->dbConn);

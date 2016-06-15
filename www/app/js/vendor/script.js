@@ -2,23 +2,21 @@ $(document).foundation();
 
 
 $(window).load(function () {
-
-  if ($('#container').length > 0) {
-    var container = document.querySelector('#container');
-    var msnry = new Masonry(container, {
-      itemSelector: '.item',
-    });
-  }
-
-
 });
 
 $(document).ready(function () {
 });
 
 
+function onGalleryLoaded($scope) {
+    if ($('#container').length > 0) {
+        var container = document.querySelector('#container');
+        var msnry = new Masonry(container, {
+            itemSelector: '.item',
+        });
+    }
+}
 function scopeUpdated($scope) {
-
   $(".social-likes").socialLikes();
 
   $("#lightSlider").lightSlider({

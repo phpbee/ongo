@@ -111,6 +111,10 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new GalleryController($app["db"]);
             return $controller->photos(intval($id));
         });
+        $controllers->get("/gallery/{id}/photo/{photo_id}", function (Application $app, $id, $photo_id) {
+            $controller = new GalleryController($app["db"]);
+            return $controller->photo(intval($photo_id),intval($id));
+        });
         $controllers->get("/top/country", function (Application $app) {
             $controller = new CountryController($app["db"]);
             return $controller->topItem();

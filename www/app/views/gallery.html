@@ -61,12 +61,15 @@
 
         <div id="container">
 
-            <div class="item" ng-repeat="p in photos">
-                <img src="{{ p.src }}">
+            <div class="item" ng-repeat="p in photos" on-finish-render="ngRepeatFinished">
+                <a ui-sref="photo({id: p.id, gallery_id: p.gallery_id})">
+
+                <img src="{{ p.thumb }}" >
                 <div class="icons">
                     <a href="" class="add_favorite"></a>
                     <a href="" class="add_cart"></a>
                 </div>
+                    </a>
             </div>
         </div>
 

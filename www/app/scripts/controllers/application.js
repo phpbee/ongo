@@ -8,8 +8,11 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-  .controller('ApplicationCtrl', function ($scope) {
-    $scope.$on('$viewContentLoaded', function () {
-      scopeUpdated($scope);
+    .controller('ApplicationCtrl', function ($scope) {
+        $scope.$on('$viewContentLoaded', function () {
+            scopeUpdated($scope);
+        });
+        $scope.$on('ngRepeatFinished', function () {
+            onGalleryLoaded($scope);
+        });
     });
-  });

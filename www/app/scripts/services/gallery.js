@@ -15,6 +15,7 @@ angular.module('wwwApp')
             {
                 'query': {isArray: true, url: config.api.baseURL + '/galleries'},
                 'photos': {isArray: true, url: config.api.baseURL + '/gallery/:id/photos'},
+                'photo': {isArray: false, url: config.api.baseURL + '/gallery/:id/photo/:photo_id'},
                 'top': {method: 'GET', url: config.api.baseURL + '/top/gallery'}
             }
         );
