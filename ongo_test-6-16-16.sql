@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.12)
 # Database: ongo_test
-# Generation Time: 2016-06-15 19:32:42 +0000
+# Generation Time: 2016-06-16 16:14:47 +0000
 # ************************************************************
 
 
@@ -40,7 +40,7 @@ LOCK TABLES `city` WRITE;
 
 INSERT INTO `city` (`id`, `country_id`, `name`, `logo`)
 VALUES
-	(2,1,'Siem Reap','/static/city/siem_reap.jpg'),
+	(2,1,'Siem Reap','http://www2.cloudspaceto.me/t8/places/city2.jpg'),
 	(4,2,'Petersburg',NULL),
 	(5,3,'Washington',NULL),
 	(6,3,'Toronto',NULL),
@@ -67,7 +67,7 @@ LOCK TABLES `country` WRITE;
 
 INSERT INTO `country` (`id`, `name`, `logo`)
 VALUES
-	(1,'Cambodia','/static/country/cambodia.jpg'),
+	(1,'Cambodia','http://www2.cloudspaceto.me/t8/places/city3.jpg'),
 	(2,'Russian Federation',NULL),
 	(3,'USA',NULL);
 
@@ -410,7 +410,7 @@ LOCK TABLES `place` WRITE;
 
 INSERT INTO `place` (`id`, `city_id`, `name`, `logo`)
 VALUES
-	(1,2,'Angkor Wat','/static/place/Angkor_Wat.jpg'),
+	(1,2,'Angkor Wat','http://www2.cloudspaceto.me/t8/places/city1.jpg'),
 	(2,2,'Bayon temple complex',NULL),
 	(3,4,'Cathedral of the Resurrection',NULL),
 	(4,5,'Lincoln Memorial',NULL),
