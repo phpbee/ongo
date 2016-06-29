@@ -61,10 +61,9 @@
 
         <div id="container">
 
-            <div class="item" ng-repeat="p in photos" on-finish-render="ngRepeatFinished">
+            <div class="item" ng-repeat="p in photos" >
                 <a ui-sref="photo({id: p.id, gallery_id: p.gallery_id})">
-
-                <img src="{{ p.thumb }}" >
+                <img ng-src="{{ p.thumb }}" imageonload ctrl-fn="someCtrlFn(arg1)">
                 <div class="icons">
                     <a href="" class="add_favorite"></a>
                     <a href="" class="add_cart"></a>
@@ -85,4 +84,3 @@
             <a href="" class="button radius">Continue</a>
         </div>
     </div>
-

@@ -17,17 +17,18 @@ angular
         'ngSanitize',
         'ngTouch'
     ])
-    .directive('onFinishRender', function ($timeout) {
+    .directive('imageonload', function () {
         return {
             restrict: 'A',
-            link: function (scope, element, attr) {
-                if (scope.$last === true) {
-                    $timeout(function () {
-                        scope.$emit('ngRepeatFinished');
-                    });
-                }
+            link: function (scope, element, attrs) {
+                element.bind('load', function () {
+                    onImageLoad(scope,element);
+                });
+                element.bind('error', function () {
+                    //alert('image could not be loaded');
+                });
             }
-        }
+        };
     })
     .config(function ($stateProvider, $urlRouterProvider) {
 
