@@ -63,7 +63,7 @@
 
             <div class="item" ng-repeat="p in photos" >
                 <a ui-sref="photo({id: p.id, gallery_id: p.gallery_id})">
-                <img ng-src="{{ p.thumb }}" imageonload ctrl-fn="someCtrlFn(arg1)">
+                <img ng-src="{{ p.thumb }}" imageonload>
                 <div class="icons">
                     <a href="" class="add_favorite"></a>
                     <a href="" class="add_cart"></a>

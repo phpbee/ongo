@@ -45,7 +45,6 @@ final class GalleryController
         $cityModel = new CityModel($this->dbConn);
         $countryModel = new CountryModel($this->dbConn);
 
-
         $galleries = $model->top($limit);
 
         $photographers = $photographerModel->fromGalleries($galleries);

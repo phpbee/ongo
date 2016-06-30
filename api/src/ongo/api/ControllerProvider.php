@@ -97,15 +97,15 @@ final class ControllerProvider implements ControllerProviderInterface
 
         $controllers->get("/photographers", function (Application $app, Request $request) {
             $controller = new PhotographerController($app["db"]);
-            return $controller->top(intval($request->get("limit")));
+            return $controller->top(min(10,intval($request->get("limit"))));
         });
         $controllers->get("/places", function (Application $app, Request $request) {
             $controller = new PlaceController($app["db"]);
-            return $controller->top(intval($request->get("limit")));
+            return $controller->top(min(10,intval($request->get("limit"))));
         });
         $controllers->get("/galleries", function (Application $app, Request $request) {
             $controller = new GalleryController($app["db"]);
-            return $controller->top(intval($request->get("limit")));
+            return $controller->top(min(10,intval($request->get("limit"))));
         });        
         $controllers->get("/gallery/{id}/photos", function (Application $app, $id) {
             $controller = new GalleryController($app["db"]);

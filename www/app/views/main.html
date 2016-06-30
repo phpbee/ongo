@@ -33,18 +33,27 @@
 
     <div class="lighter">
         <ul id="lightSlider">
-            <li ng-repeat="p in topGallery.photos" style="background-image:url('{{p.src}}');">
-                <a ui-sref="gallery({id:topGallery.id})">Browse to Gallery</a>
-            </li>
+
+            <section>
+                <li ng-style="{'background-image':'url(/img/main.jpg)'}">
+                    <a ui-sref="gallery({id:topGallery.id})">Browse to Gallery</a>
+                </li>
+            </section>
+            <section ng-repeat="p in topGallery.photos">
+                <li ng-style="{'background-image':'url(\''+p.src+'\')'}">
+                    <a ui-sref="gallery({id:topGallery.id})">Browse to Gallery</a>
+                </li>
+            </section>
+
         </ul>
     </div>
 </div>
 
 
-<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3 city_block">
+<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3 city_block" ng-cloak>
     <li>
         <a href="#" class="cityblock"
-           style="background: url('{{ topCountry.logo }}') 50% 50% no-repeat; background-size: cover;">
+           ng-style="{'background-image':'url('+topCountry.logo+')'}" style="background-size: cover;">
                       <span>
                         {{ topCountry.name }}
                         <em>Browse to Country</em>
@@ -61,7 +70,7 @@
     </li>
     <li>
         <a href="#" class="cityblock"
-           style="background: url('{{ topCity.logo }}') 50% 50% no-repeat; background-size: cover;">
+           ng-style="{'background-image':'url('+topCity.logo+')'}" style="background-size: cover;">
                       <span>
                         {{ topCity.name }}
                         <em>Browse to City</em>
@@ -78,7 +87,7 @@
     </li>
     <li>
         <a href="#" class="cityblock"
-           style="background: url('{{ topPlace.logo }}') 50% 50% no-repeat; background-size: cover;">
+           ng-style="{'background-image':'url('+topPlace.logo+')'}" style="background-size: cover;">
                       <span>
                         {{ topPlace.name }}
                         <em>Browse to Place</em>
@@ -101,11 +110,12 @@
     <div class="row">
         <div class="large-4 medium-4 columns">
             <h3>Last photos <a href="">full list</a></h3>
-            <ul class="photos" >
+            <ul class="photos">
                 <li ng-repeat="g in galleries">
                     <a ui-sref="gallery({id:g.id})">{{ g.date | date:'dd MMM yyyy' }}</a><br/>
                     <span>(<a href="">{{ g.place.name }}</a>, <a href="">{{ g.city.name }}</a>,
-                  <a class="country" href="">{{ g.country.name }}</a>)</span> <a class="name" href="">{{ g.photographer.name }}</a>
+                  <a class="country" href="">{{ g.country.name }}</a>)</span> <a class="name" href="">{{
+                    g.photographer.name }}</a>
                 </li>
             </ul>
         </div>
