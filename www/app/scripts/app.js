@@ -44,17 +44,26 @@ angular
 
         $urlRouterProvider.otherwise('/');
         $stateProvider
+            .state('index', {
+                templateUrl: 'views/index.html'
+            })
+            .state('index2', {
+                templateUrl: 'views/index2.html'
+            })
             .state('main', {
+                parent: 'index',
                 controller: 'MainCtrl',
                 url: '/',
                 templateUrl: 'views/main.html'
             })
             .state('gallery', {
+                parent: 'index',
                 controller: 'GalleryCtrl',
                 url: '/gallery/:id',
                 templateUrl: 'views/gallery.html'
             })
             .state('photo', {
+                parent: 'index2',
                 templateUrl: 'views/photo.html',
                 controller: 'PhotoCtrl',
                 url: '/gallery/:gallery_id/photo/:id',
