@@ -22,3 +22,11 @@ COPY php.ini /usr/local/etc/php/conf.d/php.ini
 
 RUN mkdir -p -m 0777 /var/log/silex
 
+COPY src /var/www/src
+COPY html /var/www/html
+COPY vendor /var/www/vendor
+
+COPY composer.* /var/www/
+RUN cd /var/www && php composer.phar install
+
+
