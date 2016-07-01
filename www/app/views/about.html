@@ -1,1 +1,120 @@
-<p>This is the about view.</p>
+<div class="bg_gallery"></div>
+
+
+<div class="double_line"></div>
+
+<div class="meetings">
+    <div class="row">
+
+        <p>
+
+
+            up vote
+            107
+            down vote
+            Team City is by far and away the best CI server out there. Its killer feature for me is the tight
+            integration with
+            IDEs (IntelliJ, Eclipse and VisualStudio). It can show you, for example, when a file you're editing in the
+            IDE
+            becomes out of date, who changed it and what they changed. You can commit from the IDE to the CI server, run
+            the
+            comile and tests on the build grid, and then the CI server will commit if the build is successful. You can
+            click on
+            build reports in the CI web app and it will open the appropriate files in the IDE.
+
+            There are plugins available (I wrote one: http://team-piazza.googlecode.com), but not many.
+
+            shareedit
+            edited Mar 8 '10 at 12:38
+
+            Ola Eldøy
+            2,87523157
+            answered Sep 10 '09 at 10:48
+
+            Nat
+            7,59322029
+            9
+            Remote run / Pre-tested commit are very useful features of TeamCity. In general TC can be more convenient if
+            your
+            builds are not fast, because in TeamCity you get continuous feedback on what happens in your build (how many
+            tests
+            passed, failed, at which stage the build is and so on). Also TC notifications are more sophisticated. You
+            can
+            configure different rules for different types of builds and for a wide range of notifiers (email, Jabber,
+            windows
+            tray). – Pavel Sher Sep 10 '09 at 14:45
+            6
+            @Pavel: I don't know TeamCity as well as Hudson so I won't challenge the beginning of your comment. But,
+            regarding
+            the notifications, claiming that TC is more sophisticated is pure FUD in my not so humble opinion. All the
+            mentioned
+            notification channels are available on Hudson (you can even add twitter). Actually, I bet that Hudson has
+            way more
+            plugins than TC (check wiki.hudson-ci.org/display/HUDSON/Plugins) and I'm sure TC has more limitations that
+            Hudson.
+            – Pascal Thivent Sep 10 '09 at 15:07
+            2
+            I agree about channels (Hudson has a lot of plugins), but do not agree about rules. In TeamCity you can
+            subscribe to
+            builds with your changes, you can choose to be notified when build begins to fail (e.g. when first test
+            begins to
+            fail). You can ask to be notified on first failed build after success sequence + on first success after
+            failures.
+            And these options are available for all notification channels. One of such channels is IDE notifier: when
+            something
+            goes wrong you will get notification right in your IDE. As I remember Hudson notification rules were much
+            simplier.
+            – Pavel Sher Sep 10 '09 at 15:27
+            2
+            Pavel - not wanting a slinging match here, but by default Hudson will only email you if you contributed to
+            the
+            failing build. You can also subscribe to be told of every failed build if you want. There's also more
+            options in the
+            email-ext plug-in. You don't have to approve of it, but lets not misrepresent it. – Jim T Sep 10 '09 at
+            20:34
+            4
+            A quick google will show you that there are plug-ins to control nabaztag rabbits and other cute devices from
+            Team
+            City. Or you could use the plug-in that I linked to in my answer. The benefit of tight IDE integration is
+            much
+            quicker and more focused feedback about the code you are working on as you work with it. You don't have to
+            wait for
+            a notification, switch to tge browser, read the report, switch back to the IDE, and open the appropriate
+            file. The
+            editor pane changes as you work to show how other team members have affected the code. – Nat Sep 10 '09 at
+            21:50
+            show 5 more comments
+
+            up vote
+            58
+            down vote
+            +1 for Hudson.
+
+            Hudson is a very active project, has a wide community of users and an active users mailing list, is really
+            easy to
+            start with, is easy to use, has been used on huge, very huge, projects (JBoss, JAX-WS, etc) and thus has
+            proven
+            records of success, offers very nice advanced features (e.g. build matrix, build clustering, etc), is open
+            source,
+            has a lot of plugins...
+
+            And if support is really an important thing, you can get commercial support from Sun. But FWIW, I never
+            faced any
+            blocking problem with Hudson.
+
+            Update: As you may know, Kohsuke Kawaguchi (the creator of Hudson) has left Sun/Oracle and started his own
+            company
+            to take Hudson to the next stage. In other words, this is not a threat for Hudson. And if you are looking
+            for
+            support, you can get a certified version of Hudson CI Server as part of a subscription plan (this certified
+            version
+            bundles a high quality release of Hudson with a predefined set of plugins plus some commercial one).
+
+            Update: To illustrate the size of their respective user base, here is a comparison of job trends for several
+            CI
+            tools on Indeed (live query):
+
+
+        </p>
+    </div>
+</div>

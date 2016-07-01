@@ -50,6 +50,14 @@ angular
             .state('index2', {
                 templateUrl: 'views/index2.html'
             })
+            .state('index3', {
+                templateUrl: 'views/index3.html'
+            })
+            .state('about', {
+                url: '/about',
+                parent: 'index',
+                templateUrl: 'views/about.html'
+            })
             .state('main', {
                 parent: 'index',
                 controller: 'MainCtrl',
@@ -57,7 +65,7 @@ angular
                 templateUrl: 'views/main.html'
             })
             .state('gallery', {
-                parent: 'index',
+                parent: 'index3',
                 controller: 'GalleryCtrl',
                 url: '/gallery/:id',
                 templateUrl: 'views/gallery.html'
@@ -68,4 +76,6 @@ angular
                 controller: 'PhotoCtrl',
                 url: '/gallery/:gallery_id/photo/:id',
             });
+            
+        
     });

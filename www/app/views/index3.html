@@ -1,28 +1,51 @@
-<div class="overflow">
+<div class="overflow gallery_page">
     <div class="header">
         <div class="row">
             <div class="large-12 columns nopadding">
+
+                <div class="search_gallery">
+                    <form>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row collapse">
+                                    <div class="large-6 medium-6 small-5 columns">
+                                        <input class="photografer typeahead" type="text" placeholder="Photografer name">
+                                    </div>
+                                    <div class="large-3 medium-3 small-4 columns">
+                                        <input class="date fdatepicker" type="text" placeholder="event date">
+                                    </div>
+                                    <div class="large-3 medium-3 small-3 columns">
+                                        <a href="#" class="button postfix">Search</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
                 <nav class="top-bar" data-topbar="" role="navigation" data-options="is_hover: false">
 
                     <ul class="title-area">
                         <li class="name">
-                            <span><a ui-sref="main"><em>OnGoPhotos</em></a></span>
+                            <span><a href="/"><em>OnGoPhotos</em></a></span>
                         </li>
-                        <li class="toggle-topbar menu-icon"><a ui-sref="main"><span></span></a></li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
                     </ul>
+
 
                     <section class="top-bar-section">
                         <ul class="right">
                             <li><a class="menu_ico1" href="#">Sign in</a></li>
                             <li><a class="menu_ico2" href="#"><span>Checkout</span></a></li>
                             <li><a class="menu_ico3" href="#"><span>Language</span></a></li>
-                            <li><a class="menu_ico4" ui-sref="about">About</a></li>
+                            <li><a class="menu_ico4" href="#">About</a></li>
                         </ul>
                     </section>
                 </nav>
             </div>
         </div>
     </div>
+
 
     <div ui-view></div>
 
@@ -63,13 +86,10 @@
                     <a class="oplata-type visa"></a>
                     <a class="oplata-type paypal"></a>
                 </div>
-                Launched in November 2011, our site features a daily photographing people in public place Europe, Asia
-                and soon
-                beyond. We have about 15,000 photographer working with us.<br><br>
+                Launched in November 2011, our site features a daily photographing people in public place Europe, Asia and soon beyond. We have about 15,000 photographer working with us.<br><br>
                 © 2012 - 2015 All rights reserved - Find-Foto.com
             </div>
         </div>
     </div>
-
 
 </div>

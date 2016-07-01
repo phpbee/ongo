@@ -1,33 +1,14 @@
 
-                <div class="search_gallery">
-                    <form>
-                        <div class="row">
-                            <div class="large-12 columns">
-                                <div class="row collapse">
-                                    <div class="large-6 medium-6 small-5 columns">
-                                        <input class="photografer typeahead" type="text" placeholder="Photografer name">
-                                    </div>
-                                    <div class="large-3 medium-3 small-4 columns">
-                                        <input class="date fdatepicker" type="text" placeholder="event date">
-                                    </div>
-                                    <div class="large-3 medium-3 small-3 columns">
-                                        <a href="#" class="button postfix">Search</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
 
     <div class="main">
-
         <div class="row">
             <div class="large-12 columns">
                 <div class="finder">
-                    <h1><a href="">Sergey Novozhilov</a></h1>
-                    <span><a href="">Cuba</a>, <a href="">Santiago de Cuba</a>, <a href="">Beach</a></span>
+                    <h1><a href="">{{ gallery.photographer.name }}</a></h1>
+                    <span><a href="">{{ gallery.country.name }}</a>, <a href="">{{ gallery.city.name }}</a>, <a href="">{{ gallery.place.name }}</a></span>
                     <div class="text-center">
                         <span>17 February 2015 , Tuesday</span>
+                        <span>{{ gallery.date | date:'dd MMMM yyyy, b' }}</span>
                         <div class="social-likes justify" data-counters="no">
                             <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
                             <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
