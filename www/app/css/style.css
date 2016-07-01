@@ -142,6 +142,10 @@ body h2, body h3 {
   height: calc(80vh - 55px);
   min-height: 450px;
 }
+.minslider img {
+  width: 80px;
+  height: 80px;
+}
 #lightSlider {
   height: calc(80vh - 55px) !important;
   min-height: 450px !important;

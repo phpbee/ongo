@@ -32,6 +32,29 @@ final class GalleryController
         $this->dbConn = $dbConn;
     }
 
+
+    public function get($id)
+    {
+        $model = new GalleryModel($this->dbConn);
+        $gallery = $model->findById($id);
+        $photographerModel = new PhotographerModel($this->dbConn);
+        $photographer=$photographerModel->findById($gallery->getPhotographId());
+        $placeModel = new PlaceModel($this->dbConn);
+        $place=$placeModel->findById($gallery->getPlaceId());
+        $cityModel = new CityModel($this->dbConn);
+        $city=$cityModel->findById($place->getCityId());
+        $countryModel = new CountryModel($this->dbConn);
+        $country=$countryModel->findById($city->getCountryId());
+
+        $data = $gallery->serialize($this->dbConn);
+        $data['photographer'] = $photographer->serialize($this->dbConn);
+        $data['place'] = $place->serialize($this->dbConn);
+        $data['city'] = $city->serialize($this->dbConn);
+        $data['country'] = $country->serialize($this->dbConn);
+
+        return new JsonResponse($data);
+    }
+
     /**
      * @param int $limit
      * @return JsonResponse

@@ -1,38 +1,37 @@
-
-    <div class="row baseblock">
-        <div class="small-12 medium-7 large-7 columns">
-            <div class="section_photo">
-                <div class="photo">
-                    <img src="{{ photo.src }}">
-                    <div class="controls">
-                        <a class="prev-search-photo" href="#"></a>
-                        <a class="next-search-photo" href="#"></a>
-                    </div>
+<div class="row baseblock">
+    <div class="small-12 medium-7 large-7 columns">
+        <div class="section_photo">
+            <div class="photo">
+                <img src="{{ photo.src }}">
+                <div class="controls">
+                    <a class="prev-search-photo" ui-sref="photo({id: prev_photo, gallery_id: gallery.id})"></a>
+                    <a class="next-search-photo" ui-sref="photo({id: next_photo, gallery_id: gallery.id})"></a>
                 </div>
-                <div class="photo_descr">
-                    <div class="icons">
-                        <a href="" class="add_favorite">Add to Favorites</a>
-                        <a href="" class="add_cart">Add to cart</a>
-                    </div>
+            </div>
+            <div class="photo_descr">
+                <div class="icons">
+                    <a href="" class="add_favorite">Add to Favorites</a>
+                    <a href="" class="add_cart">Add to cart</a>
+                </div>
             <span class="info">
               boulder bouldering bouldern calvi climbing corse corsica exterior
                felsen france frankreichhuman klettern korsika lumio outdoor
             </span>
-                </div>
             </div>
         </div>
-        <div class="small-12 medium-5 large-5 columns">
-            <div class="section_down">
-                <a href="" class="button expand down">Download Your Photo</a>
-                <div class="into">
+    </div>
+    <div class="small-12 medium-5 large-5 columns">
+        <div class="section_down">
+            <a href="" class="button expand down">Download Your Photo</a>
+            <div class="into">
 
-                    <table>
-                        <tr class="radio-list checked">
-                            <td class="radiobox">
-                                <input type="radio" name="resolution">
-                                <span></span>
-                            </td>
-                            <td class="inf">
+                <table>
+                    <tr class="radio-list checked">
+                        <td class="radiobox">
+                            <input type="radio" name="resolution">
+                            <span></span>
+                        </td>
+                        <td class="inf">
                   <span class="subject">
                     Best Quolity
                     <i>
@@ -46,16 +45,16 @@
                         </div>
                     </i>
                   </span>
-                                <span class="res">2848 x 4288px @300dpi</span>
-                            </td>
-                            <td class="cost">60$</td>
-                        </tr>
-                        <tr class="radio-list">
-                            <td class="radiobox">
-                                <input type="radio" name="resolution">
-                                <span></span>
-                            </td>
-                            <td class="inf">
+                            <span class="res">2848 x 4288px @300dpi</span>
+                        </td>
+                        <td class="cost">60$</td>
+                    </tr>
+                    <tr class="radio-list">
+                        <td class="radiobox">
+                            <input type="radio" name="resolution">
+                            <span></span>
+                        </td>
+                        <td class="inf">
                   <span class="subject">Web/Social
                     <i>
                         <div class="toolt">
@@ -68,87 +67,80 @@
                         </div>
                     </i>
                   </span>
-                                <span class="res">800 x 1200px @72dpi </span>
-                            </td>
-                            <td class="cost">25$</td>
-                        </tr>
-                    </table>
+                            <span class="res">800 x 1200px @72dpi </span>
+                        </td>
+                        <td class="cost">25$</td>
+                    </tr>
+                </table>
 
-                    <a href="" class="button blue expand radius">
-                        <span>Add to cart</span>
-                    </a>
+                <a href="" class="button blue expand radius">
+                    <span>Add to cart</span>
+                </a>
 
-                    <div class="social justify">
-                        <a href="" class="addfav">Add to Favorites</a>
-                        <div class="social-likes justify" data-counters="no">
-                            <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
-                            <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
-                            <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>
-                            <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media=""></div>
-                        </div>
+                <div class="social justify">
+                    <a href="" class="addfav">Add to Favorites</a>
+                    <div class="social-likes justify" data-counters="no">
+                        <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
+                        <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
+                        <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>
+                        <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media=""></div>
                     </div>
-
-                    <h5>IMAGE DETAILS</h5>
-
-                    <table class="photo_info">
-                        <tr>
-                            <td>Photographer:</td>
-                            <td><a href="">Dany Morgan</a></td>
-                        </tr>
-                        <tr>
-                            <td>Photo ID:</td>
-                            <td><a href="">138513</a></td>
-                        </tr>
-                        <tr>
-                            <td>Gallry ID:</td>
-                            <td><a href="">95325</a></td>
-                        </tr>
-                        <tr>
-                            <td>Place:</td>
-                            <td><a href="">Uniun Nightclub</a></td>
-                        </tr>
-                        <tr>
-                            <td>City:</td>
-                            <td><a href="">Moscow</a></td>
-                        </tr>
-                        <tr>
-                            <td>Country:</td>
-                            <td><a href="">Russian</a></td>
-                        </tr>
-                    </table>
-
                 </div>
+
+                <h5>IMAGE DETAILS</h5>
+
+                <table class="photo_info">
+                    <tr>
+                        <td>Photographer:</td>
+                        <td><a href="">{{ gallery.photographer.name }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>Photo ID:</td>
+                        <td><a href="">{{ photo.id }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>Gallry ID:</td>
+                        <td><a href="">{{ gallery.id }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>Place:</td>
+                        <td><a href="">{{ gallery.place.name }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td><a href="">{{ gallery.city.name }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>Country:</td>
+                        <td><a href="">{{ gallery.country.name }}</a></td>
+                    </tr>
+                </table>
+
             </div>
-            <div class="section_water">
-                <h5>watermarks</h5>
-                <span>Watermarks do not appear on the final product!</span>
+        </div>
+        <div class="section_water">
+            <h5>watermarks</h5>
+            <span>Watermarks do not appear on the final product!</span>
+        </div>
+    </div>
+</div>
+
+<div class="row thumbsgal">
+    <div class="small-12 medium-12 large-12 columns">
+        <span class="subject">More images from <a href="">Uniun Nightclub</a> gallery</span>
+        <div class="thumbwrap">
+            <ul class="minslider">
+                <li ng-repeat="p in thumbnails">
+                    <a ui-sref="photo({id: p.id, gallery_id: gallery.id})">
+                        <img ng-src="{{ p.thumb }}">
+                    </a>
+                </li>
+            </ul>
+            <div class="controls">
+                <a class="prev"></a>
+                <a class="next"></a>
             </div>
         </div>
     </div>
-
-    <div class="row thumbsgal">
-        <div class="small-12 medium-12 large-12 columns">
-            <span class="subject">More images from <a href="">Uniun Nightclub</a> gallery</span>
-            <div class="thumbwrap">
-                <ul class="minslider">
-                    <li><a href=""><img src="../img/gallery_min/1.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/2.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/3.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/4.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/5.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/6.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/7.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/8.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/9.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/10.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/1.jpg"></a></li>
-                    <li><a href=""><img src="../img/gallery_min/2.jpg"></a></li>
-                </ul>
-                <div class="controls">
-                    <a class="prev"></a>
-                    <a class="next"></a>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 
