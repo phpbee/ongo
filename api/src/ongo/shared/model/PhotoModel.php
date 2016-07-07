@@ -25,7 +25,7 @@ final class PhotoModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, src, thumb, gallery_id from photo where id = ?",
+            "select id, src, thumb, ico, gallery_id from photo where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -40,7 +40,7 @@ final class PhotoModel
     {
         $photos = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, gallery_id, src, thumb from photo where gallery_id = :id order by id LIMIT :limit",
+            "select id, gallery_id, src, thumb, ico from photo where gallery_id = :id order by id LIMIT :limit",
             ['id' => $id, 'limit' => $limit],
             ['limit'=>\PDO::PARAM_INT]
         );
@@ -62,7 +62,8 @@ final class PhotoModel
             intval($row['id']),
             intval($row['gallery_id']),
             $row['src'],
-            $row['thumb']
+            $row['thumb'],
+            $row['ico']
         );
     }
 }

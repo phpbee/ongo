@@ -15,6 +15,8 @@ final class PhotoEntity extends SerializableEntity
     private $src;
     /** @var  string */
     private $thumb;
+    /** @var  string */
+    private $ico;
 
     /**
      * PhotoEntity constructor.
@@ -23,12 +25,13 @@ final class PhotoEntity extends SerializableEntity
      * @param string $src
      * @param string $thumb
      */
-    public function __construct($id, $gallery_id, $src, $thumb)
+    public function __construct($id, $gallery_id, $src, $thumb, $ico)
     {
         $this->id = $id;
         $this->gallery_id = $gallery_id;
         $this->src = $src;
         $this->thumb = $thumb;
+        $this->ico = $ico;
     }
 
     /**
@@ -51,6 +54,7 @@ final class PhotoEntity extends SerializableEntity
             'gallery_id' => $this->gallery_id,
             'src' => $this->src,
             'thumb' => $this->thumb,
+            'ico' => $this->ico,
         ];
     }
 
