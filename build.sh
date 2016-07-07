@@ -30,11 +30,16 @@ cd www
 
   npm install
 
+  cp app/scripts/services/config.master.js app/scripts/services/config.js
+
   ./node_modules/bower/bin/bower install
   ./node_modules/grunt-cli/bin/grunt test  || { echo 'grunt test failed' ; exit 1; }
   ./node_modules/grunt-cli/bin/grunt build || { echo 'grunt build failed' ; exit 2; }
 
+  cp app/scripts/services/config.local.js app/scripts/services/config.js
+
   docker build -t $tag_www .
+
 
 cd ..
 

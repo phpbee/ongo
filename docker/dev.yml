@@ -1,6 +1,6 @@
 ongo-dev-www:
   container_name: ongo_www_dev
-  build: www
+  image: alexk7898/ongo:www-develop
   ports:
     - "8083:80"
     - "80:80"
@@ -10,7 +10,7 @@ ongo-dev-www:
     - ../www/dist:/var/www/html
 ongo-dev-api:
   container_name: ongo_api_dev
-  build: api
+  image: alexk7898/ongo:api-develop
   ports:
     - "9000:9000"
   volumes:
