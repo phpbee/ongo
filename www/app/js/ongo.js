@@ -1,10 +1,8 @@
 function onImageLoad(scope, img, attrs) {
-    console.log('onImageLoad');
     $(img).closest('#container').masonry({itemSelector: '.item'});
 
 
     if ("minslider" == attrs.imageonload) {
-        console.log("minslider");
         var minslider = $(img).closest('.minslider').lightSlider({
             pager: false,
             loop: true,
