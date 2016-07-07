@@ -132,7 +132,7 @@
             <ul class="minslider">
                 <li ng-repeat="p in thumbnails">
                     <a ui-sref="photo({id: p.id, gallery_id: gallery.id})">
-                        <img ng-src="{{ p.thumb }}">
+                        <img ng-src="{{ p.thumb }}" imageonload="minslider">
                     </a>
                 </li>
             </ul>

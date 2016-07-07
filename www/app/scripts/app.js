@@ -22,7 +22,7 @@ angular
             restrict: 'A',
             link: function (scope, element, attrs) {
                 element.bind('load', function () {
-                    onImageLoad(scope,element);
+                    onImageLoad(scope,element, attrs);
                 });
                 element.bind('error', function () {
                     //alert('image could not be loaded');
@@ -48,10 +48,10 @@ angular
                 templateUrl: 'views/index.html'
             })
             .state('index2', {
-                templateUrl: 'views/index2.html'
+                templateUrl: 'views/index3.html'
             })
             .state('index3', {
-                templateUrl: 'views/index3.html'
+                templateUrl: 'views/index2.html'
             })
             .state('about', {
                 url: '/about',

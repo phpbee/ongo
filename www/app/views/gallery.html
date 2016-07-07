@@ -7,9 +7,8 @@
                     <h1><a href="">{{ gallery.photographer.name }}</a></h1>
                     <span><a href="">{{ gallery.country.name }}</a>, <a href="">{{ gallery.city.name }}</a>, <a href="">{{ gallery.place.name }}</a></span>
                     <div class="text-center">
-                        <span>17 February 2015 , Tuesday</span>
-                        <span>{{ gallery.date | date:'dd MMMM yyyy, b' }}</span>
-                        <div class="social-likes justify" data-counters="no">
+                        <span>{{ gallery.date | date:'dd MMMM yyyy, EEEE' }}</span>
+                        <div class="social-likes social-likes-init justify" data-counters="no">
                             <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
                             <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
                             <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>

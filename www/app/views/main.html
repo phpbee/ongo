@@ -33,14 +33,9 @@
 
     <div class="lighter">
         <ul id="lightSlider">
-
-            <section>
-                <li ng-style="{'background-image':'url(/img/main.jpg)'}">
-                    <a ui-sref="gallery({id:topGallery.id})">Browse to Gallery</a>
-                </li>
-            </section>
             <section ng-repeat="p in topGallery.photos">
-                <li ng-style="{'background-image':'url(\''+p.src+'\')'}">
+                <li>
+                    <img ng-src="{{ p.src }}" imageonload="lightSlider" style="display:none;">
                     <a ui-sref="gallery({id:topGallery.id})">Browse to Gallery</a>
                 </li>
             </section>
@@ -138,21 +133,3 @@
 </div>
 
 
-<script>
-
-    function scopeUpdated($scope) {
-        console.log('scopeUpdated');
-        var slider = $("#lightSlider").lightSlider({
-            item: 1,
-            slideMargin: 0,
-            pager: false,
-            loop: true,
-            controls: false,
-            mode: "fade",
-            auto: true,
-            enableDrag: false,
-            pause: 10000,
-        });
-    }
-
-</script>

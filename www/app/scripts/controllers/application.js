@@ -9,10 +9,10 @@
  */
 angular.module('wwwApp')
     .controller('ApplicationCtrl', function ($scope) {
-        $scope.$on('$viewContentLoaded', function () {
-            scopeUpdated($scope);
+        $scope.$on('$viewContentLoaded', function (attr) {
+            viewContentLoaded($scope);
         });
-        $scope.$on('ngRepeatFinished', function () {
-            onGalleryLoaded($scope);
-        });
+        // $scope.$on('ngRepeatFinished', function () {
+        //     onGalleryLoaded($scope);
+        // });
     });

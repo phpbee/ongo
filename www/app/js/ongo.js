@@ -1,85 +1,96 @@
-function onImageLoad(scope, img) {
-    // var container = document.querySelector('#container1');
-    // new Masonry(container, {
-    //     itemSelector: '.item',
-    // });
-
+function onImageLoad(scope, img, attrs) {
+    console.log('onImageLoad');
     $(img).closest('#container').masonry({itemSelector: '.item'});
+
+
+    if ("minslider" == attrs.imageonload) {
+        console.log("minslider");
+        var minslider = $(img).closest('.minslider').lightSlider({
+            pager: false,
+            loop: true,
+            controls: false,
+            item: 10,
+            slideMargin: 9,
+            responsive: [
+                {
+                    breakpoint: 840,
+                    settings: {
+                        item: 9,
+                    }
+                },
+                {
+                    breakpoint: 750,
+                    settings: {
+                        item: 8,
+                    }
+                },
+                {
+                    breakpoint: 660,
+                    settings: {
+                        item: 7,
+                    }
+                },
+                {
+                    breakpoint: 570,
+                    settings: {
+                        item: 6,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        item: 5,
+                    }
+                },
+                {
+                    breakpoint: 390,
+                    settings: {
+                        item: 4,
+                    }
+                },
+                {
+                    breakpoint: 330,
+                    settings: {
+                        item: 3,
+                    }
+                }
+
+            ]
+        });
+
+        $('.thumbwrap .controls .next').click(function () {
+            minslider.goToNextSlide();
+        });
+        $('.thumbwrap .controls .prev').click(function () {
+            minslider.goToPrevSlide();
+        });
+
+    }
+    if ("lightSlider" == attrs.imageonload) {
+
+        $(img).closest('li').attr('style', "background-image:url('" + $(img).attr('src') + "');");
+        $("#lightSlider").lightSlider({
+            item: 1,
+            slideMargin: 0,
+            pager: false,
+            loop: true,
+            controls: false,
+            mode: "fade",
+            auto: true,
+            enableDrag: false,
+            pause: 10000,
+        });
+    }
 }
-function scopeUpdated($scope) {
-    $(".social-likes").socialLikes();
 
-    $("#lightSlider").lightSlider({
-        item: 1,
-        slideMargin: 0,
-        pager: false,
-        loop: true,
-        controls: false,
-        mode: "fade",
-        auto: true,
-        enableDrag: false,
-        pause: 10000,
-    });
+$(document).foundation();
 
-    var minslider = $('.minslider').lightSlider({
-        pager: false,
-        loop: true,
-        controls: false,
-        item: 10,
-        slideMargin: 9,
-        responsive: [
-            {
-                breakpoint: 840,
-                settings: {
-                    item: 9,
-                }
-            },
-            {
-                breakpoint: 750,
-                settings: {
-                    item: 8,
-                }
-            },
-            {
-                breakpoint: 660,
-                settings: {
-                    item: 7,
-                }
-            },
-            {
-                breakpoint: 570,
-                settings: {
-                    item: 6,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    item: 5,
-                }
-            },
-            {
-                breakpoint: 390,
-                settings: {
-                    item: 4,
-                }
-            },
-            {
-                breakpoint: 330,
-                settings: {
-                    item: 3,
-                }
-            }
+function viewContentLoaded() {
+    $(".social-likes-init").socialLikes().removeClass("social-likes-init");
+}
 
-        ]
-    });
+$(document).ready(function () {
 
-    $('.thumbwrap .controls .next').click(function () {
-        minslider.goToNextSlide();
-    });
-    $('.thumbwrap .controls .prev').click(function () {
-        minslider.goToPrevSlide();
-    });
 
     $(document).on("click", '.radio-list', function () {
         $(this).parents('.into').find('.radio-list').removeClass('checked');
@@ -174,4 +185,4 @@ function scopeUpdated($scope) {
         language: 'en'
     });
 
-}
+});

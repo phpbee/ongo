@@ -16,6 +16,4 @@ angular.module('wwwApp')
                 gallery.date = new Date(gallery.created);
             }
         );
-
-        $scope.$on('imgLoadedEvent', function(event, mass) { console.log(mass); });
     });
