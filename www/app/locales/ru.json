@@ -4,6 +4,9 @@
     "CHECKOUT": "Оформление заказа",
     "ABOUT": "О проекте"
   },
+  "SLIDER": {
+    "BROWSE_GALLERY":"Перейти в галерею"
+  },
   "FIND_YOUR_PHOTOS": "Найди свою фотографию",
   "CHOOSE_YOUR_PHOTOS":"Выберите свои фотографии из предложенных",
   "WE_ARE_LOOKING_PHOTOGRAPHERS":"Мы ищем фотографов для сотрудничества",

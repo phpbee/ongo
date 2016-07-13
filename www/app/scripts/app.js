@@ -89,6 +89,10 @@ angular
     })
     .config(function ($translateProvider) {
         $translateProvider
+            .registerAvailableLanguageKeys(['en', 'ru'], {
+                'en*': 'en',
+                'ru*': 'ru'
+            })
             .useStaticFilesLoader({
                 prefix: '/locales/',
                 suffix: '.json'
@@ -96,6 +100,6 @@ angular
             .fallbackLanguage('en')
             .useSanitizeValueStrategy('escape')
             .useLocalStorage()
-            .preferredLanguage()
+            .determinePreferredLanguage()
         ;
     });
