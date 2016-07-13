@@ -74,8 +74,12 @@ body h2, body h3 {
 .top-bar .name span {
   line-height: 3.750rem;
 }
-.gallery_el .header{
+.gallery_el .header, .index4 .header{
   background: #2e2e2e;
+}
+
+.index4 .meetings {
+  margin-top: 60px;
 }
 
 .top-bar .title-area {
