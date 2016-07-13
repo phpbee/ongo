@@ -8,25 +8,12 @@
                     <span><a href="">{{ gallery.country.name }}</a>, <a href="">{{ gallery.city.name }}</a>, <a href="">{{ gallery.place.name }}</a></span>
                     <div class="text-center">
                         <span>{{ gallery.date | date:'dd MMMM yyyy, EEEE' }}</span>
-                        <div class="social-likes social-likes-init justify" data-counters="no">
+                        <div class="social-likes justify" data-counters="no">
                             <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
                             <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
                             <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>
                             <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media=""></div>
                         </div>
-
-                        <a social-twitter>share on twitter</a>
-                        <a social-twitter status="My custom status">share on twitter</a>
-                        <a social-facebook>share on facebook</a>
-                        <a social-gplus>share on google plus</a>
-                        <a social-pinterest media="http://lorempixel.com/100/100/nature/1">share on pinterest</a>
-                        <a social-linkedin>share on linkedin</a>
-                        <a social-stumbleupon>share on stumbleupon</a>
-                        <a social-reddit>share on reddit</a>
-                        <a social-vk>share on vk.com</a>
-                        <a social-ok>share on ok.ru</a>
-                        <a social-xing>share on xing</a>
-
                     </div>
 
                 </div>
@@ -43,7 +30,7 @@
 
             <div class="item" ng-repeat="p in photos" >
                 <a ui-sref="photo({id: p.id, gallery_id: p.gallery_id})">
-                <img ng-src="{{ p.thumb }}" imageonload>
+                <img ng-src="{{ p.thumb }}" imageonload="masonry">
                 <div class="icons">
                     <a href="" class="add_favorite"></a>
                     <a href="" class="add_cart"></a>

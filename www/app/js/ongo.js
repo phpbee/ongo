@@ -1,5 +1,8 @@
 function onImageLoad(scope, img, attrs) {
-    $(img).closest('#container').masonry({itemSelector: '.item'});
+
+    if ("masonry" == attrs.imageonload) {
+        $(img).closest('#container').masonry({itemSelector: '.item'});
+    }
 
 
     if ("minslider" == attrs.imageonload) {
@@ -86,10 +89,6 @@ function onImageLoad(scope, img, attrs) {
 }
 
 $(document).foundation();
-
-function viewContentLoaded() {
-    $(".social-likes-init").socialLikes().removeClass("social-likes-init");
-}
 
 $(document).ready(function () {
 
