@@ -4,28 +4,13 @@
         <div class="large-12 columns">
             <div class="finder">
                 <h1>Find your fotos</h1>
-                <span>Enter Photographer Name, date of event or both</span>
+                <span>Choose your footos from the list below</span>
 
-                <form>
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <div class="row collapse">
-                                <div class="large-6 small-6 columns">
-                                    <input class="photografer typeahead" type="text" placeholder="Photografer name">
-                                </div>
-                                <div class="large-3 small-3 columns">
-                                    <input class="date fdatepicker" type="text" placeholder="event date">
-                                </div>
-                                <div class="large-3 small-3 columns">
-                                    <a href="#" class="button postfix">Search</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+
                 <div class="text-center">
                     <span>We are looking for photografers</span>
-                    <a class="button gradient radius reg" href="">Regestration for photografers</a>
+                    <a class="button gradient radius reg" ui-sref="photographers-registration">Regestration for
+                        photografers</a>
                 </div>
             </div>
         </div>
@@ -45,91 +30,31 @@
 </div>
 
 
-<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3 city_block" ng-cloak>
-    <li>
-        <a href="#" class="cityblock"
-           ng-style="{'background-image':'url('+topCountry.logo+')'}" style="background-size: cover;">
-                      <span>
-                        {{ topCountry.name }}
-                        <em>Browse to Country</em>
-                      </span>
-            <strong>Search by country</strong>
-        </a>
-        <div class="blockpadding">
-            <form>
-                <input class="typeahead state" type="text" placeholder="select from the list">
-                <input class="hidden-submit" type="submit">
-                <i class="fi-magnifying-glass"></i>
-            </form>
-        </div>
-    </li>
-    <li>
-        <a href="#" class="cityblock"
-           ng-style="{'background-image':'url('+topCity.logo+')'}" style="background-size: cover;">
-                      <span>
-                        {{ topCity.name }}
-                        <em>Browse to City</em>
-                      </span>
-            <strong>Search by city</strong>
-        </a>
-        <div class="blockpadding">
-            <form>
-                <input class="typeahead state" type="text" placeholder="select from the list">
-                <input class="hidden-submit" type="submit">
-                <i class="fi-magnifying-glass"></i>
-            </form>
-        </div>
-    </li>
-    <li>
-        <a href="#" class="cityblock"
-           ng-style="{'background-image':'url('+topPlace.logo+')'}" style="background-size: cover;">
-                      <span>
-                        {{ topPlace.name }}
-                        <em>Browse to Place</em>
-                      </span>
-            <strong>Search by place</strong>
-        </a>
-        <div class="blockpadding">
-            <form>
-                <input class="typeahead state" type="text" placeholder="select from the list">
-                <input class="hidden-submit" type="submit">
-                <i class="fi-magnifying-glass"></i>
-            </form>
-        </div>
-    </li>
-</ul>
-
 <div class="double_line"></div>
 
-<div class="meetings">
+<div class="meetings blackbody">
     <div class="row">
-        <div class="large-4 medium-4 columns">
-            <h3>Last photos <a href="">full list</a></h3>
-            <ul class="photos">
-                <li ng-repeat="g in galleries">
-                    <a ui-sref="gallery({id:g.id})">{{ g.date | date:'dd MMM yyyy' }}</a><br/>
-                    <span>(<a href="">{{ g.place.name }}</a>, <a href="">{{ g.city.name }}</a>,
-                  <a class="country" href="">{{ g.country.name }}</a>)</span> <a class="name" href="">{{
-                    g.photographer.name }}</a>
-                </li>
-            </ul>
+        <div class="row thumbsgal" ng-repeat="g in galleries">
+            <div class="small-12 medium-12 large-12 columns">
+                <div class="thumbwrap">
+                    <ul class="minslider">
+                        <li ng-repeat="p in g.icons">
+                            <a ui-sref="gallery({id: g.id})">
+                                <img ng-src="{{ p.ico }}" imageonload="minslider">
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="controls">
+                        <a class="prev"></a>
+                        <a class="next"></a>
+                    </div>
+                </div>
+                <span class="subject">
+                    More images from <a href="" ui-sref="gallery({id: g.id})">{{ g.place.name }}</a>
+                </span>
+
+            </div>
         </div>
-        <div class="large-4 medium-4 columns centered">
-            <h3>top Photographer</h3>
-            <ul class="tophotos small-block-grid-2 medium-block-grid-1 large-block-grid-1">
-                <li ng-repeat="p in photographers"><a href="">{{ p.name }}</a></li>
-            </ul>
-        </div>
-        <div class="large-4 medium-4 columns">
-            <h3>Top places and countries</h3>
-            <ul class="toplaces">
-                <li ng-repeat="p in places">
-                    <a class="grey" href="">{{ p.name }}</a>, <a class="grey" href="">{{ p.city.name }}</a><br/>
-                    <a href="">{{ p.country.name }}</a>
-                </li>
-            </ul>
-        </div>
+
     </div>
 </div>
-
-

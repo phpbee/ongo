@@ -17,12 +17,12 @@ angular.module('wwwApp')
 
         $scope.photographers = Photograph.query({limit: 5});
         $scope.places = Place.query({limit: 5});
-        $scope.galleries = Gallery.query({limit: 5},
+        $scope.galleries = Gallery.query({limit: 25},
             function (data) {
                 angular.forEach(data, function (row) {
                     row.date = new Date(row.created);
+                    row.icons = Gallery.icons({id: row.id});
                 });
-                return data;
             }
         );
 

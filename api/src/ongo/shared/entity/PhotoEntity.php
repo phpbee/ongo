@@ -37,10 +37,44 @@ final class PhotoEntity extends SerializableEntity
     /**
      * @return int
      */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumb()
+    {
+        return $this->thumb;
+    }
+
+    
+    /**
+     * @return int
+     */
     public function getGalleryId()
     {
         return $this->gallery_id;
     }
+
+    /**
+     * @return string
+     */
+    public function getIco()
+    {
+        return $this->ico;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSrc()
+    {
+        return $this->src;
+    }
+    
 
     /**
      * @param Connection $dbConn

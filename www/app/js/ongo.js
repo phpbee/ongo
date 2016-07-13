@@ -3,6 +3,8 @@ function onImageLoad(scope, img, attrs) {
 
 
     if ("minslider" == attrs.imageonload) {
+        $(img).closest('.thumbsgal').show();
+
         var minslider = $(img).closest('.minslider').lightSlider({
             pager: false,
             loop: true,
@@ -62,6 +64,8 @@ function onImageLoad(scope, img, attrs) {
         $('.thumbwrap .controls .prev').click(function () {
             minslider.goToPrevSlide();
         });
+
+
 
     }
     if ("lightSlider" == attrs.imageonload) {

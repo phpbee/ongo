@@ -81,6 +81,10 @@ body h2, body h3 {
 .index4 .meetings {
   margin-top: 60px;
 }
+.blackbody {
+  background: #202020;
+}
+
 
 .top-bar .title-area {
   -webkit-transition: all .3s ease;
@@ -846,6 +850,9 @@ body h2, body h3 {
 .minslider{
   margin-left: 0px;
   margin-bottom: 0px;
+}
+.thumbsgal{
+  display: none;
 }
 .thumbsgal .subject{
   text-transform: uppercase;
