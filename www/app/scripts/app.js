@@ -15,7 +15,8 @@ angular
         'ngResource',
         'ui.router',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
+        'pascalprecht.translate'
     ])
     .directive('imageonload', function () {
         return {
@@ -41,7 +42,6 @@ angular
         };
     })
     .config(function ($stateProvider, $urlRouterProvider) {
-
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('index', {
@@ -86,4 +86,16 @@ angular
             });
 
 
+    })
+    .config(function ($translateProvider) {
+        $translateProvider
+            .useStaticFilesLoader({
+                prefix: '/locales/',
+                suffix: '.json'
+            })
+            .fallbackLanguage('en')
+            .useSanitizeValueStrategy('escape')
+            .useLocalStorage()
+            .preferredLanguage()
+        ;
     });

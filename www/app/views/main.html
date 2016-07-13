@@ -3,14 +3,13 @@
     <div class="row">
         <div class="large-12 columns">
             <div class="finder">
-                <h1>Find your fotos</h1>
-                <span>Choose your footos from the list below</span>
+                <h1><translate>FIND_YOUR_PHOTOS</translate></h1>
+                <span><translate>CHOOSE_YOUR_PHOTOS</translate></span>
 
 
                 <div class="text-center">
-                    <span>We are looking for photografers</span>
-                    <a class="button gradient radius reg" ui-sref="photographers-registration">Regestration for
-                        photografers</a>
+                    <span><translate>WE_ARE_LOOKING_PHOTOGRAPHERS</translate></span>
+                    <a class="button gradient radius reg" ui-sref="photographers-registration"><translate>REGISTRATION_FOR_PHOTOGRAPHERS</translate></a>
                 </div>
             </div>
         </div>
@@ -21,7 +20,7 @@
             <section ng-repeat="p in topGallery.photos">
                 <li>
                     <img ng-src="{{ p.src }}" imageonload="lightSlider" style="display:none;">
-                    <a ui-sref="gallery({id:topGallery.id})">Browse to Gallery</a>
+                    <a ui-sref="gallery({id:topGallery.id})"><translate>BROWSE_TO_GALLERY</translate></a>
                 </li>
             </section>
 

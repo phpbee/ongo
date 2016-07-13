@@ -9,13 +9,13 @@
                     </li>
                     <li class="toggle-topbar menu-icon"><a ui-sref="main"><span></span></a></li>
                 </ul>
-
                 <section class="top-bar-section">
                     <ul class="right">
-                        <li><a class="menu_ico1" href="#">Sign in</a></li>
-                        <li><a class="menu_ico2" href="#"><span>Checkout</span></a></li>
-                        <li><a class="menu_ico3" href="#"><span>Language</span></a></li>
-                        <li><a class="menu_ico4" ui-sref="about">About</a></li>
+                        <li><a class="menu_ico4" ui-sref="about" translate="MENU.ABOUT"></a></li>
+                        <li><a class="menu_ico1" href="#" translate="MENU.SIGNIN"></a></li>
+                        <li><a class="menu_ico2" href="#"><span translate="MENU.CHECKOUT"></span></a></li>
+                        <li ng-show="activeLanguage!='en'"><a class="menu_ico3" href="#" ng-click="changeLanguage('en')"><span>English</span></a></li>
+                        <li ng-show="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru')"><span>Русский</span></a></li>
                     </ul>
                 </section>
             </nav>

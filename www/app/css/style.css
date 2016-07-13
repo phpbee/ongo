@@ -1400,8 +1400,8 @@ body h2, body h3 {
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAYAAADUryzEAAADHElEQVQ4T11UXUiTURjuc22L/bHWckrUCtPEC/8wzBE6E9LMYg1iJci6ELsIKRKJoqCLUrBFF3XRdiFjMJuSP0hIiAizVLKlEWOgQws1N92Pc3Pst63nfH0L8cCzd+c9533Oc57zbtSBfSOdTpcgpQIKgDSwBAxRFGXfv5fMqUwShUfw3QComVyUiYdITCaT78PhcJtYLN7eS0QTMMWfEAUbGxvPcnNzXzmdTiOKuIWFhRqr1fq8urr6Lta3JyYmahobGz0ZkgzBIBbPdnd3X1UqldcrKyvvFxcXa7lcLstmsxmHhobe9vX1fe7v738TjUZnRCKRBgRx+grMnb/H4/FFv9//G4tFbDab53K5fmRlZf3Jyckpj8ViYawtSSSSE3w+Xz4wMKDUaDSzqE9QiUTiKYvFat/a2rJFIhGOXC4/HwqFllHg4vF4MUAO5IFwCkamsrOzz9ntdlNZWdljEOxQuOe73d1dCcx5gQQ7lUp9sFgsuubm5inMA2NjY5fq6+sf4JArmEfX1tZ6oHY7Ly+vDfMNCvIswWDwKEYXEjEQWM1m88uWlpYJQgDTLtfW1j4CwTUyd7vdPVAYzM/P78D8FxUIBLoEAsEdj8fzDVKjQqHwIjas4DqryEfgxymgYH19fRb3j0Bp1cLCgrmiokIPgp/U9PR0lUKhmCH3hqEOOF8K80Tw4AsIIyiqgcqQz+dzQuVxrJ/u7Oy8odPpFmkCfPC9Xu8gNpdrtdrbra2tirq6uvbS0tKbMplsd3x8/MPo6Ohrk8nkgDc9uIINRhO/3BkCNp6kSK/Xj0CqcHJy0tDQ0HBvbm5uBE+aQCOph4eHDU1NTbdgnh9qHzocjgCKnbSJTDuL0UAlRqPxCdgvkAaBmQk8WxrgkGaF+x9VKpVufn6e1JB2XqGfkWlJNqIUONbR0XFGrVYrpVLpSQ6Hk9jc3Fw1GAxfe3t7l0njkKckJwNeupEYAhLISeQHJQMOE28YdbQgIMycvIXoA/618h4C8pUoIYViQAhwmfUYYhDYYYiIEnrsJ8jkDjKKWMy+JCIpIpH8R/wffwG3NGxeAWxcQgAAAABJRU5ErkJggg==') 10px 10px no-repeat;
   }
   .header .top-bar-section li:not(.has-form) a:not(.button).menu_ico4 {
-    padding-right: 18px;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAQCAYAAADedLXNAAAAe0lEQVQYV2P8//9/KwMDQx4QT2JkZKwG0gyMQMGfQJoNSH9lYmKSALK/M3758qWbk5Mz+/Lly2sMDAw6gIKPGIGEEBBrAbE4EL8A4usgQR4gloNKvgOr/P37dxszM3Pex48fZwkKCtaBzRzSFgF9wAzEnKCQAuJfIB8BAMHbW6HvD89GAAAAAElFTkSuQmCC') 59px 11px no-repeat;
+    padding-left: 32px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAQCAYAAADedLXNAAAAe0lEQVQYV2P8//9/KwMDQx4QT2JkZKwG0gyMQMGfQJoNSH9lYmKSALK/M3758qWbk5Mz+/Lly2sMDAw6gIKPGIGEEBBrAbE4EL8A4usgQR4gloNKvgOr/P37dxszM3Pex48fZwkKCtaBzRzSFgF9wAzEnKCQAuJfIB8BAMHbW6HvD89GAAAAAElFTkSuQmCC') 24px 9px no-repeat;
   }
   .header .top-bar-section li:not(.has-form) a:not(.button):hover {
     background-color: rgba(42, 35, 33, .5);
