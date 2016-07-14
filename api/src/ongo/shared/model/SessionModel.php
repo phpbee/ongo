@@ -5,67 +5,70 @@ namespace ongo\shared\model;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
 use ongo\shared\entity\SessionEntity;
+use ongo\shared\entity\UserEntity;
 use ongo\shared\exception\InvalidTokenException;
+use ongo\shared\exception\SessionNotFoundException;
 use ongo\shared\service\cache\CacheService;
 
 final class SessionModel {
-	const EXPIRE_TIME = 86400; // seconds
-	private $memcache;
 	private $dbConn;
 
-	public function __construct(CacheService $memcache, Connection $dbConn) {
-		$this->memcache = $memcache;
+	public function __construct(Connection $dbConn) {
 		$this->dbConn = $dbConn;
 	}
 
-	public function findByToken($token) {
-		if (($session = $this->memcache->get($token)) === false)
-			throw new InvalidTokenException($token);
-		if ($session->hasExpired())
-			throw new InvalidTokenException($token);
-		return $session;
+	/**
+	 * @param $token
+	 * @return SessionEntity
+	 * @throws DBALException
+	 * @throws SessionNotFoundException
+	 */
+	public function findByToken($token)
+	{
+		if (!($row = $this->dbConn->executeQuery(
+			"select user_id, token from session where token = ?",[$token]
+		)->fetch())
+		) {
+			throw new SessionNotFoundException($token);
+		}
+
+		return self::entityFromRecord($row);
 	}
 
 	/**
-	 * @param $apiKey
-	 * @param $username
-	 * @param $password
-	 * @return SessionEntity
-	 * @throws InvalidUsernameException
-	 * @throws \ongo\shared\exception\InvalidPasswordException
+	 * @param UserEntity $user
+	 * @return UserEntity
+	 * @throws DBALException
+	 * @throws SessionNotFoundException
 	 */
-	public function create($apiKey, $username, $password) {
-		$partnerApiUserModel = new PartnerApiUserModel($this->dbConn);
-		// throws InvalidApiKeyException, InvalidUsernameException and InvalidPasswordException
-		$user = $partnerApiUserModel->findByApiKeyAndUsernameAndPassword($apiKey, $username, $password);
-		$created = time();	
-		$expires = (self::EXPIRE_TIME == 0) ? null : $created + self::EXPIRE_TIME;
-		while (true) {
-			$token = self::createToken();
-			try {
-				$this->findByToken($token);
-			} catch (InvalidTokenException $e) {
-				$session = new SessionEntity($token, $user->getPartnerId(), $created, $expires); 
-				$this->memcache->set($token, $session, self::EXPIRE_TIME);
-				return $session;
-			}
-		}
+	public function createForUser(UserEntity $user)
+	{
+		$token = uniqid();
+		$params = array(
+			'user_id' => $user->getId(),
+			'token' => $token,
+		);
+
+		$query = "insert into session
+                    (user_id, token)
+                    VALUES 
+                    (:user_id, :token)
+                    ";
+		$this->dbConn->executeQuery($query, $params);
+
+		return $this->findByToken($token);
 	}
 
-	public function extend($token) {
-		$session = $this->findByToken($token);
-		$session->setExpires(time() + self::EXPIRE_TIME);
-		$this->memcache->set($token, $session, self::EXPIRE_TIME);
-		return $session;
-	}	
-
-	public function delete($token) {
-		$this->findByToken($token);
-		$this->memcache->delete($token);
-	}
-
-	private static function createToken() {
-		return bin2hex(openssl_random_pseudo_bytes(16));
+	/**
+	 * @param $row
+	 * @return SessionEntity
+	 */
+	private static function entityFromRecord($row)
+	{
+		return new SessionEntity(
+			$row['user_id'],
+			$row['token']
+		);
 	}
 }
 

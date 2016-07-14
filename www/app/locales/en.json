@@ -1,7 +1,7 @@
 {
   "MENU": {
     "CHECKOUT": "Checkout",
-    "SIGNIN": "Sign in",
+    "LOGIN": "Sign in",
     "ABOUT": "About"
   },
   "SLIDER": {

@@ -95,6 +95,10 @@ final class ControllerProvider implements ControllerProviderInterface
 //        });
 
 
+        $controllers->post("/sessions", function (Application $app, Request $request) {
+            $controller = new SessionController($app["db"]);
+            return $controller->login($request->get("email"));
+        });
         $controllers->get("/photographers", function (Application $app, Request $request) {
             $controller = new PhotographerController($app["db"]);
             return $controller->top(min(10,intval($request->get("limit"))));

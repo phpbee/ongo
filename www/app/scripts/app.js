@@ -16,7 +16,9 @@ angular
         'ui.router',
         'ngSanitize',
         'ngTouch',
-        'pascalprecht.translate'
+        'pascalprecht.translate',
+        'angularLocalStorage',
+        'ngCookies'
     ])
     .directive('imageonload', function () {
         return {
@@ -83,6 +85,16 @@ angular
                 templateUrl: 'views/photo.html',
                 controller: 'PhotoCtrl',
                 url: '/gallery/:gallery_id/photo/:id',
+            })            
+            .state('login', {
+                parent: 'index4',
+                templateUrl: 'views/login.html',
+                controller: 'LoginCtrl',
+                url: '/login',
+            })
+            .state('logout', {
+                controller: 'LogoutCtrl',
+                url: '/logout',
             });
 
 
