@@ -10,7 +10,7 @@
 angular.module('wwwApp')
   .service('config', function () {
     this.api = {
-      baseURL: 'http://192.168.99.100:8083/api',
+      baseURL: 'http://docker:8083/api',
       version: '1.0'
     };
   });

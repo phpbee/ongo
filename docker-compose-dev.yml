@@ -1,29 +1,31 @@
-ongo-dev-www:
-  container_name: ongo_www_dev
+www:
+  container_name: ongo_dev_www
   image: alexk7898/ongo:www-develop
   ports:
     - "8083:80"
     - "80:80"
   links:
-    - ongo-dev-api:api
+    - api:api
   volumes:
-    - ../www/dist:/var/www/html
-ongo-dev-api:
-  container_name: ongo_api_dev
+    - "./www/dist:/var/www/html"
+api:
+  container_name: ongo_dev_api
   image: alexk7898/ongo:api-develop
   ports:
     - "9000:9000"
   volumes:
-    - ../api:/var/www
+    - api:/var/www
   links:
-    - ongo-dev-memcached:memcached
+    - memcached:memcached
+  external_links:
+    - dev_mysql:mysql
   environment:
-    - MYSQL_HOST=10.0.2.2
+    - MYSQL_HOST=mysql
     - MYSQL_DB=ongo_test
     - MYSQL_USER=root
     - MYSQL_PASSWORD
     - CACHE_TYPE=memcached
     - CACHE_ENDPOINT=memcached
-ongo-dev-memcached:
-  container_name: ongo_api_memcached
+memcached:
+  container_name: ongo_dev_memcached
   image: memcached
