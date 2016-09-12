@@ -1,3 +1,4 @@
 www/tmp
 api/vendor
 config.js
+logs
