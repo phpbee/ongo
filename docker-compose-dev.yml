@@ -1,5 +1,6 @@
 www:
   container_name: ongo_dev_www
+  hostname: ongo_dev_www
   image: alexk7898/ongo:www-develop
   ports:
     - "8083:80"
@@ -8,18 +9,16 @@ www:
     - api:api
   volumes:
     - "./www/dist:/var/www/html"
-    - ./logs/www:/var/log
 api:
   container_name: ongo_dev_api
   image: alexk7898/ongo:api-develop
   volumes:
     - "./api:/var/www"
-    - ./logs/api:/var/log
+    - ./logs/api/silex:/var/log/silex
   links:
     - memcached:memcached
   external_links:
     - dev_mysql:mysql
-    - splunk:splunk
   environment:
     - MYSQL_HOST=mysql
     - MYSQL_DB=ongo_test
@@ -27,27 +26,26 @@ api:
     - MYSQL_PASSWORD
     - CACHE_TYPE=memcached
     - CACHE_ENDPOINT=memcached
+    - SYSLOG_HOSTNAME=ongo_dev_api
 memcached:
   container_name: ongo_dev_memcached
   image: memcached
+
 vsplunk:
   image: busybox
   volumes:
     - /opt/splunk/etc
     - /opt/splunk/var
 splunkforwarder:
-  image: readytalk/splunkforwarder
+  container_name: ongo_dev_splunk
+  image: alexk7898/universalforwarder
   volumes_from:
     - vsplunk
   volumes:
-    - ./logs/:/var/log
+    - ./logs/:/logs
   environment:
+    - SPLUNK_START_ARGS=--accept-license --answer-yes --no-prompt
     - SPLUNK_SERVER=192.168.99.100
     - SPLUNK_SERVER_PORT=9997
-    - SPLUNK_LOGFILE_PATTERN=/var/log/*/*/*.log 
+    - SPLUNK_LOGFILE_PATTERN=/logs/*/*/*.log 
     - SPLUNK_INDEX=main
-  log_driver: splunk
-  log_opt:
-    splunk-token: "A6E0AB79-11D8-4BC2-B245-9ABF9F165158"
-    splunk-url: "http://192.168.99.100:8088"
-    tag: "{{.Name}}/{{.FullID}}"
