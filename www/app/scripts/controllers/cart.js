@@ -13,7 +13,7 @@ angular.module('wwwApp')
         //storage.remove('cart');
 
         storage.bind($scope,'cart');
-        console.log($scope.cart);
+        //console.log($scope.cart);
 
         $scope.addToCart = function (id, resolution) {
 

@@ -18,7 +18,8 @@ angular
         'ngTouch',
         'pascalprecht.translate',
         'angularLocalStorage',
-        'ngCookies'
+        'ngCookies',
+        'ui.bootstrap'
     ])
     .directive('imageonload', function () {
         return {
@@ -42,6 +43,24 @@ angular
                 'background-size': 'cover'
             });
         };
+    })
+    .run(function ($rootScope, $state, $http, storage, loginModal) {
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+            var session = storage.get('session');
+            if (session) {
+                var headers = $http.defaults.headers.common;
+                headers.Authorization = 'Ongo version=1.0 token="' + session.token + '"';
+            } else if (toState.requireLogin) {
+                event.preventDefault();
+                loginModal()
+                    .then(function () {
+                        return $state.go(toState.name, toParams);
+                    })
+                    .catch(function () {
+                        return $state.go('main');
+                    });
+            }
+        });
     })
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
@@ -85,17 +104,18 @@ angular
                 templateUrl: 'views/photo.html',
                 controller: 'PhotoCtrl',
                 url: '/gallery/:gallery_id/photo/:id',
-            })            
+            })
             .state('login', {
                 parent: 'index4',
                 templateUrl: 'views/login.html',
-                controller: 'LoginCtrl',
                 url: '/login',
             })
             .state('checkout', {
+                controller: 'CheckoutCtrl',
                 parent: 'index4',
                 url: '/checkout',
-                templateUrl: 'views/checkout.html'
+                templateUrl: 'views/checkout.html',
+                requireLogin: true
             });
 
 

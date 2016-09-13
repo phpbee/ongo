@@ -10,8 +10,6 @@
 angular.module('wwwApp')
     .controller('ApplicationCtrl', function ($scope, $translate, $http, storage) {
 
-        console.log('ApplicationCtrl');
-        
         $scope.changeLanguage = function (key) {
             $scope.activeLanguage = key;
             $translate.use(key);
@@ -20,13 +18,6 @@ angular.module('wwwApp')
         $scope.activeLanguage = $translate.use() ||
             $translate.storage().get($translate.storageKey()) ||
             $translate.preferredLanguage();
-
-
-        var session=storage.get('session');
-        if (session) {
-            var headers = $http.defaults.headers.common;
-            headers.Authorization = 'Ongo version=1.0 token="' + session.token + '"';
-        }
-
+        
 
     });
