@@ -2,6 +2,7 @@
   "MENU": {
     "CHECKOUT": "Checkout",
     "LOGIN": "Sign in",
+    "LOGOUT": "Log out",
     "ABOUT": "About"
   },
   "SLIDER": {
@@ -11,6 +12,10 @@
   "REGISTRATION_FOR_PHOTOGRAPHERS": "Registration for photographers",
   "CHOOSE_YOUR_PHOTOS":"Choose your photos from the list below",
   "WE_ARE_LOOKING_PHOTOGRAPHERS":"We are looking for photographers",
-  "BROWSE_TO_GALLERY": "Browse to Gallery"
+  "BROWSE_TO_GALLERY": "Browse to Gallery",
+  "LOGIN": {
+    "LABEL_EMAIL": "E-mail",
+    "BUTTON_LOGIN": "Sign in"
+  }
 
 }
