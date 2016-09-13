@@ -92,9 +92,10 @@ angular
                 controller: 'LoginCtrl',
                 url: '/login',
             })
-            .state('logout', {
-                controller: 'LogoutCtrl',
-                url: '/logout',
+            .state('checkout', {
+                parent: 'index4',
+                url: '/checkout',
+                templateUrl: 'views/checkout.html'
             });
 
 

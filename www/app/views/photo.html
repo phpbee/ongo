@@ -8,16 +8,6 @@
                     <a class="next-search-photo" ui-sref="photo({id: next_photo, gallery_id: gallery.id})"></a>
                 </div>
             </div>
-            <div class="photo_descr">
-                <div class="icons">
-                    <a href="" class="add_favorite">Add to Favorites</a>
-                    <a href="" class="add_cart">Add to cart</a>
-                </div>
-            <span class="info">
-              boulder bouldering bouldern calvi climbing corse corsica exterior
-               felsen france frankreichhuman klettern korsika lumio outdoor
-            </span>
-            </div>
         </div>
     </div>
     <div class="small-12 medium-5 large-5 columns">
@@ -26,14 +16,14 @@
             <div class="into">
 
                 <table>
-                    <tr class="radio-list checked">
+                    <tr class="radio-list checked" ng-click="setResolution('best');">
                         <td class="radiobox">
-                            <input type="radio" name="resolution">
+                        <input type="radio" name="resolution">
                             <span></span>
                         </td>
                         <td class="inf">
                   <span class="subject">
-                    Best Quolity
+                    Best Quality
                     <i>
                         <div class="toolt">
                             <span class="toolsubj">Products for Resale</span>
@@ -49,7 +39,7 @@
                         </td>
                         <td class="cost">60$</td>
                     </tr>
-                    <tr class="radio-list">
+                    <tr class="radio-list" ng-click="setResolution('web');">
                         <td class="radiobox">
                             <input type="radio" name="resolution">
                             <span></span>
@@ -73,12 +63,13 @@
                     </tr>
                 </table>
 
-                <a href="" class="button blue expand radius">
+                <section ng-controller="CartCtrl">
+                <a href="" class="button blue expand radius" ng-click="addToCart(photo.id, photo.resolution);">
                     <span>Add to cart</span>
                 </a>
+                </section>
 
                 <div class="social justify">
-                    <a href="" class="addfav">Add to Favorites</a>
                     <div class="social-likes justify" data-counters="no">
                         <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
                         <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>

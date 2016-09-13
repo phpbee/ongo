@@ -9,11 +9,16 @@
  */
 angular.module('wwwApp')
     .controller('PhotoCtrl', function ($scope, $stateParams, Gallery) {
+
+        console.log('PhotoCtrl');
+
+
         $scope.gallery = Gallery.get({id: $stateParams.gallery_id});
 
         $scope.photo = Gallery.photo(
             {id: $stateParams.gallery_id, photo_id: $stateParams.id},
             function (photo) {
+                photo.resolution = "best";
                 $scope.thumbnails = Gallery.photos({id: $stateParams.gallery_id},
                     function (photos) {
                         var min_photo = photos.reduce(function (min, photo) {
@@ -29,4 +34,9 @@ angular.module('wwwApp')
                 );
             }
         );
+
+        $scope.setResolution = function (resolution) {
+            $scope.photo.resolution = resolution;
+        };
+
     });
