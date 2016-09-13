@@ -43,8 +43,8 @@ final class UserModel
     public function findByEmail($email)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, email from user where email = ?",[$email]
-            )->fetch())
+            "select id, email from user where email = ?", [$email]
+        )->fetch())
         ) {
             throw new UserNotFoundException($email);
         }
@@ -60,20 +60,18 @@ final class UserModel
      */
     public function create($email)
     {
-        $id = uniqid();
         $params = array(
-            'id' => $id,
             'email' => $email
         );
 
         $query = "insert into user
-                    (id, email)
+                    (email)
                     VALUES 
-                    (:id, :email)
+                    (:email)
                     ";
-            $this->dbConn->executeQuery($query, $params);
+        $this->dbConn->executeQuery($query, $params);
 
-        return $this->findById($id);
+        return $this->findById($this->dbConn->lastInsertId());
     }
 
 

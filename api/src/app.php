@@ -55,5 +55,3 @@ $app->before(function (Symfony\Component\HttpFoundation\Request $request) {
 });
 $app->mount("/", new ongo\api\ControllerProvider());
 return $app;
-
-?>
