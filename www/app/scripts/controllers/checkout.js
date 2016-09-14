@@ -9,7 +9,4 @@
  */
 angular.module('wwwApp')
   .controller('CheckoutCtrl', function ($state, storage) {
-    if (!storage.get('session')) {
-        $state.go('login');
-    }
   });

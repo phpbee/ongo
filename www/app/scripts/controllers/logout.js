@@ -8,8 +8,8 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-    .controller('LogoutCtrl', function ($state, $scope, storage) {
-        storage.remove('session');
+    .controller('LogoutCtrl', function ($state, $scope, AuthService ) {
+        AuthService.logout();
         $state.go('main');
 
     });

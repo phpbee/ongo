@@ -8,28 +8,11 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-    .controller('LoginCtrl', function ($scope, $state, Session, storage) {
+    .controller('LoginCtrl', function ($scope, AuthService) {
 
-        storage.bind($scope,'session');
 
-        $scope.login = function () {
-            Session.save({'email': $scope.email}, function (session) {
-                storage.set('session', session);
-                $state.go('main');
-            });
+        $scope.login = function (email) {
+            AuthService.login({'email': email});
         };
-
-        $scope.logout = function () {
-            console.log('logout');
-            storage.remove('session');
-            $state.go('main');
-            $state.reload();
-        };
-
-        $scope.submit = function () {
-            Session.save({'email': $scope.email}, function (session) {
-                storage.set('session', session);
-                $scope.$close(session);
-            });
-        };
+        
     });

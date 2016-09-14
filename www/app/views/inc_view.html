@@ -1,0 +1,4 @@
+<div ng-if="!requireAuth($state,'user') || isAuthorized('user')" ui-view></div>
+<div ng-if="requireAuth($state,'user') && !isAuthorized('user')">
+  <ng-include src="'views/login.html'"></ng-include>
+</div>

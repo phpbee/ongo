@@ -21,6 +21,17 @@ angular
         'ngCookies',
         'ui.bootstrap'
     ])
+    .constant('AUTH_EVENTS', {
+        loginSuccess: 'auth-login-success',
+        loginFailed: 'auth-login-failed',
+        logoutSuccess: 'auth-logout-success',
+        sessionTimeout: 'auth-session-timeout',
+        notAuthenticated: 'auth-not-authenticated',
+        notAuthorized: 'auth-not-authorized'
+    })
+    .constant('USER_ROLES', {
+        user: 'user'
+    })
     .directive('imageonload', function () {
         return {
             restrict: 'A',
@@ -44,24 +55,24 @@ angular
             });
         };
     })
-    .run(function ($rootScope, $state, $http, storage, loginModal) {
-        $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-            var session = storage.get('session');
-            if (session) {
-                var headers = $http.defaults.headers.common;
-                headers.Authorization = 'Ongo version=1.0 token="' + session.token + '"';
-            } else if (toState.requireLogin) {
-                event.preventDefault();
-                loginModal()
-                    .then(function () {
-                        return $state.go(toState.name, toParams);
-                    })
-                    .catch(function () {
-                        return $state.go('main');
-                    });
-            }
-        });
-    })
+    // .run(function ($rootScope, $state, $http, storage, loginModal) {
+    //     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+    //         var session = storage.get('session');
+    //         if (session) {
+    //             var headers = $http.defaults.headers.common;
+    //             headers.Authorization = 'Ongo version=1.0 token="' + session.token + '"';
+    //         } else if (toState.requireLogin) {
+    //             event.preventDefault();
+    //             loginModal()
+    //                 .then(function () {
+    //                     return $state.go(toState.name, toParams);
+    //                 })
+    //                 .catch(function () {
+    //                     return $state.go('main');
+    //                 });
+    //         }
+    //     });
+    // })
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
@@ -110,12 +121,18 @@ angular
                 templateUrl: 'views/login.html',
                 url: '/login',
             })
+            .state('logout', {
+                controller: 'LogoutCtrl',
+                url: '/logout',
+            })
             .state('checkout', {
                 controller: 'CheckoutCtrl',
                 parent: 'index4',
                 url: '/checkout',
                 templateUrl: 'views/checkout.html',
-                requireLogin: true
+                data: {
+                    authorizedRoles: ['user']
+                }
             });
 
 

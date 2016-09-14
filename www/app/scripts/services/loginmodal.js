@@ -19,7 +19,8 @@ angular.module('wwwApp')
       var instance = $uibModal.open({
         templateUrl: 'views/loginModal.html',
         controller: 'LoginCtrl',
-        controllerAs: 'LoginCtrl'
+        controllerAs: 'LoginCtrl',
+          windowClass: "modal loginDialog"
       })
 
       return instance.result.then(assignCurrentUser);
