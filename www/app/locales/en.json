@@ -1,4 +1,14 @@
 {
+  "CURRENCY": "USD",
+  "CURRENCY_SYMBOL": "$",
+  "PRICE": {
+    "best": "250",
+    "web": "50"
+  },
+  "RESOLUTION": {
+    "best": "3056 x 4592px @300dpi",
+    "web": "356 x 492px @100dpi"
+  },
   "MENU": {
     "CHECKOUT": "Checkout",
     "LOGIN": "Sign in",

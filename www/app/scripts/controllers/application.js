@@ -10,6 +10,9 @@
 angular.module('wwwApp')
     .controller('ApplicationCtrl', function ($rootScope, $scope, $stateParams, $state, $translate, AuthService, Session, storage) {
 
+        console.log('ApplicationCtrl');
+        storage.bind($rootScope, 'cart');
+
         $scope.changeLanguage = function (key) {
             $scope.activeLanguage = key;
             $translate.use(key);

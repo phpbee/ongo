@@ -1,1 +1,60 @@
-Checkout page
+<div class="small-12 medium-7 large-8 columns">
+
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <h1>Cart</h1>
+    </div>
+  </div>
+
+  <div class="cartblock" >
+
+    <div class="row cart_item" ng-repeat="(id,item) in cart.items">
+      <div class="small-12 medium-4 large-4 columns cart_foto">
+        <img ng-src="{{item.photo.thumb}}">
+      </div>
+      <div class="small-12 medium-8 large-8 columns">
+
+        <div class="row">
+          <div class="small-3 medium-4 large-3 columns"><strong>Title</strong></div>
+          <div class="small-5 medium-4 large-6 columns" ui-sref="gallery({id: item.gallery.id})">{{ item.gallery.place.name }}</div>
+          <div class="small-4 medium-4 large-3 columns text-right"><strong><translate>CURRENCY_SYMBOL</translate>{{ 'PRICE.'+item.resolution | translate}}&nbsp;<translate>CURRENCY</translate></strong></div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 medium-4 large-3 columns"><strong>Credits</strong></div>
+          <div class="small-5 medium-4 large-6 columns">{{ item.gallery.photographer.name }}</div>
+          <div class="small-4 medium-4 large-3 columns text-right" ng-controller="CartCtrl as c"><a ng-click="c.removeFromCart(id)">Remove ×</a></div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 medium-4 large-3 columns"><strong>Photo ID</strong></div>
+          <div class="small-5 medium-4 large-6 columns">{{ item.photo_id }}</div>
+          <div class="small-4 medium-4 large-3 columns"></div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 medium-4 large-3 columns"><strong>File size</strong></div>
+          <div class="small-5 medium-4 large-6 columns">{{ 'RESOLUTION.'+item.resolution | translate}}</div>
+          <div class="small-4 medium-4 large-3 columns"></div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 medium-4 large-3 columns"><strong>License</strong></div>
+          <div class="small-5 medium-4 large-6 columns">Royalty Free</div>
+          <div class="small-4 medium-4 large-3 columns"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="small-12 medium-5 large-4 columns">
+  <div class="purchase_block">
+    <h5>PURCHASE</h5>
+    <span class="total">Total: <strong><translate>CURRENCY_SYMBOL</translate>{{ cart.total | translate}}&nbsp;<translate>CURRENCY</translate></strong></span>
+    <a href="" class="button expand radius">Proceed to payment</a>
+  </div>
+</div>

@@ -10,12 +10,12 @@
                     <li class="toggle-topbar menu-icon"><a ui-sref="main"><span></span></a></li>
                 </ul>
                 <section class="top-bar-section" ng-controller="LoginCtrl">
-                <section ng-controller="CartCtrl">
+                <section>
                     <ul class="right">
                         <li><a class="menu_ico4" ui-sref="about" translate="MENU.ABOUT">                 </a></li>
                         <li ng-if="!isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="login" translate="MENU.LOGIN"></a></li>
                         <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="logout" translate="MENU.LOGOUT"></a></li>
-                        <li ng-if="cart"><a class="menu_ico2" ui-sref="checkout"><span translate="MENU.CHECKOUT"></span></a></li>
+                        <li ng-if="cart.items"><a class="menu_ico2" ui-sref="checkout"><span translate="MENU.CHECKOUT"></span></a></li>
                         <li ng-if="activeLanguage!='en'"><a class="menu_ico3" href="#" ng-click="changeLanguage('en')"><span>English</span></a></li>
                         <li ng-if="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru')"><span>Русский</span></a></li>
                     </ul>

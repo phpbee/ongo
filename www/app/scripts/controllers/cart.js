@@ -8,23 +8,41 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-    .controller('CartCtrl', function ($state, $scope,storage, cart) {
+    .controller('CartCtrl', function ($state, $rootScope, storage, cart, $filter) {
 
         //storage.remove('cart');
 
-        storage.bind($scope,'cart');
-        //console.log($scope.cart);
 
-        $scope.addToCart = function (id, resolution) {
+        this.updateCart = function (cart) {
+            console.log('updateCart');
+            var total = 0;
+
+            angular.forEach(cart.items, function (item) {
+                total += parseFloat($filter('translate')('PRICE.' + item.resolution));
+            });
+
+            cart.total = total;
+            console.log(cart);
+        }
+
+
+        this.removeFromCart = function (id) {
+            delete $rootScope.cart.items[id];
+            this.updateCart($rootScope.cart);
+        };
+
+        this.addToCart = function (id, gallery_id, resolution) {
 
             //cart.add({photo:id, resolution: resolution});
-            if (!$scope.cart) {
-                $scope.cart={};
+            if (!$rootScope.cart) {
+                $rootScope.cart = {items: {}};
             }
-            $scope.cart[id] = {photo:id, resolution: resolution};
-            storage.set('cart',$scope.cart);
-            cart.save($scope.cart);
-            $state.go('checkout');
+            $rootScope.cart.items[id] = {photo_id: id, gallery_id: gallery_id, resolution: resolution};
+            this.updateCart($rootScope.cart);
+
+            storage.set('cart', $rootScope.cart);
+            cart.save($rootScope.cart);
 
         }
     });
+

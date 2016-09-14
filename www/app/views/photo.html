@@ -63,9 +63,12 @@
                     </tr>
                 </table>
 
-                <section ng-controller="CartCtrl">
-                <a href="" class="button blue expand radius" ng-click="addToCart(photo.id, photo.resolution);">
+                <section ng-controller="CartCtrl as c">
+                <a ng-if="!cart.items[photo.id]" href="" class="button blue expand radius" ng-click="c.addToCart(photo.id, photo.gallery_id, photo.resolution);">
                     <span>Add to cart</span>
+                </a>
+                <a ng-if="cart.items[photo.id]" ui-sref="checkout" class="button green expand radius" >
+                    <span>Checkout</span>
                 </a>
                 </section>
 
