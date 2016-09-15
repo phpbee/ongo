@@ -66,6 +66,16 @@ final class GalleryController
         return new JsonResponse($this->result($galleries));
     }
 
+
+    public function byCountry($country_id)
+    {
+        $model = new GalleryModel($this->dbConn);
+        $galleries = $model->byCountry($country_id);
+
+
+        return new JsonResponse($this->result($galleries));
+    }
+
     /**
      * @param int $limit
      * @return JsonResponse

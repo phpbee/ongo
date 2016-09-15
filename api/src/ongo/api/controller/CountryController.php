@@ -26,6 +26,19 @@ final class CountryController
         $this->dbConn = $dbConn;
     }
 
+    public function get($id)
+    {
+        $model = new CountryModel($this->dbConn);
+        $item = $model->findById($id);
+
+
+        $data = $item->serialize($this->dbConn);
+
+        $data['stats'] = $model->getStats($id);
+
+        return new JsonResponse($data);
+    }
+    
     /**
      * @return JsonResponse
      */

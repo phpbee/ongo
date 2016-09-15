@@ -20,7 +20,7 @@ final class CountryModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, name from country where id = ?",
+            "select id, name, logo, flag from country where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -57,7 +57,7 @@ final class CountryModel
     {
         $countries = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, name, logo from country order by id LIMIT ?",
+            "select id, name, logo, flag from country order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
@@ -69,6 +69,42 @@ final class CountryModel
     }
 
     /**
+     * @param $id
+     * @return array
+     */
+    public function getStats($id)
+    {
+        $galleries = $this->dbConn->executeQuery(
+            "select count(*) as count from gallery where place_id in (select DISTINCT id from place where city_id in (select DISTINCT id from city where country_id = ?))",
+            array($id))->fetch();
+
+        $cities = $this->dbConn->executeQuery(
+            "select count(*) as count from city where country_id = ?",
+            array($id))->fetch();
+
+        $places = $this->dbConn->executeQuery(
+            "select count(*) as count from place where city_id  in ( select DISTINCT id from city where country_id = ?) ",
+            array($id))->fetch();
+
+        $photos = $this->dbConn->executeQuery(
+            "select count(*) as count from photo where gallery_id in (select distinct id from gallery where place_id in (select DISTINCT id from place where city_id in (select DISTINCT id from city where country_id = ?)))",
+            array($id))->fetch();
+
+        $photographers = $this->dbConn->executeQuery(
+            "select count(distinct photograph_id) as count from gallery where place_id in (select DISTINCT id from place where city_id in (select DISTINCT id from city where country_id = ?))",
+            array($id))->fetch();
+
+        return [
+            'galleries' => $galleries['count'],
+            'places' => $places['count'],
+            'photos' => $photos['count'],
+            'cities' => $cities['count'],
+            'photographers' => $photographers['count'],
+        ];
+    }
+
+
+    /**
      * @param $row
      * @return CountryEntity
      */
@@ -77,7 +113,8 @@ final class CountryModel
         return new CountryEntity(
             $row['id'],
             $row['name'],
-            isset($row['logo']) ? $row['logo'] : null
+            isset($row['logo']) ? $row['logo'] : null,
+            isset($row['flag']) ? $row['flag'] : null
         );
     }
 }

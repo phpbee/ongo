@@ -51,6 +51,23 @@ final class GalleryModel
         return $galleries;
     }
 
+    public function byCountry($country_id)
+    {
+        $galleries = array();
+        $rs = $this->dbConn->executeQuery(
+            "select id, created, place_id, photograph_id from gallery where place_id in 
+                ( select DISTINCT id from place where city_id in ( SELECT DISTINCT id from city where country_id = ?)) 
+              order by id desc",
+            array($country_id)
+        );
+
+        while ($row = $rs->fetch()) {
+            $galleries[] = self::entityFromRecord($row);
+        }
+
+        return $galleries;
+    }
+
     public function top($limit = 3)
     {
         $galleries = array();

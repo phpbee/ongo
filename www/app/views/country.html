@@ -1,0 +1,54 @@
+
+
+    <div class="main">
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="current_country">
+            <img ng-src="{{ country.flag }}">
+
+            <div class="info">
+              <h1>{{ country.name }}</h1>
+
+              <div class="tags">
+                <a href="">Photographer: <span>{{ country.stats.photographers }}</span></a>
+                <a href="">Cities: <span>{{ country.stats.cities }}</span></a>
+                <a href="">Places: <span>{{ country.stats.places }}</span></a>
+                <a href="">Photo galleries: <span>{{ country.stats.galleries }}</span></a>
+                <a href="">Photo total: <span>{{ country.stats.photos }}</span></a>
+              </div>
+
+            </div>
+
+            <div class="search_country">
+              <h5>Choose country</h5>
+              <form>
+                <input class="typeahead state" type="text" placeholder="Enter your country">
+                <input class="hidden-submit" type="submit">
+                <i class="fi-magnifying-glass"></i>
+              </form>
+              <a class="close"></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="bg_country" style="background-image: url('{{ country.logo }}');"></div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <div class="lastgallery">
+          <h3 translate="LAST_GALLERIES"></h3>
+          <div class="list" ng-repeat="g in galleries">
+            <a ui-sref="gallery({id: g.id})">{{ g.date | date: "dd/MM/yyyy" }}</a>
+            - <a class="city" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>, <a class="city" ui-sref="country({id: g.country.id})">{{ g.country.name }}</a>
+            (<a ui-sref="place({id: g.id})">{{ g.place.name }}</a>) <a ui-sref="countryer({id: g.countryer.id})">{{ g.photographer.name }}</a>
+          </div>
+
+        </div>
+      </div>
+    </div>

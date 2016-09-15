@@ -12,20 +12,25 @@ final class CountryEntity extends SerializableEntity
     /** @var  string */
     private $name;
     /** @var  string */
-    private $logo;
+    private $logo;    
+    /** @var  string */
+    private $flag;
 
     /**
      * CountryEntity constructor.
      * @param int $id
      * @param string $name
      * @param string $logo
+     * @param string $flag
      */
-    public function __construct($id, $name, $logo)
+    public function __construct($id, $name, $logo, $flag)
     {
         $this->id = $id;
         $this->name = $name;
         $this->logo = $logo;
+        $this->flag = $flag;
     }
+
 
     /**
      * @param array $array
@@ -51,6 +56,7 @@ final class CountryEntity extends SerializableEntity
             'id' => $this->id,
             'name' => $this->name,
             'logo' => $this->logo,
+            'flag' => $this->flag,
         ];
     }
 }
