@@ -34,6 +34,18 @@ final class PhotographerController
         return new JsonResponse(SerializableEntity::serializeArray($items, $this->dbConn));
 
     }
+
+    public function get($id)
+    {
+        $photographerModel = new PhotographerModel($this->dbConn);
+        $photographer = $photographerModel->findById($id);
+
+
+        $data = $photographer->serialize($this->dbConn);
+
+        $data['stats'] = $photographerModel->getStats($id);
+
+        return new JsonResponse($data);
+    }
 }
 
-?>

@@ -12,17 +12,22 @@ final class PhotographerEntity extends SerializableEntity
     private $id;
     /** @var  string */
     private $name;
+    /** @var  string */
+    private $photo;
 
     /**
      * PhotographerEntity constructor.
      * @param int $id
      * @param string $name
+     * @param string $photo
      */
-    public function __construct($id, $name)
+    public function __construct($id, $name, $photo)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->photo = $photo;
     }
+
 
     /**
      * @param array $array
@@ -47,6 +52,7 @@ final class PhotographerEntity extends SerializableEntity
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'photo' => $this->photo,
         ];
     }
 }

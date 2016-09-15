@@ -49,7 +49,11 @@
                     </div>
                 </div>
                 <span class="subject">
-                    <translate>SLIDER.BROWSE_GALLERY</translate> <a href="" ui-sref="gallery({id: g.id})">{{ g.place.name }}</a>
+                    <a href="" ui-sref="photographer({id: g.photographer.id})">{{ g.photographer.name }}</a>
+                    {{ g.date | date : "dd/MM/yyyy" }}
+                    <a href="" ui-sref="place({id: g.place.id})">{{ g.place.name }}</a>,
+                    <a href="" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>,
+                    <a href="" ui-sref="country({id: g.country.id})">{{ g.country.name }}</a>,
                 </span>
 
             </div>

@@ -88,6 +88,9 @@ angular
             .state('index4', {
                 templateUrl: 'views/index4.html'
             })
+            .state('index5', {
+                templateUrl: 'views/index5.html'
+            })
             .state('about', {
                 url: '/about',
                 parent: 'index4',
@@ -118,6 +121,30 @@ angular
                 controller: 'MainCtrl',
                 url: '/',
                 templateUrl: 'views/main.html'
+            })
+            .state('place', {
+                parent: 'index4',
+                controller: 'PlaceCtrl',
+                url: '/place/:id',
+                templateUrl: 'views/place.html'
+            })
+            .state('city', {
+                parent: 'index4',
+                controller: 'CityCtrl',
+                url: '/city/:id',
+                templateUrl: 'views/city.html'
+            })
+            .state('country', {
+                parent: 'index5',
+                controller: 'CountryCtrl',
+                url: '/country/:id',
+                templateUrl: 'views/country.html'
+            })
+            .state('photographer', {
+                parent: 'index5',
+                controller: 'PhotographerCtrl',
+                url: '/photographer/:id',
+                templateUrl: 'views/photographer.html'
             })
             .state('gallery', {
                 parent: 'index2',

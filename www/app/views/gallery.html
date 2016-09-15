@@ -4,10 +4,12 @@
         <div class="row">
             <div class="large-12 columns">
                 <div class="finder">
-                    <h1><a href="">{{ gallery.photographer.name }}</a></h1>
-                    <span><a href="">{{ gallery.country.name }}</a>, <a href="">{{ gallery.city.name }}</a>, <a href="">{{ gallery.place.name }}</a></span>
+                    <h1><a ui-sref="photographer({id: gallery.photographer.id})">{{ gallery.photographer.name }}</a></h1>
+                    <span><a ui-sref="country({id: gallery.country.id})">{{ gallery.country.name }}</a>,
+                        <a ui-sref="city({id: gallery.city.id})">{{ gallery.city.name }}</a>,
+                        <a ui-sref="palce({id: gallery.place.id})">{{ gallery.place.name }}</a></span>
                     <div class="text-center">
-                        <span>{{ gallery.date | date:'dd MMMM yyyy, EEEE' }}</span>
+                        <span ui-sref="date({date: gallery.date})">{{ gallery.date | date:'dd MMMM yyyy, EEEE' }}</span>
                         <div class="social-likes justify" data-counters="no">
                             <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
                             <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>

@@ -1,0 +1,57 @@
+
+
+    <div class="main">
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="current_country">
+              <span class="photografer_ava">
+                <img ng-src="{{ photograph.photo }}">
+                <span class="clearfix"></span>
+                <div class="wrbadges">
+                  <div class="lSSlideOuter ">
+                    <div class="lSSlideWrapper usingCss on">
+                      <ul class="badgessl lightSlider lSFade"
+                          style="height: 0px; padding-bottom: 8.125%; transition-duration: 400ms; transition-timing-function: ease;">
+                        <li class="b1 lslide"><a href="">Top 10 in World</a></li>
+                        <li class="b2 lslide"><a href="">3-Best in Russia</a></li>
+                        <li class="b3 lslide"><a href="">2-Best in ASTANA</a></li>
+                        <li class="b4 lslide"><a href="">BEST IN HOTEL</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </span>
+
+            <div class="info">
+              <h1>{{ photograph.name }}</h1>
+
+              <div class="tags">
+                <a href=""><translate>Places</translate>: <span>{{ photograph.stats.places }}</span></a>
+                <a href=""><translate>Galleries</translate>: <span>{{ photograph.stats.galleries }}</span></a>
+                <a href=""><translate>Photos</translate>: <span>{{ photograph.stats.photos }}</span></a>
+                <a href=""><translate>Views</translate>: <span>{{ photograph.stats.views }}</span></a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="bg_country" style="background-image: url('/img/bg_photografer.jpg');"></div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <div class="lastgallery">
+          <h3 translate="LAST_GALLERIES"></h3>
+          <div class="list" ng-repeat="g in galleries">
+            <a ui-sref="gallery({id: g.id})">{{ g.date | date: "dd/MM/yyyy" }}</a>
+            - <a class="city" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>, <a class="city" ui-sref="country({id: g.country.id})">{{ g.country.name }}</a>
+            (<a ui-sref="place({id: g.id})">{{ g.place.name }}</a>) <a ui-sref="photographer({id: g.photographer.id})">{{ g.photographer.name }}</a>
+          </div>
+
+        </div>
+      </div>
+    </div>

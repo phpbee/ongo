@@ -56,6 +56,16 @@ final class GalleryController
         return new JsonResponse($data);
     }
 
+
+    public function byPhotograph($photograph_id)
+    {
+        $model = new GalleryModel($this->dbConn);
+        $galleries = $model->byPhotograph($photograph_id);
+
+
+        return new JsonResponse($this->result($galleries));
+    }
+
     /**
      * @param int $limit
      * @return JsonResponse
@@ -64,12 +74,20 @@ final class GalleryController
     public function top($limit = 3)
     {
         $model = new GalleryModel($this->dbConn);
+        $galleries = $model->top($limit);
+
+        return new JsonResponse($this->result($galleries));
+
+    }
+
+    private function result($galleries)
+    {
+
         $photographerModel = new PhotographerModel($this->dbConn);
         $placeModel = new PlaceModel($this->dbConn);
         $cityModel = new CityModel($this->dbConn);
         $countryModel = new CountryModel($this->dbConn);
 
-        $galleries = $model->top($limit);
 
         $photographers = $photographerModel->fromGalleries($galleries);
         $places = $placeModel->fromGalleries($galleries);
@@ -93,9 +111,9 @@ final class GalleryController
             return $data;
         }, $galleries);
 
-        return new JsonResponse($ret);
-
+        return $ret;
     }
+
 
     public function photo($id, $gallery_id)
     {

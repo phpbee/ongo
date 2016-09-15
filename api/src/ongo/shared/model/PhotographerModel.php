@@ -26,7 +26,7 @@ final class PhotographerModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, name from photograph where id = ?",
+            "select id, name, photo from photograph where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -44,7 +44,7 @@ final class PhotographerModel
     {
         $versions = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, name from photograph order by id LIMIT ?",
+            "select id, name, photo from photograph order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
@@ -73,6 +73,28 @@ final class PhotographerModel
         return $photographers;
     }
 
+    public function getStats($id) 
+    {
+        $galleries = $this->dbConn->executeQuery(
+            "select count(*) as count from gallery where photograph_id = ?",
+            array($id))->fetch();
+
+        $places = $this->dbConn->executeQuery(
+            "select count(distinct place_id) as count from gallery where photograph_id = ?",
+            array($id))->fetch();
+
+        $photos = $this->dbConn->executeQuery(
+            "select count(*) as count from photo where gallery_id in (select distinct id from gallery where photograph_id = ?)",
+            array($id))->fetch();
+
+        return [
+            'galleries' => $galleries['count'],
+            'places' => $places['count'],
+            'photos' => $photos['count'],
+            'views' => $photos['count'],
+            ];
+    }
+    
     /**
      * @param $row
      * @return PhotographerEntity
@@ -81,7 +103,8 @@ final class PhotographerModel
     {
         return new PhotographerEntity(
             $row['id'],
-            $row['name']
+            $row['name'],
+            $row['photo']
         );
     }
 }
