@@ -12,8 +12,7 @@
   "MENU": {
     "CHECKOUT": "Checkout",
     "LOGIN": "Sign in",
-    "LOGOUT": "Log out",
-    "ABOUT": "About"
+    "LOGOUT": "Log out"
   },
   "SLIDER": {
     "BROWSE_GALLERY":"More images from"
@@ -26,6 +25,10 @@
   "LOGIN": {
     "LABEL_EMAIL": "E-mail",
     "BUTTON_LOGIN": "Sign in"
+  },
+  "FOOTER": {
+    "LEGAL": "Launched in November 2011, our site features a daily photographing people in public place Europe, Asia and soon beyond. We have about 15,000 photographer working with us.",
+     "COPYRIGHT": "© 2012 - 2015 All rights reserved - Find-Foto.com"
   }
 
 }

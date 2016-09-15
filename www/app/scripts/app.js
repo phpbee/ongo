@@ -93,6 +93,21 @@ angular
                 parent: 'index4',
                 templateUrl: 'views/about.html'
             })
+            .state('policy', {
+                url: '/policy',
+                parent: 'index4',
+                templateUrl: 'views/policy.html'
+            })            
+            .state('contacts', {
+                url: '/contacts',
+                parent: 'index4',
+                templateUrl: 'views/contacts.html'
+            })            
+            .state('faq', {
+                url: '/faq',
+                parent: 'index4',
+                templateUrl: 'views/faq.html'
+            })
             .state('photographers-registration', {
                 url: '/signup/photographers',
                 parent: 'index4',

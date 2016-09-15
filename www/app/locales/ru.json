@@ -7,9 +7,9 @@
   },
   "MENU": {
     "LOGIN": "Вход",
-    "CHECKOUT": "Оформление заказа",
-    "ABOUT": "О проекте"
+    "CHECKOUT": "Оформление заказа"
   },
+  "About": "О проекте",
   "SLIDER": {
     "BROWSE_GALLERY":"Перейти в галерею"
   },
@@ -17,5 +17,5 @@
   "CHOOSE_YOUR_PHOTOS":"Выберите свои фотографии из предложенных",
   "WE_ARE_LOOKING_PHOTOGRAPHERS":"Мы ищем фотографов для сотрудничества",
   "REGISTRATION_FOR_PHOTOGRAPHERS": "Регистрация для фотографов",
-  "BROWSE_TO_GALLERY": "Просмотр этой галереи"
+  "BROWSE_TO_GALLERY": "Просмотр этой галереи",
 }
