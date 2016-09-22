@@ -2,6 +2,8 @@
 
 namespace ongo\shared\service;
 
+use ongo\shared\entity\SessionEntity;
+use ongo\shared\model\UserModel;
 use ongo\shared\service\cache\CacheService;
 use Doctrine\DBAL\Connection;
 use ongo\shared\exception\InvalidAuthenticationServiceVersionException;
@@ -14,6 +16,7 @@ final class AuthenticationService {
 	private $memcache;
 	private $dbConn;
 	private $request;
+	/** @var  SessionEntity */
 	private $session;
 
 	public function __construct(CacheService $memcache, Connection $dbConn) {
@@ -30,50 +33,24 @@ final class AuthenticationService {
 		return true;
 	}
 
-	public function getPartner() {
-		return $this->getSession()->getPartner($this->dbConn);
+	public function getUser() {
+		$model = new UserModel($this->dbConn);
+		return $model->findById($this->getSession()->getUserId());
 	}
 
 	public function getSession() {
 		if ($this->session === null) {
-			$attr = $this->getAuthAttributes();
-			if (!isset($attr["version"]))
-				throw new MissingAuthenticationServiceVersionException();
-			switch ($attr["version"]) {
-			case "1.0":
-				if (!isset($attr["token"]))
-					throw new MissingTokenException();
-				$model = new SessionModel($this->memcache, $this->dbConn);
-				// throws InvalidTokenException
-				$this->session = $model->findByToken($attr["token"]);
+			$version = $this->request->headers->get("Authorization");
+			switch ($version) {
+			case "Ongo 1.0":
+				$token = $this->request->headers->get("Token");
+				$model = new SessionModel($this->dbConn);
+				$this->session = $model->findByToken($token);
 				break;
 			default:
-				throw new InvalidAuthenticationServiceVersionException($attr["version"]);
+				throw new InvalidAuthenticationServiceVersionException($version);
 			}
 		}
 		return $this->session;
 	}
-
-	private function getAuthAttributes() {
-		$attr = array();
-
-		$header = $this->request->headers->get("Authorization");
-		if (!$header && function_exists('getallheaders')) {
-			$headers = getallheaders();
-			if (isset($headers["Authorization"])) {
-				$header = $headers["Authorization"];
-			}
-		}
-
-		if ($header !== null) {
-			if (preg_match("/^ongo\s+[a-zA-Z0-9_-]+\s*=\s*\".+?\"/", $header)) {
-	  			preg_match_all("/([a-zA-Z0-9_-]+)\s*=\s*\"(.+?)\"/", $header, $matches);
-				for ($i = 0; $i < sizeof($matches[1]); $i++) 
-					$attr[$matches[1][$i]] = $matches[2][$i];
-	  		}
-		}
-		return $attr;
-	}
 }
-
-?>

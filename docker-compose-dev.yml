@@ -9,12 +9,13 @@ www:
     - api:api
   volumes:
     - "./www/dist:/var/www/html"
+    - ./logs/www:/var/log
 api:
   container_name: ongo_dev_api
   image: alexk7898/ongo:api-develop
   volumes:
     - "./api:/var/www"
-    - ./logs/api/silex:/var/log/silex
+    - ./logs/api:/var/log
   links:
     - memcached:memcached
   external_links:
@@ -42,10 +43,10 @@ splunkforwarder:
   volumes_from:
     - vsplunk
   volumes:
-    - ./logs/:/logs
+    - ./logs/splunkforwarder:/logs
   environment:
     - SPLUNK_START_ARGS=--accept-license --answer-yes --no-prompt
     - SPLUNK_SERVER=192.168.99.100
-    - SPLUNK_SERVER_PORT=9997
+    - SPLUNK_SERVER_PORT=8088
     - SPLUNK_LOGFILE_PATTERN=/logs/*/*/*.log 
     - SPLUNK_INDEX=main

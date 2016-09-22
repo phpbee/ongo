@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">
-      <h1>Cart</h1>
+      Cart
     </div>
   </div>
 
@@ -55,6 +55,6 @@
   <div class="purchase_block">
     <h5>PURCHASE</h5>
     <span class="total">Total: <strong><translate>CURRENCY_SYMBOL</translate>{{ cart.total | translate}}&nbsp;<translate>CURRENCY</translate></strong></span>
-    <a href="" class="button expand radius">Proceed to payment</a>
+    <a ng-click="checkout(cart)" class="button expand radius">Proceed to payment</a>
   </div>
 </div>

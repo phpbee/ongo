@@ -9,6 +9,7 @@ use ongo\api\controller\CountryController;
 use ongo\api\controller\DeeplinkController;
 use ongo\api\controller\EmailController;
 use ongo\api\controller\GalleryController;
+use ongo\api\controller\OrderController;
 use ongo\api\controller\PartnerController;
 use ongo\api\controller\PartnerDeepLinkController;
 use ongo\api\controller\PartnerPaymentInfoController;
@@ -49,6 +50,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class ControllerProvider implements ControllerProviderInterface
 {
+
     public function connect(Application $app)
     {
         $controllers = $app["controllers_factory"];
@@ -95,6 +97,11 @@ final class ControllerProvider implements ControllerProviderInterface
 //        });
 
 
+        $controllers->post("/order", function (Application $app, Request $request) {
+            $user = $app["auth"]->getUser();
+            $controller = new OrderController($app["db"]);
+            return $controller->create($user, $request->get("cart"));
+        });
         $controllers->post("/sessions", function (Application $app, Request $request) {
             $controller = new SessionController($app["db"]);
             return $controller->login($request->get("email"));

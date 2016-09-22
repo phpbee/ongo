@@ -175,6 +175,14 @@ angular
                 data: {
                     authorizedRoles: ['user']
                 }
+            })
+            .state('orders', {
+                parent: 'index4',
+                url: '/orders',
+                templateUrl: 'views/orders.html',
+                data: {
+                    authorizedRoles: ['user']
+                }
             });
 
 

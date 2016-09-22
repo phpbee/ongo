@@ -13,17 +13,27 @@ angular.module('wwwApp')
         //storage.remove('cart');
 
 
-        this.updateCart = function (cart) {
+        this.updateCart = function (c) {
             console.log('updateCart');
             var total = 0;
 
-            angular.forEach(cart.items, function (item) {
+            angular.forEach(c.items, function (item) {
                 total += parseFloat($filter('translate')('PRICE.' + item.resolution));
             });
 
-            cart.total = total;
-            console.log(cart);
+            c.total = total;
+
+            storage.set('cart', c);
+            cart.save(c);
+
+            console.log(c);
         }
+
+
+        this.emptyCart = function (id) {
+            $rootScope.cart = {items: {}};
+            this.updateCart($rootScope.cart);
+        };
 
 
         this.removeFromCart = function (id) {
@@ -40,8 +50,6 @@ angular.module('wwwApp')
             $rootScope.cart.items[id] = {photo_id: id, gallery_id: gallery_id, resolution: resolution};
             this.updateCart($rootScope.cart);
 
-            storage.set('cart', $rootScope.cart);
-            cart.save($rootScope.cart);
 
         }
     });

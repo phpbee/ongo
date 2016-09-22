@@ -39,7 +39,7 @@ $app->register(new ongo\shared\provider\CorsServiceProvider(), array(
     "cors.path" => "/^.*/",
     "cors.allow_origin" => "*",
     "cors.allow_methods" => "POST, GET, PUT, DELETE, OPTIONS",
-    "cors.allow_headers" => "Accept, Content-Type, Authorization",
+    "cors.allow_headers" => "Accept, Content-Type, Authorization, Token",
     "cors.max_age" => "600"
 ));
 $app->register(new ongo\shared\provider\MailServiceProvider(), array(

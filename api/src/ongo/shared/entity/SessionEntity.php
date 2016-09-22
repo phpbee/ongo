@@ -26,8 +26,16 @@ final class SessionEntity extends SerializableEntity {
 	public function getToken() {
 		return $this->token;
 	}
-	
-	
+
+	/**
+	 * @return string
+	 */
+	public function getUserId()
+	{
+		return $this->user_id;
+	}
+
+
 	public function serialize(Connection $dbConn, $deep = true) {
 		$array = array(
 			"user_id"   => $this->user_id,
