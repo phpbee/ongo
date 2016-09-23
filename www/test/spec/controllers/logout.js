@@ -17,7 +17,7 @@ describe('Controller: LogoutCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(LogoutCtrl.awesomeThings.length).toBe(3);
-  });
+  //it('should attach a list of awesomeThings to the scope', function () {
+  //  expect(LogoutCtrl.awesomeThings.length).toBe(3);
+  //});
 });

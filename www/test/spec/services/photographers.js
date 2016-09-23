@@ -11,8 +11,8 @@ describe('Service: Photographers', function () {
     Photographers = _Photographers_;
   }));
 
-  it('should do something', function () {
-    expect(!!Photographers).toBe(true);
-  });
+  //it('should do something', function () {
+  //  expect(!!Photographers).toBe(true);
+  //});
 
 });
