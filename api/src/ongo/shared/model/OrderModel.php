@@ -4,6 +4,7 @@ namespace ongo\shared\model;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
+use ongo\shared\entity\OrderEntity;
 use ongo\shared\entity\SessionEntity;
 use ongo\shared\entity\UserEntity;
 use ongo\shared\exception\OrderNotFoundException;
@@ -25,7 +26,7 @@ final class OrderModel {
 	public function findById($id)
 	{
 		if (!($row = $this->dbConn->executeQuery(
-			"select id, user_id, payload from `order` where id = ?",[$id]
+			"select id, created, user_id, payload from `order` where id = ?",[$id]
 		)->fetch())
 		) {
 			throw new OrderNotFoundException($id);
@@ -61,8 +62,9 @@ final class OrderModel {
 	 */
 	private static function entityFromRecord($row)
 	{
-		return new SessionEntity(
+		return new OrderEntity(
 			$row['id'],
+			$row['created'],
 			$row['user_id'],
 			$row['payload']
 		);

@@ -21,7 +21,7 @@ angular.module('wwwApp')
             Order.create({cart:cart}, function(data) {
                 /** TODO: refactor CartCtrl to Service **/
                 //CartCtrl.emptyCart();
-               $state.go('orders', data);
+               $state.go('order.success', {id: data.id});
             });
         }
     });

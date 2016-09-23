@@ -167,23 +167,37 @@ angular
                 controller: 'LogoutCtrl',
                 url: '/logout',
             })
-            .state('checkout', {
-                controller: 'CheckoutCtrl',
-                parent: 'index4',
-                url: '/checkout',
-                templateUrl: 'views/checkout.html',
+
+
+
+            .state('user', {
+                templateUrl: 'views/user.html',
+                url: '/user',
                 data: {
                     authorizedRoles: ['user']
                 }
             })
-            .state('orders', {
-                parent: 'index4',
+            .state('checkout', {
+                parent: 'user',
+                controller: 'CheckoutCtrl',
+                url: '/checkout',
+                templateUrl: 'views/checkout.html'
+            })
+            .state('user.orders', {
                 url: '/orders',
-                templateUrl: 'views/orders.html',
-                data: {
-                    authorizedRoles: ['user']
-                }
-            });
+                templateUrl: 'views/user.orders.html'
+            })
+            .state('order', {
+                parent: 'user',
+                controller: 'OrderCtrl',
+                url: '/order/:id',
+                templateUrl: 'views/order.html'
+            })
+            .state('order.success', {
+                url: '/success',
+                templateUrl: 'views/order.success.html'
+            })
+        ;
 
 
     })

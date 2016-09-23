@@ -10,10 +10,10 @@
 angular.module('wwwApp')
   .service('Order', function (config, $resource) {
     return $resource(
-        config.api.baseURL + '/order',
+        config.api.baseURL + '/order/:id',
         {},
         {
-          'create': {method: 'POST'},
+          'create': {url:config.api.baseURL + '/order/', method: 'POST'}
         }
     );
   });

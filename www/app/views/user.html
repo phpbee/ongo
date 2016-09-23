@@ -1,0 +1,19 @@
+<div class="overflow index4">
+
+    <ng-include src="'views/inc_header.html'"></ng-include>
+
+
+    <div class="meetings">
+        <div class="row">
+            <ui-view ng-if="!requireAuth($state,'user') || isAuthorized('user')">
+                User zone
+            </ui-view>
+            <div ng-if="requireAuth($state,'user') && !isAuthorized('user')">
+                <ng-include src="'views/login.html'"></ng-include>
+            </div>
+        </div>
+    </div>
+
+    <ng-include src="'views/inc_footer.html'"></ng-include>
+
+</div>
