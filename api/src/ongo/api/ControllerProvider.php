@@ -25,6 +25,7 @@ use ongo\api\controller\VersionController;
 use ongo\api\exception\AccessDelegationNotSupportedException;
 use ongo\api\exception\InvalidDateException;
 use ongo\shared\entity\PartnerEntity;
+use ongo\shared\entity\UserEntity;
 use ongo\shared\exception\InvalidApiKeyException;
 use ongo\shared\exception\InvalidApiUserIdException;
 use ongo\shared\exception\InvalidApiUserPasswordException;
@@ -97,6 +98,12 @@ final class ControllerProvider implements ControllerProviderInterface
 //        });
 
 
+        $controllers->get("/user/orders", function (Application $app, Request $request) {
+            /** @var UserEntity $user */
+            $user = $app["auth"]->getUser();
+            $controller = new OrderController($app["db"]);
+            return $controller->byUserId($user->getId());
+        });
         $controllers->post("/order", function (Application $app, Request $request) {
             $user = $app["auth"]->getUser();
             $controller = new OrderController($app["db"]);

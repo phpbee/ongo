@@ -171,6 +171,7 @@ angular
 
 
             .state('user', {
+                controller: 'UserCtrl',
                 templateUrl: 'views/user.html',
                 url: '/user',
                 data: {
@@ -185,6 +186,7 @@ angular
             })
             .state('user.orders', {
                 url: '/orders',
+                controller: 'UserOrdersCtrl',
                 templateUrl: 'views/user.orders.html'
             })
             .state('order', {

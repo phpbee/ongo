@@ -1,2 +1,10 @@
+User orders
+<table>
+    <th>ID</th>
+    <th>Date</th>
+    <tr ng-repeat="o in orders">
+        <td><a ui-sref="order({id: o.id})">{{ o.id }}</a></td>
+        <td>{{ o.created | strtotime | date : "dd MMM yyyy HH:mm"}}</td>
+    </tr>
 
-            User orders
+</table>

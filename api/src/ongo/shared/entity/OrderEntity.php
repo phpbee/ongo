@@ -25,7 +25,7 @@ final class OrderEntity extends SerializableEntity {
 	public function __construct($id, $created, $user_id, $payload)
 	{
 		$this->id = $id;
-		$this->created = intval($created);
+		$this->created = strtotime($created);
 		$this->user_id = $user_id;
 		$this->payload = $payload;
 	}

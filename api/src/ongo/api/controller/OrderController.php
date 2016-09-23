@@ -2,6 +2,7 @@
 
 namespace ongo\api\controller;
 
+use ongo\shared\entity\SerializableEntity;
 use ongo\shared\entity\UserEntity;
 use ongo\shared\model\OrderModel;
 use Doctrine\DBAL\Connection;
@@ -23,6 +24,14 @@ final class OrderController {
 
         return new JsonResponse($order->serialize($this->dbConn));
         
+	}
+
+	public function byUserId($id)
+	{
+		$model = new OrderModel($this->dbConn);
+		$orders = $model->byUserId($id);
+
+		return new JsonResponse(SerializableEntity::serializeArray($orders, $this->dbConn));
 	}
 }
 
