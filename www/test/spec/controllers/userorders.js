@@ -16,8 +16,8 @@ describe('Controller: UserordersCtrl', function () {
       // place here mocked dependencies
     });
   }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(UserordersCtrl.awesomeThings.length).toBe(3);
-  });
+  //
+  //it('should attach a list of awesomeThings to the scope', function () {
+  //  expect(UserordersCtrl.awesomeThings.length).toBe(3);
+  //});
 });

@@ -12,8 +12,8 @@ describe('Filter: strtotime', function () {
   }));
 
   it('should return the input prefixed with "strtotime filter:"', function () {
-    var text = 'angularjs';
-    expect(strtotime(text)).toBe('strtotime filter: ' + text);
+    var text = '03-Oct-2016 13:48:33';
+    expect(strtotime(text)).toBe('1475491713');
   });
 
 });
