@@ -98,11 +98,23 @@ final class ControllerProvider implements ControllerProviderInterface
 //        });
 
 
-        $controllers->get("/user/orders", function (Application $app, Request $request) {
+        $controllers->get("/user/orders", function (Application $app) {
             /** @var UserEntity $user */
             $user = $app["auth"]->getUser();
             $controller = new OrderController($app["db"]);
             return $controller->byUserId($user->getId());
+        });
+        $controllers->get("/order/{id}", function (Application $app, $id) {
+            /** @var UserEntity $user */
+            $user = $app["auth"]->getUser();
+            $controller = new OrderController($app["db"]);
+            return $controller->byIdforUserId($id, $user->getId());
+        });
+        $controllers->get("/order/{id}/download/{photo_id}", function (Application $app, $id, $photo_id) {
+            /** @var UserEntity $user */
+            $user = $app["auth"]->getUser();
+            $controller = new OrderController($app["db"]);
+            return $controller->downloadByUser($id, $photo_id, $user->getId());
         });
         $controllers->post("/order", function (Application $app, Request $request) {
             $user = $app["auth"]->getUser();
@@ -115,12 +127,12 @@ final class ControllerProvider implements ControllerProviderInterface
         });
         $controllers->get("/photographers", function (Application $app, Request $request) {
             $controller = new PhotographerController($app["db"]);
-            return $controller->top(min(10,intval($request->get("limit"))));
+            return $controller->top(min(10, intval($request->get("limit"))));
         });
         $controllers->get("/photograph/{id}", function (Application $app, $id) {
             $controller = new PhotographerController($app["db"]);
             return $controller->get(intval($id));
-        });        
+        });
         $controllers->get("/photograph/{id}/galleries", function (Application $app, $id) {
             $controller = new GalleryController($app["db"]);
             return $controller->byPhotograph(intval($id));
@@ -135,16 +147,16 @@ final class ControllerProvider implements ControllerProviderInterface
         });
         $controllers->get("/places", function (Application $app, Request $request) {
             $controller = new PlaceController($app["db"]);
-            return $controller->top(min(10,intval($request->get("limit"))));
+            return $controller->top(min(10, intval($request->get("limit"))));
         });
         $controllers->get("/galleries", function (Application $app, Request $request) {
             $controller = new GalleryController($app["db"]);
-            return $controller->top(min(10,intval($request->get("limit"))));
-        });        
+            return $controller->top(min(10, intval($request->get("limit"))));
+        });
         $controllers->get("/gallery/{id}", function (Application $app, $id) {
             $controller = new GalleryController($app["db"]);
             return $controller->get(intval($id));
-        });        
+        });
         $controllers->get("/gallery/{id}/photos", function (Application $app, $id) {
             $controller = new GalleryController($app["db"]);
             return $controller->photos(intval($id));
@@ -159,7 +171,7 @@ final class ControllerProvider implements ControllerProviderInterface
         });
         $controllers->get("/gallery/{id}/photo/{photo_id}", function (Application $app, $id, $photo_id) {
             $controller = new GalleryController($app["db"]);
-            return $controller->photo(intval($photo_id),intval($id));
+            return $controller->photo(intval($photo_id), intval($id));
         });
         $controllers->get("/top/country", function (Application $app) {
             $controller = new CountryController($app["db"]);

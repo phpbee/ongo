@@ -20,7 +20,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     "db.options" => $db_options
 ));
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-    "monolog.logfile" => "/var/log/silex/api.partners.ongophotos.com.log",
+    "monolog.logfile" => "php://stderr",
     "monolog.level" => Monolog\Logger::DEBUG
 ));
 Symfony\Component\HttpKernel\Debug\ErrorHandler::register();

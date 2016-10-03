@@ -5,9 +5,20 @@
 
     <div class="meetings">
         <div class="row">
-            <ui-view ng-if="!requireAuth($state,'user') || isAuthorized('user')">
-                User zone
-            </ui-view>
+            <section ng-if="!requireAuth($state,'user') || isAuthorized('user')">
+                <div class="secondmenu purchases">
+                    <div class="row">
+                        <div class="small-12 medium-12 large-12 columns">
+                            <ul>
+                                <li><a href="">Settings</a></li>
+                                <li><a class="active" href="">Purchases</a></li>
+                                <li><a href="">Favorites</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ui-view></ui-view>
+            </section>
             <div ng-if="requireAuth($state,'user') && !isAuthorized('user')">
                 <ng-include src="'views/login.html'"></ng-include>
             </div>

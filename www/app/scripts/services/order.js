@@ -13,7 +13,8 @@ angular.module('wwwApp')
         config.api.baseURL + '/order/:id',
         {},
         {
-          'create': {url:config.api.baseURL + '/order/', method: 'POST'}
+          'create': {url:config.api.baseURL + '/order/', method: 'POST'},
+          'download': {url:config.api.baseURL + '/order/:id/download/:photo_id'}
         }
     );
   });

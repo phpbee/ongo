@@ -1,10 +1,23 @@
-User orders
-<table>
-    <th>ID</th>
-    <th>Date</th>
-    <tr ng-repeat="o in orders">
-        <td><a ui-sref="order({id: o.id})">{{ o.id }}</a></td>
-        <td>{{ o.created | strtotime | date : "dd MMM yyyy HH:mm"}}</td>
-    </tr>
-
-</table>
+<div class="purchases_block">
+    <div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <table>
+                <tbody><tr class="head">
+                    <th>Status</th>
+                    <th>Order №</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="o in orders" class="{{ 'ORDER.CSSSTATUS.'+o.status | translate }}">
+                    <td><span>{{ 'ORDER.STATUS.'+o.status | translate}}</span></td>
+                    <td><strong><a ui-sref="order({id: o.id})">{{ o.id }}</a></strong></td>
+                    <td><em>{{ o.created | strtotime | date : "MMM dd, yyyy"}}</em></td>
+                    <td><b>{{ o.payload.total }} <translate>CURRENCY_SYMBOL</translate></b></td>
+                    <td ng-if="o.payment_status == 'payment_approved'"><em>Approved</em></td>
+                    <td ng-if="o.payment_status != 'payment_approved'"><a href="">Try to Pay</a></td>
+                </tr>
+          </tbody></table>
+        </div>
+    </div>
+</div>

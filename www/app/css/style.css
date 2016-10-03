@@ -1577,6 +1577,39 @@ body h2, body h3 {
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.backordwr{
+  color: #fff;
+  display: inline-block;
+  width: 155px;
+  height: 25px;
+  line-height: 26px;
+  background: url('/img/back.png') 0px 0px no-repeat;
+  font-size: 0.75rem;
+  text-align: right;
+  padding-right: 16px;
+  margin-top: 19px;
+  vertical-align: top;
+  margin-bottom: 15px;
+}
+.backordwr:hover{
+  color: #fff;
+}
+.numorder{
+  display: inline-block;
+  vertical-align: top;
+  height: 25px;
+  line-height: 26px;
+  color: #555;
+  font-size: 0.88rem;
+  margin-top: 19px;
+  padding-left: 50px;
+  margin-bottom: 15px;
+}
+.orderblock .cartblock .cart_item{
+  max-width: 100%;
+}
+
 @media only screen and (min-width: 40.063em) {
   .header .top-bar-section li:not(.has-form) a:not(.button) {
     line-height: 2.15rem;
@@ -1607,4 +1640,5 @@ body h2, body h3 {
     background-color: rgba(42, 35, 33, .5);
   }
 }
+
 

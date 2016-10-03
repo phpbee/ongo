@@ -16,10 +16,9 @@ api:
   volumes:
     - "./api:/var/www"
     - ./logs/api:/var/log
-  links:
-    - memcached:memcached
   external_links:
-    - dev_mysql:mysql
+    - mysql_dev:mysql
+    - memcached_dev:memcached
   environment:
     - MYSQL_HOST=mysql
     - MYSQL_DB=ongo_test
@@ -28,10 +27,6 @@ api:
     - CACHE_TYPE=memcached
     - CACHE_ENDPOINT=memcached
     - SYSLOG_HOSTNAME=ongo_dev_api
-memcached:
-  container_name: ongo_dev_memcached
-  image: memcached
-
 vsplunk:
   image: busybox
   volumes:

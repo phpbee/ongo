@@ -21,14 +21,13 @@ final class OrderModel
 
     /**
      * @param $id
-     * @return SessionEntity
-     * @throws DBALException
-     * @throws SessionNotFoundException
+     * @return OrderEntity
+     * @throws OrderNotFoundException
      */
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, created, user_id, payload from `order` where id = ?", [$id]
+            "select id, created, user_id, payload, status from `order` where id = ?", [$id]
         )->fetch())
         ) {
             throw new OrderNotFoundException($id);
@@ -42,7 +41,7 @@ final class OrderModel
     {
         $orders = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, created, user_id, payload from `order` where user_id  = ? order by created desc",
+            "select id, created, user_id, payload, status from `order` where user_id  = ? order by created desc",
             array($user_id)
         );
 
@@ -75,7 +74,7 @@ final class OrderModel
 
     /**
      * @param $row
-     * @return SessionEntity
+     * @return OrderEntity
      */
     private static function entityFromRecord($row)
     {
@@ -83,7 +82,8 @@ final class OrderModel
             $row['id'],
             $row['created'],
             $row['user_id'],
-            $row['payload']
+            $row['payload'],
+            $row['status']
         );
     }
 }

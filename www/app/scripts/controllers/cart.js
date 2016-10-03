@@ -18,7 +18,10 @@ angular.module('wwwApp')
             var total = 0;
 
             angular.forEach(c.items, function (item) {
-                total += parseFloat($filter('translate')('PRICE.' + item.resolution));
+                item.price = parseFloat($filter('translate')('PRICE.' + item.resolution));
+                item.currency =  $filter('translate')('CURRENCY');
+                item.currency_symbol =  $filter('translate')('CURRENCY_SYMBOL');
+                total += item.price;
             });
 
             c.total = total;

@@ -86,27 +86,27 @@
                 <table class="photo_info">
                     <tr>
                         <td>Photographer:</td>
-                        <td><a href="">{{ gallery.photographer.name }}</a></td>
+                        <td><a href="" ui-sref="photographer({id: gallery.photographer.id})">{{ gallery.photographer.name }}</a></td>
                     </tr>
                     <tr>
                         <td>Photo ID:</td>
-                        <td><a href="">{{ photo.id }}</a></td>
+                        <td><a href="" ui-sref="photo({id: photo.id})">{{ photo.id }}</a></td>
                     </tr>
                     <tr>
                         <td>Gallry ID:</td>
-                        <td><a href="">{{ gallery.id }}</a></td>
+                        <td><a href="" ui-sref="gallery({id: gallery.id})">{{ gallery.id }}</a></td>
                     </tr>
                     <tr>
                         <td>Place:</td>
-                        <td><a href="">{{ gallery.place.name }}</a></td>
+                        <td><a href="" ui-sref="place({id: gallery.place.id})">{{ gallery.place.name }}</a></td>
                     </tr>
                     <tr>
                         <td>City:</td>
-                        <td><a href="">{{ gallery.city.name }}</a></td>
+                        <td><a href="" ui-sref="city({id: gallery.city.id})">{{ gallery.city.name }}</a></td>
                     </tr>
                     <tr>
                         <td>Country:</td>
-                        <td><a href="">{{ gallery.country.name }}</a></td>
+                        <td><a href="" ui-sref="country({id: gallery.country.id})">{{ gallery.country.name }}</a></td>
                     </tr>
                 </table>
 

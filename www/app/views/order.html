@@ -1,3 +1,102 @@
 <ui-view>
-    Order
+
+    <div class="row orderblock">
+        <div class="small-12 medium-12 large-12 columns">
+
+            <div class="row">
+                <div class="small-12 medium-12 large-12 columns">
+                    <a ui-sref="user.orders" class="backordwr">back to the orders list</a>
+                    <span class="numorder">Information about order: {{ order.id }}</span>
+                </div>
+            </div>
+
+            <div class="cartblock">
+
+                <div class="row cart_item" ng-repeat="(id,item) in payload.items">
+                    <div class="small-12 medium-2 large-2 columns cart_foto">
+                        <div class="status_good">
+                            <img ng-src="{{item.photo.thumb}}">
+                            <span ng-if="order.payment_status=='payment_approved'" class="paidph">paid</span>
+                        </div>
+                    </div>
+                    <div class="small-12 medium-7 large-7 columns">
+
+                        <div class="row">
+                            <div class="small-12 medium-12 large-6 columns">
+                                <div class="row">
+                                    <div class="small-12 medium-12 large-12 columns">
+                                        <span class="phdet">Photo details</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-4 medium-4 large-4 columns"><strong>Photographer:</strong></div>
+                                    <div class="small-5 medium-4 large-5 columns"><a ui-sref="photographer({id:item.gallery.photographer.id})">{{ item.gallery.photographer.name }}</a></div>
+                                    <div class="small-3 medium-4 large-3 columns"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-4 medium-4 large-4 columns"><strong>Photo ID:</strong></div>
+                                    <div class="small-5 medium-4 large-5 columns"><a ui-sref="photo({id: item.photo_id, gallery_id: item.gallery_id})">{{ item.photo_id }}</a></div>
+                                    <div class="small-3 medium-4 large-3 columns"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-4 medium-4 large-4 columns"><strong>Gallery ID:</strong></div>
+                                    <div class="small-5 medium-4 large-5 columns"><a ui-sref="gallery({id: item.gallery_id})">{{ item.gallery_id }}</a></div>
+                                    <div class="small-3 medium-4 large-3 columns"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-4 medium-4 large-4 columns"><strong>Place:</strong></div>
+                                    <div class="small-5 medium-4 large-5 columns"><a ui-sref="place({id: item.gallery.place.id})">{{ item.gallery.place.name }}</a></div>
+                                    <div class="small-3 medium-4 large-3 columns"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-4 medium-4 large-4 columns"><strong>City:</strong></div>
+                                    <div class="small-5 medium-4 large-5 columns"><a ui-sref="city({id: item.gallery.city.id})">{{ item.gallery.city.name }}</a></div>
+                                    <div class="small-3 medium-4 large-3 columns"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-4 medium-4 large-4 columns"><strong>Country:</strong></div>
+                                    <div class="small-5 medium-4 large-5 columns"><a ui-sref="country({id: item.gallery.country.id})">{{ item.gallery.country.name }}</a></div>
+                                    <div class="small-3 medium-4 large-3 columns"></div>
+                                </div>
+
+                            </div>
+                            <div class="small-12 medium-12 large-6 columns">
+                                <div class="row show-for-large-up">
+                                    <div class="small-12 medium-12 large-12 columns">
+                                        <span class="phdet">Photo details</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-12 medium-12 large-12 columns">
+                                        <span class="phdesc"><strong>Description:</strong> 2818x1288px @ 300dpi</span>
+
+                                        <span class="greenprice">Price: {{ item.price }} {{ item.currency_symbol }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="small-12 medium-3 large-3 columns">
+                        <div class="purchase_block">
+                            <a ng-click="download(order.id, item.photo_id)" class="button expand radius">Download Photo</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </ui-view>

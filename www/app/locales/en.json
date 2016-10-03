@@ -15,12 +15,12 @@
     "LOGOUT": "Log out"
   },
   "SLIDER": {
-    "BROWSE_GALLERY":"More images from"
+    "BROWSE_GALLERY": "More images from"
   },
   "FIND_YOUR_PHOTOS": "Find your photos",
   "REGISTRATION_FOR_PHOTOGRAPHERS": "Registration for photographers",
-  "CHOOSE_YOUR_PHOTOS":"Choose your photos from the list below",
-  "WE_ARE_LOOKING_PHOTOGRAPHERS":"We are looking for photographers",
+  "CHOOSE_YOUR_PHOTOS": "Choose your photos from the list below",
+  "WE_ARE_LOOKING_PHOTOGRAPHERS": "We are looking for photographers",
   "BROWSE_TO_GALLERY": "Browse to Gallery",
   "LOGIN": {
     "LABEL_EMAIL": "E-mail",
@@ -28,9 +28,17 @@
   },
   "FOOTER": {
     "LEGAL": "Launched in November 2011, our site features a daily photographing people in public place Europe, Asia and soon beyond. We have about 15,000 photographer working with us.",
-     "COPYRIGHT": "© 2012 - 2015 All rights reserved - Find-Foto.com"
+    "COPYRIGHT": "© 2012 - 2015 All rights reserved - Find-Foto.com"
   },
-  "LAST_GALLERIES": "Last galleries"
-
-
+  "LAST_GALLERIES": "Last galleries",
+  "ORDER": {
+    "STATUS": {
+      "new": "NEW",
+      "paid": "PAID"
+    },
+    "CSSSTATUS": {
+      "new": "newgood",
+      "paid": "paidgood"
+    }
+  }
 }
