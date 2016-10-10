@@ -100,12 +100,12 @@ angular
                 url: '/policy',
                 parent: 'index4',
                 templateUrl: 'views/policy.html'
-            })            
+            })
             .state('contacts', {
                 url: '/contacts',
                 parent: 'index4',
                 templateUrl: 'views/contacts.html'
-            })            
+            })
             .state('faq', {
                 url: '/faq',
                 parent: 'index4',
@@ -123,13 +123,13 @@ angular
                 templateUrl: 'views/main.html'
             })
             .state('place', {
-                parent: 'index4',
+                parent: 'index5',
                 controller: 'PlaceCtrl',
                 url: '/place/:id',
                 templateUrl: 'views/place.html'
             })
             .state('city', {
-                parent: 'index4',
+                parent: 'index5',
                 controller: 'CityCtrl',
                 url: '/city/:id',
                 templateUrl: 'views/city.html'
@@ -169,7 +169,6 @@ angular
             })
 
 
-
             .state('user', {
                 controller: 'UserCtrl',
                 templateUrl: 'views/user.html',
@@ -179,10 +178,13 @@ angular
                 }
             })
             .state('checkout', {
-                parent: 'user',
+                parent: 'index4',
                 controller: 'CheckoutCtrl',
                 url: '/checkout',
-                templateUrl: 'views/checkout.html'
+                templateUrl: 'views/checkout.html',
+                data: {
+                    authorizedRoles: ['user']
+                }
             })
             .state('user.orders', {
                 url: '/orders',

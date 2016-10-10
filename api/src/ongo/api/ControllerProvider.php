@@ -145,6 +145,14 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new GalleryController($app["db"]);
             return $controller->byCountry(intval($id));
         });
+        $controllers->get("/city/{id}", function (Application $app, $id) {
+            $controller = new CityController($app["db"]);
+            return $controller->get(intval($id));
+        });
+        $controllers->get("/city/{id}/galleries", function (Application $app, $id) {
+            $controller = new GalleryController($app["db"]);
+            return $controller->byCity(intval($id));
+        });
         $controllers->get("/places", function (Application $app, Request $request) {
             $controller = new PlaceController($app["db"]);
             return $controller->top(min(10, intval($request->get("limit"))));

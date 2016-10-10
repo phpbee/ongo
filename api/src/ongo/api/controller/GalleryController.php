@@ -62,7 +62,6 @@ final class GalleryController
         $model = new GalleryModel($this->dbConn);
         $galleries = $model->byPhotograph($photograph_id);
 
-
         return new JsonResponse($this->result($galleries));
     }
 
@@ -72,6 +71,21 @@ final class GalleryController
         $model = new GalleryModel($this->dbConn);
         $galleries = $model->byCountry($country_id);
 
+        return new JsonResponse($this->result($galleries));
+    }
+
+    public function byCity($id)
+    {
+        $model = new GalleryModel($this->dbConn);
+        $galleries = $model->byCity($id);
+
+        return new JsonResponse($this->result($galleries));
+    }
+
+    public function byPlace($id)
+    {
+        $model = new GalleryModel($this->dbConn);
+        $galleries = $model->byPlace($id);
 
         return new JsonResponse($this->result($galleries));
     }

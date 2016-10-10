@@ -40,5 +40,24 @@ final class CityController
         return new JsonResponse($city->serialize($this->dbConn));
 
     }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws \ongo\shared\exception\InvalidIdException
+     */
+    public function get($id)
+    {
+        $model = new CityModel($this->dbConn);
+        $item = $model->findById($id);
+
+
+        $data = $item->serialize($this->dbConn);
+
+        $data['stats'] = $model->getStats($id);
+
+        return new JsonResponse($data);
+    }
+
 }
 

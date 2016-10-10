@@ -86,5 +86,37 @@ final class CityModel
             isset($row['logo']) ? $row['logo'] : null
         );
     }
+
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function getStats($id)
+    {
+        $galleries = $this->dbConn->executeQuery(
+            "select count(*) as count from gallery where place_id in (select DISTINCT id from place where city_id = ?)",
+            array($id))->fetch();
+
+        $places = $this->dbConn->executeQuery(
+            "select count(*) as count from place where city_id  = ? ",
+            array($id))->fetch();
+
+        $photos = $this->dbConn->executeQuery(
+            "select count(*) as count from photo where gallery_id in (select distinct id from gallery where place_id in (select DISTINCT id from place where city_id = ? ))",
+            array($id))->fetch();
+
+        $photographers = $this->dbConn->executeQuery(
+            "select count(distinct photograph_id) as count from gallery where place_id in (select DISTINCT id from place where city_id = ? )",
+            array($id))->fetch();
+
+        return [
+            'galleries' => $galleries['count'],
+            'places' => $places['count'],
+            'photos' => $photos['count'],
+            'photographers' => $photographers['count'],
+        ];
+    }
+
 }
 

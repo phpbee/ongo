@@ -11,8 +11,8 @@ describe('Service: City', function () {
     City = _City_;
   }));
 
-  it('should do something', function () {
-    expect(!!City).toBe(true);
-  });
+  //it('should do something', function () {
+  //  expect(!!City).toBe(true);
+  //});
 
 });

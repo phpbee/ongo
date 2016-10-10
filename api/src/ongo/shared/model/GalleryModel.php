@@ -26,7 +26,7 @@ final class GalleryModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, created, place_id, photograph_id from gallery where id = ?",
+            "select * from gallery where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -40,7 +40,7 @@ final class GalleryModel
     {
         $galleries = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, created, place_id, photograph_id from gallery where photograph_id = ? order by id desc",
+            "select * from gallery where photograph_id = ? order by id desc",
             array($photograph_id)
         );
 
@@ -55,10 +55,43 @@ final class GalleryModel
     {
         $galleries = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, created, place_id, photograph_id from gallery where place_id in 
+            "select * from gallery where place_id in 
                 ( select DISTINCT id from place where city_id in ( SELECT DISTINCT id from city where country_id = ?)) 
               order by id desc",
             array($country_id)
+        );
+
+        while ($row = $rs->fetch()) {
+            $galleries[] = self::entityFromRecord($row);
+        }
+
+        return $galleries;
+    }
+    
+    public function byCity($id)
+    {
+        $galleries = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from gallery where place_id in 
+                ( select DISTINCT id from place where city_id = ?)
+              order by id desc",
+            array($id)
+        );
+
+        while ($row = $rs->fetch()) {
+            $galleries[] = self::entityFromRecord($row);
+        }
+
+        return $galleries;
+    }
+
+    public function byPlace($id)
+    {
+        $galleries = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from gallery where place_id = ?
+              order by id desc",
+            array($id)
         );
 
         while ($row = $rs->fetch()) {
@@ -72,7 +105,7 @@ final class GalleryModel
     {
         $galleries = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, created, place_id, photograph_id from gallery order by id desc LIMIT ?",
+            "select * from gallery order by id desc LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 

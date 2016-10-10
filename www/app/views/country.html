@@ -38,17 +38,4 @@
     </div>
 
 
-
-    <div class="row">
-      <div class="small-12 medium-12 large-12 columns">
-        <div class="lastgallery">
-          <h3 translate="LAST_GALLERIES"></h3>
-          <div class="list" ng-repeat="g in galleries">
-            <a ui-sref="gallery({id: g.id})">{{ g.date | date: "dd/MM/yyyy" }}</a>
-            - <a class="city" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>, <a class="city" ui-sref="country({id: g.country.id})">{{ g.country.name }}</a>
-            (<a ui-sref="place({id: g.id})">{{ g.place.name }}</a>) <a ui-sref="countryer({id: g.countryer.id})">{{ g.photographer.name }}</a>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    <ng-include src="'views/inc_lastgalleries.html'"></ng-include>

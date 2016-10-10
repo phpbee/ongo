@@ -832,6 +832,17 @@ ul.pagination li.arrow a{
     -webkit-background-size: cover;
     background-size: cover;
 }
+.bg_city {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-image: url('/img/bg_city.jpg');
+}
 .search_gallery {
     position: absolute;
     z-index: 20;

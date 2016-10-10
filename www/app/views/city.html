@@ -1,0 +1,30 @@
+
+
+
+<div class="main" >
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="current_country">
+        <div class="info">
+          <h1>{{ city.name }}</h1>
+
+          <div class="tags">
+            <a href="">Photographer: <span>{{ city.stats.photographers }}</span></a>
+            <a href="">Places: <span>{{ city.stats.places }}</span></a>
+            <a href="">Photo galleries: <span>{{ city.stats.galleries }}</span></a>
+            <a href="">Photos total: <span>{{ city.stats.photos }}</span></a>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="city.logo" class="bg_city" style="background-image: url('{{ city.logo }}');"></div>
+  <div ng-if="!city.logo" class="bg_city"></div>
+</div>
+
+
+<ng-include src="'views/inc_lastgalleries.html'"></ng-include>
