@@ -8,7 +8,7 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-    .controller('CheckoutCtrl', function ($scope, $state, storage, Gallery, Order) {
+    .controller('CheckoutCtrl', function ($scope, $state, cart, Gallery, Order) {
         console.log('CheckoutCtrl');
         angular.forEach($scope.cart.items, function (item) {
             item.photo = Gallery.photo({id: item.gallery_id, photo_id: item.photo_id});
@@ -16,12 +16,11 @@ angular.module('wwwApp')
 
         });
 
-        $scope.checkout = function (cart) {
-            console.log(cart);
-            Order.create({cart:cart}, function(data) {
-                /** TODO: refactor CartCtrl to Service **/
-                //CartCtrl.emptyCart();
-               $state.go('order.success', {id: data.id});
+        $scope.checkout = function (c) {
+            console.log(c);
+            Order.create({cart: c}, function (data) {
+                cart.emptyCart();
+                $state.go('order.success', {id: data.id});
             });
         }
     });

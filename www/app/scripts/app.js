@@ -19,7 +19,8 @@ angular
         'pascalprecht.translate',
         'angularLocalStorage',
         'ngCookies',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'angularMoment'
     ])
     .constant('AUTH_EVENTS', {
         loginSuccess: 'auth-login-success',
@@ -73,6 +74,21 @@ angular
     //         }
     //     });
     // })
+    .run(function($rootScope, cart, $translate, amMoment, $http) {
+
+        cart.initialize();
+
+
+        $rootScope.keys = Object.keys;
+
+        $rootScope.$on('$translateChangeSuccess', function () {
+            amMoment.changeLocale($translate.use());
+            $http.defaults.headers.common.Translation = $translate.use();
+            console.log($translate.use());
+        });
+
+
+    })
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider

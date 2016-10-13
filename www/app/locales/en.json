@@ -1,6 +1,9 @@
 {
   "CURRENCY": "USD",
   "CURRENCY_SYMBOL": "$",
+  "RUB": "Rub",
+  "USD": "USD",
+
   "PRICE": {
     "best": "250",
     "web": "50"
@@ -11,8 +14,9 @@
   },
   "MENU": {
     "CHECKOUT": "Checkout",
+    "ORDERS": "My orders",
     "LOGIN": "Sign in",
-    "LOGOUT": "Log out"
+    "LOGOUT": "Sign out"
   },
   "SLIDER": {
     "BROWSE_GALLERY": "More images from"

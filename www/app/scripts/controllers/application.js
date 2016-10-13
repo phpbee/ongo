@@ -8,19 +8,18 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-    .controller('ApplicationCtrl', function ($rootScope, $scope, $stateParams, $state, $translate, AuthService, Session, storage) {
+    .controller('ApplicationCtrl', function ($rootScope, $scope, $stateParams, $state, $translate, AuthService, Session, storage, cart) {
 
         console.log('ApplicationCtrl');
-        storage.bind($rootScope, 'cart');
 
         $scope.changeLanguage = function (key) {
-            $scope.activeLanguage = key;
             $translate.use(key);
+            cart.refresh();
         };
 
-        $scope.activeLanguage = $translate.use() ||
-            $translate.storage().get($translate.storageKey()) ||
-            $translate.preferredLanguage();
+        $rootScope.$on('$translateChangeSuccess', function () {
+            $rootScope.activeLanguage = $translate.use();
+        });
 
 
         $rootScope.currentUser = null;

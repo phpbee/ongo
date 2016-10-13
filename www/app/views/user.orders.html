@@ -12,10 +12,10 @@
                 <tr ng-repeat="o in orders" class="{{ 'ORDER.CSSSTATUS.'+o.status | translate }}">
                     <td><span>{{ 'ORDER.STATUS.'+o.status | translate}}</span></td>
                     <td><strong><a ui-sref="order({id: o.id})">{{ o.id }}</a></strong></td>
-                    <td><em>{{ o.created | strtotime | date : "MMM dd, yyyy"}}</em></td>
-                    <td><b>{{ o.payload.total }} <translate>CURRENCY_SYMBOL</translate></b></td>
+                    <td><em>{{ o.created | strtotime | amDateFormat : "lll"}}</em></td>
+                    <td><b>{{ o.payload.total }} {{ o.payload.currency | translate }}</b></td>
                     <td ng-if="o.payment_status == 'payment_approved'"><em>Approved</em></td>
-                    <td ng-if="o.payment_status != 'payment_approved'"><a href="">Try to Pay</a></td>
+                    <td ng-if="o.payment_status != 'payment_approved'"><!--<a href="">Try to Pay</a>--></td>
                 </tr>
           </tbody></table>
         </div>

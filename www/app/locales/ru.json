@@ -1,21 +1,26 @@
 {
-  "CURRENCY": "Руб",
-  "CURRENCY_SYMBOL": "руб",
+  "CURRENCY": "RUB",
+  "CURRENCY_SYMBOL": "₽",
+  "RUB": "Руб",
+  "USD": "USD",
+
   "PRICE": {
     "best": "2500",
     "web": "500"
   },
   "MENU": {
+    "CHECKOUT": "Оформление заказа",
+    "ORDERS": "Мои заказы",
     "LOGIN": "Вход",
-    "CHECKOUT": "Оформление заказа"
+    "LOGOUT": "Выход"
   },
   "About": "О проекте",
   "SLIDER": {
-    "BROWSE_GALLERY":"Перейти в галерею"
+    "BROWSE_GALLERY": "Перейти в галерею"
   },
   "FIND_YOUR_PHOTOS": "Найди свою фотографию",
-  "CHOOSE_YOUR_PHOTOS":"Выберите свои фотографии из предложенных",
-  "WE_ARE_LOOKING_PHOTOGRAPHERS":"Мы ищем фотографов для сотрудничества",
+  "CHOOSE_YOUR_PHOTOS": "Выберите свои фотографии из предложенных",
+  "WE_ARE_LOOKING_PHOTOGRAPHERS": "Мы ищем фотографов для сотрудничества",
   "REGISTRATION_FOR_PHOTOGRAPHERS": "Регистрация для фотографов",
   "BROWSE_TO_GALLERY": "Просмотр этой галереи",
   "LAST_GALLERIES": "Последние галереи",

@@ -14,10 +14,11 @@
                     <ul class="right">
                         <li ng-if="!isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user" translate="MENU.LOGIN"></a></li>
                         <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="logout" translate="MENU.LOGOUT"></a></li>
-                        <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user.orders" translate="Orders"></a></li>
-                        <li ng-if="cart.items"><a class="menu_ico2" ui-sref="checkout"><span translate="MENU.CHECKOUT"></span></a></li>
-                        <li ng-if="activeLanguage!='en'"><a class="menu_ico3" href="#" ng-click="changeLanguage('en')"><span>English</span></a></li>
-                        <li ng-if="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru')"><span>Русский</span></a></li>
+                        <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user.orders" translate="MENU.ORDERS"></a></li>
+                        <li ng-if="keys(cart.items).length"><a class="menu_ico2" ui-sref="checkout"><span translate="MENU.CHECKOUT"></span> ({{ keys(cart.items).length }})</a></li>
+                        <li ng-if="activeLanguage!='en'"><a class="menu_ico3" href="#" ng-click="changeLanguage('en');"><span>English</span></a></li>
+                        <li ng-if="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru');"><span>Русский</span></a></li>
+
                         <li class="has-dropdown">
                             <a class="menu_ico3" href="#"><span>Language</span></a>
                             <ul class="dropdown">
@@ -25,6 +26,9 @@
                                 <li><a href="#" href="#" ng-click="changeLanguage('ru')"><img src="/img/flag/flag_ru.jpg">Russian</a></li>
                             </ul>
                         </li>
+
+
+
                         <li class="has-dropdown">
                             <a class="menu_ico4" href="#"></a>
                             <ul class="dropdown">

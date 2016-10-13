@@ -1,11 +1,5 @@
 <div class="small-12 medium-7 large-8 columns">
 
-  <div class="row">
-    <div class="small-12 medium-12 large-12 columns">
-      Cart
-    </div>
-  </div>
-
   <div class="cartblock" >
 
     <div class="row cart_item" ng-repeat="(id,item) in cart.items">
@@ -17,7 +11,7 @@
         <div class="row">
           <div class="small-3 medium-4 large-3 columns"><strong>Title</strong></div>
           <div class="small-5 medium-4 large-6 columns" ui-sref="gallery({id: item.gallery.id})">{{ item.gallery.place.name }}</div>
-          <div class="small-4 medium-4 large-3 columns text-right"><strong><translate>CURRENCY_SYMBOL</translate>{{ 'PRICE.'+item.resolution | translate}}&nbsp;<translate>CURRENCY</translate></strong></div>
+          <div class="small-4 medium-4 large-3 columns text-right"><strong><translate>CURRENCY_SYMBOL</translate>{{ 'PRICE.'+item.resolution | translate}}&nbsp;{{ item.currency | translate }}</strong></div>
         </div>
 
         <div class="row">
@@ -54,7 +48,7 @@
 <div class="small-12 medium-5 large-4 columns">
   <div class="purchase_block">
     <h5>PURCHASE</h5>
-    <span class="total">Total: <strong><translate>CURRENCY_SYMBOL</translate>{{ cart.total | translate}}&nbsp;<translate>CURRENCY</translate></strong></span>
+    <span class="total">Total: <strong>{{ cart.currency_symbol }}{{ cart.total | translate}}&nbsp;{{ cart.currency | translate }}</strong></span>
     <a ng-click="checkout(cart)" class="button expand radius">Proceed to payment</a>
   </div>
 </div>
