@@ -385,6 +385,7 @@ body h2, body h3 {
 .current_country img{
     float: left;
     margin-right: 16px;
+    max-width: 144px;
 }
 .current_country .info{
     float: left;
