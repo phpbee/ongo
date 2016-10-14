@@ -20,7 +20,7 @@ api:
     - mysql_dev:mysql
     - memcached_dev:memcached
   environment:
-    - MYSQL_HOST=mysql
+    - MYSQL_HOST=dev.ongophotos.com
     - MYSQL_DB=ongo_test
     - MYSQL_USER=root
     - MYSQL_PASSWORD
