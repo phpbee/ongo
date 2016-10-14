@@ -116,6 +116,21 @@ final class GalleryModel
         return $galleries;
     }
 
+    public function topLogos($limit = 3)
+    {
+        $galleries = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from gallery where logo is not null order by id desc LIMIT ?",
+            [$limit], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $galleries[] = self::entityFromRecord($row);
+        }
+
+        return $galleries;
+    }
+
     /**
      * @param $row
      * @return GalleryEntity

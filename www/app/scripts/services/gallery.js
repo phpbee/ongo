@@ -18,7 +18,7 @@ angular.module('wwwApp')
                 'thumbnails': {isArray: true, url: config.api.baseURL + '/gallery/:id/thumbnails'},
                 'icons': {isArray: true, url: config.api.baseURL + '/gallery/:id/icons'},
                 'photo': {isArray: false, url: config.api.baseURL + '/gallery/:id/photo/:photo_id'},
-                'top': {method: 'GET', url: config.api.baseURL + '/top/gallery'}
+                'top': {isArray: true, method: 'GET', url: config.api.baseURL + '/top/gallery'}
             }
         );
     });

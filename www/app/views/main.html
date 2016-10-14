@@ -17,10 +17,10 @@
 
     <div class="lighter">
         <ul id="lightSlider">
-            <section ng-repeat="p in topGallery.photos">
+            <section ng-repeat="p in topGalleries">
                 <li>
-                    <img ng-src="{{ p.src }}" imageonload="lightSlider" style="display:none;">
-                    <a ui-sref="gallery({id:topGallery.id})"><translate>BROWSE_TO_GALLERY</translate></a>
+                    <img ng-src="{{ p.logo }}" imageonload="lightSlider" style="display:none;">
+                    <a ui-sref="gallery({id:p.id})"><translate>BROWSE_TO_GALLERY</translate></a>
                 </li>
             </section>
 

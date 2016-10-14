@@ -104,6 +104,20 @@ final class GalleryController
 
     }
 
+
+    /**
+     * @param int $limit
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function topLogos($limit = 5)
+    {
+        $model = new GalleryModel($this->dbConn);
+        $galleries = $model->topLogos($limit);
+
+        return new JsonResponse($this->result($galleries));
+    }
+
     private function result($galleries)
     {
 
@@ -191,27 +205,5 @@ final class GalleryController
         return new JsonResponse($icons);
     }
 
-    /**
-     * @param int $limit
-     * @return JsonResponse
-     * @throws \Exception
-     */
-    public function topItem($limit = 5)
-    {
-        $model = new GalleryModel($this->dbConn);
-        $photoModel = new PhotoModel($this->dbConn);
-
-        $galleries = $model->top(1);
-        /** @var GalleryEntity $gallery */
-        $gallery = reset($galleries);
-        $ret = $gallery->serialize($this->dbConn);
-        $ret['photos'] = SerializableEntity::serializeArray(
-            $photoModel->fromGalleryID($gallery->getId(), $limit),
-            $this->dbConn
-        );
-
-        return new JsonResponse($ret);
-
-    }
 }
 
