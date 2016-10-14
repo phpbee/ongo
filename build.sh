@@ -25,6 +25,12 @@ fi
 tag_api="$r/$p:api-$b"
 tag_www="$r/$p:www-$b"
 
+cd api
+  php composer.phar install
+  docker build -f Dockerfile -t $tag_api .
+cd ..
+
+
 cd www
   if [[ -d dist ]]; then rm -r dist; fi
 
@@ -41,10 +47,6 @@ cd www
   docker build -t $tag_www .
 
 
-cd ..
-
-cd api
-  docker build -f Dockerfile -t $tag_api .
 cd ..
 
 docker push $tag_www
