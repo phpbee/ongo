@@ -162,6 +162,36 @@ angular
                 url: '/photographer/:id',
                 templateUrl: 'views/photographer.html'
             })
+            .state('countryList', {
+                parent: 'index5',
+                controller: 'CountryListCtrl',
+                url: '/countries',
+                templateUrl: 'views/country_list.html'
+            })
+            .state('cityList', {
+                parent: 'index5',
+                controller: 'CityListCtrl',
+                url: '/cities',
+                templateUrl: 'views/city_list.html'
+            })
+            .state('placeList', {
+                parent: 'index5',
+                controller: 'PlaceListCtrl',
+                url: '/places',
+                templateUrl: 'views/place_list.html'
+            })
+            .state('photographerList', {
+                parent: 'index5',
+                controller: 'PhotographerListCtrl',
+                url: '/photographers',
+                templateUrl: 'views/photographer_list.html'
+            })
+            .state('galleryList', {
+                parent: 'index5',
+                controller: 'GalleryListCtrl',
+                url: '/galleries',
+                templateUrl: 'views/gallery_list.html'
+            })
             .state('gallery', {
                 parent: 'index2',
                 controller: 'GalleryCtrl',
