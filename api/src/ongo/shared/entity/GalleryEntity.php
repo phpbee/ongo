@@ -14,6 +14,8 @@ final class GalleryEntity extends SerializableEntity
     private $place_id;
     /** @var  int */
     private $photograph_id;
+    /** @var  string */
+    private $logo;
 
     /**
      * GalleryEntity constructor.
@@ -21,14 +23,17 @@ final class GalleryEntity extends SerializableEntity
      * @param int $created
      * @param int $place_id
      * @param int $photograph_id
+     * @param string $logo
      */
-    public function __construct($id, $created, $place_id, $photograph_id)
+    public function __construct($id, $created, $place_id, $photograph_id, $logo)
     {
         $this->id = $id;
         $this->created = $created;
         $this->place_id = $place_id;
         $this->photograph_id = $photograph_id;
+        $this->logo = $logo;
     }
+
 
     /**
      * @return int
@@ -66,6 +71,7 @@ final class GalleryEntity extends SerializableEntity
             'created' => $this->created,
             'place_id' => $this->place_id,
             'photograph_id' => $this->photograph_id,
+            'logo' => $this->logo,
         ];
     }
 }

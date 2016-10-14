@@ -26,7 +26,7 @@ final class SessionModel {
 	public function findByToken($token)
 	{
 		if (!($row = $this->dbConn->executeQuery(
-			"select user_id, token from session where token = ?",[$token]
+			"select * from session where token = ?",[$token]
 		)->fetch())
 		) {
 			throw new SessionNotFoundException($token);

@@ -20,7 +20,7 @@ final class CountryModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, name, logo, flag from country where id = ?",
+            "select * from country where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -57,7 +57,7 @@ final class CountryModel
     {
         $countries = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, name, logo, flag from country order by id LIMIT ?",
+            "select * from country order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
@@ -113,8 +113,8 @@ final class CountryModel
         return new CountryEntity(
             $row['id'],
             $row['name'],
-            isset($row['logo']) ? $row['logo'] : null,
-            isset($row['flag']) ? $row['flag'] : null
+            $row['logo'] ?: null,
+            $row['flag'] ?: null
         );
     }
 }

@@ -26,7 +26,7 @@ final class CityModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, name, country_id from city where id = ?",
+            "select * from city where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -62,7 +62,7 @@ final class CityModel
     {
         $cities = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, name, country_id, logo from city order by id LIMIT ?",
+            "select * from city order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
@@ -83,7 +83,7 @@ final class CityModel
             $row['id'],
             $row['name'],
             $row['country_id'],
-            isset($row['logo']) ? $row['logo'] : null
+            $row['logo'] ?: null
         );
     }
 

@@ -26,7 +26,7 @@ final class PhotographerModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, name, photo from photograph where id = ?",
+            "select * from photograph where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -44,7 +44,7 @@ final class PhotographerModel
     {
         $versions = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, name, photo from photograph order by id LIMIT ?",
+            "select * from photograph order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
@@ -104,7 +104,7 @@ final class PhotographerModel
         return new PhotographerEntity(
             $row['id'],
             $row['name'],
-            $row['photo']
+            $row['photo'] ?: null
         );
     }
 }

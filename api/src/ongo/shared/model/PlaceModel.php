@@ -26,7 +26,7 @@ final class PlaceModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, name, city_id from place where id = ?",
+            "select * from place where id = ?",
             array($id))->fetch())
         ) {
             throw new InvalidIdException($id);
@@ -63,7 +63,7 @@ final class PlaceModel
     {
         $versions = array();
         $rs = $this->dbConn->executeQuery(
-            "select id, name, city_id, logo from place order by id LIMIT ?",
+            "select * from place order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
@@ -84,7 +84,7 @@ final class PlaceModel
             $row['id'],
             $row['name'],
             $row['city_id'],
-            isset($row['logo']) ? $row['logo'] : null
+            $row['logo'] ?: null
         );
     }
 }

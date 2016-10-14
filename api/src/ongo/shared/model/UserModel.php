@@ -25,7 +25,7 @@ final class UserModel
     public function findById($id)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, email from user where id = ?",
+            "select * from user where id = ?",
             array($id))->fetch())
         ) {
             throw new UserNotFoundException($id);
@@ -43,7 +43,7 @@ final class UserModel
     public function findByEmail($email)
     {
         if (!($row = $this->dbConn->executeQuery(
-            "select id, email from user where email = ?", [$email]
+            "select * from user where email = ?", [$email]
         )->fetch())
         ) {
             throw new UserNotFoundException($email);

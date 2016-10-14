@@ -126,7 +126,8 @@ final class GalleryModel
             $row['id'],
             $row['created'],
             $row['place_id'],
-            $row['photograph_id']
+            $row['photograph_id'],
+            $row['logo'] ?: null
         );
     }
 }
