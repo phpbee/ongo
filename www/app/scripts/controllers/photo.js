@@ -8,7 +8,7 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-    .controller('PhotoCtrl', function ($scope, $stateParams, Gallery) {
+    .controller('PhotoCtrl', function ($scope, $stateParams, Gallery, $http) {
 
         console.log('PhotoCtrl');
 
@@ -28,8 +28,21 @@ angular.module('wwwApp')
                             return photo.id > max ? photo.id : max;
                         }, 0);
 
-                        $scope.prev_photo = Math.max(photo.id - 1, min_photo);
-                        $scope.next_photo = Math.min(photo.id + 1, max_photo);
+                        var prevPhoto = Math.max(photo.id - 1, min_photo);
+                        var nextPhoto = Math.min(photo.id + 1, max_photo);
+
+                        $scope.prev_photo = prevPhoto;
+                        $scope.next_photo = nextPhoto;
+
+                        var f = function (cachedPhoto) {
+                            console.log('cachedPhoto');
+                            console.log(cachedPhoto);
+                            var i = new Image();
+                            i.src = cachedPhoto.src;
+
+                        };
+                        Gallery.photo({id: $stateParams.gallery_id, photo_id: nextPhoto}, f);
+                        Gallery.photo({id: $stateParams.gallery_id, photo_id: prevPhoto}, f);
                     }
                 );
             }

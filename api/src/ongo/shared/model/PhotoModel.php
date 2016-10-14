@@ -36,8 +36,9 @@ final class PhotoModel
 
 
 
-    public function fromGalleryID($id, $limit = 100)
+    public function fromGalleryID($id, $limit = null)
     {
+        $limit = $limit ?: 100;
         $photos = array();
         $rs = $this->dbConn->executeQuery(
             "select * from photo where gallery_id = :id order by id LIMIT :limit",

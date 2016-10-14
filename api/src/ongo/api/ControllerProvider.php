@@ -173,9 +173,9 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new GalleryController($app["db"]);
             return $controller->thumbnails(intval($id));
         });
-        $controllers->get("/gallery/{id}/icons", function (Application $app, $id) {
+        $controllers->get("/gallery/{id}/icons", function (Application $app, $id, Request $request) {
             $controller = new GalleryController($app["db"]);
-            return $controller->icons(intval($id));
+            return $controller->icons(intval($id), $request->get("limit") ? intval($request->get("limit")) : null );
         });
         $controllers->get("/gallery/{id}/photo/{photo_id}", function (Application $app, $id, $photo_id) {
             $controller = new GalleryController($app["db"]);

@@ -13,8 +13,8 @@ angular.module('wwwApp')
             config.api.baseURL + '/photograph/:id',
             {'id': '@id'},
             {
-                'query': {isArray: true, url: config.api.baseURL + '/photographers'},
-                'galleries': {isArray: true, url: config.api.baseURL + '/photograph/:id/galleries'},
+                'query': {cache : true, isArray: true, url: config.api.baseURL + '/photographers'},
+                'galleries': {cache : true, isArray: true, url: config.api.baseURL + '/photograph/:id/galleries'},
             }
         );
     });

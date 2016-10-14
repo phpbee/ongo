@@ -4,8 +4,8 @@
             <div class="photo">
                 <img src="{{ photo.src }}">
                 <div class="controls">
-                    <a class="prev-search-photo" ui-sref="photo({id: prev_photo, gallery_id: gallery.id})"></a>
-                    <a class="next-search-photo" ui-sref="photo({id: next_photo, gallery_id: gallery.id})"></a>
+                    <a ng-if="prev_photo != photo.id" class="prev-search-photo" ui-sref="photo({id: prev_photo, gallery_id: gallery.id})"></a>
+                    <a ng-if="next_photo != photo.id" class="next-search-photo" ui-sref="photo({id: next_photo, gallery_id: gallery.id})"></a>
                 </div>
             </div>
         </div>

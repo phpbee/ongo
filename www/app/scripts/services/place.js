@@ -13,7 +13,7 @@ angular.module('wwwApp')
         config.api.baseURL + '/places',
         {},
         {
-          'top': {method: 'GET', url: config.api.baseURL + '/top/place'}
+          'top': {cache : true, method: 'GET', url: config.api.baseURL + '/top/place'}
         }
     );
   });

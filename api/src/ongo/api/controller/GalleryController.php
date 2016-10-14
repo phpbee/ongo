@@ -195,10 +195,10 @@ final class GalleryController
      * @return JsonResponse
      * @throws \Exception
      */
-    public function icons($gallery_id)
+    public function icons($gallery_id, $limit)
     {
         $model = new PhotoModel($this->dbConn);
-        $photos = $model->fromGalleryID($gallery_id);
+        $photos = $model->fromGalleryID($gallery_id, $limit);
         $icons = array_map(function (PhotoEntity $p) {
             return ['id' => $p->getId(), 'gallery_id' => $p->getGalleryId(), 'ico' => $p->getIco()];
         }, $photos);
