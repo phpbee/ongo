@@ -51,6 +51,7 @@
     "cdnjs-cdn-data": "^0.1.2",
     "compass": "^0.1.1",
     "debug": "^2.2.0",
+    "di": "0.0.1",
     "google-cdn-data": "^0.1.23",
     "graceful-fs": "^4.1.9",
     "grunt-contrib-compass": "^1.1.1",
