@@ -181,6 +181,9 @@ final class ControllerProvider implements ControllerProviderInterface
             if ($request->get('city')) {
                 return $controller->byCityID(intval($request->get('city')));
             }
+            if ($request->get('photographer')) {
+                return $controller->byPhotographID(intval($request->get('photographer')));
+            }
             return $controller->top(min(10, intval($request->get("limit"))));
 
         });
@@ -194,6 +197,9 @@ final class ControllerProvider implements ControllerProviderInterface
             }
             if ($request->get('place')) {
                 return $controller->byPlace(intval($request->get('place')));
+            }
+            if ($request->get('photographer')) {
+                return $controller->byPhotograph(intval($request->get('photographer')));
             }
             return $controller->top(min(10, intval($request->get("limit"))));
         });

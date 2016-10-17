@@ -114,6 +114,23 @@ final class PlaceModel
         return $places;
     }
 
+    public function byPhotographID($photograph_id)
+    {
+        $places = array();
+        $rs = $this->dbConn->executeQuery(
+            "select place.* from place WHERE id IN (
+              SELECT place_id from gallery where photograph_id = ?
+              ) order by name",
+            [$photograph_id], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $places[] = self::entityFromRecord($row);
+        }
+
+        return $places;
+    }
+
 
     public function getStats($id)
     {

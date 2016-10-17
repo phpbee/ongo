@@ -24,13 +24,13 @@
               </span>
 
             <div class="info">
-              <h1>{{ photograph.name }}</h1>
+              <h1 ui-sref="photographer({id: photograph.id})">{{ photograph.name }}</h1>
 
               <div class="tags">
-                <a href=""><translate>Places</translate>: <span>{{ photograph.stats.places }}</span></a>
-                <a href=""><translate>Galleries</translate>: <span>{{ photograph.stats.galleries }}</span></a>
-                <a href=""><translate>Photos</translate>: <span>{{ photograph.stats.photos }}</span></a>
-                <a href=""><translate>Views</translate>: <span>{{ photograph.stats.views }}</span></a>
+                  <a href=""><translate>Photos</translate>: <span>{{ photograph.stats.photos }}</span></a>
+                  <a href=""><translate>Views</translate>: <span>{{ photograph.stats.views }}</span></a>
+                  <a href="" ui-sref="photographer.places"><translate>Places</translate>: <span>{{ photograph.stats.places }}</span></a>
+                  <a href="" ui-sref="photographer.galleries"><translate>Galleries</translate>: <span>{{ photograph.stats.galleries }}</span></a>
               </div>
 
             </div>
@@ -42,4 +42,6 @@
       <div class="bg_country" style="background-image: url('/img/bg_photografer.jpg');"></div>
     </div>
 
+    <ui-view>
     <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
+    </ui-view>

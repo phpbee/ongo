@@ -85,11 +85,26 @@ final class PlaceController
 
     }
 
+    /**
+     * @param $city_id
+     * @return JsonResponse
+     * @throws \Exception
+     */
     public function byCityId($city_id)
     {
         $model = new PlaceModel($this->dbConn);
 
         $places = $model->byCityId($city_id);
+
+        return new JsonResponse(SerializableEntity::serializeArray($places, $this->dbConn));
+
+    }
+
+    public function byPhotographID($photograph_id)
+    {
+        $model = new PlaceModel($this->dbConn);
+
+        $places = $model->byPhotographID($photograph_id);
 
         return new JsonResponse(SerializableEntity::serializeArray($places, $this->dbConn));
 

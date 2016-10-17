@@ -183,6 +183,18 @@ angular
                 url: '/photographer/:id',
                 templateUrl: 'views/photographer.html'
             })
+            .state('photographer.places', {
+                url: '/places',
+                controller: 'PlaceListCtrl',
+                params: { 'query': 'photographer'},
+                templateUrl: 'views/country.places.html'
+            })
+            .state('photographer.galleries', {
+                url: '/galleries',
+                controller: 'GalleryListCtrl',
+                params: { 'query': 'photographer'},
+                templateUrl: 'views/country.galleries.html'
+            })
             .state('gallery', {
                 parent: 'index2',
                 controller: 'GalleryCtrl',
@@ -201,16 +213,16 @@ angular
                 parent: 'index3',
                 templateUrl: 'views/photo.html',
                 controller: 'PhotoCtrl',
-                url: '/gallery/:gallery_id/photo/:id',
+                url: '/gallery/:gallery_id/photo/:id'
             })
             .state('login', {
                 parent: 'index4',
                 templateUrl: 'views/login.html',
-                url: '/login',
+                url: '/login'
             })
             .state('logout', {
                 controller: 'LogoutCtrl',
-                url: '/logout',
+                url: '/logout'
             })
             .state('checkout', {
                 parent: 'index4',
