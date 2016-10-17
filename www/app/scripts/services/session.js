@@ -10,8 +10,6 @@
 angular.module('wwwApp')
   .service('Session', function ($http) {
       this.create = function (sessionId, userId, userRole) {
-          console.log('Session.create');
-          console.log([sessionId, userId, userRole]);
           this.id = sessionId;
           this.userId = userId;
           this.userRole = userRole;

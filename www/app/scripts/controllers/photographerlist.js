@@ -8,10 +8,11 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-  .controller('PhotographerListCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('PhotographerListCtrl', function ($scope, $stateParams, Photograph) {
+
+      var query = {};
+
+      query[$stateParams.query] = $stateParams.id;
+      $scope.photographers = Photograph.query(query);
+
   });

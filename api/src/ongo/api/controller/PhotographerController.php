@@ -35,6 +35,18 @@ final class PhotographerController
 
     }
 
+    /**
+     * @param $country_id
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function byCountryId($country_id)
+    {
+        $model = new PhotographerModel($this->dbConn);
+        $places = $model->byCountryId($country_id);
+        return new JsonResponse(SerializableEntity::serializeArray($places, $this->dbConn));
+    }
+
     public function get($id)
     {
         $photographerModel = new PhotographerModel($this->dbConn);

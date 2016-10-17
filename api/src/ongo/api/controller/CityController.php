@@ -51,12 +51,17 @@ final class CityController
         $model = new CityModel($this->dbConn);
         $item = $model->findById($id);
 
-
         $data = $item->serialize($this->dbConn);
-
         $data['stats'] = $model->getStats($id);
 
         return new JsonResponse($data);
+    }
+
+    public function byCountryId($id)
+    {
+        $model = new CityModel($this->dbConn);
+        $cities = $model->byCountryId($id);
+        return new JsonResponse(SerializableEntity::serializeArray($cities, $this->dbConn));
     }
 
 }

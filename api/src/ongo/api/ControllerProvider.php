@@ -127,6 +127,9 @@ final class ControllerProvider implements ControllerProviderInterface
         });
         $controllers->get("/photographers", function (Application $app, Request $request) {
             $controller = new PhotographerController($app["db"]);
+            if ($request->get('country')) {
+                return $controller->byCountryID(intval($request->get('country')));
+            }
             return $controller->top(min(10, intval($request->get("limit"))));
         });
         $controllers->get("/photograph/{id}", function (Application $app, $id) {
@@ -145,6 +148,13 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new GalleryController($app["db"]);
             return $controller->byCountry(intval($id));
         });
+        $controllers->get("/cities", function (Application $app, Request $request) {
+            $controller = new CityController($app["db"]);
+            if ($request->get('country')) {
+                return $controller->byCountryID(intval($request->get('country')));
+            }
+            return $controller->top(min(10, intval($request->get("limit"))));
+        });
         $controllers->get("/city/{id}", function (Application $app, $id) {
             $controller = new CityController($app["db"]);
             return $controller->get(intval($id));
@@ -155,10 +165,17 @@ final class ControllerProvider implements ControllerProviderInterface
         });
         $controllers->get("/places", function (Application $app, Request $request) {
             $controller = new PlaceController($app["db"]);
+            if ($request->get('country')) {
+                return $controller->byCountryID(intval($request->get('country')));
+            }
             return $controller->top(min(10, intval($request->get("limit"))));
+
         });
         $controllers->get("/galleries", function (Application $app, Request $request) {
             $controller = new GalleryController($app["db"]);
+            if ($request->get('country')) {
+                return $controller->byCountry(intval($request->get('country')));
+            }
             return $controller->top(min(10, intval($request->get("limit"))));
         });
         $controllers->get("/gallery/{id}", function (Application $app, $id) {

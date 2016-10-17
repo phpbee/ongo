@@ -13,9 +13,9 @@ angular.module('wwwApp')
             config.api.baseURL + '/city/:id',
             {},
             {
-                'query': {isArray: true, url: config.api.baseURL + '/cities'},
+                'query': {cache : true, isArray: true, url: config.api.baseURL + '/cities'},
                 'top': {cache : true, method: 'GET', url: config.api.baseURL + '/top/city'},
-                'galleries': {isArray: true, url: config.api.baseURL + '/city/:id/galleries'}
+                'galleries': {cache : true, isArray: true, url: config.api.baseURL + '/city/:id/galleries'}
 
             }
         );

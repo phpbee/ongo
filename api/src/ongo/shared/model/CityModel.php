@@ -36,6 +36,26 @@ final class CityModel
     }
 
     /**
+     * @param $country_id
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function byCountryId($country_id)
+    {
+        $cities = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from city WHERE country_id = ? order by name",
+            [$country_id], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $cities[] = self::entityFromRecord($row);
+        }
+
+        return $cities;
+    }
+
+    /**
      * @param $places PlaceEntity[]
      * @return CityEntity[]
      */

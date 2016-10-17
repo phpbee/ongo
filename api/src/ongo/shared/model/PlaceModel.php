@@ -74,6 +74,21 @@ final class PlaceModel
         return $versions;
     }
 
+    public function byCountryId($country_id)
+    {
+        $places = array();
+        $rs = $this->dbConn->executeQuery(
+            "select place.* from place WHERE city_id IN ( SELECT id from city WHERE country_id = ?) order by name",
+            [$country_id], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $places[] = self::entityFromRecord($row);
+        }
+
+        return $places;
+    }
+
     /**
      * @param $row
      * @return PlaceEntity

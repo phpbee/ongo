@@ -8,10 +8,11 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-  .controller('PlaceListCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('PlaceListCtrl', function ($scope, $stateParams, Place) {
+
+      var query = {};
+
+      query[$stateParams.query] = $stateParams.id;
+      $scope.places = Place.query(query);
+
   });

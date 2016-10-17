@@ -8,6 +8,9 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-  .controller('CityListCtrl', function () {
+    .controller('CityListCtrl', function ($scope, $stateParams, City) {
+        var query = {};
+        query[$stateParams.query] = $stateParams.id;
+        $scope.cities = City.query(query);
 
-  });
+    });

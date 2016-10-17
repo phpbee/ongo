@@ -42,17 +42,39 @@ final class PhotographerModel
      */
     public function top($limit = 3)
     {
-        $versions = array();
+        $photographers = array();
         $rs = $this->dbConn->executeQuery(
             "select * from photograph order by id LIMIT ?",
             [$limit], [\PDO::PARAM_INT]
         );
 
         while ($row = $rs->fetch()) {
-            $versions[] = self::entityFromRecord($row);
+            $photographers[] = self::entityFromRecord($row);
         }
 
-        return $versions;
+        return $photographers;
+    }
+
+    public function byCountryId($country_id)
+    {
+        $photographers = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from photograph
+              WHERE ID IN (
+               SELECT DISTINCT photograph_id from gallery WHERE place_id IN (
+                SELECT DISTINCT id from place WHERE city_id IN (
+                  SELECT DISTINCT id from city WHERE country_id = ?
+                )
+              )
+            ) order by name ",
+            [$country_id], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $photographers[] = self::entityFromRecord($row);
+        }
+
+        return $photographers;
     }
 
     /**

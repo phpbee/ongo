@@ -9,18 +9,6 @@
  */
 angular.module('wwwApp')
     .service('cart', function ($rootScope, storage, $translate) {
-        //return $resource(
-        //    config.api.baseURL + '/cart',
-        //    {},
-        //    {
-        //      'add': {method: 'POST'},
-        //      'save': {method: 'PUT'}
-        //    }
-        //);
-
-        console.log('CartService');
-
-
         this.save = function (c) {
             storage.set('cart', c);
         };

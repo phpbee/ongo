@@ -46,45 +46,12 @@ angular
             }
         };
     })
-    .directive('backImg', function () {
-        return function (scope, element, attrs) {
-            var url = attrs.backImg;
-            console.log(url);
-            element.css({
-                'background-image': 'url(' + url + ')',
-                'background-size': 'cover'
-            });
-        };
-    })
-    // .run(function ($rootScope, $state, $http, storage, loginModal) {
-    //     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-    //         var session = storage.get('session');
-    //         if (session) {
-    //             var headers = $http.defaults.headers.common;
-    //             headers.Authorization = 'Ongo version=1.0 token="' + session.token + '"';
-    //         } else if (toState.requireLogin) {
-    //             event.preventDefault();
-    //             loginModal()
-    //                 .then(function () {
-    //                     return $state.go(toState.name, toParams);
-    //                 })
-    //                 .catch(function () {
-    //                     return $state.go('main');
-    //                 });
-    //         }
-    //     });
-    // })
-    .run(function($rootScope, cart, $translate, amMoment, $http) {
-
-        cart.initialize();
-
-
+    .run(function ($rootScope, cart, $translate, amMoment, $http) {
         $rootScope.keys = Object.keys;
-
+        cart.initialize();
         $rootScope.$on('$translateChangeSuccess', function () {
             amMoment.changeLocale($translate.use());
             $http.defaults.headers.common.Translation = $translate.use();
-            console.log($translate.use());
         });
 
 
@@ -156,41 +123,35 @@ angular
                 url: '/country/:id',
                 templateUrl: 'views/country.html'
             })
+            .state('country.cities', {
+                url: '/cities',
+                controller: 'CityListCtrl',
+                params: { 'query': 'country'},
+                templateUrl: 'views/country.cities.html'
+            })
+            .state('country.places', {
+                url: '/places',
+                controller: 'PlaceListCtrl',
+                params: { 'query': 'country'},
+                templateUrl: 'views/country.places.html'
+            })
+            .state('country.photographers', {
+                url: '/photographers',
+                controller: 'PhotographerListCtrl',
+                params: { 'query': 'country'},
+                templateUrl: 'views/country.photographers.html'
+            })
+            .state('country.galleries', {
+                url: '/galleries',
+                controller: 'GalleryListCtrl',
+                params: { 'query': 'country'},
+                templateUrl: 'views/country.galleries.html'
+            })
             .state('photographer', {
                 parent: 'index5',
                 controller: 'PhotographerCtrl',
                 url: '/photographer/:id',
                 templateUrl: 'views/photographer.html'
-            })
-            .state('countryList', {
-                parent: 'index5',
-                controller: 'CountryListCtrl',
-                url: '/countries',
-                templateUrl: 'views/country_list.html'
-            })
-            .state('cityList', {
-                parent: 'index5',
-                controller: 'CityListCtrl',
-                url: '/cities',
-                templateUrl: 'views/city_list.html'
-            })
-            .state('placeList', {
-                parent: 'index5',
-                controller: 'PlaceListCtrl',
-                url: '/places',
-                templateUrl: 'views/place_list.html'
-            })
-            .state('photographerList', {
-                parent: 'index5',
-                controller: 'PhotographerListCtrl',
-                url: '/photographers',
-                templateUrl: 'views/photographer_list.html'
-            })
-            .state('galleryList', {
-                parent: 'index5',
-                controller: 'GalleryListCtrl',
-                url: '/galleries',
-                templateUrl: 'views/gallery_list.html'
             })
             .state('gallery', {
                 parent: 'index2',
@@ -213,21 +174,19 @@ angular
                 controller: 'LogoutCtrl',
                 url: '/logout',
             })
-
-
-            .state('user', {
-                controller: 'UserCtrl',
-                templateUrl: 'views/user.html',
-                url: '/user',
-                data: {
-                    authorizedRoles: ['user']
-                }
-            })
             .state('checkout', {
                 parent: 'index4',
                 controller: 'CheckoutCtrl',
                 url: '/checkout',
                 templateUrl: 'views/checkout.html',
+                data: {
+                    authorizedRoles: ['user']
+                }
+            })
+            .state('user', {
+                controller: 'UserCtrl',
+                templateUrl: 'views/user.html',
+                url: '/user',
                 data: {
                     authorizedRoles: ['user']
                 }

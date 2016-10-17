@@ -8,12 +8,13 @@
  * Service in the wwwApp.
  */
 angular.module('wwwApp')
-  .service('Place', function (config, $resource) {
-    return $resource(
-        config.api.baseURL + '/places',
-        {},
-        {
-          'top': {cache : true, method: 'GET', url: config.api.baseURL + '/top/place'}
-        }
-    );
-  });
+    .service('Place', function (config, $resource) {
+        return $resource(
+            config.api.baseURL + '/places',
+            {},
+            {
+                'query': {cache: true, isArray: true},
+                'top': {cache: true, method: 'GET', url: config.api.baseURL + '/top/place'}
+            }
+        );
+    });

@@ -104,7 +104,6 @@ final class GalleryController
 
     }
 
-
     /**
      * @param int $limit
      * @return JsonResponse

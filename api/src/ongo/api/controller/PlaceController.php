@@ -56,6 +56,21 @@ final class PlaceController
     }
 
     /**
+     * @param $country_id
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function byCountryId($country_id)
+    {
+        $model = new PlaceModel($this->dbConn);
+
+        $places = $model->byCountryId($country_id);
+
+        return new JsonResponse(SerializableEntity::serializeArray($places, $this->dbConn));
+
+    }
+
+    /**
      * @return JsonResponse
      */
     public function topItem()
