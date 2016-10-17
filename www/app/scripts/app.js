@@ -117,6 +117,24 @@ angular
                 url: '/city/:id',
                 templateUrl: 'views/city.html'
             })
+            .state('city.places', {
+                url: '/places',
+                controller: 'PlaceListCtrl',
+                params: { 'query': 'city'},
+                templateUrl: 'views/country.places.html'
+            })
+            .state('city.photographers', {
+                url: '/photographers',
+                controller: 'PhotographerListCtrl',
+                params: { 'query': 'city'},
+                templateUrl: 'views/country.photographers.html'
+            })
+            .state('city.galleries', {
+                url: '/galleries',
+                controller: 'GalleryListCtrl',
+                params: { 'query': 'city'},
+                templateUrl: 'views/country.galleries.html'
+            })
             .state('country', {
                 parent: 'index5',
                 controller: 'CountryCtrl',
@@ -157,6 +175,14 @@ angular
                 parent: 'index2',
                 controller: 'GalleryCtrl',
                 url: '/gallery/:id',
+                templateUrl: 'views/gallery.html'
+            })
+            .state('galleries', {
+                parent: 'index5',
+                url: '/galleries'
+            })
+            .state('galleries.day', {
+                url: '/day/:day',
                 templateUrl: 'views/gallery.html'
             })
             .state('photo', {

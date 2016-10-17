@@ -11,7 +11,6 @@ angular.module('wwwApp')
   .controller('PlaceListCtrl', function ($scope, $stateParams, Place) {
 
       var query = {};
-
       query[$stateParams.query] = $stateParams.id;
       $scope.places = Place.query(query);
 

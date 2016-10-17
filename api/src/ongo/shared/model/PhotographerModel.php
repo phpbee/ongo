@@ -55,6 +55,11 @@ final class PhotographerModel
         return $photographers;
     }
 
+    /**
+     * @param $country_id
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function byCountryId($country_id)
     {
         $photographers = array();
@@ -68,6 +73,31 @@ final class PhotographerModel
               )
             ) order by name ",
             [$country_id], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $photographers[] = self::entityFromRecord($row);
+        }
+
+        return $photographers;
+    }
+
+    /**
+     * @param $city_id
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function byCityId($city_id)
+    {
+        $photographers = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from photograph
+              WHERE ID IN (
+               SELECT DISTINCT photograph_id from gallery WHERE place_id IN (
+                SELECT DISTINCT id from place WHERE city_id = ?
+              )
+            ) order by name ",
+            [$city_id], [\PDO::PARAM_INT]
         );
 
         while ($row = $rs->fetch()) {

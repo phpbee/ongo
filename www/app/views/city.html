@@ -6,12 +6,12 @@
     <div class="large-12 columns">
       <div class="current_country">
         <div class="info">
-          <h1>{{ city.name }}</h1>
+          <h1 ui-sref="city({id: city.id})">{{ city.name }}</h1>
 
           <div class="tags">
-            <a href="">Photographer: <span>{{ city.stats.photographers }}</span></a>
-            <a href="">Places: <span>{{ city.stats.places }}</span></a>
-            <a href="">Photo galleries: <span>{{ city.stats.galleries }}</span></a>
+            <a href="" ui-sref="city.photographers">Photographer: <span>{{ city.stats.photographers }}</span></a>
+            <a href="" ui-sref="city.places">Places: <span>{{ city.stats.places }}</span></a>
+            <a href="" ui-sref="city.galleries">Photo galleries: <span>{{ city.stats.galleries }}</span></a>
             <a href="">Photos total: <span>{{ city.stats.photos }}</span></a>
           </div>
 
@@ -27,4 +27,6 @@
 </div>
 
 
-<ng-include src="'views/inc_lastgalleries.html'"></ng-include>
+<ui-view>
+  <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
+</ui-view>

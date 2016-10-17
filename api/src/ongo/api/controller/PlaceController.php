@@ -70,6 +70,16 @@ final class PlaceController
 
     }
 
+    public function byCityId($city_id)
+    {
+        $model = new PlaceModel($this->dbConn);
+
+        $places = $model->byCityId($city_id);
+
+        return new JsonResponse(SerializableEntity::serializeArray($places, $this->dbConn));
+
+    }
+
     /**
      * @return JsonResponse
      */
