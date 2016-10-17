@@ -108,6 +108,29 @@ final class PhotographerModel
     }
 
     /**
+     * @param $city_id
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function byPlaceId($city_id)
+    {
+        $photographers = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from photograph
+              WHERE ID IN (
+               SELECT DISTINCT photograph_id from gallery WHERE place_id = ?
+              ) order by name ",
+            [$city_id], [\PDO::PARAM_INT]
+        );
+
+        while ($row = $rs->fetch()) {
+            $photographers[] = self::entityFromRecord($row);
+        }
+
+        return $photographers;
+    }
+
+    /**
      * @param $galleries
      * @return PhotographerEntity[]
      */

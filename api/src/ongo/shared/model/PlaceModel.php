@@ -114,6 +114,30 @@ final class PlaceModel
         return $places;
     }
 
+
+    public function getStats($id)
+    {
+        $galleries = $this->dbConn->executeQuery(
+            "select count(*) as count from gallery where place_id = ?",
+            array($id))->fetch();
+
+        $photographers = $this->dbConn->executeQuery(
+            "select count(*) as count from photograph where id in (
+              select DISTINCT photograph_id from gallery where place_id = ?)",
+            array($id))->fetch();
+
+        $photos = $this->dbConn->executeQuery(
+            "select count(*) as count from photo where gallery_id in (select distinct id from gallery where place_id = ?)",
+            array($id))->fetch();
+
+        return [
+            'galleries' => $galleries['count'],
+            'photographers' => $photographers['count'],
+            'photos' => $photos['count'],
+            'views' => $photos['count'],
+        ];
+    }
+
     /**
      * @param $row
      * @return PlaceEntity

@@ -55,6 +55,21 @@ final class PlaceController
 
     }
 
+    public function get($place_id)
+    {
+        $model = new PlaceModel($this->dbConn);
+
+        $place = $model->findById($place_id);
+
+        $data = $place->serialize($this->dbConn);
+
+        $data['stats'] = $model->getStats($place_id);
+
+
+        return new JsonResponse($data);
+
+    }
+
     /**
      * @param $country_id
      * @return JsonResponse

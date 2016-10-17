@@ -1,0 +1,31 @@
+
+
+
+<div class="main" >
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="current_country">
+        <div class="info">
+          <h1 ui-sref="place({id: place.id})">{{ place.name }}</h1>
+
+          <div class="tags">
+            <a href="" ui-sref="place.photographers">Photographer: <span>{{ place.stats.photographers }}</span></a>
+            <a href="" ui-sref="place.galleries">Photo galleries: <span>{{ place.stats.galleries }}</span></a>
+            <a href="">Photos total: <span>{{ place.stats.photos }}</span></a>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="place.logo" class="bg_place" style="background-image: url('{{ place.logo }}');"></div>
+  <div ng-if="!place.logo" class="bg_place"></div>
+</div>
+
+
+<ui-view>
+  <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
+</ui-view>

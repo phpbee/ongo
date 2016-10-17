@@ -133,6 +133,9 @@ final class ControllerProvider implements ControllerProviderInterface
             if ($request->get('city')) {
                 return $controller->byCityId(intval($request->get('city')));
             }
+            if ($request->get('place')) {
+                return $controller->byPlaceId(intval($request->get('place')));
+            }
             return $controller->top(min(10, intval($request->get("limit"))));
         });
         $controllers->get("/photograph/{id}", function (Application $app, $id) {
@@ -166,6 +169,10 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new GalleryController($app["db"]);
             return $controller->byCity(intval($id));
         });
+        $controllers->get("/place/{id}", function (Application $app, $id) {
+            $controller = new PlaceController($app["db"]);
+            return $controller->get(intval($id));
+        });
         $controllers->get("/places", function (Application $app, Request $request) {
             $controller = new PlaceController($app["db"]);
             if ($request->get('country')) {
@@ -184,6 +191,9 @@ final class ControllerProvider implements ControllerProviderInterface
             }
             if ($request->get('city')) {
                 return $controller->byCity(intval($request->get('city')));
+            }
+            if ($request->get('place')) {
+                return $controller->byPlace(intval($request->get('place')));
             }
             return $controller->top(min(10, intval($request->get("limit"))));
         });

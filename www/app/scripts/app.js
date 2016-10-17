@@ -111,6 +111,18 @@ angular
                 url: '/place/:id',
                 templateUrl: 'views/place.html'
             })
+            .state('place.photographers', {
+                url: '/photographers',
+                controller: 'PhotographerListCtrl',
+                params: { 'query': 'place'},
+                templateUrl: 'views/country.photographers.html'
+            })
+            .state('place.galleries', {
+                url: '/galleries',
+                controller: 'GalleryListCtrl',
+                params: { 'query': 'place'},
+                templateUrl: 'views/country.galleries.html'
+            })
             .state('city', {
                 parent: 'index5',
                 controller: 'CityCtrl',
