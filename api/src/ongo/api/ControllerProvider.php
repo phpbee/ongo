@@ -201,6 +201,9 @@ final class ControllerProvider implements ControllerProviderInterface
             if ($request->get('photographer')) {
                 return $controller->byPhotograph(intval($request->get('photographer')));
             }
+            if ($request->get('day')) {
+                return $controller->byDay(new \DateTime($request->get('day')));
+            }
             return $controller->top(min(10, intval($request->get("limit"))));
         });
         $controllers->get("/gallery/{id}", function (Application $app, $id) {

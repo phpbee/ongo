@@ -36,6 +36,21 @@ final class GalleryModel
     }
 
 
+    public function byDay(\DateTime $day)
+    {
+        $galleries = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from gallery where created between :day and :day + INTERVAL 1 day order by id desc",
+            ['day' => $day->format("Y-m-d")]
+        );
+
+        while ($row = $rs->fetch()) {
+            $galleries[] = self::entityFromRecord($row);
+        }
+
+        return $galleries;
+    }
+
     public function byPhotograph($photograph_id)
     {
         $galleries = array();

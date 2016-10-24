@@ -201,13 +201,11 @@ angular
                 url: '/gallery/:id',
                 templateUrl: 'views/gallery.html'
             })
-            .state('galleries', {
-                parent: 'index5',
-                url: '/galleries'
-            })
-            .state('galleries.day', {
+            .state('day', {
+                parent: 'index4',
                 url: '/day/:day',
-                templateUrl: 'views/gallery.html'
+                controller: 'DayCtrl',
+                templateUrl: 'views/day.html'
             })
             .state('photo', {
                 parent: 'index3',
