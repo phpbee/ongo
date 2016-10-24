@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+        <div class="lastgallery">
+            <h3 translate="COUNTRIES"></h3>
+
+            <div class="list" ng-repeat="country in countries">
+                <a href="" ui-sref="country({id: country.id})">{{ country.name }}</a>
+            </div>
+
+        </div>
+    </div>
+</div>

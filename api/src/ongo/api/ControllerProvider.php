@@ -49,8 +49,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+
 final class ControllerProvider implements ControllerProviderInterface
 {
+    const MAX_LIMIT = 1000;
 
     public function connect(Application $app)
     {
@@ -136,7 +138,7 @@ final class ControllerProvider implements ControllerProviderInterface
             if ($request->get('place')) {
                 return $controller->byPlaceId(intval($request->get('place')));
             }
-            return $controller->top(min(10, intval($request->get("limit"))));
+            return $controller->top(min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
         });
         $controllers->get("/photograph/{id}", function (Application $app, $id) {
             $controller = new PhotographerController($app["db"]);
@@ -159,7 +161,11 @@ final class ControllerProvider implements ControllerProviderInterface
             if ($request->get('country')) {
                 return $controller->byCountryID(intval($request->get('country')));
             }
-            return $controller->top(min(10, intval($request->get("limit"))));
+            return $controller->top(min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
+        });
+        $controllers->get("/countries", function (Application $app, Request $request) {
+            $controller = new CountryController($app["db"]);
+            return $controller->top(min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
         });
         $controllers->get("/city/{id}", function (Application $app, $id) {
             $controller = new CityController($app["db"]);
@@ -184,7 +190,7 @@ final class ControllerProvider implements ControllerProviderInterface
             if ($request->get('photographer')) {
                 return $controller->byPhotographID(intval($request->get('photographer')));
             }
-            return $controller->top(min(10, intval($request->get("limit"))));
+            return $controller->top(min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
 
         });
         $controllers->get("/galleries", function (Application $app, Request $request) {
@@ -204,7 +210,7 @@ final class ControllerProvider implements ControllerProviderInterface
             if ($request->get('day')) {
                 return $controller->byDay(new \DateTime($request->get('day')));
             }
-            return $controller->top(min(10, intval($request->get("limit"))));
+            return $controller->top(min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
         });
         $controllers->get("/gallery/{id}", function (Application $app, $id) {
             $controller = new GalleryController($app["db"]);

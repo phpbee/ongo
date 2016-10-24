@@ -26,6 +26,22 @@ final class CityController
         $this->dbConn = $dbConn;
     }
 
+
+    /**
+     * @param int $limit
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function top($limit = 3)
+    {
+        $model = new CityModel($this->dbConn);
+        $cities = $model->top($limit);
+
+        return new JsonResponse(SerializableEntity::serializeArray($cities, $this->dbConn));
+
+    }
+
+
     /**
      * @return JsonResponse
      */

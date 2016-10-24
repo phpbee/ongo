@@ -53,5 +53,20 @@ final class CountryController
         return new JsonResponse($country->serialize($this->dbConn));
 
     }
+
+
+    /**
+     * @param int $limit
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function top($limit = 3)
+    {
+        $model = new CountryModel($this->dbConn);
+        $countries = $model->top($limit);
+
+        return new JsonResponse(SerializableEntity::serializeArray($countries, $this->dbConn));
+
+    }
 }
 

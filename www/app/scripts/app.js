@@ -105,6 +105,31 @@ angular
                 url: '/',
                 templateUrl: 'views/main.html'
             })
+            .state('list', {
+                abstract: 'true',
+                parent: 'index4',
+                templateUrl: 'views/list.html'
+            })
+            .state('list.countries', {
+                url: '/countries',
+                controller: 'CountryListCtrl',
+                templateUrl: 'views/list.countries.html'
+            })
+            .state('list.cities', {
+                url: '/cities',
+                controller: 'CityListCtrl',
+                templateUrl: 'views/list.cities.html'
+            })
+            .state('list.places', {
+                url: '/places',
+                controller: 'PlaceListCtrl',
+                templateUrl: 'views/list.places.html'
+            })
+            .state('list.photographers', {
+                url: '/photographers',
+                controller: 'PhotographerListCtrl',
+                templateUrl: 'views/list.photographers.html'
+            })
             .state('place', {
                 parent: 'index5',
                 controller: 'PlaceCtrl',
@@ -115,13 +140,13 @@ angular
                 url: '/photographers',
                 controller: 'PhotographerListCtrl',
                 params: { 'query': 'place'},
-                templateUrl: 'views/country.photographers.html'
+                templateUrl: 'views/list.photographers.html'
             })
             .state('place.galleries', {
                 url: '/galleries',
                 controller: 'GalleryListCtrl',
                 params: { 'query': 'place'},
-                templateUrl: 'views/country.galleries.html'
+                templateUrl: 'views/list.galleries.html'
             })
             .state('city', {
                 parent: 'index5',
@@ -133,19 +158,19 @@ angular
                 url: '/places',
                 controller: 'PlaceListCtrl',
                 params: { 'query': 'city'},
-                templateUrl: 'views/country.places.html'
+                templateUrl: 'views/list.places.html'
             })
             .state('city.photographers', {
                 url: '/photographers',
                 controller: 'PhotographerListCtrl',
                 params: { 'query': 'city'},
-                templateUrl: 'views/country.photographers.html'
+                templateUrl: 'views/list.photographers.html'
             })
             .state('city.galleries', {
                 url: '/galleries',
                 controller: 'GalleryListCtrl',
                 params: { 'query': 'city'},
-                templateUrl: 'views/country.galleries.html'
+                templateUrl: 'views/list.galleries.html'
             })
             .state('country', {
                 parent: 'index5',
@@ -157,25 +182,25 @@ angular
                 url: '/cities',
                 controller: 'CityListCtrl',
                 params: { 'query': 'country'},
-                templateUrl: 'views/country.cities.html'
+                templateUrl: 'views/list.cities.html'
             })
             .state('country.places', {
                 url: '/places',
                 controller: 'PlaceListCtrl',
                 params: { 'query': 'country'},
-                templateUrl: 'views/country.places.html'
+                templateUrl: 'views/list.places.html'
             })
             .state('country.photographers', {
                 url: '/photographers',
                 controller: 'PhotographerListCtrl',
                 params: { 'query': 'country'},
-                templateUrl: 'views/country.photographers.html'
+                templateUrl: 'views/list.photographers.html'
             })
             .state('country.galleries', {
                 url: '/galleries',
                 controller: 'GalleryListCtrl',
                 params: { 'query': 'country'},
-                templateUrl: 'views/country.galleries.html'
+                templateUrl: 'views/list.galleries.html'
             })
             .state('photographer', {
                 parent: 'index5',
@@ -187,13 +212,13 @@ angular
                 url: '/places',
                 controller: 'PlaceListCtrl',
                 params: { 'query': 'photographer'},
-                templateUrl: 'views/country.places.html'
+                templateUrl: 'views/list.places.html'
             })
             .state('photographer.galleries', {
                 url: '/galleries',
                 controller: 'GalleryListCtrl',
                 params: { 'query': 'photographer'},
-                templateUrl: 'views/country.galleries.html'
+                templateUrl: 'views/list.galleries.html'
             })
             .state('gallery', {
                 parent: 'index2',
