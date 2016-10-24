@@ -36,6 +36,23 @@ final class GalleryModel
     }
 
 
+    public function byDayAndCountry(\DateTime $day, $country_id)
+    {
+        $galleries = array();
+        $rs = $this->dbConn->executeQuery(
+            "select * from gallery WHERE place_id in
+                ( select DISTINCT id from place where city_id in ( SELECT DISTINCT id from city where country_id = :country_id ))
+                AND created between :day and :day + INTERVAL 1 day order by id desc",
+            ['day' => $day->format("Y-m-d"), 'country_id' => $country_id]
+        );
+
+        while ($row = $rs->fetch()) {
+            $galleries[] = self::entityFromRecord($row);
+        }
+
+        return $galleries;
+    }
+
     public function byDay(\DateTime $day)
     {
         $galleries = array();

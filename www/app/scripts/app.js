@@ -228,7 +228,7 @@ angular
             })
             .state('day', {
                 parent: 'index4',
-                url: '/day/:day',
+                url: '/day/:day?:country_id',
                 controller: 'DayCtrl',
                 templateUrl: 'views/day.html'
             })

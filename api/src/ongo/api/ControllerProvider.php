@@ -195,6 +195,12 @@ final class ControllerProvider implements ControllerProviderInterface
         });
         $controllers->get("/galleries", function (Application $app, Request $request) {
             $controller = new GalleryController($app["db"]);
+            if ($request->get('day') && $request->get('country')) {
+                return $controller->byDayAndCountry(new \DateTime($request->get('day')),intval($request->get('country')));
+            }
+            if ($request->get('day')) {
+                return $controller->byDay(new \DateTime($request->get('day')));
+            }
             if ($request->get('country')) {
                 return $controller->byCountry(intval($request->get('country')));
             }
@@ -206,9 +212,6 @@ final class ControllerProvider implements ControllerProviderInterface
             }
             if ($request->get('photographer')) {
                 return $controller->byPhotograph(intval($request->get('photographer')));
-            }
-            if ($request->get('day')) {
-                return $controller->byDay(new \DateTime($request->get('day')));
             }
             return $controller->top(min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
         });

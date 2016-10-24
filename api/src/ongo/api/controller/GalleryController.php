@@ -57,6 +57,13 @@ final class GalleryController
     }
 
 
+    public function byDayAndCountry(\DateTime $day, $country_id)
+    {
+        $model = new GalleryModel($this->dbConn);
+        $galleries = $model->byDayAndCountry($day, $country_id);
+
+        return new JsonResponse($this->result($galleries));
+    }
     public function byDay(\DateTime $day)
     {
         $model = new GalleryModel($this->dbConn);

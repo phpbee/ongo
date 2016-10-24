@@ -16,7 +16,7 @@
         </div>
 
         <div class="list">
-            <a ui-sref="day({day: ( g.created|strtotime|date:'yyyy-MM-dd' ) })">{{ g.created | strtotime | date: "dd/MM/yyyy" }}</a> -
+            <a ui-sref="day({day: ( g.created|strtotime|date:'yyyy-MM-dd' ), country_id: g.country.id })">{{ g.created | strtotime | date: "dd/MM/yyyy" }}</a> -
             <a class="city" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>,
             <a class="city" ui-sref="country({id: g.country.id})">{{ g.country.name }}</a>
             (<a ui-sref="place({id: g.place.id})">{{ g.place.name }}</a>)
