@@ -1,32 +1,32 @@
+<div class="main">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="current_country">
+                <div class="info">
+                    <h1 ui-sref="city({id: city.id})">{{ city.name }}</h1>
+
+                    <div class="tags">
+                        <a href="" ui-sref="city.photographers">Photographer:
+                            <span>{{ city.stats.photographers }}</span></a>
+                        <a href="" ui-sref="city.places">Places: <span>{{ city.stats.places }}</span></a>
+                        <a href="" ui-sref="city.galleries">Photo galleries: <span>{{ city.stats.galleries }}</span></a>
+                        <a href="">Photos total: <span>{{ city.stats.photos }}</span></a>
+                    </div>
+
+                </div>
 
 
-
-<div class="main" >
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="current_country">
-        <div class="info">
-          <h1 ui-sref="city({id: city.id})">{{ city.name }}</h1>
-
-          <div class="tags">
-            <a href="" ui-sref="city.photographers">Photographer: <span>{{ city.stats.photographers }}</span></a>
-            <a href="" ui-sref="city.places">Places: <span>{{ city.stats.places }}</span></a>
-            <a href="" ui-sref="city.galleries">Photo galleries: <span>{{ city.stats.galleries }}</span></a>
-            <a href="">Photos total: <span>{{ city.stats.photos }}</span></a>
-          </div>
-
+            </div>
         </div>
-
-
-      </div>
     </div>
-  </div>
 
-  <div ng-if="city.logo" class="bg_city" style="background-image: url('{{ city.logo }}');"></div>
-  <div ng-if="!city.logo" class="bg_city"></div>
+    <div ng-if="city.logo" class="bg_city" style="background-image: url('{{ city.logo }}');"></div>
+    <div ng-if="!city.logo" class="bg_city"></div>
 </div>
 
 
 <ui-view>
-  <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
+    <section>
+        <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
+    </section>
 </ui-view>

@@ -1,41 +1,44 @@
+<div class="main">
 
-  <div class="main">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="current_country">
+                <img ng-src="{{ country.flag }}">
 
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="current_country">
-        <img ng-src="{{ country.flag }}">
+                <div class="info">
+                    <h1 ui-sref="country({ id: country.id })">{{ country.name }}</h1>
 
-        <div class="info">
-          <h1 ui-sref="country({ id: country.id })">{{ country.name }}</h1>
+                    <div class="tags">
+                        <a href="" ui-sref="country.photographers">Photographers: <span>{{ country.stats.photographers }}</span></a>
+                        <a href="" ui-sref="country.cities">Cities: <span>{{ country.stats.cities }}</span></a>
+                        <a href="" ui-sref="country.places">Places: <span>{{ country.stats.places }}</span></a>
+                        <a href="" ui-sref="country.galleries">Photo galleries:
+                            <span>{{ country.stats.galleries }}</span></a>
+                        <a href="">Photo total: <span>{{ country.stats.photos }}</span></a>
+                    </div>
 
-          <div class="tags">
-            <a href="" ui-sref="country.photographers">Photographers: <span>{{ country.stats.photographers }}</span></a>
-            <a href="" ui-sref="country.cities">Cities: <span>{{ country.stats.cities }}</span></a>
-            <a href="" ui-sref="country.places">Places: <span>{{ country.stats.places }}</span></a>
-            <a href="" ui-sref="country.galleries">Photo galleries: <span>{{ country.stats.galleries }}</span></a>
-            <a href="">Photo total: <span>{{ country.stats.photos }}</span></a>
-          </div>
+                </div>
 
+                <div class="search_country">
+                    <h5>Choose country</h5>
+
+                    <form>
+                        <input class="typeahead state" type="text" placeholder="Enter your country">
+                        <input class="hidden-submit" type="submit">
+                        <i class="fi-magnifying-glass"></i>
+                    </form>
+                    <a class="close"></a>
+                </div>
+
+            </div>
         </div>
-
-        <div class="search_country">
-          <h5>Choose country</h5>
-          <form>
-            <input class="typeahead state" type="text" placeholder="Enter your country">
-            <input class="hidden-submit" type="submit">
-            <i class="fi-magnifying-glass"></i>
-          </form>
-          <a class="close"></a>
-        </div>
-
-      </div>
     </div>
-  </div>
 
-  <div class="bg_country" style="background-image: url('{{ country.logo }}');"></div>
+    <div class="bg_country" style="background-image: url('{{ country.logo }}');"></div>
 </div>
 
-    <ui-view>
-      <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
-    </ui-view>
+<ui-view>
+    <section>
+        <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
+    </section>
+</ui-view>
