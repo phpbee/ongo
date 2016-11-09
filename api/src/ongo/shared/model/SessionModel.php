@@ -37,7 +37,7 @@ final class SessionModel {
 
 	/**
 	 * @param UserEntity $user
-	 * @return UserEntity
+	 * @return SessionEntity
 	 * @throws DBALException
 	 * @throws SessionNotFoundException
 	 */

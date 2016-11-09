@@ -72,6 +72,14 @@ final class OrderModel
 
     }
 
+    public function markAsPaid(OrderEntity $order)
+    {
+        $this->dbConn->executeQuery(
+            "UPDATE `order` set status= ? where id  = ?",
+            array('paid', $order->getId())
+        );
+    }
+
     /**
      * @param $row
      * @return OrderEntity

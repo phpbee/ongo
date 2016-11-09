@@ -257,6 +257,7 @@ angular
                 }
             })
             .state('user', {
+                parent: 'index4',
                 controller: 'UserCtrl',
                 templateUrl: 'views/user.html',
                 url: '/user',
@@ -269,15 +270,24 @@ angular
                 controller: 'UserOrdersCtrl',
                 templateUrl: 'views/user.orders.html'
             })
+
+
             .state('order', {
-                parent: 'user',
+                parent: 'index4',
                 controller: 'OrderCtrl',
                 url: '/order/:id',
-                templateUrl: 'views/order.html'
+                templateUrl: 'views/order.html',
+                data: {
+                    authorizedRoles: ['user']
+                }
             })
             .state('order.success', {
                 url: '/success',
                 templateUrl: 'views/order.success.html'
+            })
+            .state('order.pay', {
+                url: '/pay',
+                templateUrl: 'views/order.pay.html'
             })
         ;
 

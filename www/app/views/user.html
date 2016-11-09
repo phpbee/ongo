@@ -1,9 +1,3 @@
-<div class="overflow index4">
-
-    <ng-include src="'views/inc_header.html'"></ng-include>
-
-
-    <div class="meetings">
         <div class="row">
             <section ng-if="!requireAuth($state,'user') || isAuthorized('user')">
                 <div class="secondmenu purchases">
@@ -23,8 +17,6 @@
                 <ng-include src="'views/login.html'"></ng-include>
             </div>
         </div>
-    </div>
 
     <ng-include src="'views/inc_footer.html'"></ng-include>
 
-</div>

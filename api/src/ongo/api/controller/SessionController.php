@@ -6,8 +6,8 @@ use ongo\shared\exception\UserNotFoundException;
 use ongo\shared\model\SessionModel;
 use ongo\shared\model\UserModel;
 use Doctrine\DBAL\Connection;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 final class SessionController {
 	private $memcache;
@@ -46,7 +46,15 @@ final class SessionController {
         $sessionModel = new SessionModel($this->dbConn);
         $session=$sessionModel->createForUser($user);
 
-        return new JsonResponse($session->serialize($this->dbConn));
+
+		$jsonResponse = new JsonResponse($session->serialize($this->dbConn));
+		$cookie1 = new Cookie("ongo_version", '1.0');
+		$cookie2 = new Cookie("ongo_token", $session->getToken());
+
+		$jsonResponse->headers->setCookie($cookie1);
+		$jsonResponse->headers->setCookie($cookie2);
+
+		return $jsonResponse;
         
 	}
 }

@@ -33,6 +33,9 @@ angular.module('wwwApp')
                 }
                 return (self.isAuthenticated() &&
                 authorizedRoles.indexOf(Session.userRole) !== -1);
+            },
+            getToken: function() {
+                return Session.userId && Session.id ? Session.id : null;
             }
         };
         return self;

@@ -15,7 +15,7 @@
                     <td><em>{{ o.created | strtotime | amDateFormat : "lll"}}</em></td>
                     <td><b>{{ o.payload.total }} {{ o.payload.currency | translate }}</b></td>
                     <td ng-if="o.payment_status == 'payment_approved'"><em>Approved</em></td>
-                    <td ng-if="o.payment_status != 'payment_approved'"><!--<a href="">Try to Pay</a>--></td>
+                    <td ng-if="o.payment_status != 'payment_approved'"><a ui-sref="order.pay({id: o.id})" href="">Try to Pay</a></td>
                 </tr>
           </tbody></table>
         </div>

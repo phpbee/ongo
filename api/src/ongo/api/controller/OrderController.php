@@ -10,6 +10,7 @@ use ongo\shared\model\OrderModel;
 use Doctrine\DBAL\Connection;
 use ongo\shared\model\PhotoModel;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 final class OrderController {
@@ -66,6 +67,19 @@ final class OrderController {
 
 	}
 
+	public function payOrder($id, $user_id, $redirect_url)
+	{
+		$order = $this->getUserOrder($id, $user_id);
+		if ($order->getStatus() == 'paid') {
+			throw new NoAccessException('Order already paid');
+		}
+
+		$model = new OrderModel($this->dbConn);
+
+		$model->markAsPaid($order);
+
+		return new RedirectResponse($redirect_url);
+	}
 	/**
 	 * @param $id
 	 * @param $user_id

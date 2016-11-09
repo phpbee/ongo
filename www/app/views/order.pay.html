@@ -1,0 +1,7 @@
+<section ng-if="order">
+
+<p>Order <a ui-sref="order({id: order.id})">#{{ order.id }}</a></p>
+<p ng-controller="OrderCtrl">
+    <button class="btn" ng-click="pay(order.id);">Pay</button>
+</p>
+</section>

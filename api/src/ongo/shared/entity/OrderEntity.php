@@ -57,6 +57,14 @@ final class OrderEntity extends SerializableEntity
         return $this->status;
     }
 
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
 
     public function serialize(Connection $dbConn, $deep = true)
