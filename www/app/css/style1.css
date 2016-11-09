@@ -1377,41 +1377,43 @@ ul.pagination li.arrow a{
     background: url('../img/i.png') 0px -16px no-repeat;
     margin-left: 8px;
 }
-.radio-list .subject i:hover .toolt{
-    display: block;
-}
-.radio-list .subject i .toolt{
-    display: none;
-    line-height: 1.4;
-    position: absolute;
-    background: #f7f8fa;
-    border-radius: 5px;
-    padding: 20px 20px;
+
+
+.radio-list .subject i .toolt {
     left: -176px;
     top: 28px;
     width: 320px;
+}
+
+
+.toolt-toggle:hover .toolt{
+    display: block;
+}
+
+.toolt {
+    display: none;
+}
+
+.toolt {
+    line-height: 1.4;
+    position: absolute;
+    background: #f7f8fa !important;
+    border-radius: 5px;
+    padding: 20px 20px;
     z-index: 2;
     color: #969696;
     font-size: 0.875rem;
 }
-.radio-list .subject i .toolt:after{
-    content: '';
-    border: 20px solid transparent;
-    border-bottom: 20px solid #f7f8fa;
-    position: absolute;
-    left: 164px;
-    top: -29px;
-}
 
-
-.radio-list .subject i .toolt .toolsubj{
+.toolt .toolsubj{
     display: block;
     color: #02adea;
     font-size: 1.1rem;
     text-transform: uppercase;
     margin-bottom: 5px;
 }
-.radio-list .subject i .toolt a{
+
+.toolt a{
     color: #02adea;
 }
 /*.radio-list:hover .subject i{

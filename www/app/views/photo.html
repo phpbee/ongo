@@ -3,6 +3,10 @@
         <div class="section_photo">
             <div class="photo">
                 <img src="{{ photo.src }}">
+
+                <div class="toolt" id="photo-copyright" translate="COPYRIGHT">
+                </div>
+
                 <div class="controls">
                     <a ng-if="prev_photo != photo.id" class="prev-search-photo" ui-sref="photo({id: prev_photo, gallery_id: gallery.id})"></a>
                     <a ng-if="next_photo != photo.id" class="next-search-photo" ui-sref="photo({id: next_photo, gallery_id: gallery.id})"></a>
@@ -24,14 +28,14 @@
                         <td class="inf">
                   <span class="subject">
                     Best Quality
-                    <i>
+                    <i class="tooltoggle">
                         <div class="toolt">
                             <span class="toolsubj">Products for Resale</span>
                             Enhanced license grant which includes the ability to
                             incorporate the image into print or electronic products
                             for resale or distribution (including templates and
                             on-demand products). For more details see the
-                            <a href="" target='_blank'>Commercial Licensing Agreement</a>.
+                            <a ui-sref="policy" target='_blank'>Commercial Licensing Agreement</a>.
                         </div>
                     </i>
                   </span>

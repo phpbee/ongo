@@ -92,6 +92,15 @@ $(document).foundation();
 
 $(document).ready(function () {
 
+    $("body").on("contextmenu", ".photo img", function(e) {
+        $("#photo-copyright").css({top: e.offsetY, left: e.offsetX, position:'absolute'}).show();
+
+        window.setTimeout(function() {
+            $("#photo-copyright").hide();
+        },3000);
+
+        return false;
+    });
 
     $(document).on("click", '.radio-list', function () {
         $(this).parents('.into').find('.radio-list').removeClass('checked');
