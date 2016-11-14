@@ -46,9 +46,10 @@ angular
             }
         };
     })
-    .run(function ($rootScope, cart, $translate, amMoment, $http) {
+    .run(function ($rootScope, cart, fav, $translate, amMoment, $http) {
         $rootScope.keys = Object.keys;
         cart.initialize();
+        fav.initialize();
         $rootScope.$on('$translateChangeSuccess', function () {
             amMoment.changeLocale($translate.use());
             $http.defaults.headers.common.Translation = $translate.use();
@@ -288,6 +289,16 @@ angular
             .state('order.pay', {
                 url: '/pay',
                 templateUrl: 'views/order.pay.html'
+            })
+
+            .state('favourites', {
+                parent: 'index4',
+                controller: 'FavCtrl',
+                url: '/favourites',
+                templateUrl: 'views/favourites.html',
+                data: {
+                    authorizedRoles: ['user']
+                }
             })
         ;
 

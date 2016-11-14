@@ -8,7 +8,7 @@
  * Controller of the wwwApp
  */
 angular.module('wwwApp')
-    .controller('ApplicationCtrl', function ($rootScope, $scope, $stateParams, $state, $translate, AuthService, Session, storage, cart) {
+    .controller('ApplicationCtrl', function ($rootScope, $scope, $stateParams, $state, $translate, AuthService, Session, storage, cart, fav) {
 
         $scope.changeLanguage = function (key) {
             $translate.use(key);
@@ -20,6 +20,13 @@ angular.module('wwwApp')
         });
 
 
+        $scope.removeFromCart = cart.removeFromCart;
+        $scope.addToCart = cart.addToCart;
+        $scope.removeFromFav = fav.removeFromFav;
+        $scope.addToFav = fav.addToFav;
+
+
+        
         $rootScope.currentUser = null;
         $rootScope.isAuthorized = AuthService.isAuthorized;
         $rootScope.$state = $state;

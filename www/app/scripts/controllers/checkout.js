@@ -9,7 +9,6 @@
  */
 angular.module('wwwApp')
     .controller('CheckoutCtrl', function ($scope, $state, cart, Gallery, Order) {
-        console.log('CheckoutCtrl');
         angular.forEach($scope.cart.items, function (item) {
             item.photo = Gallery.photo({id: item.gallery_id, photo_id: item.photo_id});
             item.gallery = Gallery.get({id: item.gallery_id});

@@ -14,6 +14,7 @@
   },
   "MENU": {
     "CHECKOUT": "Checkout",
+    "FAVOURITES": "Favourites",
     "ORDERS": "My orders",
     "LOGIN": "Sign in",
     "LOGOUT": "Sign out"
@@ -40,6 +41,7 @@
     "PHOTOGRAPHER": "Photographer"
   },
   "LAST_GALLERIES": "Last galleries",
+  "NO_FAVOURITES": "Favourites list is empty",
   "ORDER": {
     "STATUS": {
       "new": "NEW",
