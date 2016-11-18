@@ -20,28 +20,29 @@ api:
     - mysql_dev:mysql
     - memcached_dev:memcached
   environment:
-    - MYSQL_HOST=dev.ongophotos.com
+#    - MYSQL_HOST=dev.ongophotos.com
+    - MYSQL_HOST=mysql
     - MYSQL_DB=ongo_test
     - MYSQL_USER=root
     - MYSQL_PASSWORD
     - CACHE_TYPE=memcached
     - CACHE_ENDPOINT=memcached
     - SYSLOG_HOSTNAME=ongo_dev_api
-vsplunk:
-  image: busybox
-  volumes:
-    - /opt/splunk/etc
-    - /opt/splunk/var
-splunkforwarder:
-  container_name: ongo_dev_splunk
-  image: alexk7898/universalforwarder
-  volumes_from:
-    - vsplunk
-  volumes:
-    - ./logs/splunkforwarder:/logs
-  environment:
-    - SPLUNK_START_ARGS=--accept-license --answer-yes --no-prompt
-    - SPLUNK_SERVER=192.168.99.100
-    - SPLUNK_SERVER_PORT=8088
-    - SPLUNK_LOGFILE_PATTERN=/logs/*/*/*.log 
-    - SPLUNK_INDEX=main
+#vsplunk:
+#  image: busybox
+#  volumes:
+#    - /opt/splunk/etc
+#    - /opt/splunk/var
+#splunkforwarder:
+#  container_name: ongo_dev_splunk
+#  image: alexk7898/universalforwarder
+#  volumes_from:
+#    - vsplunk
+#  volumes:
+#    - ./logs/splunkforwarder:/logs
+#  environment:
+#    - SPLUNK_START_ARGS=--accept-license --answer-yes --no-prompt
+#    - SPLUNK_SERVER=192.168.99.100
+#    - SPLUNK_SERVER_PORT=8088
+#    - SPLUNK_LOGFILE_PATTERN=/logs/*/*/*.log 
+#    - SPLUNK_INDEX=main

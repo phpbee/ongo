@@ -22,6 +22,9 @@
   "SLIDER": {
     "BROWSE_GALLERY": "More images from"
   },
+  "SEARCH": {
+    "PLACEHOLDER": "Search by place or photographer name"
+  },
   "FIND_YOUR_PHOTOS": "Find your photos",
   "REGISTRATION_FOR_PHOTOGRAPHERS": "Registration for photographers",
   "CHOOSE_YOUR_PHOTOS": "Choose your photos from the list below",
