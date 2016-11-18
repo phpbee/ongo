@@ -3,13 +3,44 @@
     <div class="row">
         <div class="large-12 columns">
             <div class="finder">
-                <h1><translate>FIND_YOUR_PHOTOS</translate></h1>
+                <h1>
+                    <translate>FIND_YOUR_PHOTOS</translate>
+                </h1>
                 <span><translate>CHOOSE_YOUR_PHOTOS</translate></span>
 
+                <form>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <div class="row collapse">
+                                <div class="large-6 small-6 columns">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block; direction: ltr;">
+                                        <input class="photografer typeahead tt-hint" type="text" readonly=""
+                                               autocomplete="off" spellcheck="false" tabindex="-1"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 253, 255);"><input
+                                            class="photografer typeahead tt-input" type="text"
+                                            placeholder="Photografer name" autocomplete="off" spellcheck="false"
+                                            dir="auto"
+                                            style="position: relative; vertical-align: top; background-color: transparent;"><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Helvetica Neue&quot;, Helvetica, Roboto, Arial, sans-serif; font-size: 26px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;"><div
+                                            class="tt-dataset-photografer"></div></span></span>
+                                </div>
+                                <div class="large-3 small-3 columns">
+                                    <a href="#" class="button postfix">Search</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
 
                 <div class="text-center">
                     <span><translate>WE_ARE_LOOKING_PHOTOGRAPHERS</translate></span>
-                    <a class="button gradient radius reg" ui-sref="photographers-registration"><translate>REGISTRATION_FOR_PHOTOGRAPHERS</translate></a>
+                    <a class="button gradient radius reg" ui-sref="photographers-registration">
+                        <translate>REGISTRATION_FOR_PHOTOGRAPHERS</translate>
+                    </a>
                 </div>
             </div>
         </div>
@@ -20,7 +51,9 @@
             <section ng-repeat="p in topGalleries">
                 <li>
                     <img ng-src="{{ p.logo }}" imageonload="lightSlider" style="display:none;">
-                    <a ui-sref="gallery({id:p.id})"><translate>BROWSE_TO_GALLERY</translate></a>
+                    <a ui-sref="gallery({id:p.id})">
+                        <translate>BROWSE_TO_GALLERY</translate>
+                    </a>
                 </li>
             </section>
 
@@ -50,7 +83,8 @@
                 </div>
                 <span class="subject">
                     <a href="" ui-sref="photographer({id: g.photographer.id})">{{ g.photographer.name }}</a>
-                    <a ui-sref="day({day: ( g.created|strtotime|date:'yyyy-MM-dd' ), country_id: g.country.id })">{{ g.created | strtotime | date: "dd/MM/yyyy" }}</a>
+                    <a ui-sref="day({day: ( g.created|strtotime|date:'yyyy-MM-dd' ), country_id: g.country.id })">{{
+                        g.created | strtotime | date: "dd/MM/yyyy" }}</a>
                     <a href="" ui-sref="place({id: g.place.id})">{{ g.place.name }}</a>,
                     <a href="" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>,
                     <a href="" ui-sref="country({id: g.country.id})">{{ g.country.name }}</a>,
