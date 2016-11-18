@@ -11,7 +11,8 @@
     "angular-sanitize": "^1.5.8",
     "angular-touch": "^1.5.8",
     "angular-moment": "^1.0.0",
-    "angularLocalStorage-nc": "^1.0.0"
+    "angularLocalStorage-nc": "^1.0.0",
+    "angular-auto-complete": "^1.1.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8"

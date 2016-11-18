@@ -35,6 +35,7 @@ module.exports = function(config) {
       'bower_components/moment/moment.js',
       'bower_components/angular-moment/angular-moment.js',
       'bower_components/angularLocalStorage-nc/src/angularLocalStorage.js',
+      'bower_components/angular-auto-complete/angular-auto-complete.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

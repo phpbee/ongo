@@ -8,12 +8,15 @@
                 </h1>
                 <span><translate>CHOOSE_YOUR_PHOTOS</translate></span>
 
-                <form>
+                <form ng-controller="SearchCtrl as ctrl">
                     <div class="row">
                         <div class="large-12 columns">
                             <div class="row collapse">
                                 <div class="large-9 small-9 columns">
-                                    <input class="photografer typeahead" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}">
+                                    <input class="photografer typeahead" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+                                           ng-model="ctrl.colorName"
+                                           auto-complete="ctrl.autoCompleteOptions"
+                                    >
                                 </div>
                                 <div class="large-3 small-3 columns">
                                     <a href="#" class="button postfix">Search</a>

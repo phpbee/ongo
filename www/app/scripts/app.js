@@ -20,6 +20,7 @@ angular
         'angularLocalStorage',
         'ngCookies',
         'ui.bootstrap',
+        "autoCompleteModule",
         'angularMoment'
     ])
     .constant('AUTH_EVENTS', {
