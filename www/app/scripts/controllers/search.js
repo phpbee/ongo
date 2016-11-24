@@ -20,8 +20,7 @@ angular.module('wwwApp')
                 return {
                     value: item.name,
                     label: item.name,
-                    __label: $sce.trustAsHtml(
-                        "<span>" + item.name + "</span>")
+                    __label: $sce.trustAsHtml(item.name)
                 };
             },
             itemSelected: function (item) {

@@ -23,7 +23,8 @@
     "BROWSE_GALLERY": "More images from"
   },
   "SEARCH": {
-    "PLACEHOLDER": "Search by place or photographer name"
+    "PLACEHOLDER": "Place or photographer name",
+    "BUTTON": "Search"
   },
   "FIND_YOUR_PHOTOS": "Find your photos",
   "REGISTRATION_FOR_PHOTOGRAPHERS": "Registration for photographers",
