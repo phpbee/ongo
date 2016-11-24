@@ -16,6 +16,7 @@ use ongo\api\controller\PartnerPaymentInfoController;
 use ongo\api\controller\PartnerPaymentsController;
 use ongo\api\controller\PhotographerController;
 use ongo\api\controller\PlaceController;
+use ongo\api\controller\SearchController;
 use ongo\api\controller\SessionController;
 use ongo\api\controller\PartnerConversionController;
 use ongo\api\controller\PartnerSummaryController;
@@ -258,6 +259,12 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new GalleryController($app["db"]);
             return $controller->topLogos(intval($request->get("limit")));
         });
+
+        $controllers->get("/search/byPlaceOrPhotographer", function (Application $app, Request $request) {
+            $controller = new SearchController($app["db"]);
+            return $controller->byPlaceOrPhotographer($request->get('q'),min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
+        });
+
         $app->error(function (NotUniqueValueException $e) {
             return new Response("Not unique value", 409);
         });
