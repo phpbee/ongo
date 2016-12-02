@@ -40,7 +40,7 @@
                         <li ng-if="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru');"><span>Русский</span></a></li>
 
                         <li class="has-dropdown">
-                            <a class="menu_ico3" href="#"><span>Language</span></a>
+                            <a class="menu_ico3" href="#"  onclick="return false;"><span>Language</span></a>
                             <ul class="dropdown">
                                 <li><a href="#" ng-click="changeLanguage('en')"><img src="/img/flag/flag_en.jpg">English</a></li>
                                 <li><a href="#" ng-click="changeLanguage('ru')"><img src="/img/flag/flag_ru.jpg">Russian</a></li>
@@ -50,7 +50,7 @@
 
 
                         <li class="has-dropdown">
-                            <a class="menu_ico4" href="#"></a>
+                            <a class="menu_ico4" href="#" onclick="return false;"></a>
                             <ul class="dropdown">
                                 <li><a ui-sref="about" translate="About"></a></li>
                                 <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
@@ -64,3 +64,4 @@
         </div>
     </div>
 </div>
+
