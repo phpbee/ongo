@@ -29,20 +29,22 @@ final class SearchService
         $rs = $this->dbConn->executeQuery(
 
         "select
-            'place' as class, id, `name`, match (`name`) against (?) as m from place
-              where `name` like ? LIMIT ?
+            'place' as class, place.id, concat(place.`name`,', ',city.`name`,', ',country.`name`) as `name`
+            from place left join city on city.id = place.city_id left join country on country.id = city.country_id
+              having `name` like ? LIMIT ?
          UNION
-         select 'photograph' as class, id, `name`, match (`name`) against (?) as m from photograph
+         select 'photograph' as class, id, `name`
+            from photograph
               where `name` like ? LIMIT ?
          ",
 
             [
-                $q, $l, $limit,
-                $q, $l, $limit
+                $l, $limit,
+                $l, $limit
             ],
             [
-                \PDO::PARAM_STR, \PDO::PARAM_STR, \PDO::PARAM_INT,
-                \PDO::PARAM_STR, \PDO::PARAM_STR, \PDO::PARAM_INT,
+                \PDO::PARAM_STR, \PDO::PARAM_INT,
+                \PDO::PARAM_STR, \PDO::PARAM_INT,
             ]
         );
 

@@ -17,10 +17,18 @@ angular.module('wwwApp')
             minimumChars: '1',
             containerCssClass: "color-codes",
             renderItem: function (item) {
+                switch (item.class) {
+                    case 'place':
+                        var icon = "fi-mountains";
+                        break;
+                    case 'photograph':
+                        var icon = "fi-torso";
+                        break;
+                }
                 return {
                     value: item.name,
-                    label: item.name,
-                    __label: $sce.trustAsHtml(item.name)
+                    __label: item.name,
+                    label: $sce.trustAsHtml("<i class=\""+icon+"\"></i> "+item.name)
                 };
             },
             itemSelected: function (item) {
