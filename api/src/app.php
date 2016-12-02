@@ -48,6 +48,8 @@ $app->register(new ongo\shared\provider\MailServiceProvider(), array(
     "mail.from_name"=>"OnGoPhotos",
 ));
 
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/ongo/api/views',
 ));

@@ -4,15 +4,16 @@
     <input type="text" name="short-dest" value="Ongophotos.com">
     <input type="text" name="label" value="{{ order.id }}">
     <input type="text" name="quickpay-form" value="donate">
-    <input type="text" name="targets" value="Order {{ order.id }}">
+    <input type="text" name="targets" value="{{ order.id }}">
     <input type="text" name="sum" value="{{ payload.total }}" data-type="number">
+    <input type="text" name="successURL" value="{{ url('yandex_return', {id: order.id, token: token}) }}">
     <input type="text" name="need-fio" value="false">
     <input type="text" name="need-email" value="false">
     <input type="text" name="need-phone" value="false">
     <input type="text" name="need-address" value="false">
 
     <label><input type="radio" name="paymentType" value="PC">Яндекс.Деньгами</label>
-    <label><input type="radio" name="paymentType" value="AC">Банковской картой</label>
+    <label><input type="radio" checked="checked" name="paymentType" value="AC">Банковской картой</label>
 
     <input type="submit" value="Перевести">
 </form>

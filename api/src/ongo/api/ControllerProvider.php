@@ -119,9 +119,14 @@ final class ControllerProvider implements ControllerProviderInterface
             /** @var UserEntity $user */
             $user = $app["auth"]->getUser();
             $controller = new OrderController($app["db"]);
-            $redirect_url = $request->get('redirect_url',$_SERVER['HTTP_REFERER']);
-            return $controller->payOrder($tpl, $id, $user->getId(), $redirect_url);
-        });
+            $redirect_url = $request->get('redirect_url', $_SERVER['HTTP_REFERER']);
+            return $controller->payOrder($tpl, $id, $user->getId(), $redirect_url, $request->get('token'));
+        })->bind('pay');
+
+        $controllers->get("/yandex/return", function () {
+
+        })->bind("yandex_return");
+
         $controllers->get("/order/{id}/download/{photo_id}", function (Application $app, $id, $photo_id) {
             /** @var UserEntity $user */
             $user = $app["auth"]->getUser();
@@ -206,7 +211,7 @@ final class ControllerProvider implements ControllerProviderInterface
         $controllers->get("/galleries", function (Application $app, Request $request) {
             $controller = new GalleryController($app["db"]);
             if ($request->get('day') && $request->get('country')) {
-                return $controller->byDayAndCountry(new \DateTime($request->get('day')),intval($request->get('country')));
+                return $controller->byDayAndCountry(new \DateTime($request->get('day')), intval($request->get('country')));
             }
             if ($request->get('day')) {
                 return $controller->byDay(new \DateTime($request->get('day')));
@@ -239,7 +244,7 @@ final class ControllerProvider implements ControllerProviderInterface
         });
         $controllers->get("/gallery/{id}/icons", function (Application $app, $id, Request $request) {
             $controller = new GalleryController($app["db"]);
-            return $controller->icons(intval($id), $request->get("limit") ? intval($request->get("limit")) : null );
+            return $controller->icons(intval($id), $request->get("limit") ? intval($request->get("limit")) : null);
         });
         $controllers->get("/gallery/{id}/photo/{photo_id}", function (Application $app, $id, $photo_id) {
             $controller = new GalleryController($app["db"]);
@@ -264,7 +269,7 @@ final class ControllerProvider implements ControllerProviderInterface
 
         $controllers->get("/search/byPlaceOrPhotographer", function (Application $app, Request $request) {
             $controller = new SearchController($app["db"]);
-            return $controller->byPlaceOrPhotographer($request->get('q'),min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
+            return $controller->byPlaceOrPhotographer($request->get('q'), min(self::MAX_LIMIT, intval($request->get("limit", self::MAX_LIMIT))));
         });
 
         $app->error(function (NotUniqueValueException $e) {

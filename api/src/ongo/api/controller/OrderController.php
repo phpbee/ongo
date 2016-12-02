@@ -11,6 +11,7 @@ use Doctrine\DBAL\Connection;
 use ongo\shared\model\PhotoModel;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class OrderController {
@@ -67,7 +68,7 @@ final class OrderController {
 
 	}
 
-	public function payOrder($tpl, $id, $user_id, $redirect_url)
+	public function payOrder($tpl, $id, $user_id, $redirect_url, $token)
 	{
 		$order = $this->getUserOrder($id, $user_id);
 		if ($order->getStatus() == 'paid') {
@@ -81,10 +82,19 @@ final class OrderController {
 //		$model->markAsPaid($order);
 
 //		return new RedirectResponse($redirect_url);
+
+        /*
+         *
+$app->before(function (Request $request) use ($app) {
+    $app['twig']->addGlobal('current_page_name', $request->getHost());
+});
+
+         */
 		return $tpl->render('yandex_money.twig',
             [
                 'order'=>$order,
-                'payload'=>unserialize($order->getPayload())
+                'payload'=>unserialize($order->getPayload()),
+                'token'=>$token
             ]);
 	}
 	/**

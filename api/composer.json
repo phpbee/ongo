@@ -19,7 +19,8 @@
 	"symfony/yaml": "~2.1",
 	"doctrine/dbal": ">=2.2.0,<2.4.0-dev",
 		"mandrill/mandrill": "^1.0",
-		"twig/twig": "^1.28"
+		"twig/twig": "^1.28",
+		"symfony/twig-bridge": "^3.2"
 },
 "autoload": {
 	"psr-0": {
