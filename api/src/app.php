@@ -47,6 +47,10 @@ $app->register(new ongo\shared\provider\MailServiceProvider(), array(
     "mail.from_email"=>"noreply@ongophotos.com",
     "mail.from_name"=>"OnGoPhotos",
 ));
+
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/ongo/api/views',
+));
 $app->before(function (Symfony\Component\HttpFoundation\Request $request) {
     if (strpos($request->headers->get("Content-Type"), "application/json") === 0) {
         $data = json_decode($request->getContent(), true);

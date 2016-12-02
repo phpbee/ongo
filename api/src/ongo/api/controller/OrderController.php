@@ -67,18 +67,25 @@ final class OrderController {
 
 	}
 
-	public function payOrder($id, $user_id, $redirect_url)
+	public function payOrder($tpl, $id, $user_id, $redirect_url)
 	{
 		$order = $this->getUserOrder($id, $user_id);
 		if ($order->getStatus() == 'paid') {
 			throw new NoAccessException('Order already paid');
 		}
 
-		$model = new OrderModel($this->dbConn);
 
-		$model->markAsPaid($order);
+//
+//		$model = new OrderModel($this->dbConn);
+//
+//		$model->markAsPaid($order);
 
-		return new RedirectResponse($redirect_url);
+//		return new RedirectResponse($redirect_url);
+		return $tpl->render('yandex_money.twig',
+            [
+                'order'=>$order,
+                'payload'=>unserialize($order->getPayload())
+            ]);
 	}
 	/**
 	 * @param $id

@@ -114,11 +114,13 @@ final class ControllerProvider implements ControllerProviderInterface
             return $controller->byIdforUserId($id, $user->getId());
         });
         $controllers->get("/order/{id}/pay", function (Application $app, $id, Request $request) {
+            /** @var Twig $tpl */
+            $tpl = $app['twig'];
             /** @var UserEntity $user */
             $user = $app["auth"]->getUser();
             $controller = new OrderController($app["db"]);
             $redirect_url = $request->get('redirect_url',$_SERVER['HTTP_REFERER']);
-            return $controller->payOrder($id, $user->getId(), $redirect_url);
+            return $controller->payOrder($tpl, $id, $user->getId(), $redirect_url);
         });
         $controllers->get("/order/{id}/download/{photo_id}", function (Application $app, $id, $photo_id) {
             /** @var UserEntity $user */
