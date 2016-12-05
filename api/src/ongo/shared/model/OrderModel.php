@@ -3,12 +3,8 @@
 namespace ongo\shared\model;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\DBALException;
 use ongo\shared\entity\OrderEntity;
-use ongo\shared\entity\SessionEntity;
-use ongo\shared\entity\UserEntity;
 use ongo\shared\exception\OrderNotFoundException;
-use ongo\shared\exception\SessionNotFoundException;
 
 final class OrderModel
 {

@@ -2,26 +2,21 @@
 
 namespace ongo\api\controller;
 
-use Monolog\Logger;
 use ongo\shared\entity\OrderEntity;
 use ongo\shared\entity\SerializableEntity;
 use ongo\shared\entity\UserEntity;
 use ongo\shared\exception\NoAccessException;
-use ongo\shared\exception\SessionNotFoundException;
 use ongo\shared\model\OrderModel;
 use Doctrine\DBAL\Connection;
 use ongo\shared\model\PhotoModel;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class OrderController
 {
     private $dbConn;
-    private $logger;
 
     public function __construct(Connection $dbConn)
     {
