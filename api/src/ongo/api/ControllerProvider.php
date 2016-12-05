@@ -60,7 +60,7 @@ final class ControllerProvider implements ControllerProviderInterface
         $controllers = $app["controllers_factory"];
         $controllers->get("/", function (Application $app, Request $request) {
             return new Response("OK", 200);
-        });
+        })->bind('home');
 //        $controllers->get("/versions", function (Application $app) {
 //            $controller = new VersionController($app["db"]);
 //            return $controller->query();
@@ -113,19 +113,24 @@ final class ControllerProvider implements ControllerProviderInterface
             $controller = new OrderController($app["db"]);
             return $controller->byIdforUserId($id, $user->getId());
         });
-        $controllers->get("/order/{id}/pay", function (Application $app, $id, Request $request) {
-            /** @var Twig $tpl */
-            $tpl = $app['twig'];
+        $controllers->get("/yandex/pay/{id}", function (Application $app, $id, Request $request) {
             /** @var UserEntity $user */
             $user = $app["auth"]->getUser();
             $controller = new OrderController($app["db"]);
             $redirect_url = $request->get('redirect_url', $_SERVER['HTTP_REFERER']);
-            return $controller->payOrder($tpl, $id, $user->getId(), $redirect_url, $request->get('token'));
+            return $controller->startYandexOrder($id, $user->getId(), $request->get('token'), $redirect_url, $app["url_generator"]);
         })->bind('pay');
 
-        $controllers->get("/yandex/return", function () {
-
-        })->bind("yandex_return");
+        $controllers->get("/yandex/return/{id}", function (Application $app, $id, Request $request) {
+            /** @var Logger $logger */
+            $logger = $app["monolog"];
+            $logger->addInfo($_REQUEST);
+            
+            /** @var UserEntity $user */
+            $user = $app["auth"]->getUser();
+            $controller = new OrderController($app["db"]);
+            return $controller->returnYandexOrder($id, $user->getId());
+        })->bind('yandex_return');
 
         $controllers->get("/order/{id}/download/{photo_id}", function (Application $app, $id, $photo_id) {
             /** @var UserEntity $user */

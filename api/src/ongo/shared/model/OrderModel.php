@@ -52,13 +52,13 @@ final class OrderModel
         return $orders;
     }
 
-    public function createForUser($user_id, $payload)
+    public function createForUser($user_id, Array $payload)
     {
         $id = uniqid();
         $params = array(
             'id' => $id,
             'user_id' => $user_id,
-            'payload' => $payload,
+            'payload' => serialize($payload),
         );
 
         $query = "insert into `order`
@@ -80,6 +80,15 @@ final class OrderModel
         );
     }
 
+    public function setReturnUrl(OrderEntity $order, $return_url) {
+        $order->setReturnUrl($return_url);
+
+        $this->dbConn->executeQuery(
+            "UPDATE `order` set payload = ? where id  = ?",
+            array(serialize($order->getPayload()), $order->getId())
+        );
+    }
+
     /**
      * @param $row
      * @return OrderEntity
@@ -90,7 +99,7 @@ final class OrderModel
             $row['id'],
             $row['created'],
             $row['user_id'],
-            $row['payload'],
+            unserialize($row['payload']) ?: [],
             $row['status']
         );
     }

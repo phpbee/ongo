@@ -26,7 +26,7 @@ final class OrderEntity extends SerializableEntity
      * @param $payload
      * @param $status
      */
-    public function __construct($id, $created, $user_id, $payload, $status)
+    public function __construct($id, $created, $user_id, Array $payload, $status)
     {
         $this->id = $id;
         $this->created = strtotime($created);
@@ -41,6 +41,30 @@ final class OrderEntity extends SerializableEntity
         return $this->payload;
     }
 
+    protected function addPayload($key,$value)
+    {
+        $this->payload[$key]=$value;
+    }
+
+    public function setReturnUrl($return_url)
+    {
+        $this->addPayload('return_url',$return_url);
+    }
+
+    public function getTotalAmount()
+    {
+        if (!isset($this->payload['total'])) {
+           throw new  \OutOfBoundsException('Can not get total amount for order');
+        }
+        return $this->payload['total'];
+    }
+    public function getReturnUrl()
+    {
+        if (!isset($this->payload['return_url'])) {
+           throw new  \OutOfBoundsException('Can not get return url for order');
+        }
+        return $this->payload['return_url'];
+    }
     /**
      * @return string
      */
@@ -73,7 +97,7 @@ final class OrderEntity extends SerializableEntity
             "id" => $this->id,
             "created" => $this->created,
             "user_id" => $this->user_id,
-            "payload" => unserialize($this->payload),
+            "payload" => $this->payload,
             "status" => $this->status,
         );
         return $array;

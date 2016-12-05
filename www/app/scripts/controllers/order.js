@@ -22,7 +22,7 @@ angular.module('wwwApp')
         };
 
         $scope.pay = function (order_id) {
-          window.location = config.api.baseURL + '/order/' + order_id + '/pay?token=' + AuthService.getToken() + '&return_url=/#/user/orders';
+          window.location = config.api.baseURL + '/yandex/pay/' + order_id + '?token=' + AuthService.getToken() + '&return_url=/#/user/orders';
         };
 
     });
