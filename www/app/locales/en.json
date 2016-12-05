@@ -5,8 +5,8 @@
   "USD": "USD",
 
   "PRICE": {
-    "best": "250",
-    "web": "50"
+    "best": "0.25",
+    "web": "0.05"
   },
   "RESOLUTION": {
     "best": "3056 x 4592px @300dpi",
