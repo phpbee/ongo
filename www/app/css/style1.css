@@ -843,6 +843,7 @@ ul.pagination li.arrow a{
     -webkit-background-size: cover;
     background-size: cover;
     background-image: url('/img/bg_city.jpg');
+    background-position: center center;
 }
 .bg_place {
     position: absolute;
