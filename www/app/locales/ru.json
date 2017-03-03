@@ -19,6 +19,10 @@
   "SLIDER": {
     "BROWSE_GALLERY": "Перейти в галерею"
   },
+  "SEARCH": {
+    "PLACEHOLDER": "ААА",
+    "BUTTON": "БББ"
+  },  
   "FIND_YOUR_PHOTOS": "Найди свою фотографию",
   "FIND_BUY_DOWNLOAD": "НАЙДИ, КУПИ и СКАЧАЙ",
   "CHOOSE_YOUR_PHOTOS": "Выберите свои фотографии из предложенных",
