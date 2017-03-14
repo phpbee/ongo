@@ -16,9 +16,9 @@ api:
   volumes:
     - "./api:/var/www"
     - ./logs/api:/var/log
-  external_links:
-    - mysql_dev:mysql
-    - memcached_dev:memcached
+  links:
+    - mysql:mysql
+    - memcached:memcached
   environment:
 #    - MYSQL_HOST=dev.ongophotos.com
     - MYSQL_HOST=mysql
@@ -28,6 +28,24 @@ api:
     - CACHE_TYPE=memcached
     - CACHE_ENDPOINT=memcached
     - SYSLOG_HOSTNAME=ongo_dev_api
+mysql_data:
+  container_name: dev_mysql_data
+  image: ubuntu
+  volumes:
+    - "dev_mysql_data:/var/lib/mysql"
+    - "~/Downloads:/Downloads"
+mysql:
+  container_name: dev_mysql
+  image: mysql:5.6
+  restart: always
+  ports:
+    - "3306:3306"
+  volumes_from:
+    - mysql_data
+  environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+memcached:
+  image: memcached
 #vsplunk:
 #  image: busybox
 #  volumes:
