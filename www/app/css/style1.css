@@ -818,7 +818,7 @@ ul.pagination li.arrow a{
     z-index: 1;
     top: 0;
     width: 100%;
-    height: 480px;
+    height: 340px;
     background: url('../img/bg_gallery.jpg') 0 0 no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
