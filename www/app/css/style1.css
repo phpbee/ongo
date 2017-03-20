@@ -818,7 +818,7 @@ ul.pagination li.arrow a{
     z-index: 1;
     top: 0;
     width: 100%;
-    height: 340px;
+    height: 480px;
     background: url('../img/bg_gallery.jpg') 0 0 no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
@@ -828,7 +828,7 @@ ul.pagination li.arrow a{
     z-index: 1;
     top: 0;
     width: 100%;
-    height: 300px;
+    height: 480px;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
@@ -2708,7 +2708,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
         float: none;
     }
     .country_page.photografer_page .main {
-        height: 400px;
+        height: 480px;
         min-height: 400px;
     }
     .photografer_page .current_country .info{
