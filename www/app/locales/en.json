@@ -40,10 +40,10 @@
   "FOOTER": {
     "LEGAL": "Launched in November 2011, our site features a daily photographing people in public place Europe, Asia and soon beyond. We have about 15,000 photographer working with us.",
     "COPYRIGHT": "© 2012 - 2020 All rights reserved - www.ongophotos.com",
-    "COUNTRY": "Country",
-    "CITY": "City",
-    "PLACE": "Place",
-    "PHOTOGRAPHER": "Photographer"
+    "COUNTRY": "Countries",
+    "CITY": "Cities",
+    "PLACE": "Places",
+    "PHOTOGRAPHER": "Photographers"
   },
   "LAST_GALLERIES": "Last galleries",
   "NO_FAVOURITES": "Favourites list is empty",
