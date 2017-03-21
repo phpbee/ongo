@@ -22,7 +22,16 @@
   "SEARCH": {
     "PLACEHOLDER": "Введите место фотосъемки",
     "BUTTON": "Найти"
-  },  
+  },
+  "COPYRIGHT": "© Все права защищены www.ongophotos.com",
+  "FOOTER": {
+    "LEGAL": "Launched in November 2011, our site features a daily photographing people in public place Europe, Asia and soon beyond. We have about 15,000 photographer working with us.",
+    "COPYRIGHT": "© 2012 - 2020 All rights reserved - www.ongophotos.com",
+    "COUNTRY": "Country",
+    "CITY": "City",
+    "PLACE": "Place",
+    "PHOTOGRAPHER": "Photographer"
+},
   "FIND_YOUR_PHOTOS": "Найди свою фотографию",
   "FIND_BUY_DOWNLOAD": "НАЙДИ, КУПИ и СКАЧАЙ",
   "CHOOSE_YOUR_PHOTOS": "Выберите свои фотографии из предложенных",
