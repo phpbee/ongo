@@ -9,7 +9,8 @@ www:
     - api:api
   volumes:
     - "./www/dist:/var/www/html"
-    - ./logs/www:/var/log
+    - "./logs/www:/var/log"
+    - "./logs/www/nginx:/var/log/nginx"
 api:
   container_name: ongo_dev_api
   image: alexk7898/ongo:api-develop
