@@ -1283,10 +1283,21 @@ ul.pagination li.arrow a{
     background-position: -8px 0;
 }
 
-.minslider{
+.minslider {
     margin-left: 0px;
     margin-bottom: 0px;
+    height: 100%;
+    overflow: hidden;
 }
+.minslider li {
+    display: inline-block;
+    height: 100%;
+    padding-right: 5px;
+}
+.minslider img {
+    height: 100%;
+}
+
 .thumbsgal .subject{
     text-transform: uppercase;
     font-size: 12px;
