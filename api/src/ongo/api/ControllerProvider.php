@@ -125,7 +125,7 @@ final class ControllerProvider implements ControllerProviderInterface
             /** @var Logger $logger */
             $logger = $app["monolog"];
             $logger->addInfo($_REQUEST);
-            
+
             /** @var UserEntity $user */
             $user = $app["auth"]->getUser();
             $controller = new OrderController($app["db"]);
@@ -198,6 +198,10 @@ final class ControllerProvider implements ControllerProviderInterface
         $controllers->get("/place/{id}", function (Application $app, $id) {
             $controller = new PlaceController($app["db"]);
             return $controller->get(intval($id));
+        });
+        $controllers->get("/place/{id}/galleries", function (Application $app, $id) {
+            $controller = new GalleryController($app["db"]);
+            return $controller->byPlace(intval($id));
         });
         $controllers->get("/places", function (Application $app, Request $request) {
             $controller = new PlaceController($app["db"]);

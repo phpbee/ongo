@@ -14,7 +14,8 @@ angular.module('wwwApp')
             {},
             {
                 'query': {cache: true, isArray: true, url: config.api.baseURL + '/places'},
-                'top': {cache: true, method: 'GET', url: config.api.baseURL + '/top/place'}
+                'top': {cache: true, method: 'GET', url: config.api.baseURL + '/top/place'},
+                'galleries': {cache: true, isArray: true, url: config.api.baseURL + '/place/:id/galleries'}
             }
         );
     });
