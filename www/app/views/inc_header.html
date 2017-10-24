@@ -1,85 +1,141 @@
-<div class="top-bar">
-  <div class="top-bar-left">
 
-    <!-- Logo -->
-    <!-- note: links back to main page -->
-    <section class="title-area">
-        <div class="ongo-logo">
-            <span><a ui-sref="main"><em>OnGoPhotos</em></a></span>
-        </div>
-    </section>
-    <!-- end Logo -->
+<!-- Top-bar area -->
+<div class="top-bar" id="ongo-top-bar">
+  <div class="row">
+    <div class="large-5 column">
 
-    <!-- Hamburger -->
-    <!-- note: should only be visible on small screens -->
-    <div class="toggle-topbar menu-icon"><a ui-sref="main"><span></span></a></div>
-    <!-- end Hamburger -->
+                <!-- Logo/Title area -->
+                <section id="ongo-top-bar-title-section">
+                  <a ui-sref="main">
+                    <div class="ongo-company-logo"></div>
+                    <span class="ongo-company-name hide-for-small-only">OnGoPhotos</span>
+                  </a>
+                </section>
 
-    <!-- Search Bar -->
-    <!-- note: should only be visible when not on the main page -->
-    <div class="search_gallery" ng-if="$state.current.name != 'main'">
-        <form ng-controller="SearchCtrl as ctrl">
+                <!-- Search Bar -->
+                <!-- note: should only be visible when not on the main page -->
+                <section id="ongo-top-bar-search-bar-section" class="hide-for-small-only" ng-if="$state.current.name != 'main'">
+                  <div class="search_gallery">
+                    <form ng-controller="SearchCtrl as ctrl">
 
-            <input class="photografer typeahead" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
-                   ng-model="ctrl.colorName"
-                   auto-complete="ctrl.autoCompleteOptions"
-            >
+                        <input class="photografer typeahead" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+                               ng-model="ctrl.colorName"
+                               auto-complete="ctrl.autoCompleteOptions"
+                        >
 
-            <a href="#" class="button postfix"  translate="SEARCH.BUTTON"></a>
-        </form>
+                        <a href="#" class="button postfix"  translate="SEARCH.BUTTON"></a>
+                    </form>
+                  </div>
+                </section>
+
     </div>
-    <!-- end Search Bar -->
 
-  </div> <!-- end .top-bar-left -->
+    <div class="small-4 column">
 
-  <div class="top-bar-right">
+                <!-- Login, Shopping-cart, Favourites controls -->
+                <section id="ongo-top-bar-user-controls-section" class="hide-for-small-only" ng-controller="LoginCtrl">
+                  <ul>
+                    <li ng-if="!isAuthorized('user')">
+                      <a href="#" ui-sref="user">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        <span translate="MENU.LOGIN"></span>
+                      </a>
+                    </li>
+                    <li ng-if="isAuthorized('user')">
+                      <a href="#" ui-sref="logout" >
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        <span translate="MENU.LOGOUT"></span>
+                      </a>
+                    </li>
+                    <li ng-if="isAuthorized('user')">
+                      <a href="#" ui-sref="user.orders">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <span translate="MENU.ORDERS"></span>
+                      </a>
+                    </li>
+                    <li ng-if="keys(cart.items).length">
+                      <a href="#" ui-sref="checkout">
+                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                          <span translate="MENU.CHECKOUT"></span>
+                          <span>({{ keys(cart.items).length }})</span>
+                      </a>
+                    </li>
+                    <li ng-if="keys(fav.items).length">
+                      <a ui-sref="favourites">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <span translate="MENU.FAVOURITES"></span>
+                        <span>({{ keys(fav.items).length }})</span>
+                      </a>
+                    </li>
+                  </ul>
+                </section>
 
-    <!-- Login controls -->
-    <section ng-controller="LoginCtrl">
-      <ul>
-        <li ng-if="!isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user" translate="MENU.LOGIN"></a></li>
-        <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="logout" translate="MENU.LOGOUT"></a></li>
-        <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user.orders" translate="MENU.ORDERS"></a></li>
-        <li ng-if="keys(cart.items).length"><a class="menu_ico2" ui-sref="checkout"><span translate="MENU.CHECKOUT"></span> ({{ keys(cart.items).length }})</a></li>
-        <li ng-if="keys(fav.items).length"><a class="menu_ico2" ui-sref="favourites"><span translate="MENU.FAVOURITES"></span> ({{ keys(fav.items).length }})</a></li>
 
-      </ul>
-    </section>
+                <!-- Language selection toggle -->
+                <section id="ongo-top-bar-language-toggle-section" class="hide-for-small-only hide-for-large hide-for-extra-large">
+                    <ul>
+                      <li ng-if="activeLanguage!='en'">
+                        <a href="#" ng-click="changeLanguage('en');">
+                          <i class="fa fa-globe" aria-hidden="true"></i>
+                          <span class="show-for-large-only">English</span>
+                        </a>
+                      </li>
+                      <li ng-if="activeLanguage!='ru'">
+                        <a href="#" ng-click="changeLanguage('ru');">
+                          <i class="fa fa-globe" aria-hidden="true"></i>
+                          <span class="show-for-large-only">Русский</span>
+                        </a>
+                      </li>
+                  </ul>
+                </section>
 
-    <!-- Language selection -->
-    <section>
-        <!-- language selection icon -->
-        <ul>
-          <li ng-if="activeLanguage!='en'"><a class="menu_ico3" href="#" ng-click="changeLanguage('en');"><span>English</span></a></li>
-          <li ng-if="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru');"><span>Русский</span></a></li>
-        </ul>
 
-        <!-- language selection dropdown menu-->
-        <li class="has-dropdown">
-            <a class="menu_ico3" href="#"  onclick="return false;"><span>Language</span></a>
-            <ul class="dropdown">
-                <li><a href="#" ng-click="changeLanguage('en')"><img src="/img/flag/flag_en.jpg">English</a></li>
-                <li><a href="#" ng-click="changeLanguage('ru')"><img src="/img/flag/flag_ru.jpg">Russian</a></li>
-            </ul>
-        </li>
-    </section>
-    <!-- end Language selection-->
+                <!-- language selection dropdown menu-->
+                <section id="ongo-top-bar-language-menu-section" class="show-for-large show-for-extra-large">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-globe" aria-hidden="true"></i>
+                          <span class="show-">Language</span>
+                        </a>
+                        <ul class="menu vertical">
+                          <li><a href="#" ng-click="changeLanguage('en')"><img src="/img/flag/flag_en.jpg" class="country-flag-image">English</a></li>
+                          <li><a href="#" ng-click="changeLanguage('ru')"><img src="/img/flag/flag_ru.jpg" class="country-flag-image">Russian</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                </section>
 
-    <!-- Info-links -->
-    <section>
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li>
-          <a class="menu_ico4" href="#" onclick="return false;">Drop</a>
-          <ul class="menu">
-            <li><a ui-sref="about" translate="About"></a></li>
-            <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
-            <li><a ui-sref="contacts" translate="Contacts"></a></li>
-            <li><a ui-sref="faq" translate="FAQ"></a></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-    <!-- end Info-links -->
 
-  </div> <!-- end .top-bar-right -->
+                <!-- Info-links -->
+                <section id="ongo-top-bar-info-links-section" class="hide-for-small-only">
+                  <ul class="dropdown menu" data-dropdown-menu>
+                    <li>
+                      <a href="#" onclick="return false;">
+                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                      </a>
+                      <ul class="menu">
+                        <li><a ui-sref="about" translate="About"></a></li>
+                        <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
+                        <li><a ui-sref="contacts" translate="Contacts"></a></li>
+                        <li><a ui-sref="faq" translate="FAQ"></a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </section>
+
+
+                <!-- Menu hamburger -->
+                <!-- note: should only be visible on small screens -->
+                <!-- TODO: this should probably pop up a menu instead of go to home -->
+                <section id="ongo-top-bar-hamburger-section" class="show-for-small-only">
+                  <div class="toggle-topbar menu-icon show-for-small-only"><a ui-sref="main"><span></span></a></div>
+                </section>
+
+                <!-- Menu for mobile -->
+                <!-- TODO: implement -->
+                <section id="ongo-mobile-menu"></section>
+      </div>
+    </div>
+  </div>
 </div>
