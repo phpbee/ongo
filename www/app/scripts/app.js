@@ -56,8 +56,12 @@ angular
             $http.defaults.headers.common.Translation = $translate.use();
         });
 
-
+        // reload foundation on every view change (foundation needs to rescan the components)
+        $rootScope.$on('$viewContentLoaded', function() {
+          $(document).foundation();
+        });
     })
+
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider

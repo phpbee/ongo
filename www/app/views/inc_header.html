@@ -1,67 +1,85 @@
-<div class="header">
-    <div class="row">
-        <div class="large-12 columns nopadding">
-            <nav class="top-bar" data-topbar="" role="navigation" data-options="is_hover: false">
+<div class="top-bar">
+  <div class="top-bar-left">
 
-                <div class="search_gallery" ng-if="$state.current.name != 'main'">
-                    <form ng-controller="SearchCtrl as ctrl">
-                        <div class="row">
-                            <div class="large-12 columns">
-                                <div class="row collapse">
-                                    <div class="large-9 medium-9 small-9 columns">
-                                        <input class="photografer typeahead" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
-                                               ng-model="ctrl.colorName"
-                                               auto-complete="ctrl.autoCompleteOptions"
-                                        >
-                                    </div>
-                                    <div class="large-3 medium-3 small-3 columns">
-                                        <a href="#" class="button postfix"  translate="SEARCH.BUTTON"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <ul class="title-area">
-                    <li class="name">
-                        <span><a ui-sref="main"><em>OnGoPhotos</em></a></span>
-                    </li>
-                    <li class="toggle-topbar menu-icon"><a ui-sref="main"><span></span></a></li>
-                </ul>
-                <section class="top-bar-section" ng-controller="LoginCtrl">
-                    <ul class="right">
-                        <li ng-if="!isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user" translate="MENU.LOGIN"></a></li>
-                        <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="logout" translate="MENU.LOGOUT"></a></li>
-                        <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user.orders" translate="MENU.ORDERS"></a></li>
-                        <li ng-if="keys(cart.items).length"><a class="menu_ico2" ui-sref="checkout"><span translate="MENU.CHECKOUT"></span> ({{ keys(cart.items).length }})</a></li>
-                        <li ng-if="keys(fav.items).length"><a class="menu_ico2" ui-sref="favourites"><span translate="MENU.FAVOURITES"></span> ({{ keys(fav.items).length }})</a></li>
-                        <li ng-if="activeLanguage!='en'"><a class="menu_ico3" href="#" ng-click="changeLanguage('en');"><span>English</span></a></li>
-                        <li ng-if="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru');"><span>Русский</span></a></li>
-
-                        <li class="has-dropdown">
-                            <a class="menu_ico3" href="#"  onclick="return false;"><span>Language</span></a>
-                            <ul class="dropdown">
-                                <li><a href="#" ng-click="changeLanguage('en')"><img src="/img/flag/flag_en.jpg">English</a></li>
-                                <li><a href="#" ng-click="changeLanguage('ru')"><img src="/img/flag/flag_ru.jpg">Russian</a></li>
-                            </ul>
-                        </li>
-
-
-
-                        <li class="has-dropdown">
-                            <a class="menu_ico4" href="#" onclick="return false;"></a>
-                            <ul class="dropdown">
-                                <li><a ui-sref="about" translate="About"></a></li>
-                                <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
-                                <li><a ui-sref="contacts" translate="Contacts"></a></li>
-                                <li><a ui-sref="faq" translate="FAQ"></a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-            </nav>
+    <!-- Logo -->
+    <!-- note: links back to main page -->
+    <section class="title-area">
+        <div class="ongo-logo">
+            <span><a ui-sref="main"><em>OnGoPhotos</em></a></span>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- end Logo -->
 
+    <!-- Hamburger -->
+    <!-- note: should only be visible on small screens -->
+    <div class="toggle-topbar menu-icon"><a ui-sref="main"><span></span></a></div>
+    <!-- end Hamburger -->
+
+    <!-- Search Bar -->
+    <!-- note: should only be visible when not on the main page -->
+    <div class="search_gallery" ng-if="$state.current.name != 'main'">
+        <form ng-controller="SearchCtrl as ctrl">
+
+            <input class="photografer typeahead" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+                   ng-model="ctrl.colorName"
+                   auto-complete="ctrl.autoCompleteOptions"
+            >
+
+            <a href="#" class="button postfix"  translate="SEARCH.BUTTON"></a>
+        </form>
+    </div>
+    <!-- end Search Bar -->
+
+  </div> <!-- end .top-bar-left -->
+
+  <div class="top-bar-right">
+
+    <!-- Login controls -->
+    <section ng-controller="LoginCtrl">
+      <ul>
+        <li ng-if="!isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user" translate="MENU.LOGIN"></a></li>
+        <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="logout" translate="MENU.LOGOUT"></a></li>
+        <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user.orders" translate="MENU.ORDERS"></a></li>
+        <li ng-if="keys(cart.items).length"><a class="menu_ico2" ui-sref="checkout"><span translate="MENU.CHECKOUT"></span> ({{ keys(cart.items).length }})</a></li>
+        <li ng-if="keys(fav.items).length"><a class="menu_ico2" ui-sref="favourites"><span translate="MENU.FAVOURITES"></span> ({{ keys(fav.items).length }})</a></li>
+
+      </ul>
+    </section>
+
+    <!-- Language selection -->
+    <section>
+        <!-- language selection icon -->
+        <ul>
+          <li ng-if="activeLanguage!='en'"><a class="menu_ico3" href="#" ng-click="changeLanguage('en');"><span>English</span></a></li>
+          <li ng-if="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru');"><span>Русский</span></a></li>
+        </ul>
+
+        <!-- language selection dropdown menu-->
+        <li class="has-dropdown">
+            <a class="menu_ico3" href="#"  onclick="return false;"><span>Language</span></a>
+            <ul class="dropdown">
+                <li><a href="#" ng-click="changeLanguage('en')"><img src="/img/flag/flag_en.jpg">English</a></li>
+                <li><a href="#" ng-click="changeLanguage('ru')"><img src="/img/flag/flag_ru.jpg">Russian</a></li>
+            </ul>
+        </li>
+    </section>
+    <!-- end Language selection-->
+
+    <!-- Info-links -->
+    <section>
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a class="menu_ico4" href="#" onclick="return false;">Drop</a>
+          <ul class="menu">
+            <li><a ui-sref="about" translate="About"></a></li>
+            <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
+            <li><a ui-sref="contacts" translate="Contacts"></a></li>
+            <li><a ui-sref="faq" translate="FAQ"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <!-- end Info-links -->
+
+  </div> <!-- end .top-bar-right -->
+</div>
