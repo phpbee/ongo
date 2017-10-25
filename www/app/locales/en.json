@@ -17,7 +17,8 @@
     "FAVOURITES": "Favourites",
     "ORDERS": "My orders",
     "LOGIN": "Sign in",
-    "LOGOUT": "Sign out"
+    "LOGOUT": "Sign out",
+    "LANGUAGE": "Language"
   },
   "SLIDER": {
     "BROWSE_GALLERY": "More images from"

@@ -1,58 +1,71 @@
 
 <!-- Top-bar area -->
-<div class="top-bar" id="ongo-top-bar">
-  <div class="row">
-    <div class="large-5 column">
+<div class="top-bar row" id="ongo-top-bar">
 
-                <!-- Logo/Title area -->
-                <section id="ongo-top-bar-title-section">
+    <div class="small-2 offset-2 column">
+
+                <!-- LOGO -->
+                <section>
                   <a ui-sref="main">
                     <div class="ongo-company-logo"></div>
-                    <span class="ongo-company-name hide-for-small-only">OnGoPhotos</span>
                   </a>
                 </section>
 
-                <!-- Search Bar -->
-                <!-- note: should only be visible when not on the main page -->
-                <section id="ongo-top-bar-search-bar-section" class="hide-for-small-only" ng-if="$state.current.name != 'main'">
-                  <div class="search_gallery">
-                    <form ng-controller="SearchCtrl as ctrl">
+                <!-- COMPANY NAME -->
+                <section class="hide-for-small-only">
+                  <a ui-sref="main">
+                    <span class="ongo-company-name">OnGoPhotos</span>
+                  </a>
+                </section>
 
-                        <input class="photografer typeahead" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+
+    </div>
+
+    <div class="small-4 column">
+
+                <!-- SEARCH BAR (note: does not appear on the main page) -->
+                <section ng-if="$state.current.name != 'main'">
+                  <div class="search-bar">
+                    <form ng-controller="SearchCtrl as ctrl">
+                        <input class="photografer typeahead" type="text"
+                               placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
                                ng-model="ctrl.colorName"
                                auto-complete="ctrl.autoCompleteOptions"
                         >
-
-                        <a href="#" class="button postfix"  translate="SEARCH.BUTTON"></a>
+                        <a href="#" class="button" translate="SEARCH.BUTTON"></a>
                     </form>
                   </div>
                 </section>
 
     </div>
 
-    <div class="small-4 column">
+    <div class="small-6 column">
 
-                <!-- Login, Shopping-cart, Favourites controls -->
-                <section id="ongo-top-bar-user-controls-section" class="hide-for-small-only" ng-controller="LoginCtrl">
+                <!-- USER CONTROLS -->
+                <section class="hide-for-small-only" ng-controller="LoginCtrl" >
                   <ul>
+                    <!-- sign-in -->
                     <li ng-if="!isAuthorized('user')">
                       <a href="#" ui-sref="user">
                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                         <span translate="MENU.LOGIN"></span>
                       </a>
                     </li>
+                    <!-- sign-out -->
                     <li ng-if="isAuthorized('user')">
                       <a href="#" ui-sref="logout" >
                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                         <span translate="MENU.LOGOUT"></span>
                       </a>
                     </li>
+                    <!-- shopping cart -->
                     <li ng-if="isAuthorized('user')">
                       <a href="#" ui-sref="user.orders">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <span translate="MENU.ORDERS"></span>
                       </a>
                     </li>
+                    <!-- checkout -->
                     <li ng-if="keys(cart.items).length">
                       <a href="#" ui-sref="checkout">
                           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -60,6 +73,7 @@
                           <span>({{ keys(cart.items).length }})</span>
                       </a>
                     </li>
+                    <!-- favourites -->
                     <li ng-if="keys(fav.items).length">
                       <a ui-sref="favourites">
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -71,49 +85,57 @@
                 </section>
 
 
-                <!-- Language selection toggle -->
-                <section id="ongo-top-bar-language-toggle-section" class="hide-for-small-only hide-for-large hide-for-extra-large">
+                <!-- LANGUGE SELECTION TOGGLE -->
+                <section class="hide-for-small-only hide-for-large hide-for-extra-large">
                     <ul>
                       <li ng-if="activeLanguage!='en'">
                         <a href="#" ng-click="changeLanguage('en');">
                           <i class="fa fa-globe" aria-hidden="true"></i>
-                          <span class="show-for-large-only">English</span>
+                          <img ng-if="activeLanguage=='en'" src="/img/flag/flag_en.jpg" class="language-status-flag-image">
+                          <img ng-if="activeLanguage=='ru'" src="/img/flag/flag_ru.jpg" class="language-status-flag-image">
                         </a>
                       </li>
                       <li ng-if="activeLanguage!='ru'">
                         <a href="#" ng-click="changeLanguage('ru');">
                           <i class="fa fa-globe" aria-hidden="true"></i>
-                          <span class="show-for-large-only">Русский</span>
+                          <img ng-if="activeLanguage=='en'" src="/img/flag/flag_en.jpg" class="language-status-flag-image">
+                          <img ng-if="activeLanguage=='ru'" src="/img/flag/flag_ru.jpg" class="language-status-flag-image">
                         </a>
                       </li>
                   </ul>
                 </section>
 
 
-                <!-- language selection dropdown menu-->
-                <section id="ongo-top-bar-language-menu-section" class="show-for-large show-for-extra-large">
-                    <ul class="dropdown menu" data-dropdown-menu>
+                <!-- LANGUAGE SELECTION MENU -->
+                <section class="show-for-large show-for-extra-large">
+                    <ul class="dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
                       <li>
+                        <!-- dropdown toggle -->
                         <a href="#">
                           <i class="fa fa-globe" aria-hidden="true"></i>
-                          <span class="show-">Language</span>
+                          <span translate="MENU.LANGUAGE"></span>
+                          <img ng-if="activeLanguage=='en'" src="/img/flag/flag_en.jpg" class="language-status-flag-image">
+                          <img ng-if="activeLanguage=='ru'" src="/img/flag/flag_ru.jpg" class="language-status-flag-image">
                         </a>
-                        <ul class="menu vertical">
-                          <li><a href="#" ng-click="changeLanguage('en')"><img src="/img/flag/flag_en.jpg" class="country-flag-image">English</a></li>
-                          <li><a href="#" ng-click="changeLanguage('ru')"><img src="/img/flag/flag_ru.jpg" class="country-flag-image">Russian</a></li>
+                        <!-- dropdown menu -->
+                        <ul class="menu">
+                          <li><a href="#" ng-click="changeLanguage('en')" data-toggle="ongo-top-bar-language-dropdown"><img src="/img/flag/flag_en.jpg" class="country-flag-image">English</a></li>
+                          <li><a href="#" ng-click="changeLanguage('ru')" data-toggle="ongo-top-bar-language-dropdown"><img src="/img/flag/flag_ru.jpg" class="country-flag-image">Russian</a></li>
                         </ul>
                       </li>
                     </ul>
                 </section>
 
 
-                <!-- Info-links -->
-                <section id="ongo-top-bar-info-links-section" class="hide-for-small-only">
-                  <ul class="dropdown menu" data-dropdown-menu>
+                <!-- INFO MENU -->
+                <section class="hide-for-small-only">
+                  <ul class="dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
                     <li>
-                      <a href="#" onclick="return false;">
+                      <!-- dropdown toggle -->
+                      <a href="#">
                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                       </a>
+                      <!-- dropdown menu -->
                       <ul class="menu">
                         <li><a ui-sref="about" translate="About"></a></li>
                         <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
@@ -121,21 +143,30 @@
                         <li><a ui-sref="faq" translate="FAQ"></a></li>
                       </ul>
                     </li>
-                  </ul>
+                  </li>
                 </section>
 
 
                 <!-- Menu hamburger -->
                 <!-- note: should only be visible on small screens -->
                 <!-- TODO: this should probably pop up a menu instead of go to home -->
-                <section id="ongo-top-bar-hamburger-section" class="show-for-small-only">
-                  <div class="toggle-topbar menu-icon show-for-small-only"><a ui-sref="main"><span></span></a></div>
+                <section class="show-for-small-only">
+                  <a href="#" data-toggle="ongo-offcanvas-menu"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
                 </section>
+
 
                 <!-- Menu for mobile -->
                 <!-- TODO: implement -->
-                <section id="ongo-mobile-menu"></section>
-      </div>
+                <section class="show-for-small-only">
+                  <div class="off-canvas position-top" id="ongo-offcanvas-menu" data-off-canvas>
+                    <h1> Menu </h1>
+                    <nav>
+                      <ul>
+                        <li>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </section>
     </div>
   </div>
-</div>
