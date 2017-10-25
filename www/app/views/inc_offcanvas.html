@@ -1,0 +1,82 @@
+<!-- OFF-CANVAS MOBILE MENU -->
+<section class="show-for-small-only">
+  <div class="off-canvas position-right" id="ongo-offcanvas" data-off-canvas>
+    <!-- close button -->
+    <button class="button offcanvas-close-button" aria-label="Close menu" type="button" data-close>
+      <span aria-hidden="true">X</span>
+    </button>
+
+    <nav>
+      <ul>
+        <!-- sign-in -->
+        <li ng-if="!isAuthorized('user')">
+          <a href="#" onclick="return false;" ui-sref="user" aria-label="Log in" data-close>
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <span translate="MENU.LOGIN"></span>
+          </a>
+        </li>
+        <!-- shopping cart -->
+        <li ng-if="isAuthorized('user')">
+          <a href="#" onclick="return false;" ui-sref="user.orders" aria-label="Orders" data-close>
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span translate="MENU.ORDERS"></span>
+          </a>
+        </li>
+        <!-- checkout -->
+        <li ng-if="keys(cart.items).length">
+          <a href="#" onclick="return false;" ui-sref="checkout" aria-label="Checkout" data-close>
+              <i class="fa fa-credit-card" aria-hidden="true"></i>
+              <span translate="MENU.CHECKOUT"></span>
+              <span>({{ keys(cart.items).length }})</span>
+          </a>
+        </li>
+        <!-- favourites -->
+        <li ng-if="keys(fav.items).length">
+          <a href="#" onclick="return false;" ui-sref="favourites" aria-label="Favourites" data-close>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <span translate="MENU.FAVOURITES"></span>
+            <span>({{ keys(fav.items).length }})</span>
+          </a>
+        </li>
+        <!-- sign-out -->
+        <li ng-if="isAuthorized('user')">
+          <a href="#" onclick="return false;" ui-sref="logout" aria-label="Log out">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <span translate="MENU.LOGOUT"></span>
+          </a>
+        </li>
+        <!-- language selection -->
+        <li>
+          <a href="#" onclick="return false;" data-toggle="ongo-offcanvas-language-menu">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <span translate="MENU.LANGUAGE"></span>
+          </a>
+        </li>
+        <li>
+          <ul class="info-links">
+            <li><a href="#" ui-sref="about" translate="About" data-close></a></li>
+            <li><a href="#" ui-sref="privacy" translate="Privacy Policy" data-close></a></li>
+            <li><a href="#" ui-sref="contacts" translate="Contacts" data-close></a></li>
+            <li><a href="#" ui-sref="faq" translate="FAQ" data-close></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- LANGUAGE SELECTION OFFCANVAS -->
+  <div class="off-canvas position-right" id="ongo-offcanvas-language-menu" data-off-canvas>
+    <!-- close button -->
+    <button class="button offcanvas-close-button" aria-label="Close menu" type="button" data-close>
+      <span aria-hidden="true">X</span>
+    </button>
+
+    <h1 translate="MENU.LANGUAGE"></h1>
+    <nav>
+      <ul>
+        <li><a href="#" ng-click="changeLanguage('en')" data-toggle="ongo-top-bar-language-dropdown" data-close><img src="/img/flag/flag_en.svg" class="country-flag-image">English</a></li>
+        <li><a href="#" ng-click="changeLanguage('ru')" data-toggle="ongo-top-bar-language-dropdown" data-close><img src="/img/flag/flag_ru.svg" class="country-flag-image">Русский</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
