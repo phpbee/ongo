@@ -1,30 +1,79 @@
-/**
- * Notes:
- *
- * - Core Framework:
- *   Foundation 6 is used as the basic css framework. Foundation is re-initialized
- *      in Angular on each $viewContentLoaded (attached in the .run block of app.js)
- *      event because foundation needs to scan the html template for special dataset
- *      attributes to attach its JS functionality.
- *
- * - Specific styles:
- *   Classes in ongo.css define styles specific to the ongo site and are
- *      prefixed with ongo- . Overriding core framework classes was avoided.
- *
- * - Icons:
- *   "Font Awesome" is used as the basis for icons.
- *        Language (globe icon):         <i class="fa fa-globe" aria-hidden="true"></i>
- *        Menu (hamburger/bars icon):    <i class="fa fa-bars" aria-hidden="true"></i>
- *        Menu (vertical ellipsis icon): <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
- *        Sign-in (door enter icon):     <i class="fa fa-sign-in" aria-hidden="true"></i>
- *        Shopping Cart:                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
- *        Checkout (credit-card logo):   <i class="fa fa-credit-card" aria-hidden="true"></i>
- *        Favorites (star icon):         <i class="fa fa-star" aria-hidden="true"></i>
+/**  Contents:
+ *    DOC
+ *    CORE FRAMEWORK OVERRIDES
+ *    UTILITY
+ *    BODY / GLOBAL
+ *    HEADER AND TOP-BAR
+ *    OFF-CANVAS MENUS
+ *    MAIN PAGE
  */
 
 /******
- * Body
+ * DOC
  ******/
+
+/*
+ * - Core Framework:
+ *      Foundation 6 is used as the core css framework.
+ *      Docs: https://foundation.zurb.com/sites/docs/
+ *      Note: In order for Foundation to work, with Angular Router it needs to be
+ *        reinitialized on each view render in Angular (this is because Foundation
+ *        needs to scan the DOM to find the necessary dataset hooks for it to work).
+ *        This is configured in the .run() block of the wwwApp module
+ *        (in scripts/app.js). The relevant lines are:
+ *            $rootScope.$on('$viewContentLoaded', function() {
+ *               $(document).foundation();
+ *            });
+ *      Note also that jQuery must be loaded for this to work.
+ *
+ * - Style Customization:
+ *      Classes in ongo.css define styles specific to the ongo site. The 'ongo-' prefix
+ *      is used for most class and id names to avoid name collisions with external
+ *      frameworks and libraries that might be used. Core framework overrides are
+ *      mostly avoided. The few overrides that are used are at the top of the stylesheet.
+ *
+ * - Icons:
+ *      "Font Awesome" is used as the basis for icons. The icons used are listed here:
+ *        Arrow-up:                      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+ *        Arrow-left:                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+ *        Arrow-right:                   <i class="fa fa-arrow-right" aria-hidden="true"></i>
+ *        Checkout (credit-card logo):   <i class="fa fa-credit-card" aria-hidden="true"></i>
+ *        Close (X):                     <i class="fa fa-times" aria-hidden="true"></i>
+ *        Favorites (star icon):         <i class="fa fa-star" aria-hidden="true"></i>
+ *        Language (globe icon):         <i class="fa fa-globe" aria-hidden="true"></i>
+ *        Menu (hamburger/bars icon):    <i class="fa fa-bars" aria-hidden="true"></i>
+ *        Menu (vertical ellipsis icon): <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+ *        Search (magnifying glass):     <i class="fa fa-search" aria-hidden="true"></i>
+ *        Shopping Cart:                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+ *        Sign-in (door enter icon):     <i class="fa fa-sign-in" aria-hidden="true"></i>
+ *
+ * - z-indexes:
+ *      Used to define how large-scale elements layer on top of one another.
+ *      Generally 0 - 1000 in increments of 100.
+ *      Can use lower grain if fine-tuning is needed for additional elements.
+ *        z-index: 1000; - Offcanvas side menus (language selection etc.)
+ *        z-index: 900; - Offcanvas main side-menu
+ *        z-index: 800; - Hamburger (off-canvas menu toggle)
+ *        z-index: 700; - Offcanvas search menu
+ *        z-index: 600; - Header and top-bar
+ *
+ * - Color scheme:
+ *      The following color scheme is currently used:
+ *
+ */
+
+/**************************
+ * CORE FRAMEWORK OVERRIDES
+ **************************/
+
+/**********************
+ * UTILITY
+ *********************/
+
+/***************
+ * BODY / GLOBAL
+ ***************/
+
 body {
   background-color: #202020;
 }
@@ -34,24 +83,31 @@ body {
  ************************************************/
 
 /**
- * Global settings
+ * Header Global Settings
  */
 
-/* header is semi-transparent */
+/* header */
 #ongo-main-header {
   display: block;
-  background-color: hsla(230, 5%, 20%, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 60px;
+  background-color: hsl(0, 0%, 20%);
+  opacity: 0.9;
 }
 
 /* center the top bar and give it a max width */
 #ongo-top-bar {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   max-width: 980px;
 }
 
-/* top-bar and children are transparent with a base font color*/
-#ongo-top-bar, #ongo-top-bar * {
+/* top-bar and children are transparent */
+#ongo-top-bar, #ongo-top-bar section, #ongo-top-bar ul {
   background-color: transparent;
 }
 
@@ -60,24 +116,27 @@ body {
   display: inline-block;
 }
 
-
 /* all links within top-bar and items within links */
 #ongo-top-bar a, #ongo-top-bar a * {
-  color: hsla(0, 0%, 85%, 1);
+  color: hsla(0, 0%, 90%, 1);
 }
 #ongo-top-bar a:hover, #ongo-top-bar a:hover * {
   color: hsla(0, 0%, 100%, 1);
 }
 
-/* all links within top-bar */
+/* all lists within top-bar */
 #ongo-top-bar ul {
   list-style-type: none;
 }
 
 /* items within the main nav */
-#ongo-top-bar-nav>ul>li {
+#ongo-top-bar-nav > ul > li {
   display: inline-block;
 }
+
+/**
+ * Header Icons and Images
+ */
 
 /* company name and logo */
 #ongo-top-bar .ongo-company-name {
@@ -98,25 +157,13 @@ body {
   font-size: 1.2rem;
 }
 
-/**
- * hamburger
- */
-#ongo-top-bar .hamburger {
-  position: fixed;
-  top: 10px;
-  right: 20px;
-}
-#ongo-top-bar .hamburger i {
-  font-size: 2rem;
-}
-
 /* flag image used as symbol for current langauge status */
 #ongo-top-bar .language-status-flag-image {
   width: 23px;
   height: 15px;
   transform: translateX(5px) translateY(-1px);
 }
-/* country flag position within the language menu */
+/* country flag , #ongo-top-bar aposition within the language menu */
 #ongo-top-bar .menu .country-flag-image {
   width: 23px;
   height: 15px;
@@ -124,35 +171,54 @@ body {
 }
 
 /**
- * Top-Bar Search Bar
+ * Header Search Bar
  */
+
 #ongo-top-bar .search-area {
-  padding: 0 30px 0 30px;
-  width: 50%;
+  padding: 0;
+  min-width: 10px;
+  width: auto;
+  height: auto;
+  vertical-align: top;
 }
-#ongo-top-bar-search-input {
+#ongo-top-bar .search-area .search-input {
   background-color: hsla(0, 0%, 100%, 1);
   display: inline-block;
   border-radius: 4px;
-  height: 28px;
-  max-width: 230px;
-}
-#ongo-top-bar-search-button {
-  height: 28px;
-  border-radius: 4px;
-  vertical-align: bottom;
-  border: 1px solid hsla(0, 0%, 100%, 1);
+  width: auto;
+  min-width: 10px;
+  max-width: 350px;
+  vertical-align: top;
 }
 
 /**
- * Top-Bar Menus
+ * Small-screen Controls and Buttons
  */
+
+#ongo-small-screen-controls {
+  position: fixed;
+  top: 10px;
+  right: 70px;
+}
+#ongo-small-screen-controls a {
+  display: inline-block;
+  padding-left: 1rem;
+  vertical-align: top;
+}
+#ongo-small-screen-controls i {
+  font-size: 2rem;
+}
+
+/**
+ * Header Menus
+ */
+
 /* top-bar dropdown menus */
 #ongo-top-bar .dropdown .menu {
   background-color: hsla(0, 0%, 10%, 0.95);
   text-align: right;
   border-radius: 3px;
-  z-index: 10;
+  z-index: 600;
 }
 #ongo-top-bar .dropdown .menu a:hover {
   background-color: hsla(0, 0%, 20%, 1);
@@ -163,84 +229,148 @@ body {
   display: none;
 }
 
+/***************************
+ * OFF-CANVAS MENUS
+ **************************/
+
 /**
- * Off-canvas (mobile) menu
+ * Hamburger (off-canvas toggle)
  */
+
+#ongo-hamburger {
+ position: fixed;
+ top: 10px;
+ right: 20px;
+ z-index: 800;
+}
+#ongo-hamburger i {
+ font-size: 2rem;
+ color: hsla(0, 0%, 80%, 1);
+}
+#ongo-hamburger:hover i {
+ color: hsla(0, 0%, 100%, 1);
+}
+
+/**
+ * Off-canvas buttons
+ */
+
 .offcanvas-close-button {
   display: block;
   background-color: transparent;
 }
-.offcanvas-close-button > span {
+.offcanvas-close-button > i {
   font-size: 2rem;
   background-color: transparent;
   color: hsla(0, 0%, 80%, 1);
 }
-.offcanvas-close-button:hover > span {
+.offcanvas-close-button:hover > i {
   color: hsla(0, 0%, 100%, 1);
 }
 
-#ongo-offcanvas {
+/**
+ * Off-canvas menus
+ */
+.ongo-offcanvas {
   height: 100vh;
   background-color: hsla(0, 0%, 10%, 1);
 }
-#ongo-offcanvas nav {
+.ongo-offcanvas * {
+  color: hsla(0, 0%, 80%, 1);
+}
+.ongo-offcanvas h1 {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+}
+.ongo-offcanvas nav {
   display: block;
 }
-#ongo-offcanvas * {
+.ongo-offcanvas * {
   text-align: right;
 }
-#ongo-offcanvas ul {
+.ongo-offcanvas ul {
   list-style-type: none;
-  padding-right: 20px;
+  margin-right: 1rem;
 }
 
-#ongo-offcanvas .close-button:hover > span {
-  color: hsla(0, 0%, 100%, 1);
-}
-#ongo-offcanvas a, #ongo-offcanvas a * {
+.ongo-offcanvas a, .ongo-offcanvas a * {
   color: hsla(0, 0%, 80%, 1);
   font-size: 2rem;
+}
+.ongo-offcanvas a {
+  display: block;
+  width: 100%;arrow-righ
+}
+.ongo-offcanvas a:hover {
+  background-color: hsla(0, 0%, 30%, 1);
+}
+
+/**
+ * Off-canvas Main Menu
+ */
+
+#ongo-offcanvas-main {
+  z-index: 900;
 }
 
 /* Info links (About, FAQ, etc.) */
-#ongo-offcanvas ul.info-links {
+.ongo-offcanvas .info-links {
   margin-top: 40px;
 }
-#ongo-offcanvas ul.info-links * {
+.ongo-offcanvas .info-links * {
   font-size: 1.5rem;
 }
 
-/* Language secondary off-canvas */
-#ongo-offcanvas-language-menu {
-  background-color: hsla(0, 0%, 20%, 1);
+/**
+ * Off-canvas Langauge Menu
+ */
+
+#ongo-offcanvas-language {
+  z-index: 1000;
 }
-#ongo-offcanvas-language-menu nav {
-  display: block;
-}
-#ongo-offcanvas-language-menu * {
-  text-align: right;
-}
-#ongo-offcanvas-language-menu h1 {
-  color: hsla(0, 0%, 80%, 1);
-  font-size: 2rem;
-  padding-right: 20px;
-}
-#ongo-offcanvas-language-menu ul {
-  list-style-type: none;
-  padding-right: 20px;
-  margin-top: 20px;
-}
-#ongo-offcanvas-language-menu a, #ongo-offcanvas-language-menu a * {
-  color: hsla(0, 0%, 80%, 1);
-  font-size: 2rem;
-}
-#ongo-offcanvas-language-menu .country-flag-image {
+
+#ongo-offcanvas-language .country-flag-image {
   width: 30px;
   height: 25px;
   margin-right: 5px;
 }
 
+/**
+ * Off-canvas search area
+ */
+#ongo-offcanvas-search {
+  height: auto;
+  z-index: 700;
+}
+#ongo-offcanvas-search form {
+  text-align: center;
+}
+#ongo-offcanvas-search form .search-input {
+  display: block;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#ongo-offcanvas-search form .button {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-/***************************
- * ICONS
- ***************************/
+/********************
+ * MAIN PAGE
+ *******************/
+
+#ongo-main {}
+
+#ongo-main .ongo-header {}
+
+#ongo-main .ongo-search-area {}
+
+#ongo-main .ongo-tagline {}
+
+#ongo-main .ongo-background-carousel {}
+
+#ongo-main .ongo-gallery-carousels {}

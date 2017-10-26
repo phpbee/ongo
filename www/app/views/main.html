@@ -1,86 +1,71 @@
-<div class="main">
+<!-- MAIN PAGE -->
+<div id="ongo-main">
 
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="finder">
-                <h1>
-                    <translate>FIND_YOUR_PHOTOS</translate>
-                </h1>
-                <span><translate>CHOOSE_YOUR_PHOTOS</translate></span>
+    <!-- HEADING -->
+    <section class="ongo-heading">
+      <h1><translate>FIND_YOUR_PHOTOS</translate></h1>
+      <span><translate>CHOOSE_YOUR_PHOTOS</translate></span>
+    </section>
 
-                <form ng-controller="SearchCtrl as ctrl">
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <div class="row collapse">
-                                <div class="large-9 small-9 columns">
-                                    <input class="photografer typeahead" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
-                                           ng-model="ctrl.colorName"
-                                           auto-complete="ctrl.autoCompleteOptions"
-                                    >
-                                </div>
-                                <div class="large-3 small-3 columns">
-                                    <a href="#" class="button postfix" translate="SEARCH.BUTTON"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+    <!-- SEARCH AREA -->
+    <section class="ongo-search-area">
+      <form ng-controller="SearchCtrl as ctrl" aria-label="Search form">
+          <input type="search"
+                 class="search-input typeahead"
+                 placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+                 ng-model="ctrl.colorName"
+                 auto-complete="ctrl.autoCompleteOptions"
+                 aria-label="Search input"
+          >
+          <button type="button" class="button" aria-label="Search submit button" data-close><span translate="SEARCH.BUTTON"></span></button>
+      </form>
+    <section>
 
+    <!-- CAPTION / TAGLINE -->
+    <section class="ongo-tagline">
+        <span><translate>FIND_BUY_DOWNLOAD</translate></span>
+    <section>
 
-                <div class="text-center">
-                    <span><translate>FIND_BUY_DOWNLOAD</translate></span>
+    <!-- BACKGROUND CAROUSEL -->
+    <section class="ongo-background-carousel">
+      <div class="lighter">
+          <ul id="lightSlider" style="background-color: #676767;">
+              <section ng-repeat="p in topGalleries">
+                  <li>
+                      <img ng-src="{{ p.logo }}" imageonload="lightSlider" style="display:none;">
+                      <a ui-sref="gallery({id:p.id})">
+                          <translate>BROWSE_TO_GALLERY</translate>
+                      </a>
+                  </li>
+              </section>
+          </ul>
+      </div>
+    </section>
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="lighter">
-        <ul id="lightSlider"   style="background-color: #676767;">
-            <section ng-repeat="p in topGalleries">
-                <li>
-                    <img ng-src="{{ p.logo }}" imageonload="lightSlider" style="display:none;">
-                    <a ui-sref="gallery({id:p.id})">
-                        <translate>BROWSE_TO_GALLERY</translate>
+    <!-- GALLERY CAROUSELS -->
+    <section class="ongo-gallery-carousels meetings blackbody">
+        <div class="row thumbsgal" ng-repeat="g in galleries">
+            <ul class="minslider">
+                <li ng-repeat="p in g.icons">
+                    <a ui-sref="gallery({id: g.id})">
+                        <img ng-src="{{ p.ico }}" imageonload="minslider">
                     </a>
                 </li>
-            </section>
+            </ul>
 
-        </ul>
-    </div>
-</div>
-
-
-<div class="double_line"></div>
-
-<div class="meetings blackbody">
-    <div class="row" style="min-height: 900px;">
-        <div class="row thumbsgal" ng-repeat="g in galleries">
-            <div class="small-12 medium-12 large-12 columns">
-                <div class="thumbwrap">
-                    <ul class="minslider">
-                        <li ng-repeat="p in g.icons">
-                            <a ui-sref="gallery({id: g.id})">
-                                <img ng-src="{{ p.ico }}" imageonload="minslider">
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="controls">
-                        <a class="prev"></a>
-                        <a class="next"></a>
-                    </div>
-                </div>
-                <span class="subject">
-                    <a href="" ui-sref="photographer({id: g.photographer.id})">{{ g.photographer.name }}</a>
-                    <a ui-sref="day({day: ( g.created|strtotime|date:'yyyy-MM-dd' ), country_id: g.country.id })">{{
-                        g.created | strtotime | date: "dd/MM/yyyy" }}</a>
-                    <a href="" ui-sref="place({id: g.place.id})">{{ g.place.name }}</a>,
-                    <a href="" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>,
-                    <a href="" ui-sref="country({id: g.country.id})">{{ g.country.name }}</a>,
-                </span>
-
+            <div class="controls">
+                <a class="prev"></a>
+                <a class="next"></a>
             </div>
-        </div>
 
-    </div>
+            <span class="subject">
+                <a href="" ui-sref="photographer({id: g.photographer.id})">{{ g.photographer.name }}</a>
+                <a ui-sref="day({day: ( g.created|strtotime|date:'yyyy-MM-dd' ), country_id: g.country.id })">{{
+                    g.created | strtotime | date: "dd/MM/yyyy" }}</a>
+                <a href="" ui-sref="place({id: g.place.id})">{{ g.place.name }}</a>,
+                <a href="" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>,
+                <a href="" ui-sref="country({id: g.country.id})">{{ g.country.name }}</a>,
+            </span>
+        </div>
+    </section>
 </div>

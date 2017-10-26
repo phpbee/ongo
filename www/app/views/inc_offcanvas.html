@@ -1,9 +1,17 @@
-<!-- OFF-CANVAS MOBILE MENU -->
-<section class="show-for-small-only">
-  <div class="off-canvas position-right" id="ongo-offcanvas" data-off-canvas>
+<div class="show-for-small-only">
+
+  <!-- TOGGLE ("HAMBURGER") FOR OFF-CANVAS MENU -->
+  <div id="ongo-hamburger" class="show-for-small-only">
+    <a href="#" onclick="return false;" aria-label="Open menu" data-toggle="ongo-offcanvas-main">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <!-- OFF-CANVAS MAIN MENU -->
+  <div class="ongo-offcanvas off-canvas position-right" id="ongo-offcanvas-main" data-off-canvas>
     <!-- close button -->
     <button class="button offcanvas-close-button" aria-label="Close menu" type="button" data-close>
-      <span aria-hidden="true">X</span>
+      <i class="fa fa-times" aria-hidden="true"></i>
     </button>
 
     <nav>
@@ -47,7 +55,7 @@
         </li>
         <!-- language selection -->
         <li>
-          <a href="#" onclick="return false;" data-toggle="ongo-offcanvas-language-menu">
+          <a href="#" onclick="return false;" data-toggle="ongo-offcanvas-language">
             <i class="fa fa-globe" aria-hidden="true"></i>
             <span translate="MENU.LANGUAGE"></span>
           </a>
@@ -64,19 +72,51 @@
     </nav>
   </div>
 
-  <!-- LANGUAGE SELECTION OFFCANVAS -->
-  <div class="off-canvas position-right" id="ongo-offcanvas-language-menu" data-off-canvas>
+  <!-- OFF-CANVAS SEARCH AREA -->
+  <div class="ongo-offcanvas off-canvas position-top" id="ongo-offcanvas-search" data-off-canvas>
     <!-- close button -->
     <button class="button offcanvas-close-button" aria-label="Close menu" type="button" data-close>
-      <span aria-hidden="true">X</span>
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <form ng-controller="SearchCtrl as ctrl" aria-label="Search form">
+        <input type="search"
+               class="search-input typeahead"
+               placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+               ng-model="ctrl.colorName"
+               auto-complete="ctrl.autoCompleteOptions"
+               aria-label="Search input"
+        >
+        <button type="button" class="button" aria-label="Search submit button" data-close><span translate="SEARCH.BUTTON"></span></button>
+    </form>
+  </div>
+
+  <!-- OFF-CANVAS LANGUAGE SELECTION MENU -->
+  <div class="ongo-offcanvas off-canvas position-right" id="ongo-offcanvas-language" data-off-canvas>
+    <!-- close button -->
+    <button class="button offcanvas-close-button" aria-label="Close menu" type="button" data-close>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i>
     </button>
 
     <h1 translate="MENU.LANGUAGE"></h1>
     <nav>
       <ul>
-        <li><a href="#" ng-click="changeLanguage('en')" data-toggle="ongo-top-bar-language-dropdown" data-close><img src="/img/flag/flag_en.svg" class="country-flag-image">English</a></li>
-        <li><a href="#" ng-click="changeLanguage('ru')" data-toggle="ongo-top-bar-language-dropdown" data-close><img src="/img/flag/flag_ru.svg" class="country-flag-image">Русский</a></li>
+        <li>
+          <a href="#" ng-click="changeLanguage('en')" data-toggle="ongo-top-bar-language-dropdown">
+            <i ng-if="activeLanguage == 'en'" class="fa fa-arrow-right" aria-hidden="true"></i>
+            <img src="/img/flag/flag_en.svg" class="country-flag-image">
+            English
+          </a>
+        </li>
+        <li>
+          <a href="#" ng-click="changeLanguage('ru')" data-toggle="ongo-top-bar-language-dropdown">
+            <i ng-if="activeLanguage == 'ru'" class="fa fa-arrow-right" aria-hidden="true"></i>
+            <img src="/img/flag/flag_ru.svg" class="country-flag-image">
+            Русский
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
-</section>
+
+</div>

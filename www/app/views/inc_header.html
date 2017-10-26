@@ -1,29 +1,70 @@
 <header id="ongo-main-header">
   <div class="top-bar" id="ongo-top-bar">
 
-    <!-- LOGO AND COMPANY NAME-->
-    <section>
-      <a href="#" onclick="return false;" ui-sref="main" aria-label="Return to main page">
-        <div class="ongo-company-logo"></div>
-        <span ng-if="$state.current.name == 'main'" class="ongo-company-name hide-for-small-only">OnGoPhotos</span>
-      </a>
-    </section>
+    <!-- left -->
+    <div class="top-bar-left">
 
-    <!-- SEARCH BAR (note: does not appear on the main page) -->
+        <!-- LOGO AND COMPANY NAME-->
+        <section>
+          <a href="#" onclick="return false;" ui-sref="main" aria-label="Return to main page">
+            <div class="ongo-company-logo"></div>
+            <span ng-if="$state.current.name == 'main'" class="ongo-company-name hide-for-small-only">OnGoPhotos</span>
+          </a>
+        </section>
+
+        <!-- SMALL-SCREEN-CONTROLS -->
+        <section id="ongo-small-screen-controls">
+
+          <!-- OFFCANVAS SEARCH TOGGLE (small screen only) -->
+          <a href="#" onclick="return false;" class="show-for-small-only" data-toggle="ongo-offcanvas-search" aria-label="Reveal search area">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </a>
+
+          <!-- SMALL-SCREEN LOGIN BUTTON (small screen only) -->
+          <a ng-if="!isAuthorized('user')" href="#" ui-sref="user" onclick="return false;" class="show-for-small-only" aria-label="Log in button">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+          </a>
+
+          <!-- SMALL-SCREEN SHOPPING CART BUTTON (small screen only) -->
+          <a ng-if="isAuthorized('user')" href="#" ui-sref="user.orders" onclick="return false;" class="show-for-small-only" aria-label="Shopping cart button">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </a>
+
+          <!-- SMALL-SCREEN CHECKOUT BUTTON (small screen only) -->
+          <a ng-if="isAuthorized('user')" href="#" ui-sref="checkout" onclick="return false;" class="show-for-small-only" aria-label="Checkout button">
+                <i class="fa fa-credit-card" aria-hidden="true"></i>
+          </a>
+
+          <!-- SMALL-SCREEN LOGOUT BUTTON (small screen only) -->
+          <a ng-if="isAuthorized('user')" href="#" ui-sref="logout" onclick="return false;" class="show-for-small-only" aria-label="Log out button">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+          </a>
+
+          <!-- SMALL-SCREEN LANGUAGE BUTTON (small screen only) -->
+          <a href="#" onclick="return false;" class="show-for-small-only" aria-label="Log out button" data-toggle="ongo-offcanvas-language">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+          </a>
+
+        </section>
+
+    </div> <!-- end .top-bar-left -->
+
+    <!-- middle -->
+    <!-- SEARCH AREA -->
     <section class="search-area" ng-if="$state.current.name != 'main'">
-        <form ng-controller="SearchCtrl as ctrl" aria-label="Search form">
-            <input id="ongo-top-bar-search-input"
-                   type="search"
-                   class="photografer typeahead"
+        <form class="hide-for-small-only" ng-controller="SearchCtrl as ctrl" aria-label="Search form">
+            <input type="search"
+                   class="search-input typeahead"
                    placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
                    ng-model="ctrl.colorName"
                    auto-complete="ctrl.autoCompleteOptions"
                    aria-label="Search input"
             >
-            <a href="#" onclick="return false;" id="ongo-top-bar-search-button" class="button" translate="SEARCH.BUTTON" aria-label="Search button"></a>
+            <button type="button" class="button" aria-label="Search submit button"><span translate="SEARCH.BUTTON"></span></button>
         </form>
     </section>
 
+    <!-- right -->
     <div class="top-bar-right">
 
           <!-- MAIN NAV AREA -->
@@ -114,13 +155,6 @@
               </ul>
             </nav>
           </section>
-
-          <!-- TOGGLE ("HAMBURGER") FOR OFF-CANVAS MENU -->
-          <section class="hamburger show-for-small-only">
-            <a href="#" onclick="return false;" aria-label="Open menu" data-toggle="ongo-offcanvas">
-              <i class="fa fa-bars" aria-hidden="true"></i>
-            </a>
-          </section>
-    </div>
-  </div>
+    </div> <!-- end .top-bar-right -->
+  </div> <!-- end .top-bar -->
 </header>
