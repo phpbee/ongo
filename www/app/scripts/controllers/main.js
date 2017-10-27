@@ -30,5 +30,4 @@ angular.module('wwwApp')
             );
         });
 
-
     });

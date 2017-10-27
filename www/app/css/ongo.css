@@ -1,11 +1,12 @@
-/**  Contents:
+/**
  *    DOC
- *    CORE FRAMEWORK OVERRIDES
+ *    FRAMEWORK AND LIBRARY OVERRIDES
  *    UTILITY
  *    BODY / GLOBAL
  *    HEADER AND TOP-BAR
  *    OFF-CANVAS MENUS
  *    MAIN PAGE
+ *    FOOTER
  */
 
 /******
@@ -16,28 +17,20 @@
  * - Core Framework:
  *      Foundation 6 is used as the core css framework.
  *      Docs: https://foundation.zurb.com/sites/docs/
- *      Note: In order for Foundation to work, with Angular Router it needs to be
- *        reinitialized on each view render in Angular (this is because Foundation
- *        needs to scan the DOM to find the necessary dataset hooks for it to work).
- *        This is configured in the .run() block of the wwwApp module
- *        (in scripts/app.js). The relevant lines are:
- *            $rootScope.$on('$viewContentLoaded', function() {
- *               $(document).foundation();
- *            });
- *      Note also that jQuery must be loaded for this to work.
  *
  * - Style Customization:
- *      Classes in ongo.css define styles specific to the ongo site. The 'ongo-' prefix
- *      is used for most class and id names to avoid name collisions with external
- *      frameworks and libraries that might be used. Core framework overrides are
- *      mostly avoided. The few overrides that are used are at the top of the stylesheet.
+ *      The 'ongo-' prefix is used for most class and id names to avoid name collisions
+ *      with external frameworks and libraries.
  *
  * - Icons:
- *      "Font Awesome" is used as the basis for icons. The icons used are listed here:
+ *      "Font Awesome" is used as the basis for icons.
+ *      Docs: http://fontawesome.io/icons/
  *        Arrow-up:                      <i class="fa fa-arrow-up" aria-hidden="true"></i>
  *        Arrow-left:                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
  *        Arrow-right:                   <i class="fa fa-arrow-right" aria-hidden="true"></i>
  *        Checkout (credit-card logo):   <i class="fa fa-credit-card" aria-hidden="true"></i>
+ *        Chevron-Left (<):              <i class="fa fa-chevron-left" aria-hidden="true"></i>
+ *        Chevron-Right (>):             <i class="fa fa-chevron-right" aria-hidden="true"></i>
  *        Close (X):                     <i class="fa fa-times" aria-hidden="true"></i>
  *        Favorites (star icon):         <i class="fa fa-star" aria-hidden="true"></i>
  *        Language (globe icon):         <i class="fa fa-globe" aria-hidden="true"></i>
@@ -50,32 +43,53 @@
  * - z-indexes:
  *      Used to define how large-scale elements layer on top of one another.
  *      Generally 0 - 1000 in increments of 100.
- *      Can use lower grain if fine-tuning is needed for additional elements.
  *        z-index: 1000; - Offcanvas side menus (language selection etc.)
  *        z-index: 900; - Offcanvas main side-menu
  *        z-index: 800; - Hamburger (off-canvas menu toggle)
  *        z-index: 700; - Offcanvas search menu
  *        z-index: 600; - Header and top-bar
  *
- * - Color scheme:
- *      The following color scheme is currently used:
- *
  */
 
-/**************************
- * CORE FRAMEWORK OVERRIDES
- **************************/
+/*********************************
+ * FRAMEWORK AND LIBRARY OVERRIDES
+ ********************************/
 
 /**********************
  * UTILITY
  *********************/
 
+.opacity-0 {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.opacity-50 {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.opacity-90 {
+  opacity: 0.9;
+  transition: opacity 0.5s;
+}
+.opacity-100 {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
 /***************
  * BODY / GLOBAL
  ***************/
 
+* {
+  color: hsla(0, 0%, 90%, 1);
+}
+
 body {
   background-color: #202020;
+}
+
+i {
+  color: inherit;
 }
 
 /************************************************
@@ -96,6 +110,7 @@ body {
   max-height: 60px;
   background-color: hsl(0, 0%, 20%);
   opacity: 0.9;
+  z-index: 600;
 }
 
 /* center the top bar and give it a max width */
@@ -363,14 +378,226 @@ body {
  * MAIN PAGE
  *******************/
 
-#ongo-main {}
+#ongo-main {
+  position: relative;
+}
 
-#ongo-main .ongo-header {}
+#ongo-main .ongo-landing {
+  position: relative;
+  display: block;
+  height: calc(80vh - 55px);
+}
 
-#ongo-main .ongo-search-area {}
+/* heading */
+#ongo-main .ongo-heading {
+  position: relative;
+  display: block;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  padding-top: 20vh;
+  margin-bottom: 35px;
+}
+#ongo-main .ongo-heading h1 {
+  position: relative;
+  font-size: 2.7rem;
+  text-align: center;
+}
+#ongo-main .ongo-heading h2 {
+  position: relative;
+  font-size: 1.5rem;
+  text-align: center;
+}
 
-#ongo-main .ongo-tagline {}
+/* TODO: takes this out to be globla class set */
+#ongo-main section.ongo-search {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+#ongo-main .ongo-search-form {
+  position: relative;
+  display: block;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#ongo-main .ongo-search-form .ongo-search-input {
+  position: relative;
+  display: inline-block;
+  max-width: 60%;
+  margin: 0;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+#ongo-main .ongo-search-form .ongo-search-submit {
+  margin: 0;
+  transform: translateY(-1px);
+}
 
-#ongo-main .ongo-background-carousel {}
+#ongo-main .ongo-tagline {
+  text-align: center;
+  margin-top: 25px;
+}
 
-#ongo-main .ongo-gallery-carousels {}
+/**
+ * Background Carousel (#lightSlider)
+ */
+
+#ongo-main .ongo-background-carousel {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  width: 100%;
+  height: calc(80vh - 55px);
+  min-height: 450px;
+}
+#lightSlider {
+    height: calc(80vh - 55px);
+    min-height: 450px;
+    margin-left: 0;
+}
+#lightSlider li {
+    position: relative;
+    height: calc(80vh - 55px);
+    min-height: 450px;
+    background-position: top center;
+    background-size: cover;
+}
+#lightSlider li a {
+    font-size: .6875rem;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 2px 5px;
+    cursor: pointer;
+    opacity: .8;
+    color: #fff;
+    border-radius: 3px;
+    z-index: 1000;
+}
+#lightSlider li a:hover {
+    background-color: rgba(255, 255, 255, .15);
+}
+
+/**
+ * Gallery carousels
+ */
+
+#ongo-main .ongo-gallery-carousels {
+  display: block;
+  border-top: 4px solid hsl(0, 0%, 90%);
+  border-bottom: 40px solid hsl(0, 0%, 90%);
+  padding-top: 40px;
+  padding-bottom: 100px;
+}
+.thumbwrap{
+    padding: 0px 20px 0px 20px;
+    position: relative;
+    height: 80px;
+}
+.thumbwrap .controls a {
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+    height: 14px;
+    width: 8px;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+.thumbwrap .controls a:hover {
+    color: #fff;
+}
+.thumbwrap .controls a.prev {
+    left: 0px;
+}
+.thumbwrap .controls a.next {
+    right: 10px;
+}
+.minslider {
+    margin-left: 0px;
+    margin-bottom: 0px;
+    height: 100%;
+    overflow: hidden;
+}
+.minslider li {
+    display: inline-block;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.minslider img {}
+.thumbsgal .subject {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #969696;
+    display: block;
+    padding-bottom: 30px;
+}
+.thumbsgal .subject a {
+    color: #fff;
+}
+.thumbsgal .subject a:hover {
+    color: #ddd;
+}
+
+/******************
+ * FOOTER
+ ******************/
+
+ .footer {
+     margin-top: 40px;
+     padding-top: 54px;
+     padding-bottom: 30px;
+     background: #2e2e2e;
+ }
+ .footer-left {
+     font-size: .750rem;
+     line-height: 29px;
+     color: #787878;
+ }
+ .footer-nav {
+     margin: 0 0 0 1.1rem;
+     padding-top: 0;
+     list-style-type: none;
+ }
+ .footer-nav-head {
+     font-size: .875rem;
+     margin-left: 1.1rem;
+     padding-top: 1px;
+     padding-bottom: 4px;
+     color: #fff;
+ }
+ .footer-nav li a {
+     font-size: .750rem;
+     color: #787878;
+ }
+ .footer-nav li a:hover {
+     color: #fff;
+ }
+ .footer-nav li {
+     padding: 4px 0;
+ }
+ .footer-nav-social {
+     padding-left: 20px;
+     background: url('../img/social.png') no-repeat 0 1px;
+ }
+ .footer-nav-social.twitter {
+     background-position: 0 -23px;
+ }
+ .footer-nav-social.pinterest {
+     background-position: 0 -46px;
+ }
+ .footer-nav-social.vimeo {
+     background-position: 0 -70px;
+ }
+ .footer-nav-social.google {
+     background-position: 0 -95px;
+ }
+ .footer-nav li a.footer-nav-green {
+     text-decoration: underline;
+     color: #09b83f;
+ }
+ .footer-nav li a.footer-nav-green:hover {
+     text-decoration: none;
+ }

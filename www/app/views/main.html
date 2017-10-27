@@ -1,61 +1,69 @@
 <!-- MAIN PAGE -->
 <div id="ongo-main">
-
-    <!-- HEADING -->
-    <section class="ongo-heading">
-      <h1><translate>FIND_YOUR_PHOTOS</translate></h1>
-      <span><translate>CHOOSE_YOUR_PHOTOS</translate></span>
-    </section>
-
-    <!-- SEARCH AREA -->
-    <section class="ongo-search-area">
-      <form ng-controller="SearchCtrl as ctrl" aria-label="Search form">
-          <input type="search"
-                 class="search-input typeahead"
-                 placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
-                 ng-model="ctrl.colorName"
-                 auto-complete="ctrl.autoCompleteOptions"
-                 aria-label="Search input"
-          >
-          <button type="button" class="button" aria-label="Search submit button" data-close><span translate="SEARCH.BUTTON"></span></button>
-      </form>
-    <section>
-
-    <!-- CAPTION / TAGLINE -->
-    <section class="ongo-tagline">
-        <span><translate>FIND_BUY_DOWNLOAD</translate></span>
-    <section>
-
     <!-- BACKGROUND CAROUSEL -->
-    <section class="ongo-background-carousel">
-      <div class="lighter">
-          <ul id="lightSlider" style="background-color: #676767;">
-              <section ng-repeat="p in topGalleries">
-                  <li>
-                      <img ng-src="{{ p.logo }}" imageonload="lightSlider" style="display:none;">
-                      <a ui-sref="gallery({id:p.id})">
-                          <translate>BROWSE_TO_GALLERY</translate>
-                      </a>
-                  </li>
-              </section>
-          </ul>
-      </div>
+    <div class="ongo-background-carousel">
+        <ul id="lightSlider">
+            <section ng-repeat="p in topGalleries">
+                <li>
+                    <img ng-src="{{ p.logo }}" imageonload="lightSlider" style="display:none;">
+                    <a ui-sref="gallery({id:p.id})">
+                        <translate>BROWSE_TO_GALLERY</translate>
+                    </a>
+                </li>
+            </section>
+        </ul>
+    </div>
+
+    <!-- LANDING AREA -->
+    <section class="ongo-landing">
+
+        <!-- HEADING -->
+        <section class="ongo-heading">
+          <h1><translate>FIND_YOUR_PHOTOS</translate></h1>
+          <h2><translate>CHOOSE_YOUR_PHOTOS</translate><h2>
+        </section>
+
+        <!-- SEARCH AREA -->
+        <section class="ongo-search">
+          <form class="ongo-search-form" ng-controller="SearchCtrl as ctrl" aria-label="Search form">
+              <input type="search"
+                     class="ongo-search-input photografer typeahead"
+                     placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+                     ng-model="ctrl.colorName"
+                     auto-complete="ctrl.autoCompleteOptions"
+                     aria-label="Search input"
+              >
+              <button type="button" class="button ongo-search-submit" aria-label="Search submit button" data-close><span translate="SEARCH.BUTTON"></span></button>
+          </form>
+        </section>
+
+        <!-- CAPTION / TAGLINE -->
+        <section class="ongo-tagline">
+            <span><translate>FIND_BUY_DOWNLOAD</translate></span>
+        </section>
+
     </section>
 
     <!-- GALLERY CAROUSELS -->
     <section class="ongo-gallery-carousels meetings blackbody">
         <div class="row thumbsgal" ng-repeat="g in galleries">
-            <ul class="minslider">
-                <li ng-repeat="p in g.icons">
-                    <a ui-sref="gallery({id: g.id})">
-                        <img ng-src="{{ p.ico }}" imageonload="minslider">
-                    </a>
-                </li>
-            </ul>
+            <div class="thumbwrap">
+              <ul class="minslider">
+                  <li ng-repeat="p in g.icons">
+                      <a ui-sref="gallery({id: g.id})">
+                          <img ng-src="{{ p.ico }}" imageonload="minslider">
+                      </a>
+                  </li>
+              </ul>
 
-            <div class="controls">
-                <a class="prev"></a>
-                <a class="next"></a>
+              <div class="controls">
+                  <a class="prev">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                  </a>
+                  <a class="next">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                  </a>
+              </div>
             </div>
 
             <span class="subject">

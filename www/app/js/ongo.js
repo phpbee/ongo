@@ -108,10 +108,11 @@ $(document).ready(function () {
     });
 
 
+    /* set header opacity based on page position */
     if ($('.header').length > 0) {
         $(window).scroll(function () {
             var sticky = $('.header');
-            $(window).scrollTop() >= 100 ? sticky.addClass('black') : sticky.removeClass('black');
+            $(window).scrollTop() >= 100 ? sticky.addClass('opacity-100') : sticky.removeClass('opacity-100');
         });
     }
 

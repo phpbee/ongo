@@ -1,4 +1,4 @@
-<header id="ongo-main-header">
+<header id="ongo-main-header" class="header">
   <div class="top-bar" id="ongo-top-bar">
 
     <!-- left -->
@@ -17,32 +17,32 @@
 
           <!-- OFFCANVAS SEARCH TOGGLE (small screen only) -->
           <a href="#" onclick="return false;" class="show-for-small-only" data-toggle="ongo-offcanvas-search" aria-label="Reveal search area">
-            <i class="fa fa-search" aria-hidden="true"></i>
+              <i class="fa fa-search" aria-hidden="true"></i>
           </a>
 
           <!-- SMALL-SCREEN LOGIN BUTTON (small screen only) -->
           <a ng-if="!isAuthorized('user')" href="#" ui-sref="user" onclick="return false;" class="show-for-small-only" aria-label="Log in button">
-                <i class="fa fa-sign-in" aria-hidden="true"></i>
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
           </a>
 
           <!-- SMALL-SCREEN SHOPPING CART BUTTON (small screen only) -->
           <a ng-if="isAuthorized('user')" href="#" ui-sref="user.orders" onclick="return false;" class="show-for-small-only" aria-label="Shopping cart button">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           </a>
 
           <!-- SMALL-SCREEN CHECKOUT BUTTON (small screen only) -->
           <a ng-if="isAuthorized('user')" href="#" ui-sref="checkout" onclick="return false;" class="show-for-small-only" aria-label="Checkout button">
-                <i class="fa fa-credit-card" aria-hidden="true"></i>
+              <i class="fa fa-credit-card" aria-hidden="true"></i>
           </a>
 
           <!-- SMALL-SCREEN LOGOUT BUTTON (small screen only) -->
           <a ng-if="isAuthorized('user')" href="#" ui-sref="logout" onclick="return false;" class="show-for-small-only" aria-label="Log out button">
-                <i class="fa fa-sign-in" aria-hidden="true"></i>
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
           </a>
 
           <!-- SMALL-SCREEN LANGUAGE BUTTON (small screen only) -->
           <a href="#" onclick="return false;" class="show-for-small-only" aria-label="Log out button" data-toggle="ongo-offcanvas-language">
-                <i class="fa fa-globe" aria-hidden="true"></i>
+              <i class="fa fa-globe" aria-hidden="true"></i>
           </a>
 
         </section>
