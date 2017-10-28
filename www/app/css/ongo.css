@@ -565,30 +565,36 @@ i {
 
 .ongo-footer {
    margin-top: 40px;
-   padding: 50px 50px 50px 50px;
+   padding: 50px 50px 50px 80px;
    background: #2e2e2e;
-}
-.ongo-footer-left {
    font-size: .750rem;
-   line-height: 29px;
    color: #787878;
 }
-.ongo-footer-nav {
-   margin: 0 0 0 1.1rem;
-   padding-top: 0;
-   list-style-type: none;
+.ongo-footer * {
+  font-size: inherit;
+  color: inherit;
 }
-.ongo-footer-nav-head {
-   font-size: .875rem;
-   font-weight: bold;
-   margin-left: 1.1rem;
-   padding: 1px 0 4px 0;
-   color: #fff;
+.ongo-footer-block {
+  margin-top: 1rem;
+}
+
+/**
+ * Footer Navs
+ */
+
+.ongo-footer-nav {}
+.ongo-footer-nav h1 {
+  font-size: .875rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 0 0 1rem 0;
+}
+.ongo-footer-nav ul {
+  list-style-type: none;
+  margin: 0;
 }
 .ongo-footer-nav li {
-   padding: 4px 0;
-   font-size: .750rem;
-   color: #787878;
+  padding: 0 0 1rem 0;
 }
 .ongo-footer-nav li a {
    color: inherit;
@@ -596,35 +602,28 @@ i {
 .ongo-footer-nav li a:hover {
    color: #fff;
 }
-.ongo-footer-social {
-}
-.ongo-footer-social i {
+.ongo-footer-nav i {
   font-size: 1rem;
+  width: 15px;
   margin-right: 1rem;
-}
-.ongo-footer-nav li a.footer-nav-green {
-   text-decoration: underline;
-   color: #09b83f;
-}
-.ongo-footer-nav li a.footer-nav-green:hover {
-   text-decoration: none;
 }
 
 /**
  * Payment Types
  */
 
-.ongo-oplata {
+.ongo-payment-type-list {
   display: inline-block;
-  margin-bottom: 1rem;
+  list-style-type: none;
+  padding: 0 0 1rem 0;
+  margin: 0;
 }
-
-.ongo-oplata-type {
+.ongo-payment-type-icon {
    display: inline-block;
-   width: 50px;
+   width: 40px;
    height: 30px;
    background-color: #eee;
    border-radius: 10%;
-   padding: 3px 5px 3px 5px;
-   margin-right: 2px;
+   padding: 0 5px 3px 4px;
+   margin-right: 1px;
 }

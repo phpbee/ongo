@@ -1,47 +1,57 @@
-<footer class="ongo-footer">
-  <div class="grid-x">
-    <div class="large-2 medium-2 small-6 cell">
-      <div class="ongo-footer-nav-head">OnGo Photos</div>
+<footer class="ongo-footer grid-x">
+
+  <!-- FOOTER NAVS -->
+  <section class="small-12 medium-6 cell grid-x">
+
+    <!-- GENERAL INFO NAV -->
+    <nav class="ongo-footer-nav large-4 medium-4 small-12 cell">
+      <h1>OnGo Photos</h1>
       <ul class="ongo-footer-nav">
         <li><a ui-sref="policy" translate="Privacy Policy"></a></li>
         <li><a ui-sref="about" translate="About"></a></li>
         <li><a ui-sref="contacts" translate="Contacts"></a></li>
         <li><a ui-sref="faq" translate="FAQ"></a></li>
       </ul>
-    </div>
-    <div class="large-2 medium-2 small-6 cell">
-      <div class="ongo-footer-nav-head"><translate>CATEGORY1</translate></div>
+    </nav>
+
+    <!-- CATEGORIES NAV -->
+    <nav class="ongo-footer-nav large-4 medium-4 small-12 cell">
+      <h1><translate>CATEGORY1</translate></h1>
       <ul class="ongo-footer-nav">
         <li><a href="#" ui-sref="list.countries" translate>FOOTER.COUNTRY</a></li>
         <li><a href="#" ui-sref="list.cities" translate>FOOTER.CITY</a></li>
         <li><a href="#" ui-sref="list.places" translate>FOOTER.PLACE</a></li>
         <li><a href="#" ui-sref="list.photographers" class="--footer-nav-green" translate>FOOTER.PHOTOGRAPHER</a></li>
       </ul>
-    </div>
-    <div class="large-2 medium-2 small-12 cell">
-      <div class="ongo-footer-nav-head">Follow Us</div>
+    </nav>
+
+    <!-- SOCIAL LINKS NAV -->
+    <nav class="ongo-footer-nav large-4 medium-4 small-12 cell">
+      <h1>Follow Us</h1>
       <ul class="ongo-footer-nav">
-        <li><a href="#" class="ongo-footer-social"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a></li>
-        <li><a href="#" class="ongo-footer-social"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
-        <li><a href="#" class="ongo-footer-social"><i class="fa fa-pinterest" aria-hidden="true"></i>Pinterest</a></li>
-        <li><a href="#" class="ongo-footer-social"><i class="fa fa-vimeo" aria-hidden="true"></i>Vimeo</a></li>
-        <li><a href="#" class="ongo-footer-social"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
+        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a></li>
+        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i>Pinterest</a></li>
+        <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i>Vimeo</a></li>
+        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
       </ul>
-    </div>
-    <div class="large-6 medium-6 small-12 cell footer-left">
-      <ul class="ongo-footer-nav">
-        <li>
-          <div class="ongo-oplata">
-            <a class="ongo-oplata-type"><img src="img/payment-logos/mastercard.svg" alt="Mastercard"></a>
-            <a class="ongo-oplata-type"><img src="img/payment-logos/visa.svg" alt="Visa"></a>
-            <a class="ongo-oplata-type"><img src="img/payment-logos/paypal.svg" alt="PayPal"></a>
-          </div>
-        </li>
+    </nav>
+
+  </section>
+
+  <!-- PAYMENT, LEGAL, AND COPYRIGHT -->
+  <section class="small-12 medium-6 cell">
+
+      <!-- Payment Type Logos -->
+      <ul class="ongo-payment-type-list">
+        <a class="ongo-payment-type-icon"><img src="img/payment-logos/mastercard.svg" alt="Mastercard"></a>
+        <a class="ongo-payment-type-icon"><img src="img/payment-logos/visa.svg" alt="Visa"></a>
+        <a class="ongo-payment-type-icon"><img src="img/payment-logos/paypal.svg" alt="PayPal"></a>
       </ul>
-      <ul class="ongo-footer-nav">
-        <li>{{ 'FOOTER.LEGAL' | translate }}</li>
-        <li>{{ 'FOOTER.COPYRIGHT' | translate }}</li>
-      <ul class="ongo-footer-nav">
-    </div>
+
+      <!-- Legal Info and Copyright ("fineprint")-->
+      <div class="ongo-footer-block"><translate>FOOTER.LEGAL</translate></div>
+      <div class="ongo-footer-block"><translate>FOOTER.COPYRIGHT</translate></div>
+
   </div>
 </footer>
