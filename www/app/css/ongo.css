@@ -40,6 +40,20 @@
  *        Shopping Cart:                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
  *        Sign-in (door enter icon):     <i class="fa fa-sign-in" aria-hidden="true"></i>
  *
+ *      Social Media Icons:
+ *        Facebook:                      <i class="fa fa-facebook" aria-hidden="true"></i>
+ *        Twitter:                       <i class="fa fa-twitter" aria-hidden="true"></i>
+ *        Pinterest:                     <i class="fa fa-pinterest" aria-hidden="true"></i>
+ *        Vimeo:                         <i class="fa fa-vimeo" aria-hidden="true"></i>
+ *        Google+:                       <i class="fa fa-vimeo" aria-hidden="true"></i>
+ *
+ *      Other icons:
+ *        Russian flag:       img/flag/flag_ru.svg
+ *        American flag:      img/flag/flag_en.svg
+ *        Visa logo:          img/payment-logos/visa.svg
+ *        Mastercard logo:    img/payment-logos/mastercard.svg
+ *        Paypal logo:        img/payment-logos/paypal.svg
+ *
  * - z-indexes:
  *      Used to define how large-scale elements layer on top of one another.
  *      Generally 0 - 1000 in increments of 100.
@@ -491,7 +505,7 @@ i {
   padding-top: 40px;
   padding-bottom: 100px;
 }
-.thumbwrap{
+.thumbwrap {
     padding: 0px 20px 0px 20px;
     position: relative;
     height: 80px;
@@ -545,59 +559,72 @@ i {
  * FOOTER
  ******************/
 
- .footer {
-     margin-top: 40px;
-     padding-top: 54px;
-     padding-bottom: 30px;
-     background: #2e2e2e;
- }
- .footer-left {
-     font-size: .750rem;
-     line-height: 29px;
-     color: #787878;
- }
- .footer-nav {
-     margin: 0 0 0 1.1rem;
-     padding-top: 0;
-     list-style-type: none;
- }
- .footer-nav-head {
-     font-size: .875rem;
-     margin-left: 1.1rem;
-     padding-top: 1px;
-     padding-bottom: 4px;
-     color: #fff;
- }
- .footer-nav li a {
-     font-size: .750rem;
-     color: #787878;
- }
- .footer-nav li a:hover {
-     color: #fff;
- }
- .footer-nav li {
-     padding: 4px 0;
- }
- .footer-nav-social {
-     padding-left: 20px;
-     background: url('../img/social.png') no-repeat 0 1px;
- }
- .footer-nav-social.twitter {
-     background-position: 0 -23px;
- }
- .footer-nav-social.pinterest {
-     background-position: 0 -46px;
- }
- .footer-nav-social.vimeo {
-     background-position: 0 -70px;
- }
- .footer-nav-social.google {
-     background-position: 0 -95px;
- }
- .footer-nav li a.footer-nav-green {
-     text-decoration: underline;
-     color: #09b83f;
- }
- .footer-nav li a.footer-nav-green:hover {
-     text-decoration: none;
- }
+/**
+ * Footer
+ */
+
+.ongo-footer {
+   margin-top: 40px;
+   padding: 50px 50px 50px 50px;
+   background: #2e2e2e;
+}
+.ongo-footer-left {
+   font-size: .750rem;
+   line-height: 29px;
+   color: #787878;
+}
+.ongo-footer-nav {
+   margin: 0 0 0 1.1rem;
+   padding-top: 0;
+   list-style-type: none;
+}
+.ongo-footer-nav-head {
+   font-size: .875rem;
+   font-weight: bold;
+   margin-left: 1.1rem;
+   padding: 1px 0 4px 0;
+   color: #fff;
+}
+.ongo-footer-nav li {
+   padding: 4px 0;
+   font-size: .750rem;
+   color: #787878;
+}
+.ongo-footer-nav li a {
+   color: inherit;
+}
+.ongo-footer-nav li a:hover {
+   color: #fff;
+}
+.ongo-footer-social {
+}
+.ongo-footer-social i {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+.ongo-footer-nav li a.footer-nav-green {
+   text-decoration: underline;
+   color: #09b83f;
+}
+.ongo-footer-nav li a.footer-nav-green:hover {
+   text-decoration: none;
+}
+
+/**
+ * Payment Types
+ */
+
+.ongo-oplata {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.ongo-oplata-type {
+   display: inline-block;
+   width: 50px;
+   height: 30px;
+   background-color: #eee;
+   border-radius: 10%;
+   padding: 3px 5px 3px 5px;
+   margin-right: 2px;
+}
