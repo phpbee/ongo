@@ -5,3 +5,4 @@
 - run `docker-compose -f dev.yml up` in console
 - open http://localhost:8083/
 - import last mysql dump into docker mysql server localhost:3306
+
