@@ -72,6 +72,12 @@
  * FRAMEWORK AND LIBRARY OVERRIDES
  ********************************/
 
+.button {
+  background-color: #09b83f;
+}
+.button:hover {
+  background-color: #079332;
+}
 
 /**********************
  * UTILITY
@@ -229,7 +235,7 @@ i {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1080px;
+  max-width: 960px;
 }
 
 /* top-bar and children are transparent */
@@ -244,6 +250,7 @@ i {
 
 /* all links within top-bar and items within links */
 #ongo-top-bar a, #ongo-top-bar a * {
+  font-size: .875rem;
   color: hsla(0, 0%, 100%, 1);
 }
 #ongo-top-bar a:hover, #ongo-top-bar a:hover * {
@@ -266,7 +273,8 @@ i {
 
 /* company name and logo */
 #ongo-top-bar .ongo-company-name {
-  font-size: 1.8rem;
+  font-size: 1.675rem;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
   vertical-align: top;
 }
 #ongo-top-bar .ongo-company-logo {
@@ -500,33 +508,31 @@ i {
   display: block;
   height: calc(80vh - 55px);
   color: #fffdff;
-  background-color: hsla(0, 0%, 10%, 0.5);
 }
 
 /* heading */
 #ongo-main .ongo-heading {
   position: relative;
   display: block;
-  padding-left: 8vw;
-  padding-right: 8vw;
-  padding-top: 20vh;
+  padding-top: 130px;
   margin-bottom: 35px;
 }
 #ongo-main .ongo-heading h1 {
   position: relative;
   text-align: center;
+  margin: 0;
   font-size: 3rem;
-
   text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
 }
 #ongo-main .ongo-heading h2 {
   position: relative;
+  margin: 0;
   font-size: 1.5rem;
   text-align: center;
 }
 
 /* TODO: takes this out to be globla class set */
-#ongo-main section.ongo-search {
+#ongo-main .ongo-search {
   position: relative;
   display: block;
   text-align: center;
@@ -541,19 +547,31 @@ i {
 #ongo-main .ongo-search-form .ongo-search-input {
   position: relative;
   display: inline-block;
-  max-width: 60%;
+  max-width: 525px;
+  height: 53px;
   margin: 0;
-  margin-bottom: 20px;
-  vertical-align: top;
+  padding-left: 1rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: 1.623rem;
+  color: #555;
 }
 #ongo-main .ongo-search-form .ongo-search-submit {
   margin: 0;
-  transform: translateY(-1px);
+  width: 173px;
+  max-width: 173px;
+  height: 53px;
+  line-height: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 1.625rem;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.29);
+  transform: translateX(-4px) translateY(-4px);
 }
 
 #ongo-main .ongo-tagline {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 30px;
   font-weight: 700;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
 }
