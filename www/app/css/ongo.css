@@ -499,6 +499,7 @@ i {
   position: relative;
   display: block;
   height: calc(80vh - 55px);
+  color: #fffdff;
   background-color: hsla(0, 0%, 10%, 0.5);
 }
 
@@ -513,8 +514,10 @@ i {
 }
 #ongo-main .ongo-heading h1 {
   position: relative;
-  font-size: 2.7rem;
   text-align: center;
+  font-size: 3rem;
+
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
 }
 #ongo-main .ongo-heading h2 {
   position: relative;
@@ -551,6 +554,8 @@ i {
 #ongo-main .ongo-tagline {
   text-align: center;
   margin-top: 25px;
+  font-weight: 700;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
 }
 
 /**
