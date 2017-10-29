@@ -3,6 +3,7 @@
  *    FRAMEWORK AND LIBRARY OVERRIDES
  *    UTILITY
  *    BODY / GLOBAL
+ *    LIGHTSLIDER AND MINSLIDER
  *    HEADER AND TOP-BAR
  *    OFF-CANVAS MENUS
  *    MAIN PAGE
@@ -17,6 +18,8 @@
  * - Core Framework:
  *      Foundation 6 is used as the core css framework.
  *      Docs: https://foundation.zurb.com/sites/docs/
+ * - Libraries:
+ *      jQuery LightSlider (http://sachinchoolur.github.io/lightslider/)
  *
  * - Style Customization:
  *      The 'ongo-' prefix is used for most class and id names to avoid name collisions
@@ -69,6 +72,7 @@
  * FRAMEWORK AND LIBRARY OVERRIDES
  ********************************/
 
+
 /**********************
  * UTILITY
  *********************/
@@ -107,6 +111,99 @@ i {
 }
 
 /************************************************
+ * LIGHTSLIDER AND MINSLIDER
+ ************************************************/
+
+/**
+ * lightSlider
+ */
+
+#lightSlider {
+   height: calc(80vh - 55px);
+   min-height: 450px;
+   margin-left: 0;
+}
+#lightSlider li {
+   position: relative;
+   height: calc(80vh - 55px);
+   min-height: 450px;
+   background-position: top center;
+   background-size: cover;
+}
+#lightSlider li a {
+   font-size: .6875rem;
+   font-weight: bold;
+   position: absolute;
+   right: 10px;
+   bottom: 10px;
+   padding: 2px 5px;
+   cursor: pointer;
+   opacity: .8;
+   color: #fff;
+   border-radius: 3px;
+   z-index: 1000;
+}
+#lightSlider li a:hover {
+   background-color: rgba(255, 255, 255, .15);
+}
+
+/**
+ * MinSlider
+ */
+
+.thumbwrap {
+   padding: 0px 20px 0px 20px;
+   position: relative;
+   height: 80px;
+}
+.thumbwrap .controls a {
+   position: absolute;
+   top: 50%;
+   margin-top: -7px;
+   height: 14px;
+   width: 8px;
+   font-size: 1.2rem;
+   color: #ccc;
+}
+.thumbwrap .controls a:hover {
+   color: #fff;
+}
+.thumbwrap .controls a.prev {
+   left: 0px;
+}
+.thumbwrap .controls a.next {
+   right: 10px;
+}
+.minslider {
+   margin-left: 0px;
+   margin-bottom: 0px;
+   height: 100%;
+   overflow: hidden;
+}
+.minslider li {
+   display: inline-block;
+   height: 100%;
+   padding: 0;
+   margin: 0;
+}
+.minslider img {
+
+}
+.thumbsgal .subject {
+   text-transform: uppercase;
+   font-size: 12px;
+   color: #969696;
+   display: block;
+   padding-bottom: 30px;
+}
+.thumbsgal .subject a {
+   color: #fff;
+}
+.thumbsgal .subject a:hover {
+   color: #ddd;
+}
+
+/************************************************
  * HEADER AND TOP-BAR
  ************************************************/
 
@@ -121,10 +218,10 @@ i {
   top: 0;
   left: 0;
   width: 100%;
-  max-height: 60px;
-  background-color: hsl(0, 0%, 20%);
-  opacity: 0.9;
+  height: 3.750rem;
+  background-color: #2e2e2e;
   z-index: 600;
+  transition: all .3s ease;
 }
 
 /* center the top bar and give it a max width */
@@ -132,7 +229,7 @@ i {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  max-width: 980px;
+  max-width: 1080px;
 }
 
 /* top-bar and children are transparent */
@@ -147,7 +244,7 @@ i {
 
 /* all links within top-bar and items within links */
 #ongo-top-bar a, #ongo-top-bar a * {
-  color: hsla(0, 0%, 90%, 1);
+  color: hsla(0, 0%, 100%, 1);
 }
 #ongo-top-bar a:hover, #ongo-top-bar a:hover * {
   color: hsla(0, 0%, 100%, 1);
@@ -169,7 +266,7 @@ i {
 
 /* company name and logo */
 #ongo-top-bar .ongo-company-name {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   vertical-align: top;
 }
 #ongo-top-bar .ongo-company-logo {
@@ -300,6 +397,7 @@ i {
 /**
  * Off-canvas menus
  */
+
 .ongo-offcanvas {
   height: 100vh;
   background-color: hsla(0, 0%, 10%, 1);
@@ -367,6 +465,7 @@ i {
 /**
  * Off-canvas search area
  */
+
 #ongo-offcanvas-search {
   height: auto;
   z-index: 700;
@@ -400,6 +499,7 @@ i {
   position: relative;
   display: block;
   height: calc(80vh - 55px);
+  background-color: hsla(0, 0%, 10%, 0.5);
 }
 
 /* heading */
@@ -454,7 +554,7 @@ i {
 }
 
 /**
- * Background Carousel (#lightSlider)
+ * Background Carousel (wraps #lightSlider)
  */
 
 #ongo-main .ongo-background-carousel {
@@ -465,33 +565,8 @@ i {
   height: calc(80vh - 55px);
   min-height: 450px;
 }
-#lightSlider {
-    height: calc(80vh - 55px);
-    min-height: 450px;
-    margin-left: 0;
-}
-#lightSlider li {
-    position: relative;
-    height: calc(80vh - 55px);
-    min-height: 450px;
-    background-position: top center;
-    background-size: cover;
-}
-#lightSlider li a {
-    font-size: .6875rem;
-    font-weight: bold;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    padding: 2px 5px;
-    cursor: pointer;
-    opacity: .8;
-    color: #fff;
-    border-radius: 3px;
-    z-index: 1000;
-}
-#lightSlider li a:hover {
-    background-color: rgba(255, 255, 255, .15);
+#ongo-main .ongo-background-carousel-link {
+  z-index: 2000;
 }
 
 /**
@@ -504,55 +579,6 @@ i {
   border-bottom: 40px solid hsl(0, 0%, 90%);
   padding-top: 40px;
   padding-bottom: 100px;
-}
-.thumbwrap {
-    padding: 0px 20px 0px 20px;
-    position: relative;
-    height: 80px;
-}
-.thumbwrap .controls a {
-    position: absolute;
-    top: 50%;
-    margin-top: -7px;
-    height: 14px;
-    width: 8px;
-    font-size: 1.2rem;
-    color: #ccc;
-}
-.thumbwrap .controls a:hover {
-    color: #fff;
-}
-.thumbwrap .controls a.prev {
-    left: 0px;
-}
-.thumbwrap .controls a.next {
-    right: 10px;
-}
-.minslider {
-    margin-left: 0px;
-    margin-bottom: 0px;
-    height: 100%;
-    overflow: hidden;
-}
-.minslider li {
-    display: inline-block;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
-.minslider img {}
-.thumbsgal .subject {
-    text-transform: uppercase;
-    font-size: 12px;
-    color: #969696;
-    display: block;
-    padding-bottom: 30px;
-}
-.thumbsgal .subject a {
-    color: #fff;
-}
-.thumbsgal .subject a:hover {
-    color: #ddd;
 }
 
 /******************
