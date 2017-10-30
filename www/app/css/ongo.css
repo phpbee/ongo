@@ -79,6 +79,10 @@
   background-color: #079332;
 }
 
+.menu li {
+  text-align: left;
+}
+
 /**********************
  * UTILITY
  *********************/
@@ -156,8 +160,15 @@ i {
 /**
  * MinSlider
  */
-
+.thumbsgal {
+  width: auto;
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}
 .thumbwrap {
+   display: block;
+   width: 100%;
    padding: 0px 20px 0px 20px;
    position: relative;
    height: 80px;
@@ -235,7 +246,7 @@ i {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  max-width: 960px;
+  max-width: 970px;
 }
 
 /* top-bar and children are transparent */
@@ -265,6 +276,7 @@ i {
 /* items within the main nav */
 #ongo-top-bar-nav > ul > li {
   display: inline-block;
+  margin-left: 1rem;
 }
 
 /**
@@ -291,13 +303,7 @@ i {
   font-size: 1.2rem;
 }
 
-/* flag image used as symbol for current langauge status */
-#ongo-top-bar .language-status-flag-image {
-  width: 23px;
-  height: 15px;
-  transform: translateX(5px) translateY(-1px);
-}
-/* country flag , #ongo-top-bar aposition within the language menu */
+/* country flag within the language menu */
 #ongo-top-bar .menu .country-flag-image {
   width: 23px;
   height: 15px;
@@ -514,8 +520,8 @@ i {
 #ongo-main .ongo-heading {
   position: relative;
   display: block;
-  padding-top: 130px;
-  margin-bottom: 35px;
+  padding-top: 133px;
+  margin-bottom: 23px;
 }
 #ongo-main .ongo-heading h1 {
   position: relative;
@@ -613,15 +619,22 @@ i {
  */
 
 .ongo-footer {
-   margin-top: 40px;
-   padding: 50px 50px 50px 80px;
-   background: #2e2e2e;
-   font-size: .750rem;
-   color: #787878;
+  padding: 50px 0 50px 0;
+  background: #2e2e2e;
+  font-size: .750rem;
+  color: #787878;
 }
 .ongo-footer * {
   font-size: inherit;
   color: inherit;
+}
+.ongo-footer-content {
+  display: block;
+  width: auto;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px 0 20px;
 }
 .ongo-footer-block {
   margin-top: 1rem;
@@ -636,14 +649,14 @@ i {
   font-size: .875rem;
   font-weight: bold;
   color: #fff;
-  padding: 0 0 1rem 0;
+  margin: 0 0 0.7rem 0;
 }
 .ongo-footer-nav ul {
   list-style-type: none;
   margin: 0;
 }
 .ongo-footer-nav li {
-  padding: 0 0 1rem 0;
+  padding: 0 0 0.75rem 0;
 }
 .ongo-footer-nav li a {
    color: inherit;
@@ -670,9 +683,10 @@ i {
 .ongo-payment-type-icon {
    display: inline-block;
    width: 40px;
-   height: 30px;
+   height: 26px;
    background-color: #eee;
    border-radius: 10%;
-   padding: 4px 3px 0 3px;
+   padding: 1px 3px 0px 2px;
+   vertical-align: bottom;
    margin-right: 1px;
 }

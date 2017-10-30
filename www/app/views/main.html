@@ -1,12 +1,13 @@
 <!-- MAIN PAGE -->
 <div id="ongo-main">
+
     <!-- BACKGROUND CAROUSEL -->
     <div class="ongo-background-carousel">
         <ul id="lightSlider">
             <section ng-repeat="p in topGalleries">
                 <li>
                     <img ng-src="{{ p.logo }}" imageonload="lightSlider" style="display:none;">
-                    <a ui-sref="gallery({id:p.id})">
+                    <a class="ongo-background-carousel-link" ui-sref="gallery({id:p.id})">
                         <translate>BROWSE_TO_GALLERY</translate>
                     </a>
                 </li>
@@ -45,8 +46,10 @@
     </section>
 
     <!-- GALLERY CAROUSELS -->
-    <section class="ongo-gallery-carousels meetings blackbody">
-        <div class="row thumbsgal" ng-repeat="g in galleries">
+    <section class="ongo-gallery-carousels">
+        <div class="thumbsgal" ng-repeat="g in galleries">
+
+            <!-- Gallery Wrap -->
             <div class="thumbwrap">
               <ul class="minslider">
                   <li ng-repeat="p in g.icons">
@@ -66,6 +69,7 @@
               </div>
             </div>
 
+            <!-- Gallery Info -->
             <span class="subject">
                 <a href="" ui-sref="photographer({id: g.photographer.id})">{{ g.photographer.name }}</a>
                 <a ui-sref="day({day: ( g.created|strtotime|date:'yyyy-MM-dd' ), country_id: g.country.id })">{{
