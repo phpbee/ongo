@@ -1,5 +1,5 @@
-<header id="ongo-main-header" class="header">
-  <div class="top-bar" id="ongo-top-bar">
+<header class="ongo-main-header">
+  <div class="top-bar ongo-top-bar">
 
     <!-- left -->
     <div class="top-bar-left">
@@ -7,7 +7,7 @@
         <!-- LOGO AND COMPANY NAME-->
         <section>
           <a href="#" onclick="return false;" ui-sref="main" aria-label="Return to main page">
-            <div class="ongo-company-logo"></div>
+            <div class="ongo-ico-company-logo"></div>
             <span ng-if="$state.current.name == 'main'" class="ongo-company-name hide-for-small-only">OnGoPhotos</span>
           </a>
         </section>
@@ -52,15 +52,15 @@
     <!-- middle -->
     <!-- SEARCH AREA -->
     <section class="search-area" ng-if="$state.current.name != 'main'">
-        <form class="hide-for-small-only" ng-controller="SearchCtrl as ctrl" aria-label="Search form">
+        <form class="ongo-search-form hide-for-small-only" ng-controller="SearchCtrl as ctrl" aria-label="Search form">
             <input type="search"
-                   class="search-input typeahead"
+                   class="ongo-search-input typeahead"
                    placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
                    ng-model="ctrl.colorName"
                    auto-complete="ctrl.autoCompleteOptions"
                    aria-label="Search input"
             >
-            <button type="button" class="button" aria-label="Search submit button"><span translate="SEARCH.BUTTON"></span></button>
+            <button type="submit" class="ongo-search-submit button" aria-label="Search submit button"><span translate="SEARCH.BUTTON"></span></button>
         </form>
     </section>
 
@@ -68,71 +68,70 @@
     <div class="top-bar-right">
 
           <!-- MAIN NAV AREA -->
-          <nav id="ongo-top-bar-nav" aria-label="Main navigation">
+          <nav class="ongo-top-bar-nav hide-for-small-only" ng-controller="LoginCtrl" aria-label="Main navigation">
             <ul>
 
-              <!-- USER CONTROLS (login, cart, favourites, etc.) -->
-              <li class="hide-for-small-only" ng-controller="LoginCtrl" >
-                <ul>
-                  <!-- sign-in -->
-                  <li ng-if="!isAuthorized('user')">
-                    <a href="#" onclick="return false;" ui-sref="user" aria-label="Log in">
-                      <i class="fa fa-sign-in" aria-hidden="true"></i>
-                      <span class="hide-for-medium-only" translate="MENU.LOGIN"></span>
-                    </a>
-                  </li>
-                  <!-- shopping cart -->
-                  <li ng-if="isAuthorized('user')">
-                    <a href="#" onclick="return false;" ui-sref="user.orders" aria-label="Orders">
-                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                      <span class="hide-for-medium-only" translate="MENU.ORDERS"></span>
-                    </a>
-                  </li>
-                  <!-- checkout -->
-                  <li ng-if="keys(cart.items).length">
-                    <a href="#" onclick="return false;" ui-sref="checkout" aria-label="Checkout">
-                        <i class="fa fa-credit-card" aria-hidden="true"></i>
-                        <span class="hide-for-medium-only" translate="MENU.CHECKOUT"></span>
-                        <span>({{ keys(cart.items).length }})</span>
-                    </a>
-                  </li>
-                  <!-- favourites -->
-                  <li href="#" onclick="return false;" ng-if="keys(fav.items).length">
-                    <a ui-sref="favourites" aria-label="Favourites">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <span class="hide-for-medium-only" translate="MENU.FAVOURITES"></span>
-                      <span>({{ keys(fav.items).length }})</span>
-                    </a>
-                  </li>
-                  <!-- sign-out -->
-                  <li ng-if="isAuthorized('user')">
-                    <a href="#" onclick="return false;" ui-sref="logout" aria-label="Log out">
-                      <i class="fa fa-sign-in" aria-hidden="true"></i>
-                      <span class="hide-for-medium-only" translate="MENU.LOGOUT"></span>
-                    </a>
-                  </li>
-                </ul>
+              <!-- sign-in -->
+              <li class="ongo-top-bar-nav-item" ng-if="!isAuthorized('user')">
+                <a href="#" onclick="return false;" ui-sref="user" aria-label="Log in">
+                  <i class="ongo-ico-sign-in" aria-hidden="true"></i>
+                  <span class="hide-for-medium-only" translate="MENU.LOGIN"></span>
+                </a>
               </li>
 
-              <!-- LANGUAGE SELECTION TOGGLE -->
-              <li class="hide-for-small-only">
+              <!-- shopping cart -->
+              <li class="ongo-top-bar-nav-item" ng-if="isAuthorized('user')">
+                <a href="#" onclick="return false;" ui-sref="user.orders" aria-label="Orders">
+                  <i class="ongo-ico-cart" aria-hidden="true"></i>
+                  <span class="hide-for-medium-only" translate="MENU.ORDERS"></span>
+                </a>
+              </li>
+
+              <!-- checkout -->
+              <li class="ongo-top-bar-nav-item" ng-if="keys(cart.items).length">
+                <a href="#" onclick="return false;" ui-sref="checkout" aria-label="Checkout">
+                    <i class="ongo-ico-cart" aria-hidden="true"></i>
+                    <span class="hide-for-medium-only" translate="MENU.CHECKOUT"></span>
+                    <span>({{ keys(cart.items).length }})</span>
+                </a>
+              </li>
+
+              <!-- favourites -->
+              <li class="ongo-top-bar-nav-item" ng-if="keys(fav.items).length">
+                <a href="#" onclick="return false;" ui-sref="favourites" aria-label="Favourites">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span class="hide-for-medium-only" translate="MENU.FAVOURITES"></span>
+                  <span>({{ keys(fav.items).length }})</span>
+                </a>
+              </li>
+
+              <!-- sign-out -->
+              <li class="ongo-top-bar-nav-item" ng-if="isAuthorized('user')">
+                <a href="#" onclick="return false;" ui-sref="logout" aria-label="Log out">
+                  <i class="ongo-ico-sign-in" aria-hidden="true"></i>
+                  <span class="hide-for-medium-only" translate="MENU.LOGOUT"></span>
+                </a>
+              </li>
+
+              <!-- language selection toggle -->
+              <li class="ongo-top-bar-nav-item">
                   <a ng-if="activeLanguage!='en'" href="#" onclick="return false;" ng-click="changeLanguage('en')">
-                    <i class="ion-ios-world-outline" aria-hidden="true"></i>
+                    <i class="ongo-ico-globe" aria-hidden="true"></i>
                     <span class="show-for-large">English</span>
                   </a>
                   <a ng-if="activeLanguage!='ru'" href="#" onclick="return false;" ng-click="changeLanguage('ru')">
-                    <i class="ion-ios-world-outline" aria-hidden="true"></i>
+                    <i class="ongo-ico-globe" aria-hidden="true"></i>
                     <span class="show-for-large">Русский</span>
                   </a>
               </li>
 
-              <!-- LANGUAGE SELECTION MENU -->
-              <li class="hide-for-small-only">
+              <!-- language selection menu -->
+              <li class="ongo-top-bar-nav-item">
                   <ul class="dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
                     <li>
                       <!-- dropdown toggle -->
                       <a href="#" onclick="return false;">
-                        <i class="ion-ios-world-outline" aria-hidden="true"></i>
+                        <i class="ongo-ico-globe" aria-hidden="true"></i>
                         <span class="show-for-large" translate="MENU.LANGUAGE"></span>
                       </a>
                       <!-- dropdown menu -->
@@ -145,12 +144,12 @@
               </li>
 
               <!-- INFO LINKS MENU (about, faq, contact, etc.) -->
-              <li class="hide-for-small-only">
+              <li class="ongo-top-bar-nav-item">
                 <ul class="dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
                   <li>
                     <!-- dropdown toggle -->
                     <a href="#" onclick="return false;">
-                      <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                      <i class="ongo-ico-ellipsis" aria-hidden="true"></i>
                     </a>
                     <!-- dropdown menu -->
                     <ul class="menu">
