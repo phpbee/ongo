@@ -51,6 +51,9 @@
  *        Vimeo:                         <i class="fa fa-vimeo" aria-hidden="true"></i>
  *        Google+:                       <i class="fa fa-vimeo" aria-hidden="true"></i>
  *
+ *      Ionicons:
+ *        Language (wire globe):        <i class="ion-ios-world-outline"></i>
+ *
  *      Other icons:
  *        Russian flag:       img/flag/flag_ru.svg
  *        American flag:      img/flag/flag_en.svg
@@ -66,6 +69,7 @@
  *        z-index: 800; - Hamburger (off-canvas menu toggle)
  *        z-index: 700; - Offcanvas search menu
  *        z-index: 600; - Header and top-bar
+ *        z-index: 500; - Normal page elements
  *
  */
 
@@ -87,8 +91,16 @@
 }
 
 /* remove the arrow on foundation dropdown menus */
-.dropdown a:first-child::after {
-  visibility: hidden;
+.dropdown > li > a:after {
+  display: none !important;
+}
+.dropdown > li > a {
+  padding: 0 !important;
+}
+
+/* remove color styling - foundation sets them to #e6e6e6*/
+.top-bar ul {
+  background-color: transparent;
 }
 
 /**********************
@@ -109,7 +121,6 @@
  *************************/
 
 .ongo-ico-sign-in {
-  padding-left: 32px;
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAATCAYAAACgADyUAAACNklEQVQ4T32Tz4tSURTH31Oz548wsmLGHkEqgrjQnRvduIyyTUgz1Vu1sMCVGxfhQmGIEBeBzGoW1fQnuBlQSRCGVrmTxB/joppyLMkf6XO075l5OuPzNQ8+vHvOvd9z7z3nXHY2m91lGGYb3Ab/+56yLLt7fpKF8BCOmxeImHq9/sJms73Fmr9gSmtJOKNBJBJ53Gq1VDBZeZBKpfK9Wq1+gf8bGC8JrVar0Gg0enCK4CQYz/OXdTodC9ERzKYkHC0J7Xb7Rq1Wq8DZme+YSCTWo9Hom1AotJHNZn/CPwDHS0KHw/EQkT91Op2rer1+nSZx7Bscx+2KovgxnU4/iMVi3XnQxR0l4f5kMtlSq9WC/J7D4TAfj8eDqVSqr7Tj/mg0eqXVap8oZbnf7+8ZjcZ7lIeVHQeDwWskZFNJWC6Xdzwez0vMHa0Ie71eEsJH0+lUReXSaDRaClIoFLKBQGAHwxqorwjhpDs4wB2/328pFovpUqm05/P5PsD3SxI2lYSUOR6sBYNBPplMbrrd7vewh+AAtMBvJeEPTHCExWLh2u22aTweX4f9BzRJBI4XwnA4/Nzlcn0WBOHQZDKddE6321Xl8/krmUxGzOVyFJCOetoAqNsB6nbRy2DQFM/MZvM7KsM82ywi3fd6vdsGg+HW3Cn/o8kjTqeTXsdZy8G4BpyA2oyOsYh6LgA1PyXmKzhtcikRa/jTjkZA9ZN/JKRsnj0raSEVWQ8uScHkQjoJ1XfxkP8BSPUZQeSxi/gAAAAASUVORK5CYII=') 10px 9px no-repeat;
 }
 .ongo-ico-cart {
@@ -135,6 +146,7 @@
 
 * {
   color: hsla(0, 0%, 90%, 1);
+  box-sizing: border-box;
 }
 
 body {
@@ -180,7 +192,6 @@ i {
    opacity: .8;
    color: #fff;
    border-radius: 3px;
-   z-index: 1000;
 }
 #lightSlider li a:hover {
    background-color: rgba(255, 255, 255, .15);
@@ -282,7 +293,7 @@ i {
   min-width: 5em;
   height: 100%;
   margin: 0;
-  margin-left: -4px;
+  margin-left: -5px;
   line-height: 0;
   vertical-align: bottom;
   border-top-right-radius: 5px;
@@ -299,7 +310,7 @@ i {
  * Header Global Settings
  */
 
-/* header */
+/* header is full-width and fixed to the top of the screen */
 .ongo-main-header {
   display: block;
   position: fixed;
@@ -311,46 +322,86 @@ i {
   z-index: 600;
   transition: all .3s ease;
 }
-.ongo-main-header section, .ongo-main-header nav, .ongo-main-header ul {
-  background-color: transparent;
-  height: auto;
-}
 
-/* top-bar is inside the header - centered and with a max width */
+/* top-bar is inside the header, centered, with
+   a max width, and padding on the top and bottom */
 .ongo-top-bar {
   position: relative;
   margin-left: auto;
   margin-right: auto;
   padding: 20px 0 10px 0;
-  max-width: 970px;
+  max-width: 960px;
   max-height: 100%;
   background: inherit;
 }
 
+/* company name and logo */
+.ongo-top-bar .ongo-company-name {
+  font-size: 1.675rem;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
+  vertical-align: top;
+}
+.ongo-top-bar .ongo-ico-company-logo {
+ display: inline-block;
+ width: 45px;
+ height: 45px;
+}
+
+/* the main nav */
 .ongo-top-bar-nav {
+  display: inline-block;
+  position: relative;
+  float: right;
+  height: 3rem;
+  width: auto;
+}
+.ongo-top-bar-nav > ul {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
   padding: 0;
 }
 
 /* items within the main nav */
-.ongo-top-bar-nav-item {
+.ongo-top-bar-nav .ongo-nav-item {
   display: inline-block;
-  height: 40px;
+  height: 100%;
+  width: auto;
+  min-width: 5rem;
+  margin-left: 0.5rem;
+}
+/** FIXME: link background is not aligned properly */
+.ongo-top-bar-nav .ongo-nav-link {
+  display: inline-block;
+  height: 2rem;
+  width: auto;
+  min-width: 2rem;
+  padding: 0 14px 0 14px;
+  text-align: center;
   border-radius: 4px;
-  padding: 0 6px 0 3px;
-  background: transparent;
-}
-.ongo-top-bar-nav-item:hover {
-  background: rgba(42, 35, 33, .5);
-}
-.ongo-top-bar-nav-item a {
-  height: 1rem;
-  width: 100%;
-  vertical-align: bottom;
   font-size: .875rem;
   color: #aaa;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
-  transform: translateY(4px);
 }
+.ongo-top-bar-nav .ongo-nav-link * {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ongo-top-bar-nav .ongo-nav-link:hover,
+.ongo-top-bar-nav .ongo-nav-link:focus {
+  background: rgba(42, 35, 33, .5);
+}
+
+/* icons in the main nav */
+.ongo-top-bar .ongo-nav-link i {
+  padding: 0 .5rem 0 .5rem;
+  font-size: 1.3rem;
+  transform: translateY(2px);
+}
+
 
 /**
  * Header Menus
@@ -373,27 +424,6 @@ i {
   width: 23px;
   height: 15px;
   transform: translateX(-3px) translateY(-2px);
-}
-
-/**
- * Header Icons and Images
- */
-
-/* company name and logo */
-.ongo-top-bar .ongo-company-name {
-  font-size: 1.675rem;
-  text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
-  vertical-align: top;
-}
-.ongo-top-bar .ongo-ico-company-logo {
- display: inline-block;
- width: 45px;
- height: 45px;
-}
-
-/* top-bar icons */
-.ongo-top-bar i {
-  font-size: 1.2rem;
 }
 
 /**
@@ -592,7 +622,6 @@ i {
   text-align: center;
 }
 
-/* TODO: takes this out to be globla class set */
 #ongo-main .ongo-search {
   position: relative;
   display: block;
@@ -615,14 +644,10 @@ i {
 
 #ongo-main .ongo-background-carousel {
   position: absolute;
-  z-index: 0;
   top: 0;
   width: 100%;
   height: calc(80vh - 55px);
   min-height: 450px;
-}
-#ongo-main .ongo-background-carousel-link {
-  z-index: 2000;
 }
 
 /**
