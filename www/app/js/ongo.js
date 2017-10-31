@@ -186,20 +186,3 @@ $(document).ready(function () {
     });
 
 });
-
-window.ongoOnLoad = function() {
-
-  $(document).foundation();
-
-  // toggle transparent background for the header
-  if ($('.ongo-main-header').length > 0) {
-      var header = $('.ongo-main-header');
-      
-      toggleTransparent();
-      $(window).scroll(toggleTransparent);
-
-      function toggleTransparent() {
-          $(window).scrollTop() < 100 ? header.addClass('transparent-background') : header.removeClass('transparent-background');
-      };
-  }
-}

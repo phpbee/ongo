@@ -47,7 +47,7 @@ angular
             }
         };
     })
-    .run(function ($rootScope, cart, fav, $translate, amMoment, $http) {
+    .run(function ($rootScope, cart, fav, $translate, amMoment, $http, onViewLoad) {
         $rootScope.keys = Object.keys;
         cart.initialize();
         fav.initialize();
@@ -58,7 +58,7 @@ angular
 
         /* This block runs every time a view is loaded */
         $rootScope.$on('$viewContentLoaded', function() {
-          window.ongoOnLoad();
+          onViewLoad.run();
         });
     })
 
