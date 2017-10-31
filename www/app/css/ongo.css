@@ -1,7 +1,6 @@
 /**
  *    DOC
  *    FRAMEWORK AND LIBRARY OVERRIDES
- *    UTILITY
  *    BODY / GLOBAL
  *    LIGHTSLIDER AND MINSLIDER
  *    SEARCH FORM
@@ -9,6 +8,7 @@
  *    OFF-CANVAS MENUS
  *    MAIN PAGE
  *    FOOTER
+ *    UTILITY
  */
 
 /******
@@ -103,19 +103,6 @@
   background-color: transparent;
 }
 
-/**********************
- * UTILITY
- *********************/
-
-.opacity-0 {
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-.opacity-100 {
-  opacity: 1;
-  transition: opacity 0.5s;
-}
-
 /**************************
  * ICONS
  *************************/
@@ -180,6 +167,7 @@ i {
    min-height: 450px;
    background-position: top center;
    background-size: cover;
+   z-index: -1;
 }
 #lightSlider li a {
    font-size: .6875rem;
@@ -431,9 +419,10 @@ i {
  */
 
 .ongo-top-bar .ongo-search-form {
-  height: 32px;
+  height: 37px;
   width: auto;
-  font-size: 0.5rem;
+  font-size: 0.55rem;
+  transform: translateY(-6px);
 }
 
 /**
@@ -599,6 +588,7 @@ i {
   display: block;
   height: calc(80vh - 55px);
   color: #fffdff;
+  z-index: 500;
 }
 
 /* heading */
@@ -741,4 +731,12 @@ i {
    padding: 1px 3px 0px 2px;
    vertical-align: bottom;
    margin-right: 1px;
+}
+
+/**********************
+ * UTILITY
+ *********************/
+
+.transparent-background {
+  background-color: hsla(0, 0%, 0%, 0);
 }

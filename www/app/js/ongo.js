@@ -13,7 +13,7 @@ function onImageLoad(scope, img, attrs) {
             loop: true,
             controls: false,
             item: 10,
-            slideMargin: 9,
+            slideMargin: 2,
             responsive: [
                 {
                     breakpoint: 840,
@@ -107,15 +107,6 @@ $(document).ready(function () {
         $(this).find('input[type="radio"]').prop('checked', true);
     });
 
-
-    /* set header opacity based on page position */
-    if ($('.header').length > 0) {
-        $(window).scroll(function () {
-            var sticky = $('.header');
-            $(window).scrollTop() >= 100 ? sticky.addClass('opacity-100') : sticky.removeClass('opacity-100');
-        });
-    }
-
     cityblock();
 
     function cityblock() {
@@ -195,3 +186,20 @@ $(document).ready(function () {
     });
 
 });
+
+window.ongoOnLoad = function() {
+
+  $(document).foundation();
+
+  // toggle transparent background for the header
+  if ($('.ongo-main-header').length > 0) {
+      var header = $('.ongo-main-header');
+      
+      toggleTransparent();
+      $(window).scroll(toggleTransparent);
+
+      function toggleTransparent() {
+          $(window).scrollTop() < 100 ? header.addClass('transparent-background') : header.removeClass('transparent-background');
+      };
+  }
+}

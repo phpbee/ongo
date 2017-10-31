@@ -56,9 +56,9 @@ angular
             $http.defaults.headers.common.Translation = $translate.use();
         });
 
-        // reload foundation on every view change (foundation needs to rescan the components)
+        /* This block runs every time a view is loaded */
         $rootScope.$on('$viewContentLoaded', function() {
-          $(document).foundation();
+          window.ongoOnLoad();
         });
     })
 
