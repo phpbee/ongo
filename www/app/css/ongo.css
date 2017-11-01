@@ -340,7 +340,7 @@ i {
   display: inline-block;
   position: relative;
   float: right;
-  height: 3rem;
+  height: 2rem;
   width: auto;
 }
 .ongo-top-bar-nav > ul {
@@ -355,15 +355,24 @@ i {
 /* items within the main nav */
 .ongo-top-bar-nav .ongo-nav-item {
   display: inline-block;
+  position: relative;
+  vertical-align: top;
   height: 100%;
   width: auto;
-  min-width: 5rem;
+  min-width: 5.5rem;
   margin-left: 0.5rem;
+}
+.ongo-nav-item > ul.dropdown,
+.ongo-nav-item > ul.dropdown > li {
+  width: 100%;
+  height: 100%;
 }
 /** FIXME: link background is not aligned properly */
 .ongo-top-bar-nav .ongo-nav-link {
   display: inline-block;
-  height: 2rem;
+  position: relative;
+  vertical-align: top;
+  height: 100%;
   width: auto;
   min-width: 2rem;
   padding: 0 14px 0 14px;
@@ -373,23 +382,21 @@ i {
   color: #aaa;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
 }
-.ongo-top-bar-nav .ongo-nav-link * {
+
+.ongo-top-bar-nav .ongo-nav-link > div {
+  padding-top: 5px;
   display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
+  vertical-align: baseline;
+}
+/* icons in the main nav */
+.ongo-top-bar .ongo-nav-link i {
+  vertical-align: top;
+  font-size: 1.3rem;
 }
 .ongo-top-bar-nav .ongo-nav-link:hover,
 .ongo-top-bar-nav .ongo-nav-link:focus {
   background: rgba(42, 35, 33, .5);
 }
-
-/* icons in the main nav */
-.ongo-top-bar .ongo-nav-link i {
-  padding: 0 .5rem 0 .5rem;
-  font-size: 1.3rem;
-  transform: translateY(2px);
-}
-
 
 /**
  * Header Menus

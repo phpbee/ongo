@@ -12,6 +12,20 @@
           </a>
         </section>
 
+        <!-- SEARCH AREA -->
+        <section class="search-area" ng-if="$state.current.name != 'main'">
+            <form class="ongo-search-form hide-for-small-only" ng-controller="SearchCtrl as ctrl" aria-label="Search form">
+                <input type="search"
+                       class="ongo-search-input typeahead"
+                       placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+                       ng-model="ctrl.colorName"
+                       auto-complete="ctrl.autoCompleteOptions"
+                       aria-label="Search input"
+                >
+                <button type="submit" class="ongo-search-submit button" aria-label="Search submit button"><span translate="SEARCH.BUTTON"></span></button>
+            </form>
+        </section>
+
         <!-- SMALL-SCREEN-CONTROLS -->
         <section id="ongo-small-screen-controls">
 
@@ -48,120 +62,121 @@
 
     </div> <!-- end .top-bar-left -->
 
-    <!-- middle -->
-    <!-- SEARCH AREA -->
-    <section class="search-area" ng-if="$state.current.name != 'main'">
-        <form class="ongo-search-form hide-for-small-only" ng-controller="SearchCtrl as ctrl" aria-label="Search form">
-            <input type="search"
-                   class="ongo-search-input typeahead"
-                   placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
-                   ng-model="ctrl.colorName"
-                   auto-complete="ctrl.autoCompleteOptions"
-                   aria-label="Search input"
-            >
-            <button type="submit" class="ongo-search-submit button" aria-label="Search submit button"><span translate="SEARCH.BUTTON"></span></button>
-        </form>
-    </section>
+    <!-- MAIN NAV AREA -->
+    <nav class="ongo-top-bar-nav hide-for-small-only" ng-controller="LoginCtrl" aria-label="Main navigation">
+      <ul>
 
+        <!-- sign-in -->
+        <li class="ongo-nav-item" ng-if="!isAuthorized('user')">
+          <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="user" aria-label="Log in">
+            <div>
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
+              <span class="hide-for-medium-only" translate="MENU.LOGIN"></span>
+            </div>
+          </a>
+        </li>
 
+        <!-- shopping cart -->
+        <li class="ongo-nav-item" ng-if="isAuthorized('user')">
+          <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="user.orders" aria-label="Orders">
+            <div>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <span class="hide-for-medium-only" translate="MENU.ORDERS"></span>
+            </div>
+          </a>
+        </li>
 
-          <!-- MAIN NAV AREA -->
-          <nav class="ongo-top-bar-nav hide-for-small-only" ng-controller="LoginCtrl" aria-label="Main navigation">
-            <ul>
+        <!-- checkout -->
+        <li class="ongo-nav-item" ng-if="keys(cart.items).length">
+          <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="checkout" aria-label="Checkout">
+            <div>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <span class="hide-for-medium-only" translate="MENU.CHECKOUT"></span>
+              <span>({{ keys(cart.items).length }})</span>
+            </div>
+          </a>
+        </li>
 
-              <!-- sign-in -->
-              <li class="ongo-nav-item" ng-if="!isAuthorized('user')">
-                <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="user" aria-label="Log in">
-                  <i class="fa fa-sign-in" aria-hidden="true"></i>
-                  <span class="hide-for-medium-only" translate="MENU.LOGIN"></span>
-                </a>
-              </li>
+        <!-- favourites -->
+        <li class="ongo-nav-item" ng-if="keys(fav.items).length">
+          <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="favourites" aria-label="Favourites">
+            <div>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <span class="hide-for-medium-only" translate="MENU.FAVOURITES"></span>
+              <span>({{ keys(fav.items).length }})</span>
+            </div>
+          </a>
+        </li>
 
-              <!-- shopping cart -->
-              <li class="ongo-nav-item" ng-if="isAuthorized('user')">
-                <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="user.orders" aria-label="Orders">
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                  <span class="hide-for-medium-only" translate="MENU.ORDERS"></span>
-                </a>
-              </li>
+        <!-- sign-out -->
+        <li class="ongo-nav-item" ng-if="isAuthorized('user')">
+          <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="logout" aria-label="Log out">
+            <div>
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
+              <span class="hide-for-medium-only" translate="MENU.LOGOUT"></span>
+            </div>
+          </a>
+        </li>
 
-              <!-- checkout -->
-              <li class="ongo-nav-item" ng-if="keys(cart.items).length">
-                <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="checkout" aria-label="Checkout">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    <span class="hide-for-medium-only" translate="MENU.CHECKOUT"></span>
-                    <span>({{ keys(cart.items).length }})</span>
-                </a>
-              </li>
+        <!-- language selection toggle -->
+        <li class="ongo-nav-item">
+            <a class="ongo-nav-link" href="#" onclick="return false;" ng-if="activeLanguage!='en'" ng-click="changeLanguage('en')">
+              <div>
+                <i class="ion-ios-world-outline" aria-hidden="true"></i>
+                <span class="show-for-large">English</span>
+              </div>
+            </a>
+            <a class="ongo-nav-link" href="#" onclick="return false;" ng-if="activeLanguage!='ru'" ng-click="changeLanguage('ru')">
+              <div>
+                <i class="ion-ios-world-outline" aria-hidden="true"></i>
+                <span class="show-for-large">Русский</span>
+              </div>
+            </a>
+        </li>
 
-              <!-- favourites -->
-              <li class="ongo-nav-item" ng-if="keys(fav.items).length">
-                <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="favourites" aria-label="Favourites">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <span class="hide-for-medium-only" translate="MENU.FAVOURITES"></span>
-                  <span>({{ keys(fav.items).length }})</span>
-                </a>
-              </li>
-
-              <!-- sign-out -->
-              <li class="ongo-nav-item" ng-if="isAuthorized('user')">
-                <a class="ongo-nav-link" href="#" onclick="return false;" ui-sref="logout" aria-label="Log out">
-                  <i class="fa fa-sign-in" aria-hidden="true"></i>
-                  <span class="hide-for-medium-only" translate="MENU.LOGOUT"></span>
-                </a>
-              </li>
-
-              <!-- language selection toggle -->
-              <li class="ongo-nav-item">
-                  <a class="ongo-nav-link" href="#" onclick="return false;" ng-if="activeLanguage!='en'" ng-click="changeLanguage('en')">
+        <!-- language selection menu -->
+        <li class="ongo-nav-item">
+            <ul class="dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
+              <li>
+                <!-- dropdown toggle -->
+                <a class="ongo-nav-link" href="#" onclick="return false;">
+                  <div>
                     <i class="ion-ios-world-outline" aria-hidden="true"></i>
-                    <span class="show-for-large">English</span>
-                  </a>
-                  <a class="ongo-nav-link" href="#" onclick="return false;" ng-if="activeLanguage!='ru'" ng-click="changeLanguage('ru')">
-                    <i class="ion-ios-world-outline" aria-hidden="true"></i>
-                    <span class="show-for-large">Русский</span>
-                  </a>
-              </li>
-
-              <!-- language selection menu -->
-              <li class="ongo-nav-item">
-                  <ul class="dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
-                    <li>
-                      <!-- dropdown toggle -->
-                      <a class="ongo-nav-link" href="#" onclick="return false;">
-                        <i class="ion-ios-world-outline" aria-hidden="true"></i>
-                        <span class="show-for-large" translate="MENU.LANGUAGE"></span>
-                      </a>
-                      <!-- dropdown menu -->
-                      <ul class="menu">
-                        <li><a href="#" onclick="return false;" ng-click="changeLanguage('en')" data-toggle="ongo-top-bar-language-dropdown"><img src="/img/flag/flag_en.svg" class="country-flag-image">English</a></li>
-                        <li><a href="#" onclick="return false;" ng-click="changeLanguage('ru')" data-toggle="ongo-top-bar-language-dropdown"><img src="/img/flag/flag_ru.svg" class="country-flag-image">Русский</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-              </li>
-
-              <!-- INFO LINKS MENU (about, faq, contact, etc.) -->
-              <li class="ongo-nav-item">
-                <ul class="dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
-                  <li class="ongo-nav-item">
-                    <!-- dropdown toggle -->
-                    <a class="ongo-nav-link" href="#" onclick="return false;">
-                      <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                    </a>
-                    <!-- dropdown menu -->
-                    <ul class="menu">
-                      <li><a ui-sref="about" translate="About"></a></li>
-                      <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
-                      <li><a ui-sref="contacts" translate="Contacts"></a></li>
-                      <li><a ui-sref="faq" translate="FAQ"></a></li>
-                    </ul>
-                  </li>
+                    <span class="show-for-large" translate="MENU.LANGUAGE"></span>
+                  </div>
+                </a>
+                <!-- dropdown menu -->
+                <ul class="menu">
+                  <li><a href="#" onclick="return false;" ng-click="changeLanguage('en')" data-toggle="ongo-top-bar-language-dropdown"><img src="/img/flag/flag_en.svg" class="country-flag-image">English</a></li>
+                  <li><a href="#" onclick="return false;" ng-click="changeLanguage('ru')" data-toggle="ongo-top-bar-language-dropdown"><img src="/img/flag/flag_ru.svg" class="country-flag-image">Русский</a></li>
                 </ul>
               </li>
-
             </ul>
-          </nav>
+        </li>
+
+        <!-- INFO LINKS MENU (about, faq, contact, etc.) -->
+        <li class="ongo-nav-item">
+          <ul class="dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
+            <li>
+              <!-- dropdown toggle -->
+              <a class="ongo-nav-link" href="#" onclick="return false;">
+                <div>
+                  <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                </div>
+              </a>
+              <!-- dropdown menu -->
+              <ul class="menu">
+                <li><a ui-sref="about" translate="About"></a></li>
+                <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
+                <li><a ui-sref="contacts" translate="Contacts"></a></li>
+                <li><a ui-sref="faq" translate="FAQ"></a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
 
   </div> <!-- end .top-bar -->
 </header>
