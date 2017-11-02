@@ -188,6 +188,7 @@ i {
 /**
  * MinSlider
  */
+ 
 .thumbsgal {
   width: auto;
   max-width: 960px;
@@ -247,9 +248,9 @@ i {
    color: #ddd;
 }
 
-/************************************************
+/**************
  * SEARCH FORM
- ************************************************/
+ **************/
 
 .ongo-search-form {
   position: relative;
@@ -295,10 +296,10 @@ i {
  ************************************************/
 
 /**
- * Header Global Settings
+ * Header
  */
 
-/* header is full-width and fixed to the top of the screen */
+/* Header is full-width and fixed to the top of the screen */
 .ongo-main-header {
   display: block;
   position: fixed;
@@ -311,7 +312,11 @@ i {
   transition: all .3s ease;
 }
 
-/* top-bar is inside the header, centered */
+/**
+ * Top-Bar
+ */
+
+/* Top-bar is inside the header, centered */
 .ongo-top-bar {
   position: relative;
   margin-left: auto;
@@ -321,7 +326,10 @@ i {
   background: inherit;
 }
 
-/* company name and logo */
+/**
+ * Company name and logo
+ */
+
 .ongo-top-bar .ongo-logo-area {
   padding: 10px 0 10px 0;
   width: auto;
@@ -340,6 +348,7 @@ i {
 /**
  * Header Search Bar
  */
+
 .ongo-top-bar .search-area {
   display: inline-block;
   float: left;
@@ -352,7 +361,10 @@ i {
   transform: translateY(-6px);
 }
 
-/* the main nav */
+/**
+ * Nav Inside Top-Bar
+ */
+
 .ongo-top-bar-nav {
   float: right;
   height: 100%;
@@ -364,7 +376,7 @@ i {
   margin: 0;
 }
 
-/* items within the main nav */
+/* Items within the main nav */
 .ongo-top-bar-nav .ongo-nav-item {
   display: inline-block;
   height: 100%;
@@ -373,7 +385,7 @@ i {
   margin-left: 0.5rem;
 }
 
-/** FIXME: link background is not aligned properly */
+/* Links inside each nav item */
 .ongo-top-bar-nav .ongo-nav-link {
   display: inline-block;
   height: 2.5rem;
@@ -393,19 +405,18 @@ i {
   background: rgba(42, 35, 33, .5);
 }
 
-/* icons in the main nav */
+/* Icons in the main nav */
 .ongo-top-bar .ongo-nav-link i {
   margin-right: 0.8rem;
   font-size: 1.1rem;
   vertical-align: middle;
 }
 
-
 /**
- * Header Menus
+ * Dropdown Menus Inside Top-Bar Nav
  */
 
-/* top-bar dropdown menus */
+ /* Dropdown menu */
 .ongo-top-bar .dropdown .menu {
   background-color: hsla(0, 0%, 10%, 0.95);
   text-align: right;
@@ -413,6 +424,8 @@ i {
   color: #aaa;
   z-index: 600;
 }
+
+/* Items inside the dropdown menu */
 .ongo-top-bar .dropdown .menu a {
   color: #aaa;
 }
@@ -421,7 +434,7 @@ i {
   color: #fff;
 }
 
-/* country flag within the language menu */
+/* Country flag within the language menu */
 .ongo-top-bar .menu .country-flag-image {
   width: 23px;
   height: 15px;
