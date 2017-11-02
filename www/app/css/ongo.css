@@ -311,92 +311,95 @@ i {
   transition: all .3s ease;
 }
 
-/* top-bar is inside the header, centered, with
-   a max width, and padding on the top and bottom */
+/* top-bar is inside the header, centered */
 .ongo-top-bar {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px 0 10px 0;
   max-width: 960px;
   max-height: 100%;
   background: inherit;
 }
 
 /* company name and logo */
+.ongo-top-bar .ongo-logo-area {
+  padding: 10px 0 10px 0;
+  width: auto;
+}
+.ongo-top-bar .ongo-ico-company-logo {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+}
 .ongo-top-bar .ongo-company-name {
-  font-size: 1.675rem;
+  font-size: 1.8rem;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
   vertical-align: top;
 }
-.ongo-top-bar .ongo-ico-company-logo {
- display: inline-block;
- width: 45px;
- height: 45px;
+
+/**
+ * Header Search Bar
+ */
+.ongo-top-bar .search-area {
+  display: inline-block;
+  float: left;
+  border: 1px dashed green;
+}
+.ongo-top-bar .ongo-search-form {
+  height: 37px;
+  width: auto;
+  font-size: 0.55rem;
+  transform: translateY(-6px);
 }
 
 /* the main nav */
 .ongo-top-bar-nav {
-  display: inline-block;
-  position: relative;
   float: right;
-  height: 2rem;
+  height: 100%;
   width: auto;
 }
 .ongo-top-bar-nav > ul {
-  display: inline-block;
-  position: relative;
   height: 100%;
   width: 100%;
   margin: 0;
-  padding: 0;
 }
 
 /* items within the main nav */
 .ongo-top-bar-nav .ongo-nav-item {
   display: inline-block;
-  position: relative;
-  vertical-align: top;
   height: 100%;
   width: auto;
   min-width: 5.5rem;
   margin-left: 0.5rem;
 }
-.ongo-nav-item > ul.dropdown,
-.ongo-nav-item > ul.dropdown > li {
-  width: 100%;
-  height: 100%;
-}
+
 /** FIXME: link background is not aligned properly */
 .ongo-top-bar-nav .ongo-nav-link {
   display: inline-block;
-  position: relative;
-  vertical-align: top;
-  height: 100%;
-  width: auto;
-  min-width: 2rem;
-  padding: 0 14px 0 14px;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  width: 100%;
+  min-width: 2.5rem;
+  padding: 0 .5rem 0 .5rem;
   text-align: center;
+  vertical-align: middle;
   border-radius: 4px;
+  color: #fff;
   font-size: .875rem;
-  color: #aaa;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
-}
-
-.ongo-top-bar-nav .ongo-nav-link > div {
-  padding-top: 5px;
-  display: inline-block;
-  vertical-align: baseline;
-}
-/* icons in the main nav */
-.ongo-top-bar .ongo-nav-link i {
-  vertical-align: top;
-  font-size: 1.3rem;
 }
 .ongo-top-bar-nav .ongo-nav-link:hover,
 .ongo-top-bar-nav .ongo-nav-link:focus {
   background: rgba(42, 35, 33, .5);
 }
+
+/* icons in the main nav */
+.ongo-top-bar .ongo-nav-link i {
+  margin-right: 0.8rem;
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+
 
 /**
  * Header Menus
@@ -407,7 +410,11 @@ i {
   background-color: hsla(0, 0%, 10%, 0.95);
   text-align: right;
   border-radius: 3px;
+  color: #aaa;
   z-index: 600;
+}
+.ongo-top-bar .dropdown .menu a {
+  color: #aaa;
 }
 .ongo-top-bar .dropdown .menu a:hover {
   background-color: hsla(0, 0%, 20%, 1);
@@ -419,17 +426,6 @@ i {
   width: 23px;
   height: 15px;
   transform: translateX(-3px) translateY(-2px);
-}
-
-/**
- * Header Search Bar
- */
-
-.ongo-top-bar .ongo-search-form {
-  height: 37px;
-  width: auto;
-  font-size: 0.55rem;
-  transform: translateY(-6px);
 }
 
 /**
@@ -655,7 +651,7 @@ i {
   display: block;
   border-top: 4px solid hsl(0, 0%, 90%);
   border-bottom: 40px solid hsl(0, 0%, 90%);
-  padding-top: 40px;
+  padding-top: 60px;
   padding-bottom: 100px;
 }
 
@@ -746,4 +742,133 @@ i {
 
 .transparent-background {
   background-color: hsla(0, 0%, 0%, 0);
+}
+
+/***********************
+ * Integrate from style1
+ **********************/
+
+
+
+
+/*************************
+ * Backgrounds
+ ************************/
+.bg_gallery {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 340px;
+    background: url('../img/bg_gallery.jpg') 0 0 no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.bg_country {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 480px;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+}
+.bg_city {
+    position: absolute;
+    top: 1px;
+    width: 100%;
+    height: 480px;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-image: url('/img/bg_city.jpg');
+    background-position: center center;
+}
+.bg_place {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 480px;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-image: url('/img/bg_place.jpg');
+}
+
+/****************************************************
+ * Category Items (Country, City, Place, Photographer)
+ ****************************************************/
+
+.ongo-category-item-wrap {
+  position: relative;
+  width: 100%;
+  height: calc(80vh - 55px);
+  min-height: 450px;
+}
+
+.ongo-category-item-header {
+  position: relative;
+  padding-top: 150px;
+}
+
+.ongo-category-item-header h1 {
+    font-size: 1.5rem;
+    color: #fffeff;
+    background: #2e2e2e;
+    border-radius: 3px;
+    display: inline-block;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    margin-top: 0px;
+    margin-right: 10px;
+    vertical-align: top;
+    height: 38px;
+    line-height: 38px;
+}
+
+.ongo-category-item-header .image-wrap {}
+.ongo-category-item-header .image-wrap img {
+  float: left;
+  margin-right: 16px;
+  max-width: 144px;
+}
+
+.ongo-category-item-header .info {
+  float: left;
+}
+
+.ongo-category-item-header .tags {
+
+}
+
+a.ongo-tag {
+  display: inline-block;
+  padding-right: 11px;
+  padding-left: 11px;
+  color: #2e2e2e;
+  font-size: 0.875rem;
+  background: #fff;
+  border-radius:3px;
+  margin-right: 9px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+a.ongo-tag:hover {
+    background: #f1f1f1;
+}
+
+a.ongo-tag:hover span {
+    text-decoration: underline;
+}
+
+.current_country .info .country_menu {
+    display: inline-block;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3ODdGNjZCREVFODExMUU0OUY1NkJFM0E3RjM2OTRDMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3ODdGNjZCRUVFODExMUU0OUY1NkJFM0E3RjM2OTRDMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjc4N0Y2NkJCRUU4MTExRTQ5RjU2QkUzQTdGMzY5NEMzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjc4N0Y2NkJDRUU4MTExRTQ5RjU2QkUzQTdGMzY5NEMzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+ZUSmbwAAA/lJREFUeNrsmFtoFFcYx/9nLnE3a9Sskpqgxod46ZviFVEKUq3YBGrxUUWIYsC2oFAV8QaK1AsUKcVSSl98KoLSaB+0xFuq7IMghRLpU7MG3V3UBLJxZ5vdOcfvnImDlt3ZMzTRefAL3y6bM2e+b77L75wzbPEf2+oAnCHdQprEu5Uh0gukX1v0cZr0K0RDGsd8cSwBbEX0ZKclhEhG0LEkRUwgimIgohLZiMkaex+xkI7pS4NVj09mrAQoyteeppB3HYBNkGNcM5XSqYuLTmJ2vEn97pzVgc9TB/DCKFILMXyUXIxDbdsxK9ZU9R4DTg4n/v4Zt4f+BKM5QQ9lyFTq/G2gSL1ySsqc+plY37gU7qgLWadH53UGOiVldvwDHJnfCV4sgXMeaE+7xio9HCsL8FIZrI4Rd5gmnxhcpwTTputNMyBi9LQ6+lvuLgYKOX9iOp/BlfQdVW9y/FDfD8gVBwOdyhae42DqOy8mNeyxtlub9UJGV03mk7Bh2gqgzHH1US9GjH9hTrYpYiYEpxs6ZUpTGYLGq0beMmDELbAYqckCil8XF3SPYebgl2c3IKiuEKN/1VkQlBLBhFpDRNxUaZU/UampmFfwwjS86wNshwJsg12PT5tXqejI1I4Ih5x6zQm5wBmGZgIEgmKiXfxTrASuLDmLOdRZUrpaN6E9tRcj3MPF2uQSHJu3Q3VeNXnkZHH04Y+4OfSgNi4kx3R044xVvlNSWhPNVG8rFS44RfD4/F2BTinExGfi+MIu1ZXc5YH2QixJojIuyDHDDoELyr1sENg0wzT+P2C7c71IF7L+xP78E/yavumP7+/7HjnneaBTmcIz7Et9q2WPtfR0aOOigcfQnqTiL3F0p28hbxZhJDxcUPzBCRei6CqcVK9qihR1r0G4QAAuWHNPu35bSlaRU2LUM8zqyIhtqOJXmZbjrvC6VFRZPggZil81ij8ULqbYCXS0rFaGuzO9yItCBVww1NpyiFef44GLqYSL68vPoZU6S8oXczdj3d0vkeeOcubj6ctwckGX6rxqki5kcLDvPHoG79eMmCHJr6MdTWt8p6TMTbSoenNLrmrvUwt3BzqlEFPfjG8+3A2XulLuLoLs6aey0nWEC7U8WeF2F7JJGM1hxjjg4nL2NvpfZPyJ/ww/xqX+Hn9871/nkK2Ji6fYc++sHi6Sv68PhYvPkmsUDi6nb2CYdq8sYfm4EI7r4cINwIXp4YLFzGBcNF5fFxoXKI0ZticSF2FOSbIkiF2wmb+NUbiQ95DfckNqhsDFuB7f3rA7cUc/K6Ln3UgfeKN7Eh+MwCvO/8qgPL5d0D3CvUX9iTZFYt9Yn20dewcahZfDh18KMACePg+iRSFNCQAAAABJRU5ErkJggg==') 0px 0px no-repeat;
+    width: 38px;
+    height: 38px;
+    vertical-align: top;
 }
