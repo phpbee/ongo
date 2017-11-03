@@ -1,7 +1,7 @@
 function onImageLoad(scope, img, attrs) {
 
     if ("masonry" == attrs.imageonload) {
-        $(img).closest('#container').masonry({itemSelector: '.item'});
+        $(img).closest('#gallery-masonry-container').masonry({itemSelector: '.item'});
     }
 
 

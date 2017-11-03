@@ -1,34 +1,46 @@
+<!-- PAGE REPRESENTING A GALLERY -->
+<div class="ongo-gallery-page">
 
+    <section class="ongo-header">
 
-    <div class="main">
-        <div class="row">
-            <div class="large-12 columns">
-                <div class="finder">
-                    <h1><a ui-sref="photographer({id: gallery.photographer.id})">{{ gallery.photographer.name }}</a></h1>
-                    <span><a ui-sref="country({id: gallery.country.id})">{{ gallery.country.name }}</a>,
-                        <a ui-sref="city({id: gallery.city.id})">{{ gallery.city.name }}</a>,
-                        <a ui-sref="palce({id: gallery.place.id})">{{ gallery.place.name }}</a></span>
-                    <div class="text-center">
-                        <span ui-sref="date({date: gallery.date})">{{ gallery.date | date:'dd MMMM yyyy, EEEE' }}</span>
-                        <div class="social-likes justify" data-counters="no">
-                            <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
-                            <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
-                            <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>
-                            <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media=""></div>
-                        </div>
-                    </div>
+          <!-- GALLERY INFO -->
+          <div class="ongo-info">
 
-                </div>
-            </div>
-        </div>
+              <!-- Photographer name -->
+              <h1><a ui-sref="photographer({id: gallery.photographer.id})">{{ gallery.photographer.name }}</a></h1>
 
-        <div class="bg_gallery"></div>
-    </div>
+              <!-- Country, City, Place -->
+              <h2>
+                <a ui-sref="country({id: gallery.country.id})">{{ gallery.country.name }}</a>,
+                <a ui-sref="city({id: gallery.city.id})">{{ gallery.city.name }}</a>,
+                <a ui-sref="palce({id: gallery.place.id})">{{ gallery.place.name }}</a></span>
+              </h2>
 
+              <!-- Date -->
+              <h3>
+                <span ui-sref="date({date: gallery.date})">{{ gallery.date | date:'dd MMMM yyyy, EEEE' }}</span>
+              </h3>
 
-    <div class="center_gallery">
+          </div> <!-- end gallery info -->
 
-        <div id="container">
+          <!-- SOCIAL BUTTONS -->
+          <div class="social-likes justify" data-counters="no">
+              <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
+              <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
+              <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>
+              <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media=""></div>
+          </div>
+
+          <!-- BACKGROUND -->
+          <div class="ongo-background">
+            <div class="bg_gallery"></div>
+          </div>
+
+    </section> <!-- end header -->
+
+    <section class="ongo-gallery">
+
+        <div id="gallery-masonry-container">
 
             <div class="item" ng-repeat="p in photos" >
                 <a ui-sref="photo({id: p.id, gallery_id: p.gallery_id})">
@@ -43,13 +55,14 @@
 
     </div>
 
-    <div class="row gallery_info">
-        <div class="small-12 medium-12 large-12 columns">
-            <h4>More premium stock photography</h4>
-          <span class="descr">
+    <div class="ongo-gallery-footer">
+
+          <h1>More premium stock photography</h1>
+          <h2>
             Prime have never been used in commercial campaigns before. Be the
-            first <br/>one to experience the amazing quality of top-notch photographers.
-          </span>
-            <a href="#" ui-sref="photographers-registration" class="button radius">Continue</a>
+            first one to experience the amazing quality of top-notch photographers.
+          </h2>
+          <a href="#" ui-sref="photographers-registration" class="button ongo-registration-btn">Continue</a>
         </div>
     </div>
+</div>
