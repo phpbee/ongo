@@ -1,8 +1,8 @@
-<div class="row lastgallery">
+<div class="lastgallery">
     <section ng-repeat="g in galleries">
 
-        <div class="row thumbsgal" ng-if="g.icons">
-            <div class="small-12 medium-12 large-12 columns">
+        <div class="grid-x thumbsgal" ng-if="g.icons">
+            <div class="small-12 cell">
                 <div class="thumbwrap">
                     <ul class="minslider">
                         <li ng-repeat="p in g.icons">
@@ -15,6 +15,7 @@
             </div>
         </div>
 
+        <!-- TODO: styling -->
         <div class="list">
             <a ui-sref="day({day: ( g.created|strtotime|date:'yyyy-MM-dd' ), country_id: g.country.id })">{{ g.created | strtotime | date: "dd/MM/yyyy" }}</a> -
             <a class="city" ui-sref="city({id: g.city.id})">{{ g.city.name }}</a>,
@@ -23,7 +24,5 @@
             <a ui-sref="photographer({id: g.photographer.id})">{{ g.photographer.name }}</a>
         </div>
 
-
     </section>
-
 </div>

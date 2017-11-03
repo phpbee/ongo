@@ -767,7 +767,7 @@ i {
 .ongo-category-item {
   position: relative;
   width: 100%;
-  min-height: 450px;
+  height: 100%;
 }
 
 .ongo-category-item .ongo-content {
@@ -779,16 +779,16 @@ i {
 }
 
 /* Background image for the content area */
-/* FIXME: Images used for country bg country, city, place
-          are inconsistent dimensions. These should be large
-          enough to not require stretching.
-          Where should images be taken from? */
+/* FIXME: Image stretching: images used for country bg country,
+          city, place should be large
+          enough to not require stretching. */
 .ongo-category-item .ongo-content .ongo-bg {
     position: absolute;
     display: inline-block;
     top: 0;
     left: 0;
     width: 100%;
+    min-height: 100%;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
@@ -826,7 +826,6 @@ i {
   text-align: left;
   margin-left: 10px;
 }
-
 /* Breakpoint (small screens) - info area is centered */
 @media (max-width: 639px) {
   .ongo-info .info-area {
@@ -868,9 +867,57 @@ i {
   display: none;
 }
 
+.ongo-gallery-preview-wrap {
+  display: block;
+  padding: 20px 10px 20px 10px;
+  text-align: center;
+  background-color: #fff;
+}
+
 /*************************
- * Gallery
+ * Preview Gallery
  ************************/
+
+.lastgallery {
+    display: inline-block;
+    width: 90%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    padding: 28px 20px 28px 20px;
+}
+.lastgallery h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+.lastgallery h3 a {
+    font-size: 0.75rem;
+    display: inline-block;
+    margin-left: 30px;
+    text-transform: lowercase;
+    border-bottom: 1px solid #09b83f;
+    margin-bottom: 7px;
+    vertical-align: middle;
+}
+.lastgallery h3 a:first-letter{
+    text-transform: uppercase;
+}
+.lastgallery .list{
+    margin-bottom: 25px;
+    font-size: 0.875rem;
+}
+.lastgallery .list a{
+    font-weight: bold;
+}
+
+
+/****************************
+ * Gallery Page
+ ***************************/
 
 .bg_gallery {
   position: absolute;
