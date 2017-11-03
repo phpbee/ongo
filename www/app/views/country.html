@@ -45,14 +45,14 @@
       </div>
 
       <!-- BACKGROUND -->
-      <div class="ongo-background bg_country" style="background-image: url('{{ country.logo }}');"></div>
+      <img class="ongo-bg" ng-src="{{ country.logo }}"></div>
   </section> <!-- end .ongo-content -->
 
   <!-- PREVIEW GALLERIES -->
-  <ui-view>
-      <section>
+  <section>
+    <ui-view>
           <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
-      </section>
-  </ui-view>
+    </ui-view>
+  </section>
 
 </div>

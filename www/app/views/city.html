@@ -1,4 +1,4 @@
-<!-- PAGE REPRESENTING A SINGLE COUNTRY -->
+<!-- PAGE REPRESENTING A SINGLE CITY -->
 <div class="ongo-category-item">
 
   <!-- CONTENT AREA -->
@@ -45,16 +45,18 @@
       </div>
 
       <!-- BACKGROUND -->
-      <div ng-if="city.logo" class="bg_city" style="background-image: url('{{ city.logo }}');"></div>
-      <div ng-if="!city.logo" class="bg_city"></div>
+      <!-- FIXME: should give default city.logo value in Angular instead of doing it here -->
+      <!-- FIXME: background should be absolutely positioned images, not css styles -->
+      <img class="ongo-bg" ng-if="city.logo" ng-src="{{ city.logo }}">
+      <img class="ongo-bg" ng-if="!city.logo" ng-src="/img/bg_city.jpg">
 
   </section>
 
   <!-- PREVIEW GALLERIES -->
-  <ui-view>
-      <section>
+  <section>
+      <ui-view>
           <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
-      </section>
-  </ui-view>
+      </ui-view>
+  </section>
 
 </div>
