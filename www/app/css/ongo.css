@@ -8,6 +8,9 @@
  *    OFF-CANVAS MENUS
  *    MAIN PAGE
  *    FOOTER
+ *    CATEGORY ITEMS (Country, City, Place, Photographer)
+ *    PREVIEW GALLERY
+ *    GALLERY PAGE
  *    UTILITY
  */
 
@@ -331,18 +334,28 @@ i {
  */
 
 .ongo-top-bar .ongo-logo-area {
-  padding: 10px 0 10px 0;
-  width: auto;
+  position: relative;
+  display: inline-block;
+  width: 220px;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
 }
 .ongo-top-bar .ongo-ico-company-logo {
   display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 45px;
   height: 45px;
 }
 .ongo-top-bar .ongo-company-name {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
   font-size: 1.8rem;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
-  vertical-align: top;
 }
 
 /**
@@ -351,14 +364,15 @@ i {
 
 .ongo-top-bar .search-area {
   display: inline-block;
-  float: left;
-  border: 1px dashed green;
+  min-width: 220px;
+  margin-left: 15px;
+  vertical-align: bottom;
 }
 .ongo-top-bar .ongo-search-form {
   height: 37px;
+  vertical-align: bottom;
   width: auto;
-  font-size: 0.55rem;
-  transform: translateY(-6px);
+  font-size: 0.5rem;
 }
 
 /**
@@ -366,7 +380,6 @@ i {
  */
 
 .ongo-top-bar-nav {
-  float: right;
   height: 100%;
   width: auto;
 }
@@ -383,6 +396,9 @@ i {
   width: auto;
   min-width: 5.5rem;
   margin-left: 0.5rem;
+}
+.ongo-top-bar-nav .ongo-nav-item * {
+  color: #fff;
 }
 
 /* Links inside each nav item */
@@ -404,7 +420,7 @@ i {
 .ongo-top-bar-nav .ongo-nav-link:hover,
 .ongo-top-bar-nav .ongo-nav-link:focus {
   background: rgba(42, 35, 33, .5);
-  color: #aaa;
+  color: #fff;
   transition: all .3s ease;
 }
 
@@ -752,14 +768,6 @@ i {
    margin-right: 1px;
 }
 
-/**********************
- * UTILITY
- *********************/
-
-.transparent-background {
-  background-color: hsla(0, 0%, 0%, 0);
-}
-
 /****************************************************
  * Category Items (Country, City, Place, Photographer)
  ****************************************************/
@@ -928,4 +936,12 @@ i {
   -webkit-background-size: cover;
   background-size: cover;
   z-index: -1;
+}
+
+/**********************
+ * UTILITY
+ *********************/
+
+.transparent-background {
+  background-color: hsla(0, 0%, 0%, 0);
 }
