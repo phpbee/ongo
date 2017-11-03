@@ -1,32 +1,60 @@
-<div class="main">
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="current_country">
-                <div class="info">
-                    <h1 ui-sref="city({id: city.id})">{{ city.name }}</h1>
+<!-- PAGE REPRESENTING A SINGLE COUNTRY -->
+<div class="ongo-category-item">
 
-                    <div class="tags">
-                        <a href="" ui-sref="city.photographers">Photographer:
-                            <span>{{ city.stats.photographers }}</span></a>
-                        <a href="" ui-sref="city.places">Places: <span>{{ city.stats.places }}</span></a>
-                        <a href="" ui-sref="city.galleries">Photo galleries: <span>{{ city.stats.galleries }}</span></a>
-                        <a href="">Photos total: <span>{{ city.stats.photos }}</span></a>
-                    </div>
+  <!-- CONTENT AREA -->
+  <section class="ongo-content">
 
-                </div>
+      <!-- INFO -->
+      <div class="ongo-info">
+          <div class="grid-x">
 
+              <!-- AVATAR AREA (i.e. country flag, photographer avatar, etc.) -->
+              <div class="small-12 medium-2 cell">
+                  <!-- TODO: img src for city avatars -->
+                  <img class="ongo-avatar" ng-src="">
+              </div>
 
-            </div>
-        </div>
-    </div>
+              <!-- INFO AREA (title, tags, etc... ) -->
+              <div class="small-12 medium-9 cell">
+                  <div class="info-area">
 
-    <div ng-if="city.logo" class="bg_city" style="background-image: url('{{ city.logo }}');"></div>
-    <div ng-if="!city.logo" class="bg_city"></div>
+                      <h1 ui-sref="city({id: city.id})">{{ city.name }}</h1>
+
+                      <div class="tags">
+                          <a class="tag" href="" ui-sref="city.photographers">Photographer:
+                              <span>{{ city.stats.photographers }}</span></a>
+                          <a class="tag" href="" ui-sref="city.places">Places: <span>{{ city.stats.places }}</span></a>
+                          <a class="tag" href="" ui-sref="city.galleries">Photo galleries: <span>{{ city.stats.galleries }}</span></a>
+                          <a class="tag" href="">Photos total: <span>{{ city.stats.photos }}</span></a>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- SEARCH AREA -->
+      <div class="ongo-search">
+          <h5>Choose city</h5>
+          <form class="ongo-search-form">
+              <input class="ongo-search-input typeahead state" type="text" placeholder="Enter your city">
+              <input class="ongo-search-submit hidden-submit" type="submit">
+              <i class="fi-magnifying-glass"></i>
+          </form>
+          <a class="close"></a>
+      </div>
+
+      <!-- BACKGROUND -->
+      <div ng-if="city.logo" class="bg_city" style="background-image: url('{{ city.logo }}');"></div>
+      <div ng-if="!city.logo" class="bg_city"></div>
+
+  </section>
+
+  <!-- PREVIEW GALLERIES -->
+  <ui-view>
+      <section>
+          <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
+      </section>
+  </ui-view>
+
 </div>
-
-
-<ui-view>
-    <section>
-        <ng-include src="'views/inc_lastgalleries.html'"></ng-include>
-    </section>
-</ui-view>

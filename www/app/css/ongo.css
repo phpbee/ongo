@@ -188,7 +188,7 @@ i {
 /**
  * MinSlider
  */
- 
+
 .thumbsgal {
   width: auto;
   max-width: 960px;
@@ -396,13 +396,16 @@ i {
   text-align: center;
   vertical-align: middle;
   border-radius: 4px;
-  color: #fff;
+  color: #ccc;
   font-size: .875rem;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, .38);
+  transition: all .3s ease;
 }
 .ongo-top-bar-nav .ongo-nav-link:hover,
 .ongo-top-bar-nav .ongo-nav-link:focus {
   background: rgba(42, 35, 33, .5);
+  color: #aaa;
+  transition: all .3s ease;
 }
 
 /* Icons in the main nav */
@@ -775,6 +778,7 @@ i {
     background: url('../img/bg_gallery.jpg') 0 0 no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
+    z-index: -1;
 }
 .bg_country {
     position: absolute;
@@ -796,6 +800,7 @@ i {
     background-size: cover;
     background-image: url('/img/bg_city.jpg');
     background-position: center center;
+    z-index: -1;
 }
 .bg_place {
     position: absolute;
@@ -806,57 +811,72 @@ i {
     -webkit-background-size: cover;
     background-size: cover;
     background-image: url('/img/bg_place.jpg');
+    z-index: -1;
 }
 
 /****************************************************
  * Category Items (Country, City, Place, Photographer)
  ****************************************************/
 
-.ongo-category-item-wrap {
+.ongo-category-item {
   position: relative;
   width: 100%;
-  height: calc(80vh - 55px);
   min-height: 450px;
 }
 
-.ongo-category-item-header {
+.ongo-category-item .ongo-content {
   position: relative;
+  height: calc(80vh - 55px);
+  text-align: center;
   padding-top: 150px;
 }
 
-.ongo-category-item-header h1 {
-    font-size: 1.5rem;
-    color: #fffeff;
-    background: #2e2e2e;
-    border-radius: 3px;
-    display: inline-block;
-    padding-left: 14px;
-    padding-right: 14px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    margin-top: 0px;
-    margin-right: 10px;
-    vertical-align: top;
-    height: 38px;
-    line-height: 38px;
+.ongo-category-item .ongo-info {
+  display: inline-block;
+  width: auto;
 }
 
-.ongo-category-item-header .image-wrap {}
-.ongo-category-item-header .image-wrap img {
-  float: left;
-  margin-right: 16px;
-  max-width: 144px;
+.ongo-category-item .ongo-info h1 {
+  display: inline-block;
+  width: auto;
+  height: 38px;
+  font-size: 1.5rem;
+  color: #fffeff;
+  background: #2e2e2e;
+  border-radius: 3px;
+  padding-left: 14px;
+  padding-right: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  margin-top: 0px;
+  vertical-align: top;
+  line-height: 38px;
 }
 
-.ongo-category-item-header .info {
-  float: left;
+.ongo-info .ongo-avatar {
+  width: 144px;
 }
 
-.ongo-category-item-header .tags {
-
+.ongo-info .info-area {
+  display: inline-block;
+  text-align: left;
+  margin-left: 10px;
 }
 
-a.ongo-tag {
+/* Breakpoint (small screens) - info area is centered */
+@media (max-width: 639px) {
+  .ongo-info .info-area {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+.ongo-info .tags {
+  display: inline-block;
+  width: auto;
+}
+
+.tag {
   display: inline-block;
   padding-right: 11px;
   padding-left: 11px;
@@ -869,14 +889,21 @@ a.ongo-tag {
   padding-bottom: 3px;
   margin-bottom: 10px;
 }
-
-a.ongo-tag:hover {
-    background: #f1f1f1;
+.tag span {
+  color: inherit;
+}
+.tag:hover {
+  background: #f1f1f1;
+}
+.tag:hover span {
+  text-decoration: underline;
 }
 
-a.ongo-tag:hover span {
-    text-decoration: underline;
+/* TODO: display. What should this form be? */
+.ongo-category-item .ongo-search {
+  display: none;
 }
+
 
 .current_country .info .country_menu {
     display: inline-block;
