@@ -88,8 +88,6 @@ function onImageLoad(scope, img, attrs) {
     }
 }
 
-$(document).foundation();
-
 $(document).ready(function () {
 
     $("body").on("contextmenu", ".photo img", function(e) {

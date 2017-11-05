@@ -56,7 +56,9 @@ angular
             $http.defaults.headers.common.Translation = $translate.use();
         });
 
-
+        $rootScope.$on('$viewContentLoaded', function() {
+          $(document).foundation();
+        });
     })
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
