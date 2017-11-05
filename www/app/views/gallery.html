@@ -24,7 +24,7 @@
           </div> <!-- end gallery info -->
 
           <!-- SOCIAL BUTTONS -->
-          <div class="social-likes justify" data-counters="no">
+          <div class="social-likes" data-counters="no">
               <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
               <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
               <div class="mailru" title="Поделиться ссылкой в Моём мире"></div>
@@ -38,10 +38,11 @@
 
     </section> <!-- end header -->
 
+    <!-- GALLERY -->
     <section class="ongo-gallery">
 
+        <!-- Gallery images ("masonry" plugin for collage effect) -->
         <div id="gallery-masonry-container">
-
             <div class="item" ng-repeat="p in photos" >
                 <a ui-sref="photo({id: p.id, gallery_id: p.gallery_id})">
                 <img ng-src="{{ p.thumb }}" imageonload="masonry">
@@ -49,20 +50,18 @@
                     <a href="" class="add_favorite" ng-click="addToFav(p.id, p.gallery_id);"></a>
                     <a href="" class="add_cart" ng-click="addToCart(p.id, p.gallery_id, 'best');"></a>
                 </div>
-                    </a>
             </div>
         </div>
 
-    </div>
-
-    <div class="ongo-gallery-footer">
-
-          <h1>More premium stock photography</h1>
-          <h2>
-            Prime have never been used in commercial campaigns before. Be the
-            first one to experience the amazing quality of top-notch photographers.
-          </h2>
-          <a href="#" ui-sref="photographers-registration" class="button ongo-registration-btn">Continue</a>
+        <!-- Gallery footer -->
+        <div class="ongo-gallery-footer">
+              <h1>More premium stock photography</h1>
+              <h2>
+                Prime have never been used in commercial campaigns before. Be the
+                first one to experience the amazing quality of top-notch photographers.
+              </h2>
+              <a href="#" ui-sref="photographers-registration" class="button ongo-registration-btn">Continue</a>
         </div>
-    </div>
+
+    </section>
 </div>
