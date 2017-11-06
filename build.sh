@@ -1,25 +1,36 @@
 #!/bin/bash
 
-
 set -ex
 
 r=alexk7898
 p=ongo
 
+if [ -z ${GIT_BRANCH} ]; then
+  if [[ -n $(git status -s) ]]; then
+    echo >&2 "You have uncommited changes in repo, will break the build"
+    git status -s
+
+        while true; do
+            read -p "Do you wish to continue?" yn
+            case $yn in
+                [Yy]* ) break;;
+                [Nn]* ) exit;;
+                * ) echo "Please answer yes or no.";;
+            esac
+        done
+  fi
+fi
+
 b=${GIT_BRANCH:=`git rev-parse --abbrev-ref HEAD`}
-c=${GIT_TAG_NAME:=${GIT_COMMIT:=`git describe --tags`}}
 
 IFS='/' read -a arr <<< "$b"
 if [[ ${arr[1]} ]]; then
     b=${arr[1]}
 fi
 
-if [ -z ${GIT_BRANCH} ]; then
-  if [[ -n $(git status -s) ]]; then
-    echo >&2 "You have uncommited changes in repo, will break the build"
-    git status -s
-#    exit 4
-  fi
+if [ "master" != "${b}" ]
+then
+    b="develop"
 fi
 
 tag_api="$r/$p:api-$b"
@@ -29,7 +40,6 @@ cd api
   php composer.phar install
   docker build -f Dockerfile -t $tag_api .
 cd ..
-
 
 cd www
   if [[ -d dist ]]; then rm -r dist; fi
@@ -46,18 +56,9 @@ cd www
 
   docker build -t $tag_www .
 
-
 cd ..
 
 docker push $tag_www
 docker push $tag_api
 
 ssh zaza@ongophotos.com 'docker-compose  -f ongo.yml pull && docker-compose  -f ongo.yml up -d'
-
-#if [ "$b" == "master" ]; then
-#    docker tag $tag_www $tag_www_version
-#    tag_www_version="$r/$p:www-$c"
-#    docker tag $tag_api $tag_api_version
-#    tag_api_version="$r/$p:www-$c"
-#    docker push $tag_www_version $tag_api_version
-#fi
