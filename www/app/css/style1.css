@@ -280,6 +280,11 @@ body h2, body h3 {
     display: block;
     float: left;
 }
+.photografer_page .current_country .avatar {
+    position: relative;
+    display: block;
+    float: left;
+}
 .photografer_page .wrbadges{
     position: absolute;
     bottom: 12px;
@@ -2707,7 +2712,12 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .photografer_page .current_country {
         padding-top: 109px;
     }
-    .photografer_page .current_country .photografer_ava{
+    .photografer_page .current_country .photografer_ava {
+        width: 144px;
+        margin: 0px auto;
+        float: none;
+    }
+    .photografer_page .current_country .avatar {
         width: 144px;
         margin: 0px auto;
         float: none;
