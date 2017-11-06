@@ -36,11 +36,9 @@
                         <li ng-if="isAuthorized('user')"><a class="menu_ico1" href="#" ui-sref="user.orders" translate="MENU.ORDERS"></a></li>
                         <li ng-if="keys(cart.items).length"><a class="menu_ico2" ui-sref="checkout"><span translate="MENU.CHECKOUT"></span> ({{ keys(cart.items).length }})</a></li>
                         <li ng-if="keys(fav.items).length"><a class="menu_ico2" ui-sref="favourites"><span translate="MENU.FAVOURITES"></span> ({{ keys(fav.items).length }})</a></li>
-                        <li ng-if="activeLanguage!='en'"><a class="menu_ico3" href="#" ng-click="changeLanguage('en');"><span>English</span></a></li>
-                        <li ng-if="activeLanguage!='ru'"><a class="menu_ico3" href="#" ng-click="changeLanguage('ru');"><span>Русский</span></a></li>
 
                         <li class="has-dropdown">
-                            <a class="menu_ico3" href="#"  onclick="return false;"><span>Language</span></a>
+                            <a class="menu_ico3" href="#"  onclick="return false;"><span translate="activeLanguage">Language</span></a>
                             <ul class="dropdown">
                                 <li><a href="#" ng-click="changeLanguage('en')"><img src="/img/flag/flag_en.jpg">English</a></li>
                                 <li><a href="#" ng-click="changeLanguage('ru')"><img src="/img/flag/flag_ru.jpg">Russian</a></li>
@@ -53,7 +51,7 @@
                             <a class="menu_ico4" href="#" onclick="return false;"></a>
                             <ul class="dropdown">
                                 <li><a ui-sref="about" translate="About"></a></li>
-                                <li><a ui-sref="privacy" translate="Privacy Policy"></a></li>
+                                <li><a ui-sref="policy" translate="Privacy Policy"></a></li>
                                 <li><a ui-sref="contacts" translate="Contacts"></a></li>
                                 <li><a ui-sref="faq" translate="FAQ"></a></li>
                             </ul>
