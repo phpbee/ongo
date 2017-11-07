@@ -3,16 +3,24 @@
         <div class="lastgallery">
             <h3 translate="CITIES"></h3>
 
-            <div class="list" ng-repeat="city in cities">
+            <!-- List of cities -->
+            <ul class="list">
 
-                <a href="" ui-sref="city({id: city.id})">
-                  <!-- avatar/preview image -->
-                  <img class="avatar" ng-src="{{ city.logo }}">
+                <li class="list-item" ng-repeat="city in cities">
+                    <a href="" ui-sref="city({id: city.id})">
 
-                  <!-- list item name -->
-                  <h1>{{ city.name }}</h1>
-                </a>
-            </div>
+                      <div class="heading">
+                        <!-- city name -->
+                        <h1>{{ city.name }}</h1>
+                      </div>
+
+                      <!-- avatar/preview image and fallback image -->
+                      <img class="avatar" ng-if="city.logo" ng-src="{{ city.logo }}">
+                      <img class="avatar" ng-if="!city.logo" ng-src="{{ './img/fallback/fallback' + ((5 | randomNum) + 1) + '.jpg' }}">
+                    </a>
+                </li>
+
+            </ul>
 
         </div>
     </div>

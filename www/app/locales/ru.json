@@ -3,6 +3,7 @@
   "CURRENCY_SYMBOL": "₽",
   "RUB": "Руб",
   "USD": "USD",
+  "activeLanguage": "Русский",
 
   "PRICE": {
     "best": "2.500",
