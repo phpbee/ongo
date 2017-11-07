@@ -528,6 +528,14 @@ body h2, body h3 {
 .lastgallery .list a{
     font-weight: bold;
 }
+.lastgallery .list a .avatar{
+    width: 150px;
+}
+.lastgallery .list a h1{
+    color: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+}
 ul.pagination li a{
     background: #09b83f;
     color: #fff;

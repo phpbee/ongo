@@ -4,7 +4,14 @@
             <h3 translate="CITIES"></h3>
 
             <div class="list" ng-repeat="city in cities">
-                <a href="" ui-sref="city({id: city.id})">{{ city.name }}</a>
+
+                <a href="" ui-sref="city({id: city.id})">
+                  <!-- avatar/preview image -->
+                  <img class="avatar" ng-src="{{ city.logo }}">
+
+                  <!-- list item name -->
+                  <h1>{{ city.name }}</h1>
+                </a>
             </div>
 
         </div>

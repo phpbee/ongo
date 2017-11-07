@@ -4,7 +4,14 @@
             <h3 translate="COUNTRIES"></h3>
 
             <div class="list" ng-repeat="country in countries">
-                <a href="" ui-sref="country({id: country.id})">{{ country.name }}</a>
+
+                <a href="" ui-sref="country({id: country.id})">
+                  <!-- avatar/preview image -->
+                  <img class="avatar" ng-src="{{ country.logo }}">
+
+                  <!-- list item name -->
+                  <h1>{{ country.name }}</h1>
+                </a>
             </div>
 
         </div>

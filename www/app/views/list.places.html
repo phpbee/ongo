@@ -4,7 +4,14 @@
             <h3 translate="PLACES"></h3>
 
             <div class="list" ng-repeat="place in places">
-                <a href="" ui-sref="place({id: place.id})">{{ place.name }}</a>
+
+                <a href="" ui-sref="place({id: place.id})">
+                  <!-- avatar/preview image -->
+                  <img class="avatar" ng-src="{{ place.logo }}">
+
+                  <!-- list item name -->
+                  <h1>{{ place.name }}</h1>
+                </a>
             </div>
 
         </div>
