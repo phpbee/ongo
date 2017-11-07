@@ -522,20 +522,80 @@ body h2, body h3 {
     text-transform: uppercase;
 }
 .lastgallery .list{
-    margin-bottom: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 35px;
     font-size: 0.875rem;
 }
-.lastgallery .list a{
+.lastgallery .list-item{
+    display: block;
+    width: 100%;
+    height: 100px;
+    margin: 1.5rem;
+}
+.lastgallery .list-item a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    color: inherit;
+}
+
+.lastgallery .list-item a .heading {
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 0 2rem 0 2rem;
+    color: #555;
+    background-color: hsla(0, 0%, 90%, 0.8);
     font-weight: bold;
 }
-.lastgallery .list a .avatar{
-    width: 150px;
-}
-.lastgallery .list a h1{
+.lastgallery .list-item a .heading h1 {
+    text-align: center;
+    font-size: 2.5rem;
     color: inherit;
     font-weight: bold;
-    font-size: 1rem;
+
 }
+.lastgallery .list-item a .heading h1::after {
+    content: "";
+    display: block;
+    visibility: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    width: 0%;
+    border: 2px solid #555;
+}
+.lastgallery .list-item a:hover .heading h1::after {
+    visibility: visible;
+    width: 100%;
+    border: solid 2px #888;
+    transition: all .3s ease;
+}
+.lastgallery .list-item a .avatar{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(-45%);
+    z-index: -1;
+}
+.lastgallery .list-item a:hover .avatar{
+    filter: brightness(80%);
+}
+.lastgallery .list-item a:hover {
+    transition: all .3s ease;
+}
+.lastgallery .list-item a:hover h1 {
+    color: #777;
+    transition: all .3s ease;
+}
+
 ul.pagination li a{
     background: #09b83f;
     color: #fff;
