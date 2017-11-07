@@ -3,17 +3,24 @@
         <div class="lastgallery">
             <h3 translate="COUNTRIES"></h3>
 
-            <div class="list" ng-repeat="country in countries">
+            <!-- List of countries -->
+            <ul class="list">
 
-                <a href="" ui-sref="country({id: country.id})">
-                  <!-- avatar/preview image -->
-                  <img class="avatar" ng-src="{{ country.logo }}">
+                <li class="list-item" ng-repeat="country in countries">
+                    <a href="" ui-sref="country({id: country.id})">
 
-                  <!-- list item name -->
-                  <h1>{{ country.name }}</h1>
-                </a>
-            </div>
+                      <div class="heading">
+                        <!-- country name -->
+                        <h1>{{ country.name }}</h1>
+                      </div>
 
+                      <!-- avatar/preview image and fallback image -->
+                      <img class="avatar" ng-if="country.logo" ng-src="{{ country.logo }}">
+                      <img class="avatar" ng-if="!country.logo" ng-src="{{ './img/fallback/fallback' + ((5 | randomNum) + 1) + '.jpg' }}">
+                    </a>
+                </li>
+
+            </ul>
         </div>
     </div>
 </div>
