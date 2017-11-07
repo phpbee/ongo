@@ -16,7 +16,7 @@
 
                       <!-- avatar/preview image and fallback image -->
                       <img class="avatar" ng-if="city.logo" ng-src="{{ city.logo }}">
-                      <img class="avatar" ng-if="!city.logo" ng-src="{{ './img/fallback/fallback1.jpg' }}">
+                      <img class="avatar" ng-if="!city.logo" ng-src="{{ './img/fallback/fallback' + ((5 | randomNum) + 1) + '.jpg' }}">
                     </a>
                 </li>
 
